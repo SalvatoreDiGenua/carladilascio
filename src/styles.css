@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #162438;
+  --color-ink-muted: #4a5d73;
+  --color-cream: #faf7f2;
+  --color-cream-subtle: #f4efe6;
+  --color-aqua: #2d8a85;
+  --color-aqua-light: #e6f4f2;
+  --color-powder: #548da7;
+  --color-powder-light: #eef6fa;
+  --color-coral: #c95d4a;
+  --color-coral-light: #faece8;
+  --color-blush: #d9788a;
+  --color-blush-light: #fbf0f2;
+  --color-lavender: #7c6ca6;
+  --color-lavender-light: #f3f0fa;
+  --font-sans:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #0284c7;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

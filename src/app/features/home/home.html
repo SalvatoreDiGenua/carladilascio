@@ -1,0 +1,530 @@
+<!-- 1. Hero Section -->
+<section
+  id="hero"
+  class="relative overflow-hidden border-b border-stone-200/80 bg-gradient-to-b from-cream via-cream-subtle to-cream py-16 sm:py-24"
+  aria-label="Presentazione"
+>
+  <!-- Sfondo organico e decorativo astratto in SVG -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    aria-hidden="true"
+  >
+    <svg
+      class="absolute -top-16 -right-16 h-96 w-96 text-aqua-light/80 blur-2xl"
+      viewBox="0 0 100 100"
+      fill="currentColor"
+    >
+      <circle cx="50" cy="50" r="45" />
+    </svg>
+    <svg
+      class="absolute -bottom-20 -left-20 h-96 w-96 text-blush-light/80 blur-2xl"
+      viewBox="0 0 100 100"
+      fill="currentColor"
+    >
+      <circle cx="50" cy="50" r="40" />
+    </svg>
+    <svg
+      class="absolute top-1/2 left-1/3 h-80 w-80 text-lavender-light/70 blur-3xl"
+      viewBox="0 0 100 100"
+      fill="currentColor"
+    >
+      <circle cx="50" cy="50" r="40" />
+    </svg>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <!-- Testi Hero -->
+      <div class="lg:col-span-7">
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-aqua/30 bg-aqua-light/50 px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
+        >
+          <span>Benessere Integrato & Tecniche Vibrazionali</span>
+        </div>
+        <h1
+          class="mt-4 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl lg:leading-tight"
+        >
+          {{ content.personalInfo.headline }}
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-ink-muted sm:text-xl">
+          {{ content.personalInfo.subheadline }}
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            routerLink="/chi-sono"
+            class="rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2"
+          >
+            Scopri chi sono
+          </a>
+          <a
+            routerLink="/contatti"
+            class="rounded-xl border border-stone-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-ink shadow-sm transition-all hover:border-aqua hover:bg-white focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+          >
+            Contattami
+          </a>
+        </div>
+      </div>
+
+      <!-- Illustrazione / Placeholder organico Carla Di Lascio -->
+      <div class="flex justify-center lg:col-span-5">
+        <div
+          class="relative flex h-80 w-80 items-center justify-center rounded-3xl border border-stone-200/90 bg-white/70 p-6 shadow-sm backdrop-blur-md sm:h-96 sm:w-96"
+        >
+          <svg
+            class="h-full w-full"
+            viewBox="0 0 200 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Composizione artistica astratta: forme organiche e armonia"
+          >
+            <!-- Forme organiche astratte ispirate ai colori della brochure -->
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2d8a85" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#548da7" stop-opacity="0.2" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c95d4a" stop-opacity="0.25" />
+                <stop offset="100%" stop-color="#7c6ca6" stop-opacity="0.2" />
+              </linearGradient>
+            </defs>
+            <circle
+              cx="100"
+              cy="100"
+              r="85"
+              stroke="#e6f4f2"
+              stroke-width="2"
+            />
+            <path
+              d="M40 100 C 40 50, 160 50, 160 100 C 160 150, 40 150, 40 100 Z"
+              fill="url(#grad1)"
+            />
+            <ellipse
+              cx="100"
+              cy="100"
+              rx="60"
+              ry="75"
+              fill="url(#grad2)"
+              transform="rotate(25 100 100)"
+            />
+            <circle
+              cx="100"
+              cy="85"
+              r="28"
+              fill="#faf7f2"
+              stroke="#2d8a85"
+              stroke-width="1.5"
+            />
+            <path
+              d="M65 145 C 75 115, 125 115, 135 145"
+              stroke="#162438"
+              stroke-width="2"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <circle cx="100" cy="85" r="6" fill="#2d8a85" />
+          </svg>
+          <div
+            class="absolute right-4 bottom-4 left-4 rounded-xl border border-stone-200/80 bg-white/90 p-3 text-center shadow-xs"
+          >
+            <p class="text-xs font-semibold text-ink">Carla Di Lascio</p>
+            <p class="text-[11px] text-ink-muted">
+              Studio ad Avellino & Percorsi dedicati
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Introduzione Empatica -->
+<section
+  class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20"
+  aria-labelledby="heading-intro"
+>
+  <div class="rounded-3xl border border-aqua/20 bg-aqua-light/30 p-8 sm:p-12">
+    <h2
+      id="heading-intro"
+      class="text-xs font-bold tracking-wider text-aqua uppercase"
+    >
+      Uno spazio di ascolto
+    </h2>
+    <p class="mt-4 text-xl leading-relaxed font-medium text-ink sm:text-2xl">
+      {{ content.personalInfo.introText[0] }}
+    </p>
+    <p class="mt-4 text-base leading-relaxed text-ink-muted">
+      {{ content.personalInfo.introText[1] }}
+    </p>
+  </div>
+</section>
+
+<!-- 3. Chi Sono (Anteprima) -->
+<section
+  id="chi-sono"
+  class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8"
+  aria-labelledby="heading-chi-sono"
+>
+  <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+    <div class="lg:col-span-5">
+      <div
+        class="rounded-3xl border border-stone-200/80 bg-white/80 p-8 shadow-sm"
+      >
+        <h3 class="text-xs font-bold tracking-wider text-powder uppercase">
+          Profilo professionale
+        </h3>
+        <h2
+          id="heading-chi-sono"
+          class="mt-2 text-2xl font-bold text-ink sm:text-3xl"
+        >
+          {{ content.personalInfo.name }}
+        </h2>
+        <ul class="mt-4 space-y-2 text-sm text-ink-muted">
+          @for (role of content.personalInfo.roles; track role) {
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-powder"
+              ></span>
+              <span>{{ role }}</span>
+            </li>
+          }
+        </ul>
+        <div class="mt-6 border-t border-stone-100 pt-4">
+          <a
+            routerLink="/chi-sono"
+            class="inline-flex items-center gap-1 text-sm font-semibold text-aqua hover:underline"
+          >
+            Leggi la presentazione completa
+            <svg
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <h3 class="text-xs font-bold tracking-wider text-aqua uppercase">
+        Esperienza e Metodo
+      </h3>
+      <h2 class="mt-2 text-2xl font-bold text-ink sm:text-3xl">
+        Un approccio integrato che accoglie la complessità della persona
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-muted">
+        Dall’insegnamento delle arti visive all’esplorazione delle vibrazioni
+        sonore e della cromopuntura, Carla Di Lascio unisce rigore di studio a
+        una profonda delicatezza relazionale. Ogni incontro è pensato per
+        disinnescare la fatica quotidiana e riscoprire risorse sopite.
+      </p>
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-stone-200/70 bg-white/60 p-4">
+          <h4 class="text-sm font-bold text-ink">Percorsi Individuali</h4>
+          <p class="mt-1 text-xs text-ink-muted">
+            Spazio intimo per elaborare ansia, stress e autostima.
+          </p>
+        </div>
+        <div class="rounded-xl border border-stone-200/70 bg-white/60 p-4">
+          <h4 class="text-sm font-bold text-ink">Gruppi & Laboratori</h4>
+          <p class="mt-1 text-xs text-ink-muted">
+            Espressione condivisa, campane tibetane e laboratori tematici.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Competenze & Metodologie (Griglia) -->
+<section
+  id="metodologie"
+  class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+  aria-labelledby="heading-metodi"
+>
+  <div class="text-center">
+    <h2
+      id="heading-metodi"
+      class="text-xs font-bold tracking-wider text-aqua uppercase"
+    >
+      Le Metodologie
+    </h2>
+    <p class="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+      Quattro percorsi per il riequilibrio psicofisico
+    </p>
+    <p class="mx-auto mt-3 max-w-2xl text-base text-ink-muted">
+      Strumenti non invasivi applicati in modo personalizzato o in piccoli
+      gruppi.
+    </p>
+  </div>
+
+  <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    @for (method of content.methods; track method.slug) {
+      <article
+        class="group flex flex-col justify-between rounded-2xl border border-stone-200/90 bg-white/80 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-aqua/40 hover:shadow-md"
+      >
+        <div>
+          <!-- Icona astratta distintiva -->
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl {{
+              method.theme.bgLight
+            }} border {{ method.theme.border }}"
+          >
+            @switch (method.icon) {
+              @case ('cromo') {
+                <svg
+                  class="h-6 w-6 text-aqua"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+              }
+              @case ('kinesio') {
+                <svg
+                  class="h-6 w-6 text-coral"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+              }
+              @case ('suono') {
+                <svg
+                  class="h-6 w-6 text-lavender"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                  />
+                </svg>
+              }
+              @case ('arte') {
+                <svg
+                  class="h-6 w-6 text-powder"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7 21a4 4 0 01-4-4 5 5 0 014-4h4a4 4 0 014 4 5 5 0 01-4 4H7zM15 7a4 4 0 11-8 0 4 4 0 018 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              }
+            }
+          </div>
+
+          <h3 class="text-xl font-bold text-ink">
+            {{ method.title }}
+          </h3>
+          <p class="mt-2 text-sm text-ink-muted">
+            {{ method.shortDescription }}
+          </p>
+        </div>
+
+        <div class="mt-6 border-t border-stone-100 pt-4">
+          <a
+            [routerLink]="['/' + method.slug]"
+            class="inline-flex items-center gap-1 rounded-md p-1 text-sm font-semibold text-aqua group-hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+          >
+            Dettagli e approccio
+            <svg
+              class="h-4 w-4 transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<!-- 5. Principi dell'Approccio -->
+<section
+  class="border-y border-stone-200/80 bg-stone-100/50 py-16 sm:py-20"
+  aria-labelledby="heading-approccio"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2
+        id="heading-approccio"
+        class="text-xs font-bold tracking-wider text-aqua uppercase"
+      >
+        I Principi Guida
+      </h2>
+      <p
+        class="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl"
+      >
+        Come lavoriamo insieme
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      @for (principle of content.approachPrinciples; track principle.title) {
+        <div
+          class="rounded-2xl border border-stone-200/80 bg-white p-6 shadow-xs"
+        >
+          <h3 class="text-base font-bold text-ink">
+            {{ principle.title }}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+            {{ principle.description }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- 6. Percorsi -->
+<section
+  id="percorsi"
+  class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8"
+  aria-labelledby="heading-percorsi-home"
+>
+  <div class="text-center">
+    <h2
+      id="heading-percorsi-home"
+      class="text-xs font-bold tracking-wider text-aqua uppercase"
+    >
+      Ambiti di Applicazione
+    </h2>
+    <p class="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+      Percorsi di lavoro e contesti operativi
+    </p>
+  </div>
+
+  <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    @for (j of content.journeys; track j.id) {
+      <div class="rounded-2xl border border-stone-200/80 bg-white/70 p-6">
+        <h3 class="text-lg font-bold text-ink">{{ j.title }}</h3>
+        <p class="mt-1 text-xs font-semibold text-aqua">{{ j.subtitle }}</p>
+        <p class="mt-3 text-xs leading-relaxed text-ink-muted">
+          {{ j.description }}
+        </p>
+      </div>
+    }
+  </div>
+
+  <div class="mt-8 text-center">
+    <a
+      routerLink="/percorsi"
+      class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:border-aqua hover:bg-stone-50"
+    >
+      Approfondisci tutti i formati dei percorsi
+      <svg
+        class="h-4 w-4 text-aqua"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14 5l7 7m0 0l-7 7m7-7H3"
+        />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- 7. Citazione / Callout Evocativo -->
+<section
+  class="mx-auto max-w-4xl px-4 py-12 sm:px-6"
+  aria-label="Riflessione evocativa"
+>
+  <blockquote
+    class="rounded-3xl border border-stone-200/80 bg-cream-subtle p-8 text-center sm:p-12"
+  >
+    <p
+      class="text-xl leading-relaxed font-semibold text-ink italic sm:text-2xl"
+    >
+      «{{ content.personalInfo.quote }}»
+    </p>
+    <footer
+      class="mt-4 text-xs font-bold tracking-wider text-ink-muted uppercase"
+    >
+      Carla Di Lascio
+    </footer>
+  </blockquote>
+</section>
+
+<!-- 8. CTA Finale Verso Contatti -->
+<section
+  class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8"
+  aria-labelledby="heading-cta-home"
+>
+  <div class="rounded-3xl bg-ink p-8 text-center text-white shadow-md sm:p-12">
+    <h2
+      id="heading-cta-home"
+      class="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl"
+    >
+      Parliamo del percorso più adatto alle tue esigenze
+    </h2>
+    <p
+      class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-stone-300 sm:text-base"
+    >
+      Ogni persona affronta momenti di vita differenti. Contattami per chiarire
+      dubbi o per concordare un primo colloquio su appuntamento.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a
+        routerLink="/contatti"
+        class="rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-600 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+      >
+        Richiedi informazioni
+      </a>
+      <a
+        [href]="'tel:' + content.personalInfo.phoneRaw"
+        class="rounded-xl border border-stone-400/50 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-stone-800"
+      >
+        Chiama il {{ content.personalInfo.phone }}
+      </a>
+    </div>
+  </div>
+</section>
