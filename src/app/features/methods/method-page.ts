@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
 import { Seo } from '../../core/seo/seo';
+import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 
 @Component({
   selector: 'app-method-page',
-  imports: [RouterLink],
+  imports: [RouterLink, MethodAvatar3dComponent],
   template: `
     @if (method(); as m) {
       <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
@@ -29,25 +30,49 @@ import { Seo } from '../../core/seo/seo';
           </ol>
         </nav>
 
-        <!-- Testata Metodologia -->
-        <header
-          class="mb-12 rounded-3xl border border-stone-200/90 bg-white/70 p-6 shadow-sm backdrop-blur-sm sm:p-10"
-        >
-          <div
-            class="mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wider {{
-              m.theme.badge
-            }}"
-          >
-            <span>Metodologia di Benessere</span>
+        <!-- Testata Metodologia — Hero a 2 colonne -->
+        <header class="mb-12">
+          <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+            <!-- Colonna sinistra: testo -->
+            <div class="lg:col-span-7">
+              <h1
+                class="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl"
+              >
+                {{ m.title }}
+              </h1>
+              <p class="mt-4 text-lg text-ink-muted sm:text-xl">
+                {{ m.shortDescription }}
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                  routerLink="/contatti"
+                  class="rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+                >
+                  Richiedi informazioni
+                </a>
+              </div>
+            </div>
+
+            <!-- Colonna destra: Avatar 3D di Carla -->
+            <div class="lg:col-span-5">
+              <div
+                class="relative h-[380px] w-full overflow-hidden rounded-2xl border shadow-sm backdrop-blur-sm lg:h-[460px]"
+                [class]="m.theme.border"
+                [style.background]="
+                  'linear-gradient(135deg, #fafaf9 0%, ' +
+                  m.theme.primary +
+                  '18 100%)'
+                "
+              >
+                <app-method-avatar-3d
+                  [slug]="m.slug"
+                  [title]="m.title"
+                  [themeColor]="m.theme.primary"
+                  class="block h-full w-full"
+                />
+              </div>
+            </div>
           </div>
-          <h1
-            class="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl"
-          >
-            {{ m.title }}
-          </h1>
-          <p class="mt-4 text-lg text-ink-muted sm:text-xl">
-            {{ m.shortDescription }}
-          </p>
         </header>
 
         <!-- Sezione 1: Cosa fa il trattamento -->
