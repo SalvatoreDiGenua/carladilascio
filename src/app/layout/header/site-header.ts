@@ -66,8 +66,8 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           </a>
           <a
             routerLink="/contatti"
-            routerLinkActive="bg-teal-700 text-white shadow-sm"
-            class="ml-2 rounded-lg bg-aqua px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2"
+            routerLinkActive="bg-aqua-dark text-white shadow-sm"
+            class="ml-2 rounded-lg bg-aqua px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             Contatti
           </a>
@@ -161,7 +161,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             <a
               routerLink="/contatti"
               (click)="closeMobileMenu()"
-              class="mt-2 rounded-lg bg-aqua px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-teal-700"
+              class="mt-2 rounded-lg bg-aqua px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-aqua-dark"
             >
               Contatti
             </a>

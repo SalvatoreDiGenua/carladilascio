@@ -185,7 +185,7 @@ import { Seo } from '../../core/seo/seo';
         <div class="mt-6 flex flex-wrap justify-center gap-4">
           <a
             routerLink="/contatti"
-            class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-600"
+            class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white hover:bg-aqua-dark"
           >
             Vai ai Contatti
           </a>

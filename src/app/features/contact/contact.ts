@@ -324,7 +324,7 @@ import { Seo } from '../../core/seo/seo';
               <button
                 type="submit"
                 [disabled]="contactForm.invalid"
-                class="w-full rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-stone-300"
+                class="w-full rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-stone-300"
               >
                 Invia Richiesta
               </button>

@@ -55,7 +55,7 @@ import { Seo } from '../../core/seo/seo';
 
               <a
                 routerLink="/contatti"
-                class="inline-flex shrink-0 items-center justify-center rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+                class="inline-flex shrink-0 items-center justify-center rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
               >
                 Richiedi info
               </a>
@@ -131,7 +131,7 @@ import { Seo } from '../../core/seo/seo';
       <section class="mt-12 text-center">
         <a
           routerLink="/contatti"
-          class="inline-flex items-center gap-2 rounded-xl bg-aqua px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-emerald-600"
+          class="inline-flex items-center gap-2 rounded-xl bg-aqua px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-aqua-dark"
         >
           Contatta Carla Di Lascio per maggiori informazioni
         </a>

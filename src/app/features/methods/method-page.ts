@@ -213,7 +213,7 @@ import { Seo } from '../../core/seo/seo';
           <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
               routerLink="/contatti"
-              class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-600 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+              class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               Richiedi informazioni
             </a>
