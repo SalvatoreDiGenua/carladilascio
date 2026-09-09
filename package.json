@@ -1,5 +1,5 @@
 {
-  "name": "angular-boilerplate",
+  "name": "carladilascio",
   "version": "22.1.0",
   "author": "Salvatore Di Genua",
   "scripts": {
@@ -14,8 +14,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "clean": "npx rimraf .angular dist out-tsc",
-    "serve:ssg": "npx http-server dist/angular-boilerplate/browser -p 8080",
-    "serve:ssr": "node dist/angular-boilerplate/server/server.mjs"
+    "serve:ssg": "npx http-server dist/carladilascio/browser -p 8080",
+    "serve:ssr": "node dist/carladilascio/server/server.mjs"
   },
   "dependencies": {
     "@angular/common": "^22.1.0",

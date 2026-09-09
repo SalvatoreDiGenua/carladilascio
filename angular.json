@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-boilerplate": {
+    "carladilascio": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -71,10 +71,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "angular-boilerplate:build:production"
+              "buildTarget": "carladilascio:build:production"
             },
             "development": {
-              "buildTarget": "angular-boilerplate:build:development"
+              "buildTarget": "carladilascio:build:development"
             }
           },
           "defaultConfiguration": "development"

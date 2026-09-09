@@ -7,6 +7,7 @@ import { Seo } from '../../core/seo/seo';
   selector: 'app-home',
   imports: [RouterLink],
   templateUrl: './home.html',
+  styleUrl: './home.css',
 })
 export class Home {
   readonly content = SITE_CONTENT;

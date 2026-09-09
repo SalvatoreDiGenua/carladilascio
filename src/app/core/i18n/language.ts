@@ -10,7 +10,7 @@ export class Language {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
 
-  static readonly storageKey = 'angular-boilerplate.language-key';
+  static readonly storageKey = 'carladilascio.language-key';
   static readonly langQueryParam = 'lang';
 
   readonly language = signal<SupportedLanguage>(this.getInitialLanguage());
