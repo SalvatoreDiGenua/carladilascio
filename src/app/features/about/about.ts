@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslocoPipe],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
@@ -13,16 +14,15 @@ import { Seo } from '../../core/seo/seo';
         <span
           class="inline-flex rounded-full bg-powder/10 px-3.5 py-1 text-xs font-semibold tracking-wider text-powder uppercase"
         >
-          Chi Sono
+          {{ 'about.eyebrow' | transloco }}
         </span>
         <h1
           class="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl"
         >
-          Carla Di Lascio
+          {{ content.personalInfo.name }}
         </h1>
         <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted sm:text-xl">
-          Docente di Arte, Arte Terapeuta e facilitatrice di benessere
-          integrato.
+          {{ 'about.subheadline' | transloco }}
         </p>
       </header>
 
@@ -39,7 +39,7 @@ import { Seo } from '../../core/seo/seo';
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
-              aria-label="Rappresentazione simbolica del profilo di Carla Di Lascio"
+              [attr.aria-label]="'about.portraitAlt' | transloco"
             >
               <rect width="200" height="200" rx="24" fill="#faf7f2" />
               <circle
@@ -74,14 +74,14 @@ import { Seo } from '../../core/seo/seo';
                 {{ content.personalInfo.name }}
               </p>
               <p class="text-[11px] text-ink-muted">
-                Studio ad Avellino, Via Vasto 20
+                {{ 'about.portraitAddress' | transloco }}
               </p>
             </div>
           </div>
           <div
             class="mt-4 rounded-xl border border-stone-200/80 bg-white/70 p-4 text-center text-xs text-ink-muted"
           >
-            {{ content.personalInfo.availability }}
+            {{ content.personalInfo.availability | transloco }}
           </div>
         </div>
 
@@ -89,21 +89,13 @@ import { Seo } from '../../core/seo/seo';
         <div class="space-y-6 lg:col-span-7">
           <section aria-labelledby="heading-percorso">
             <h2 id="heading-percorso" class="text-2xl font-bold text-ink">
-              Il mio percorso
+              {{ 'about.journey.title' | transloco }}
             </h2>
             <p class="mt-3 text-base leading-relaxed text-ink-muted">
-              L’arte e l’insegnamento hanno sempre costituito il fulcro della
-              mia ricerca. Nel tempo, osservando come le persone interagiscono
-              con forme, colori e ritmi interiori, ho avvertito l’esigenza di
-              ampliare lo sguardo verso discipline capaci di sostenere il
-              benessere globale della persona.
+              {{ 'about.journey.paragraph1' | transloco }}
             </p>
             <p class="mt-3 text-base leading-relaxed text-ink-muted">
-              La specializzazione in Arte Terapia ha unito la mia formazione
-              visiva con l’ascolto dei processi emotivi. Parallelamente, ho
-              approfondito l’efficacia delle tecniche vibrazionali: la Suono
-              Terapia con campane tibetane, la Cromopuntura con frequenze di
-              luce, la meditazione guidata e la Kinesiologia emozionale.
+              {{ 'about.journey.paragraph2' | transloco }}
             </p>
           </section>
 
@@ -113,13 +105,13 @@ import { Seo } from '../../core/seo/seo';
               id="heading-competenze-chi-sono"
               class="text-xl font-bold text-ink"
             >
-              Competenze e ambiti di approfondimento
+              {{ 'about.skills.title' | transloco }}
             </h2>
             <ul class="mt-3 space-y-2 text-sm text-ink-muted">
               @for (role of content.personalInfo.roles; track role) {
                 <li class="flex items-center gap-2">
                   <span class="h-2 w-2 shrink-0 rounded-full bg-aqua"></span>
-                  <span>{{ role }}</span>
+                  <span>{{ role | transloco }}</span>
                 </li>
               }
             </ul>
@@ -128,14 +120,10 @@ import { Seo } from '../../core/seo/seo';
           <!-- Filosofia di lavoro -->
           <section aria-labelledby="heading-filosofia">
             <h2 id="heading-filosofia" class="text-xl font-bold text-ink">
-              Filosofia di lavoro
+              {{ 'about.philosophy.title' | transloco }}
             </h2>
             <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              Non esistono risposte preconfezionate o percorsi standard. Credo
-              nell’accoglienza incondizionata, nel rispetto dei tempi personali
-              e nella creazione di un’alleanza fondata sulla fiducia e
-              sull’assenza di giudizio. Ogni tecnica è uno strumento per aiutare
-              la persona a riconnettersi con la propria voce autentica.
+              {{ 'about.philosophy.paragraph' | transloco }}
             </p>
           </section>
         </div>
@@ -151,19 +139,19 @@ import { Seo } from '../../core/seo/seo';
             id="heading-valori"
             class="text-xs font-bold tracking-wider text-aqua uppercase"
           >
-            I Valori
+            {{ 'about.values.eyebrow' | transloco }}
           </h2>
           <p class="mt-2 text-3xl font-extrabold text-ink">
-            I pilastri del mio approccio
+            {{ 'about.values.title' | transloco }}
           </p>
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           @for (pillar of content.pillars; track pillar.title) {
             <div class="rounded-2xl border border-stone-200/80 bg-white/70 p-6">
-              <h3 class="text-base font-bold text-ink">{{ pillar.title }}</h3>
+              <h3 class="text-base font-bold text-ink">{{ pillar.title | transloco }}</h3>
               <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-                {{ pillar.description }}
+                {{ pillar.description | transloco }}
               </p>
             </div>
           }
@@ -173,27 +161,29 @@ import { Seo } from '../../core/seo/seo';
       <!-- CTA Contatti -->
       <section
         class="mt-16 rounded-3xl bg-ink p-8 text-center text-white sm:p-12"
-        aria-label="Richiesta appuntamento"
+        [attr.aria-label]="'about.cta.ariaLabel' | transloco"
       >
         <h2 class="text-2xl font-bold sm:text-3xl">
-          Vuoi iniziare un percorso di ascolto o richiedere un chiarimento?
+          {{ 'about.cta.title' | transloco }}
         </h2>
         <p class="mx-auto mt-3 max-w-xl text-sm text-stone-300">
-          Scrivimi o telefona per concordare un incontro presso lo studio di
-          Avellino.
+          {{ 'about.cta.description' | transloco }}
         </p>
         <div class="mt-6 flex flex-wrap justify-center gap-4">
           <a
             routerLink="/contatti"
             class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white hover:bg-aqua-dark"
           >
-            Vai ai Contatti
+            {{ 'about.cta.contactLink' | transloco }}
           </a>
           <a
             [href]="'tel:' + content.personalInfo.phoneRaw"
             class="rounded-xl border border-stone-400/50 px-6 py-3 text-sm font-semibold text-white hover:bg-stone-800"
           >
-            Chiama il {{ content.personalInfo.phone }}
+            {{
+              'about.cta.callLabel'
+                | transloco: { phone: content.personalInfo.phone }
+            }}
           </a>
         </div>
       </section>

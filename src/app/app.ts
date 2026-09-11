@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { SiteHeader } from './layout/header/site-header';
 import { SiteFooter } from './layout/footer/site-footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SiteHeader, SiteFooter],
+  imports: [RouterOutlet, SiteHeader, SiteFooter, TranslocoPipe],
   template: `
-    <a class="skip-link" href="#main-content">Salta al contenuto principale</a>
+    <a class="skip-link" href="#main-content">{{
+      'app.skipLink' | transloco
+    }}</a>
     <app-site-header />
     <main id="main-content" tabindex="-1" class="focus:outline-none">
       <router-outlet />

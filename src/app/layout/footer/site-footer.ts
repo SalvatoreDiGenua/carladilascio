@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { SITE_CONTENT } from '../../core/data/site-content';
 
 @Component({
   selector: 'app-site-footer',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslocoPipe],
   template: `
     <footer class="mt-20 border-t border-stone-200 bg-stone-100 text-ink">
       <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -15,19 +16,17 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               {{ content.personalInfo.name }}
             </h2>
             <p class="text-sm font-medium text-ink-muted">
-              Docente di Arte, Arte Terapeuta e operatrice in tecniche
-              vibrazionali.
+              {{ 'footer.profile.role' | transloco }}
             </p>
             <p class="text-sm text-ink-muted">
-              Percorsi di ascolto, benessere integrato e ricerca del proprio sé
-              autentico ad Avellino e contesti dedicati.
+              {{ 'footer.profile.mission' | transloco }}
             </p>
           </div>
 
           <!-- Colonna 2: Navigazione rapida -->
           <div>
             <h3 class="text-sm font-semibold tracking-wider text-ink uppercase">
-              Navigazione
+              {{ 'footer.navigation.title' | transloco }}
             </h3>
             <ul class="mt-3 space-y-2 text-sm text-ink-muted">
               <li>
@@ -35,7 +34,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Home
+                  {{ 'header.nav.home' | transloco }}
                 </a>
               </li>
               <li>
@@ -43,7 +42,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/chi-sono"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Chi sono
+                  {{ 'header.nav.about' | transloco }}
                 </a>
               </li>
               <li>
@@ -51,7 +50,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/cromopuntura"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Cromopuntura
+                  {{ 'footer.navigation.chromopuncture' | transloco }}
                 </a>
               </li>
               <li>
@@ -59,7 +58,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/kinesiologia-emozionale"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Kinesiologia Emozionale
+                  {{ 'footer.navigation.kinesiology' | transloco }}
                 </a>
               </li>
               <li>
@@ -67,7 +66,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/suonoterapia-vibrazionale"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Suonoterapia Vibrazionale
+                  {{ 'footer.navigation.soundTherapy' | transloco }}
                 </a>
               </li>
               <li>
@@ -75,7 +74,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/arte-terapia"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Arte Terapia
+                  {{ 'footer.navigation.artTherapy' | transloco }}
                 </a>
               </li>
               <li>
@@ -83,7 +82,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/percorsi"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Percorsi individuali e di gruppo
+                  {{ 'footer.navigation.journeys' | transloco }}
                 </a>
               </li>
               <li>
@@ -91,7 +90,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   routerLink="/contatti"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
-                  Contatti & Ricevimento
+                  {{ 'footer.navigation.contact' | transloco }}
                 </a>
               </li>
             </ul>
@@ -100,11 +99,13 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           <!-- Colonna 3: Contatti e sede -->
           <div class="space-y-3">
             <h3 class="text-sm font-semibold tracking-wider text-ink uppercase">
-              Contatti
+              {{ 'header.nav.contact' | transloco }}
             </h3>
             <ul class="space-y-2 text-sm text-ink-muted">
               <li>
-                <span class="font-medium text-ink">Telefono: </span>
+                <span class="font-medium text-ink"
+                  >{{ 'footer.contact.phoneLabel' | transloco }}
+                </span>
                 <a
                   [href]="'tel:' + content.personalInfo.phoneRaw"
                   class="font-medium text-aqua hover:underline"
@@ -113,7 +114,9 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 </a>
               </li>
               <li>
-                <span class="font-medium text-ink">Email: </span>
+                <span class="font-medium text-ink"
+                  >{{ 'footer.contact.emailLabel' | transloco }}
+                </span>
                 <a
                   [href]="'mailto:' + content.personalInfo.email"
                   class="font-medium text-aqua hover:underline"
@@ -122,11 +125,13 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 </a>
               </li>
               <li>
-                <span class="font-medium text-ink">Sede: </span>
+                <span class="font-medium text-ink"
+                  >{{ 'footer.contact.addressLabel' | transloco }}
+                </span>
                 <span>{{ content.personalInfo.address }}</span>
               </li>
               <li class="pt-1 text-xs text-ink-muted italic">
-                {{ content.personalInfo.availability }}
+                {{ content.personalInfo.availability | transloco }}
               </li>
             </ul>
           </div>
@@ -136,15 +141,21 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         <div
           class="mt-10 rounded-xl border border-stone-200/90 bg-cream p-4 text-xs text-ink-muted"
         >
-          {{ content.personalInfo.medicalDisclaimer }}
+          {{ content.personalInfo.medicalDisclaimer | transloco }}
         </div>
 
         <!-- Copyright e note -->
         <div
           class="mt-6 flex flex-col items-center justify-between gap-2 border-t border-stone-200 pt-6 text-xs text-ink-muted sm:flex-row"
         >
-          <p>© {{ currentYear }} Carla Di Lascio. Tutti i diritti riservati.</p>
-          <p>Portfolio professionale per il benessere integrato.</p>
+          <p>
+            {{
+              'footer.copyright'
+                | transloco
+                  : { year: currentYear, name: content.personalInfo.name }
+            }}
+          </p>
+          <p>{{ 'footer.tagline' | transloco }}</p>
         </div>
       </div>
     </footer>

@@ -12,6 +12,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 import {
   CarlaSceneContext,
@@ -25,6 +26,7 @@ import {
   host: {
     class: 'block h-full min-h-[380px] w-full',
   },
+  imports: [TranslocoPipe],
   template: `
     <div
       class="relative h-full min-h-[380px] w-full overflow-hidden rounded-2xl"
@@ -34,7 +36,7 @@ import {
           class="absolute inset-0 z-10 animate-pulse rounded-2xl"
           [style.background]="skeletonGradient()"
           role="status"
-          aria-label="Caricamento avatar 3D in corso…"
+          [attr.aria-label]="'methodAvatar.loadingAriaLabel' | transloco"
         >
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="flex flex-col items-center gap-3 opacity-40">
@@ -49,7 +51,7 @@ import {
               </svg>
 
               <span class="text-xs font-medium tracking-wider uppercase">
-                Avatar 3D
+                {{ 'methodAvatar.badgeLabel' | transloco }}
               </span>
             </div>
           </div>
@@ -79,7 +81,7 @@ import {
           [class.opacity-0]="!showBadge()"
           aria-hidden="true"
         >
-          Avatar 3D Carla · Trascina per ruotare
+          {{ 'methodAvatar.dragHint' | transloco }}
         </div>
       }
     </div>
@@ -94,11 +96,12 @@ export class MethodAvatar3dComponent {
   readonly isLoaded = signal(false);
   readonly showBadge = signal(false);
 
-  readonly ariaLabel = computed(
-    () =>
-      `Simulazione visiva tridimensionale di Carla durante il trattamento di ${
-        this.title() || this.slug()
-      }. Trascina per ruotare a 360 gradi.`,
+  private readonly transloco = inject(TranslocoService);
+
+  readonly ariaLabel = computed(() =>
+    this.transloco.translate('methodAvatar.ariaLabel', {
+      treatment: this.title() || this.slug(),
+    }),
   );
 
   readonly skeletonGradient = computed(() => {

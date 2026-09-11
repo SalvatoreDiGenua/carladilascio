@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-journeys',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslocoPipe],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione -->
@@ -13,16 +14,15 @@ import { Seo } from '../../core/seo/seo';
         <span
           class="inline-flex rounded-full bg-aqua-light px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
         >
-          Modalità di lavoro
+          {{ 'journeys.eyebrow' | transloco }}
         </span>
         <h1
           class="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl"
         >
-          I Percorsi
+          {{ 'journeys.title' | transloco }}
         </h1>
         <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted sm:text-xl">
-          Soluzioni su misura per il singolo, percorsi in piccoli gruppi,
-          laboratori esperienziali e collaborazioni dedicate.
+          {{ 'journeys.subheadline' | transloco }}
         </p>
       </header>
 
@@ -40,16 +40,16 @@ import { Seo } from '../../core/seo/seo';
                 <span
                   class="text-xs font-bold tracking-wider text-aqua uppercase"
                 >
-                  Opzione 0{{ idx + 1 }}
+                  {{ 'journeys.optionLabel' | transloco: { n: idx + 1 } }}
                 </span>
                 <h2
                   [id]="'heading-journey-' + journey.id"
                   class="mt-1 text-2xl font-bold text-ink sm:text-3xl"
                 >
-                  {{ journey.title }}
+                  {{ journey.title | transloco }}
                 </h2>
                 <p class="mt-1 text-sm font-medium text-ink-muted">
-                  {{ journey.subtitle }}
+                  {{ journey.subtitle | transloco }}
                 </p>
               </div>
 
@@ -57,12 +57,12 @@ import { Seo } from '../../core/seo/seo';
                 routerLink="/contatti"
                 class="inline-flex shrink-0 items-center justify-center rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
               >
-                Richiedi info
+                {{ 'journeys.requestInfo' | transloco }}
               </a>
             </div>
 
             <p class="mt-4 text-base leading-relaxed text-ink-muted">
-              {{ journey.description }}
+              {{ journey.description | transloco }}
             </p>
 
             <div
@@ -72,10 +72,10 @@ import { Seo } from '../../core/seo/seo';
                 class="rounded-xl border border-stone-200/60 bg-cream/40 p-4"
               >
                 <h3 class="text-xs font-bold tracking-wider text-ink uppercase">
-                  Obiettivo generale
+                  {{ 'journeys.goalLabel' | transloco }}
                 </h3>
                 <p class="mt-1 text-sm text-ink-muted">
-                  {{ journey.goal }}
+                  {{ journey.goal | transloco }}
                 </p>
               </div>
 
@@ -83,17 +83,17 @@ import { Seo } from '../../core/seo/seo';
                 class="rounded-xl border border-stone-200/60 bg-cream/40 p-4"
               >
                 <h3 class="text-xs font-bold tracking-wider text-ink uppercase">
-                  Formato e modalità
+                  {{ 'journeys.formatLabel' | transloco }}
                 </h3>
                 <p class="mt-1 text-sm text-ink-muted">
-                  {{ journey.format }}
+                  {{ journey.format | transloco }}
                 </p>
               </div>
             </div>
 
             <div class="mt-4">
               <h3 class="text-xs font-bold tracking-wider text-ink uppercase">
-                Caratteristiche del percorso:
+                {{ 'journeys.detailsLabel' | transloco }}
               </h3>
               <ul class="mt-2 space-y-1.5 text-sm text-ink-muted">
                 @for (d of journey.details; track d) {
@@ -101,7 +101,7 @@ import { Seo } from '../../core/seo/seo';
                     <span
                       class="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua"
                     ></span>
-                    <span>{{ d }}</span>
+                    <span>{{ d | transloco }}</span>
                   </li>
                 }
               </ul>
@@ -116,14 +116,10 @@ import { Seo } from '../../core/seo/seo';
         aria-labelledby="heading-collaborazione"
       >
         <h2 id="heading-collaborazione" class="text-lg font-bold text-ink">
-          Integrazione nei percorsi di cura
+          {{ 'journeys.healthcareIntegration.title' | transloco }}
         </h2>
         <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-          Le metodologie non si sostituiscono mai all’intervento sanitario.
-          Possono tuttavia affiancare i percorsi terapeutici concordati con
-          medici specialisti, psicoterapeuti, neurologi e psichiatri, offrendo
-          uno spazio protetto di ascolto, defaticamento sensoriale ed
-          espressione artistica.
+          {{ 'journeys.healthcareIntegration.description' | transloco }}
         </p>
       </section>
 
@@ -133,7 +129,7 @@ import { Seo } from '../../core/seo/seo';
           routerLink="/contatti"
           class="inline-flex items-center gap-2 rounded-xl bg-aqua px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-aqua-dark"
         >
-          Contatta Carla Di Lascio per maggiori informazioni
+          {{ 'journeys.finalCta' | transloco }}
         </a>
       </section>
     </article>

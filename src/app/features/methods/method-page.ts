@@ -1,5 +1,6 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
 import { Seo } from '../../core/seo/seo';
@@ -7,25 +8,27 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 
 @Component({
   selector: 'app-method-page',
-  imports: [RouterLink, MethodAvatar3dComponent],
+  imports: [RouterLink, MethodAvatar3dComponent, TranslocoPipe],
   template: `
     @if (method(); as m) {
       <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
         <!-- Breadcrumb / Navigazione a ritroso -->
-        <nav aria-label="Percorso di navigazione" class="mb-6">
+        <nav [attr.aria-label]="'method.breadcrumb.ariaLabel' | transloco" class="mb-6">
           <ol class="flex items-center gap-2 text-sm text-ink-muted">
             <li>
-              <a routerLink="/" class="hover:text-aqua">Home</a>
+              <a routerLink="/" class="hover:text-aqua">{{
+                'header.nav.home' | transloco
+              }}</a>
             </li>
             <li aria-hidden="true">/</li>
             <li>
               <a routerLink="/" fragment="metodologie" class="hover:text-aqua">
-                Metodologie
+                {{ 'header.nav.methods' | transloco }}
               </a>
             </li>
             <li aria-hidden="true">/</li>
             <li class="font-medium text-ink" aria-current="page">
-              {{ m.title }}
+              {{ m.title | transloco }}
             </li>
           </ol>
         </nav>
@@ -38,17 +41,17 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               <h1
                 class="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl"
               >
-                {{ m.title }}
+                {{ m.title | transloco }}
               </h1>
               <p class="mt-4 text-lg text-ink-muted sm:text-xl">
-                {{ m.shortDescription }}
+                {{ m.shortDescription | transloco }}
               </p>
               <div class="mt-6 flex flex-wrap gap-3">
                 <a
                   routerLink="/contatti"
                   class="rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
-                  Richiedi informazioni
+                  {{ 'method.requestInfo' | transloco }}
                 </a>
               </div>
             </div>
@@ -66,7 +69,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               >
                 <app-method-avatar-3d
                   [slug]="m.slug"
-                  [title]="m.title"
+                  [title]="m.title | transloco"
                   [themeColor]="m.theme.primary"
                   class="block h-full w-full"
                 />
@@ -90,11 +93,11 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               id="heading-cosa-fa"
               class="text-2xl font-bold tracking-tight text-ink"
             >
-              Cosa fa il trattamento
+              {{ 'method.section1.title' | transloco }}
             </h2>
           </div>
           <p class="mt-4 text-base leading-relaxed text-ink-muted">
-            {{ m.treatmentExplanation }}
+            {{ m.treatmentExplanation | transloco }}
           </p>
         </section>
 
@@ -113,11 +116,11 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               id="heading-approccio-carla"
               class="text-2xl font-bold tracking-tight text-ink"
             >
-              Come Carla si approccia alla persona
+              {{ 'method.section2.title' | transloco }}
             </h2>
           </div>
           <p class="mt-4 text-base leading-relaxed font-normal text-ink">
-            {{ m.carlaApproach }}
+            {{ m.carlaApproach | transloco }}
           </p>
         </section>
 
@@ -127,11 +130,10 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
             id="heading-obiettivi"
             class="text-2xl font-bold tracking-tight text-ink"
           >
-            Possibili obiettivi del percorso
+            {{ 'method.section3.title' | transloco }}
           </h2>
           <p class="mt-2 text-sm text-ink-muted">
-            Il percorso è sempre personalizzato. Tra i benefici che può
-            favorire:
+            {{ 'method.section3.subtitle' | transloco }}
           </p>
           <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             @for (goal of m.goals; track goal) {
@@ -152,7 +154,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span class="text-sm font-medium text-ink">{{ goal }}</span>
+                <span class="text-sm font-medium text-ink">{{ goal | transloco }}</span>
               </li>
             }
           </ul>
@@ -166,10 +168,10 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
             aria-labelledby="heading-svolgimento"
           >
             <h3 id="heading-svolgimento" class="text-lg font-bold text-ink">
-              Come si svolge un incontro
+              {{ 'method.session.title' | transloco }}
             </h3>
             <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              {{ m.sessionFormat }}
+              {{ m.sessionFormat | transloco }}
             </p>
           </section>
 
@@ -179,7 +181,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
             aria-labelledby="heading-destinatari"
           >
             <h3 id="heading-destinatari" class="text-lg font-bold text-ink">
-              A chi può essere rivolto
+              {{ 'method.audience.title' | transloco }}
             </h3>
             <ul class="mt-3 space-y-2 text-sm text-ink-muted">
               @for (item of m.audience; track item) {
@@ -187,7 +189,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                   <span
                     class="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua"
                   ></span>
-                  <span>{{ item }}</span>
+                  <span>{{ item | transloco }}</span>
                 </li>
               }
             </ul>
@@ -215,38 +217,40 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               />
             </svg>
             <h3 id="heading-avvertenze" class="text-sm font-semibold">
-              Avvertenze e limiti del percorso
+              {{ 'method.cautions.title' | transloco }}
             </h3>
           </div>
           <p class="mt-2 text-xs leading-relaxed text-amber-900/90">
-            {{ m.cautions }}
+            {{ m.cautions | transloco }}
           </p>
         </section>
 
         <!-- CTA Box -->
         <section
           class="mb-16 rounded-3xl bg-ink p-8 text-center text-white shadow-md sm:p-10"
-          aria-label="Richiedi informazioni sul trattamento"
+          [attr.aria-label]="'method.cta.ariaLabel' | transloco"
         >
           <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
-            Vuoi approfondire come questo percorso può accompagnarti?
+            {{ 'method.cta.title' | transloco }}
           </h2>
           <p class="mx-auto mt-3 max-w-xl text-sm text-stone-300 sm:text-base">
-            Parliamo insieme delle tue esigenze per valutare la proposta più
-            armonica e adatta al tuo momento presente.
+            {{ 'method.cta.description' | transloco }}
           </p>
           <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
               routerLink="/contatti"
               class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
             >
-              Richiedi informazioni
+              {{ 'method.requestInfo' | transloco }}
             </a>
             <a
               [href]="'tel:' + content.personalInfo.phoneRaw"
               class="rounded-xl border border-stone-400/50 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
             >
-              Chiama il {{ content.personalInfo.phone }}
+              {{
+                'method.cta.callLabel'
+                  | transloco: { phone: content.personalInfo.phone }
+              }}
             </a>
           </div>
         </section>
@@ -257,7 +261,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           aria-labelledby="heading-altre"
         >
           <h2 id="heading-altre" class="text-xl font-bold text-ink">
-            Esplora le altre metodologie
+            {{ 'method.otherMethods.title' | transloco }}
           </h2>
           <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
             @for (other of otherMethods(); track other.slug) {
@@ -269,16 +273,16 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                   <h3
                     class="font-bold text-ink transition-colors group-hover:text-aqua"
                   >
-                    {{ other.title }}
+                    {{ other.title | transloco }}
                   </h3>
                   <p class="mt-1 line-clamp-2 text-xs text-ink-muted">
-                    {{ other.shortDescription }}
+                    {{ other.shortDescription | transloco }}
                   </p>
                 </div>
                 <span
                   class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-aqua"
                 >
-                  Scopri di più
+                  {{ 'method.otherMethods.discoverMore' | transloco }}
                   <svg
                     class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                     fill="none"
@@ -305,6 +309,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 export class MethodPage {
   readonly content = SITE_CONTENT;
   private readonly seo = inject(Seo);
+  private readonly transloco = inject(TranslocoService);
 
   readonly slug = input<string>();
 
@@ -326,9 +331,11 @@ export class MethodPage {
     effect(() => {
       const m = this.method();
       if (m) {
+        const title = this.transloco.translate(m.title);
+        const shortDescription = this.transloco.translate(m.shortDescription);
         this.seo.update({
-          title: `${m.title} | Carla Di Lascio`,
-          description: `${m.title}: ${m.shortDescription}`,
+          title: `${title} | Carla Di Lascio`,
+          description: `${title}: ${shortDescription}`,
         });
       }
     });

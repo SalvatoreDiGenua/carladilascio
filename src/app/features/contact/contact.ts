@@ -5,12 +5,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslocoPipe],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione -->
@@ -18,16 +19,15 @@ import { Seo } from '../../core/seo/seo';
         <span
           class="inline-flex rounded-full bg-aqua-light px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
         >
-          Contatti & Ricevimento
+          {{ 'contact.eyebrow' | transloco }}
         </span>
         <h1
           class="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl"
         >
-          Entra in Contatto
+          {{ 'contact.title' | transloco }}
         </h1>
         <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted sm:text-xl">
-          Per informazioni sui percorsi, appuntamenti nello studio di Avellino o
-          progetti speciali.
+          {{ 'contact.subheadline' | transloco }}
         </p>
       </header>
 
@@ -37,10 +37,11 @@ import { Seo } from '../../core/seo/seo';
           <div
             class="rounded-3xl border border-stone-200/90 bg-white/80 p-6 shadow-xs sm:p-8"
           >
-            <h2 class="text-xl font-bold text-ink">Recapiti Diretti</h2>
+            <h2 class="text-xl font-bold text-ink">
+              {{ 'contact.directContacts.title' | transloco }}
+            </h2>
             <p class="mt-2 text-sm text-ink-muted">
-              Puoi contattare Carla Di Lascio telefonicamente, via email o
-              richiedere una disponibilità tramite il modulo.
+              {{ 'contact.directContacts.description' | transloco }}
             </p>
 
             <ul class="mt-6 space-y-4 text-sm">
@@ -65,7 +66,9 @@ import { Seo } from '../../core/seo/seo';
                   </svg>
                 </div>
                 <div>
-                  <span class="block font-semibold text-ink">Telefono</span>
+                  <span class="block font-semibold text-ink">{{
+                    'contact.directContacts.phoneLabel' | transloco
+                  }}</span>
                   <a
                     [href]="'tel:' + content.personalInfo.phoneRaw"
                     class="font-medium text-aqua hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
@@ -96,7 +99,9 @@ import { Seo } from '../../core/seo/seo';
                   </svg>
                 </div>
                 <div>
-                  <span class="block font-semibold text-ink">Email</span>
+                  <span class="block font-semibold text-ink">{{
+                    'contact.directContacts.emailLabel' | transloco
+                  }}</span>
                   <a
                     [href]="'mailto:' + content.personalInfo.email"
                     class="font-medium text-coral hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
@@ -132,7 +137,9 @@ import { Seo } from '../../core/seo/seo';
                   </svg>
                 </div>
                 <div>
-                  <span class="block font-semibold text-ink">Studio</span>
+                  <span class="block font-semibold text-ink">{{
+                    'contact.directContacts.studioLabel' | transloco
+                  }}</span>
                   <span class="text-ink-muted">{{
                     content.personalInfo.address
                   }}</span>
@@ -143,7 +150,7 @@ import { Seo } from '../../core/seo/seo';
             <div
               class="mt-6 rounded-2xl border border-stone-200 bg-cream/70 p-4 text-xs font-medium text-ink"
             >
-              {{ content.personalInfo.availability }}
+              {{ content.personalInfo.availability | transloco }}
             </div>
           </div>
 
@@ -151,7 +158,7 @@ import { Seo } from '../../core/seo/seo';
           <div
             class="rounded-2xl border border-stone-200/80 bg-white/60 p-4 text-xs text-ink-muted"
           >
-            {{ content.personalInfo.medicalDisclaimer }}
+            {{ content.personalInfo.medicalDisclaimer | transloco }}
           </div>
         </div>
 
@@ -162,11 +169,10 @@ import { Seo } from '../../core/seo/seo';
             aria-labelledby="heading-form"
           >
             <h2 id="heading-form" class="text-xl font-bold text-ink">
-              Invia un messaggio
+              {{ 'contact.form.title' | transloco }}
             </h2>
             <p class="mt-1 text-sm text-ink-muted">
-              Compila il modulo per richiedere informazioni preliminari.
-              Riceverai un riscontro nel più breve tempo possibile.
+              {{ 'contact.form.description' | transloco }}
             </p>
 
             <!-- Stato di invio simulato (Accessibile con aria-live) -->
@@ -176,12 +182,13 @@ import { Seo } from '../../core/seo/seo';
                   class="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-900"
                 >
                   <p class="font-bold">
-                    Richiesta inviata con successo (simulazione demo)
+                    {{ 'contact.form.successTitle' | transloco }}
                   </p>
                   <p class="mt-1 text-xs">
-                    Grazie per aver compilato il modulo. Questa è una
-                    simulazione front-end: per un contatto immediato ti
-                    invitiamo a telefonare al {{ content.personalInfo.phone }}.
+                    {{
+                      'contact.form.successMessage'
+                        | transloco: { phone: content.personalInfo.phone }
+                    }}
                   </p>
                 </div>
               }
@@ -197,7 +204,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Nome -->
               <div>
                 <label for="name" class="block text-sm font-semibold text-ink">
-                  Nome e Cognome
+                  {{ 'contact.form.nameLabel' | transloco }}
                   <span class="text-coral" aria-hidden="true">*</span>
                 </label>
                 <input
@@ -210,14 +217,14 @@ import { Seo } from '../../core/seo/seo';
                   "
                   aria-describedby="name-error"
                   class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
-                  placeholder="Il tuo nome e cognome"
+                  [attr.placeholder]="'contact.form.namePlaceholder' | transloco"
                 />
                 @if (
                   contactForm.controls.name.invalid &&
                   contactForm.controls.name.touched
                 ) {
                   <p id="name-error" class="mt-1 text-xs text-rose-600">
-                    Il nome è obbligatorio.
+                    {{ 'contact.form.nameError' | transloco }}
                   </p>
                 }
               </div>
@@ -225,7 +232,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Email -->
               <div>
                 <label for="email" class="block text-sm font-semibold text-ink">
-                  Indirizzo Email
+                  {{ 'contact.form.emailLabel' | transloco }}
                   <span class="text-coral" aria-hidden="true">*</span>
                 </label>
                 <input
@@ -238,14 +245,14 @@ import { Seo } from '../../core/seo/seo';
                   "
                   aria-describedby="email-error"
                   class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
-                  placeholder="nome@esempio.it"
+                  [attr.placeholder]="'contact.form.emailPlaceholder' | transloco"
                 />
                 @if (
                   contactForm.controls.email.invalid &&
                   contactForm.controls.email.touched
                 ) {
                   <p id="email-error" class="mt-1 text-xs text-rose-600">
-                    Inserisci un indirizzo email valido.
+                    {{ 'contact.form.emailError' | transloco }}
                   </p>
                 }
               </div>
@@ -256,7 +263,7 @@ import { Seo } from '../../core/seo/seo';
                   for="message"
                   class="block text-sm font-semibold text-ink"
                 >
-                  Messaggio o richiesta
+                  {{ 'contact.form.messageLabel' | transloco }}
                   <span class="text-coral" aria-hidden="true">*</span>
                 </label>
                 <textarea
@@ -269,14 +276,16 @@ import { Seo } from '../../core/seo/seo';
                   "
                   aria-describedby="message-error"
                   class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
-                  placeholder="Scrivi qui la tua richiesta o per quale percorso desideri informazioni..."
+                  [attr.placeholder]="
+                    'contact.form.messagePlaceholder' | transloco
+                  "
                 ></textarea>
                 @if (
                   contactForm.controls.message.invalid &&
                   contactForm.controls.message.touched
                 ) {
                   <p id="message-error" class="mt-1 text-xs text-rose-600">
-                    Il messaggio è obbligatorio (almeno 10 caratteri).
+                    {{ 'contact.form.messageError' | transloco }}
                   </p>
                 }
               </div>
@@ -299,9 +308,7 @@ import { Seo } from '../../core/seo/seo';
                     for="privacy"
                     class="text-xs leading-relaxed text-ink-muted"
                   >
-                    Dichiaro di aver preso visione della nota informativa e
-                    acconsento al trattamento dei dati per la gestione di questo
-                    contatto.
+                    {{ 'contact.form.privacyLabel' | transloco }}
                   </label>
                 </div>
                 @if (
@@ -309,15 +316,14 @@ import { Seo } from '../../core/seo/seo';
                   contactForm.controls.privacy.touched
                 ) {
                   <p id="privacy-error" class="mt-1 text-xs text-rose-600">
-                    È necessario esprimere il consenso per poter inviare la
-                    richiesta.
+                    {{ 'contact.form.privacyError' | transloco }}
                   </p>
                 }
               </div>
 
               <!-- Avviso Tecnico Demo -->
               <p class="text-[11px] text-stone-500 italic">
-                {{ content.personalInfo.formNotice }}
+                {{ content.personalInfo.formNotice | transloco }}
               </p>
 
               <!-- Pulsante Invio -->
@@ -326,7 +332,7 @@ import { Seo } from '../../core/seo/seo';
                 [disabled]="contactForm.invalid"
                 class="w-full rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-stone-300"
               >
-                Invia Richiesta
+                {{ 'contact.form.submit' | transloco }}
               </button>
             </form>
           </section>

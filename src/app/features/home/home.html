@@ -2,7 +2,7 @@
 <section
   id="hero"
   class="relative overflow-hidden border-b border-stone-200/80 bg-gradient-to-b from-cream via-cream-subtle to-cream py-16 sm:py-24"
-  aria-label="Presentazione"
+  [attr.aria-label]="'home.hero.ariaLabel' | transloco"
 >
   <!-- Sfondo organico e decorativo astratto in SVG -->
   <div
@@ -39,28 +39,28 @@
         <div
           class="inline-flex items-center gap-2 rounded-full border border-aqua/30 bg-aqua-light/50 px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
         >
-          <span>Benessere Integrato & Tecniche Vibrazionali</span>
+          <span>{{ 'home.hero.badge' | transloco }}</span>
         </div>
         <h1
           class="mt-4 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl lg:leading-tight"
         >
-          {{ content.personalInfo.headline }}
+          {{ content.personalInfo.headline | transloco }}
         </h1>
         <p class="mt-5 text-lg leading-relaxed text-ink-muted sm:text-xl">
-          {{ content.personalInfo.subheadline }}
+          {{ content.personalInfo.subheadline | transloco }}
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
           <a
             routerLink="/chi-sono"
             class="rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
           >
-            Scopri chi sono
+            {{ 'home.hero.ctaAbout' | transloco }}
           </a>
           <a
             routerLink="/contatti"
             class="rounded-xl border border-stone-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-ink shadow-sm transition-all hover:border-aqua hover:bg-white focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
           >
-            Contattami
+            {{ 'home.hero.ctaContact' | transloco }}
           </a>
         </div>
       </div>
@@ -76,7 +76,7 @@
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="Composizione artistica astratta: forme organiche e armonia"
+            [attr.aria-label]="'home.hero.illustrationAlt' | transloco"
           >
             <!-- Forme organiche astratte ispirate ai colori della brochure -->
             <defs>
@@ -128,9 +128,11 @@
           <div
             class="absolute right-4 bottom-4 left-4 rounded-xl border border-stone-200/80 bg-white/90 p-3 text-center shadow-xs"
           >
-            <p class="text-xs font-semibold text-ink">Carla Di Lascio</p>
+            <p class="text-xs font-semibold text-ink">
+              {{ content.personalInfo.name }}
+            </p>
             <p class="text-[11px] text-ink-muted">
-              Studio ad Avellino & Percorsi dedicati
+              {{ 'home.hero.cardSubtitle' | transloco }}
             </p>
           </div>
         </div>
@@ -149,13 +151,13 @@
       id="heading-intro"
       class="text-xs font-bold tracking-wider text-aqua uppercase"
     >
-      Uno spazio di ascolto
+      {{ 'home.intro.eyebrow' | transloco }}
     </h2>
     <p class="mt-4 text-xl leading-relaxed font-medium text-ink sm:text-2xl">
-      {{ content.personalInfo.introText[0] }}
+      {{ content.personalInfo.introText[0] | transloco }}
     </p>
     <p class="mt-4 text-base leading-relaxed text-ink-muted">
-      {{ content.personalInfo.introText[1] }}
+      {{ content.personalInfo.introText[1] | transloco }}
     </p>
   </div>
 </section>
@@ -172,7 +174,7 @@
         class="rounded-3xl border border-stone-200/80 bg-white/80 p-8 shadow-sm"
       >
         <h3 class="text-xs font-bold tracking-wider text-powder uppercase">
-          Profilo professionale
+          {{ 'home.about.eyebrowProfile' | transloco }}
         </h3>
         <h2
           id="heading-chi-sono"
@@ -186,7 +188,7 @@
               <span
                 class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-powder"
               ></span>
-              <span>{{ role }}</span>
+              <span>{{ role | transloco }}</span>
             </li>
           }
         </ul>
@@ -195,7 +197,7 @@
             routerLink="/chi-sono"
             class="inline-flex items-center gap-1 text-sm font-semibold text-aqua hover:underline"
           >
-            Leggi la presentazione completa
+            {{ 'home.about.readMore' | transloco }}
             <svg
               class="h-4 w-4"
               fill="none"
@@ -216,28 +218,29 @@
     </div>
     <div class="lg:col-span-7">
       <h3 class="text-xs font-bold tracking-wider text-aqua uppercase">
-        Esperienza e Metodo
+        {{ 'home.about.eyebrowExperience' | transloco }}
       </h3>
       <h2 class="mt-2 text-2xl font-bold text-ink sm:text-3xl">
-        Un approccio integrato che accoglie la complessità della persona
+        {{ 'home.about.title' | transloco }}
       </h2>
       <p class="mt-4 text-base leading-relaxed text-ink-muted">
-        Dall’insegnamento delle arti visive all’esplorazione delle vibrazioni
-        sonore e della cromopuntura, Carla Di Lascio unisce rigore di studio a
-        una profonda delicatezza relazionale. Ogni incontro è pensato per
-        disinnescare la fatica quotidiana e riscoprire risorse sopite.
+        {{ 'home.about.description' | transloco }}
       </p>
       <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div class="rounded-xl border border-stone-200/70 bg-white/60 p-4">
-          <h4 class="text-sm font-bold text-ink">Percorsi Individuali</h4>
+          <h4 class="text-sm font-bold text-ink">
+            {{ 'home.about.individualTitle' | transloco }}
+          </h4>
           <p class="mt-1 text-xs text-ink-muted">
-            Spazio intimo per elaborare ansia, stress e autostima.
+            {{ 'home.about.individualDescription' | transloco }}
           </p>
         </div>
         <div class="rounded-xl border border-stone-200/70 bg-white/60 p-4">
-          <h4 class="text-sm font-bold text-ink">Gruppi & Laboratori</h4>
+          <h4 class="text-sm font-bold text-ink">
+            {{ 'home.about.groupsTitle' | transloco }}
+          </h4>
           <p class="mt-1 text-xs text-ink-muted">
-            Espressione condivisa, campane tibetane e laboratori tematici.
+            {{ 'home.about.groupsDescription' | transloco }}
           </p>
         </div>
       </div>
@@ -256,14 +259,13 @@
       id="heading-metodi"
       class="text-xs font-bold tracking-wider text-aqua uppercase"
     >
-      Le Metodologie
+      {{ 'home.methods.eyebrow' | transloco }}
     </h2>
     <p class="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-      Quattro percorsi per il riequilibrio psicofisico
+      {{ 'home.methods.title' | transloco }}
     </p>
     <p class="mx-auto mt-3 max-w-2xl text-base text-ink-muted">
-      Strumenti non invasivi applicati in modo personalizzato o in piccoli
-      gruppi.
+      {{ 'home.methods.subtitle' | transloco }}
     </p>
   </div>
 
@@ -354,10 +356,10 @@
             </div>
 
             <h3 class="text-xl font-bold text-ink">
-              {{ method.title }}
+              {{ method.title | transloco }}
             </h3>
             <p class="mt-2 text-sm text-ink-muted">
-              {{ method.shortDescription }}
+              {{ method.shortDescription | transloco }}
             </p>
           </div>
 
@@ -366,7 +368,7 @@
               [routerLink]="['/' + method.slug]"
               class="inline-flex items-center gap-1 rounded-md p-1 text-sm font-semibold text-aqua group-hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
             >
-              Dettagli e approccio
+              {{ 'home.methods.detailsLink' | transloco }}
               <svg
                 class="h-4 w-4 transition-transform group-hover:translate-x-1"
                 fill="none"
@@ -400,12 +402,12 @@
         id="heading-approccio"
         class="text-xs font-bold tracking-wider text-aqua uppercase"
       >
-        I Principi Guida
+        {{ 'home.principles.eyebrow' | transloco }}
       </h2>
       <p
         class="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl"
       >
-        Come lavoriamo insieme
+        {{ 'home.principles.title' | transloco }}
       </p>
     </div>
 
@@ -415,10 +417,10 @@
           class="rounded-2xl border border-stone-200/80 bg-white p-6 shadow-xs"
         >
           <h3 class="text-base font-bold text-ink">
-            {{ principle.title }}
+            {{ principle.title | transloco }}
           </h3>
           <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-            {{ principle.description }}
+            {{ principle.description | transloco }}
           </p>
         </div>
       }
@@ -437,20 +439,20 @@
       id="heading-percorsi-home"
       class="text-xs font-bold tracking-wider text-aqua uppercase"
     >
-      Ambiti di Applicazione
+      {{ 'home.journeys.eyebrow' | transloco }}
     </h2>
     <p class="mt-2 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-      Percorsi di lavoro e contesti operativi
+      {{ 'home.journeys.title' | transloco }}
     </p>
   </div>
 
   <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
     @for (j of content.journeys; track j.id) {
       <div class="rounded-2xl border border-stone-200/80 bg-white/70 p-6">
-        <h3 class="text-lg font-bold text-ink">{{ j.title }}</h3>
-        <p class="mt-1 text-xs font-semibold text-aqua">{{ j.subtitle }}</p>
+        <h3 class="text-lg font-bold text-ink">{{ j.title | transloco }}</h3>
+        <p class="mt-1 text-xs font-semibold text-aqua">{{ j.subtitle | transloco }}</p>
         <p class="mt-3 text-xs leading-relaxed text-ink-muted">
-          {{ j.description }}
+          {{ j.description | transloco }}
         </p>
       </div>
     }
@@ -461,7 +463,7 @@
       routerLink="/percorsi"
       class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:border-aqua hover:bg-stone-50"
     >
-      Approfondisci tutti i formati dei percorsi
+      {{ 'home.journeys.cta' | transloco }}
       <svg
         class="h-4 w-4 text-aqua"
         fill="none"
@@ -483,7 +485,7 @@
 <!-- 7. Citazione / Callout Evocativo -->
 <section
   class="mx-auto max-w-4xl px-4 py-12 sm:px-6"
-  aria-label="Riflessione evocativa"
+  [attr.aria-label]="'home.quote.ariaLabel' | transloco"
 >
   <blockquote
     class="rounded-3xl border border-stone-200/80 bg-cream-subtle p-8 text-center sm:p-12"
@@ -491,12 +493,12 @@
     <p
       class="text-xl leading-relaxed font-semibold text-ink italic sm:text-2xl"
     >
-      «{{ content.personalInfo.quote }}»
+      «{{ content.personalInfo.quote | transloco }}»
     </p>
     <footer
       class="mt-4 text-xs font-bold tracking-wider text-ink-muted uppercase"
     >
-      Carla Di Lascio
+      {{ content.personalInfo.name }}
     </footer>
   </blockquote>
 </section>
@@ -511,26 +513,27 @@
       id="heading-cta-home"
       class="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl"
     >
-      Parliamo del percorso più adatto alle tue esigenze
+      {{ 'home.cta.title' | transloco }}
     </h2>
     <p
       class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-stone-300 sm:text-base"
     >
-      Ogni persona affronta momenti di vita differenti. Contattami per chiarire
-      dubbi o per concordare un primo colloquio su appuntamento.
+      {{ 'home.cta.description' | transloco }}
     </p>
     <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
       <a
         routerLink="/contatti"
         class="rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
       >
-        Richiedi informazioni
+        {{ 'home.cta.requestInfo' | transloco }}
       </a>
       <a
         [href]="'tel:' + content.personalInfo.phoneRaw"
         class="rounded-xl border border-stone-400/50 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-stone-800"
       >
-        Chiama il {{ content.personalInfo.phone }}
+        {{
+          'home.cta.callLabel' | transloco: { phone: content.personalInfo.phone }
+        }}
       </a>
     </div>
   </div>

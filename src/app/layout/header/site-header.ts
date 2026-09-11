@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { SITE_CONTENT } from '../../core/data/site-content';
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, TranslocoPipe],
   template: `
     <header
       class="sticky top-0 z-40 border-b border-stone-200/80 bg-cream/90 backdrop-blur-md transition-shadow"
@@ -17,7 +18,9 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           routerLink="/"
           (click)="closeMobileMenu()"
           class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua"
-          aria-label="Carla Di Lascio - Torna alla Home"
+          [attr.aria-label]="
+            'header.logoAriaLabel' | transloco: { name: content.personalInfo.name }
+          "
         >
           <span
             class="text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-aqua sm:text-2xl"
@@ -25,14 +28,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             {{ content.personalInfo.name }}
           </span>
           <span class="text-xs font-medium text-ink-muted">
-            Arte Terapia & Benessere Integrato
+            {{ 'header.tagline' | transloco }}
           </span>
         </a>
 
         <!-- Desktop Navigation -->
         <nav
           class="hidden items-center gap-1 md:flex lg:gap-2"
-          aria-label="Navigazione principale"
+          [attr.aria-label]="'header.nav.ariaLabel' | transloco"
         >
           <a
             routerLink="/"
@@ -40,14 +43,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             [routerLinkActiveOptions]="{ exact: true }"
             class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
           >
-            Home
+            {{ 'header.nav.home' | transloco }}
           </a>
           <a
             routerLink="/chi-sono"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
             class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
           >
-            Chi sono
+            {{ 'header.nav.about' | transloco }}
           </a>
           <a
             routerLink="/"
@@ -55,21 +58,21 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             (click)="closeMobileMenu()"
             class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
           >
-            Metodologie
+            {{ 'header.nav.methods' | transloco }}
           </a>
           <a
             routerLink="/percorsi"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
             class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
           >
-            Percorsi
+            {{ 'header.nav.journeys' | transloco }}
           </a>
           <a
             routerLink="/contatti"
             routerLinkActive="bg-aqua-dark text-white shadow-sm"
             class="ml-2 rounded-lg bg-aqua px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
           >
-            Contatti
+            {{ 'header.nav.contact' | transloco }}
           </a>
         </nav>
 
@@ -80,7 +83,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           [attr.aria-expanded]="isMobileMenuOpen()"
           aria-controls="mobile-navigation"
           class="inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-stone-200/50 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none md:hidden"
-          aria-label="Apri o chiudi il menu di navigazione"
+          [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
         >
           <svg
             class="h-6 w-6"
@@ -113,7 +116,10 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           id="mobile-navigation"
           class="border-b border-stone-200 bg-cream px-4 pt-2 pb-6 shadow-lg md:hidden"
         >
-          <nav class="flex flex-col gap-1.5" aria-label="Navigazione mobile">
+          <nav
+            class="flex flex-col gap-1.5"
+            [attr.aria-label]="'header.mobileNavAriaLabel' | transloco"
+          >
             <a
               routerLink="/"
               routerLinkActive="bg-stone-200 text-ink font-semibold"
@@ -121,7 +127,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               (click)="closeMobileMenu()"
               class="rounded-lg px-3 py-2.5 text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink"
             >
-              Home
+              {{ 'header.nav.home' | transloco }}
             </a>
             <a
               routerLink="/chi-sono"
@@ -129,13 +135,13 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               (click)="closeMobileMenu()"
               class="rounded-lg px-3 py-2.5 text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink"
             >
-              Chi sono
+              {{ 'header.nav.about' | transloco }}
             </a>
             <div class="py-1">
               <span
                 class="px-3 text-xs font-semibold tracking-wider text-ink-muted uppercase"
               >
-                Metodologie
+                {{ 'header.nav.methods' | transloco }}
               </span>
               <div class="mt-1 flex flex-col pl-2">
                 @for (method of content.methods; track method.slug) {
@@ -145,7 +151,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                     (click)="closeMobileMenu()"
                     class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
                   >
-                    {{ method.title }}
+                    {{ method.title | transloco }}
                   </a>
                 }
               </div>
@@ -156,14 +162,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               (click)="closeMobileMenu()"
               class="rounded-lg px-3 py-2.5 text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink"
             >
-              Percorsi
+              {{ 'header.nav.journeys' | transloco }}
             </a>
             <a
               routerLink="/contatti"
               (click)="closeMobileMenu()"
               class="mt-2 rounded-lg bg-aqua px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-aqua-dark"
             >
-              Contatti
+              {{ 'header.nav.contact' | transloco }}
             </a>
           </nav>
         </div>
