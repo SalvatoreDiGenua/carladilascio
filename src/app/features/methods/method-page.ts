@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { HlmBreadcrumbImports } from '@spartan-ng/helm/breadcrumb';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
@@ -11,9 +11,9 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 @Component({
   selector: 'app-method-page',
   imports: [
-    RouterLink,
     MethodAvatar3dComponent,
     TranslocoPipe,
+    HlmBreadcrumbImports,
     HlmButtonImports,
     CtaBannerComponent,
   ],
@@ -22,24 +22,25 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
       <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
         <!-- Breadcrumb / Navigazione a ritroso -->
         <nav
-          [attr.aria-label]="'method.breadcrumb.ariaLabel' | transloco"
+          hlmBreadcrumb
+          [aria-label]="'method.breadcrumb.ariaLabel' | transloco"
           class="mb-6"
         >
-          <ol class="flex items-center gap-2 text-sm text-ink-muted">
-            <li>
-              <a routerLink="/" class="hover:text-aqua">{{
-                'header.nav.home' | transloco
-              }}</a>
+          <ol hlmBreadcrumbList>
+            <li hlmBreadcrumbItem>
+              <a hlmBreadcrumbLink link="/">
+                {{ 'header.nav.home' | transloco }}
+              </a>
             </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <a routerLink="/" fragment="metodologie" class="hover:text-aqua">
+            <li hlmBreadcrumbSeparator></li>
+            <li hlmBreadcrumbItem>
+              <a hlmBreadcrumbLink link="/" fragment="metodologie">
                 {{ 'header.nav.methods' | transloco }}
               </a>
             </li>
-            <li aria-hidden="true">/</li>
-            <li class="font-medium text-ink" aria-current="page">
-              {{ m.title | transloco }}
+            <li hlmBreadcrumbSeparator></li>
+            <li hlmBreadcrumbItem>
+              <span hlmBreadcrumbPage>{{ m.title | transloco }}</span>
             </li>
           </ol>
         </nav>
@@ -58,12 +59,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                 {{ m.shortDescription | transloco }}
               </p>
               <div class="mt-6 flex flex-wrap gap-3">
-                <a
-                  hlmBtn
-                  size="lg"
-                  routerLink="/contatti"
-                  class="px-5 py-2.5"
-                >
+                <a hlmBtn size="lg" link="/contatti" class="px-5 py-2.5">
                   {{ 'method.requestInfo' | transloco }}
                 </a>
               </div>
@@ -237,14 +233,17 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           [buttons]="[
             {
               label: ('method.requestInfo' | transloco),
-              route: '/contatti'
+              route: '/contatti',
             },
             {
-              label: ('method.cta.callLabel' | transloco: { phone: content.personalInfo.phone }),
+              label:
+                ('method.cta.callLabel'
+                | transloco: { phone: content.personalInfo.phone }),
               href: 'tel:' + content.personalInfo.phoneRaw,
               variant: 'outline',
-              className: 'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
-            }
+              className:
+                'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink',
+            },
           ]"
           sectionId="heading-cta-method"
           class="mb-16 block"
@@ -261,7 +260,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
             @for (other of otherMethods(); track other.slug) {
               <a
-                [routerLink]="['/' + other.slug]"
+                [link]="['/' + other.slug]"
                 class="group hover:border-aqua/50 flex flex-col justify-between rounded-xl border border-stone-200/80 bg-white/70 p-5 transition-all hover:shadow-sm"
               >
                 <div>
