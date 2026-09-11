@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-journeys',
-  imports: [RouterLink, TranslocoPipe, HlmButtonDirective],
+  imports: [RouterLink, TranslocoPipe, HlmButtonImports],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione -->
@@ -54,11 +54,7 @@ import { Seo } from '../../core/seo/seo';
                 </p>
               </div>
 
-              <a
-                hlmBtn
-                routerLink="/contatti"
-                class="shrink-0"
-              >
+              <a hlmBtn routerLink="/contatti" class="shrink-0">
                 {{ 'journeys.requestInfo' | transloco }}
               </a>
             </div>
@@ -127,10 +123,7 @@ import { Seo } from '../../core/seo/seo';
 
       <!-- CTA Finale -->
       <section class="mt-12 text-center">
-        <a
-          hlmBtn
-          routerLink="/contatti"
-        >
+        <a hlmBtn routerLink="/contatti">
           {{ 'journeys.finalCta' | transloco }}
         </a>
       </section>
