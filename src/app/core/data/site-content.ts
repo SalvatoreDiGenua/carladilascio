@@ -206,8 +206,7 @@ export const SITE_CONTENT: PortfolioContent = {
     },
     {
       title: 'approachPrinciples.respectForIndividualTiming.title',
-      description:
-        'approachPrinciples.respectForIndividualTiming.description',
+      description: 'approachPrinciples.respectForIndividualTiming.description',
     },
     {
       title: 'approachPrinciples.bodyEmotionalAwareness.title',

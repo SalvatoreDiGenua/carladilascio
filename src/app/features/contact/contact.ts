@@ -217,7 +217,9 @@ import { Seo } from '../../core/seo/seo';
                   "
                   aria-describedby="name-error"
                   class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
-                  [attr.placeholder]="'contact.form.namePlaceholder' | transloco"
+                  [attr.placeholder]="
+                    'contact.form.namePlaceholder' | transloco
+                  "
                 />
                 @if (
                   contactForm.controls.name.invalid &&
@@ -245,7 +247,9 @@ import { Seo } from '../../core/seo/seo';
                   "
                   aria-describedby="email-error"
                   class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
-                  [attr.placeholder]="'contact.form.emailPlaceholder' | transloco"
+                  [attr.placeholder]="
+                    'contact.form.emailPlaceholder' | transloco
+                  "
                 />
                 @if (
                   contactForm.controls.email.invalid &&

@@ -13,7 +13,10 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
     @if (method(); as m) {
       <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
         <!-- Breadcrumb / Navigazione a ritroso -->
-        <nav [attr.aria-label]="'method.breadcrumb.ariaLabel' | transloco" class="mb-6">
+        <nav
+          [attr.aria-label]="'method.breadcrumb.ariaLabel' | transloco"
+          class="mb-6"
+        >
           <ol class="flex items-center gap-2 text-sm text-ink-muted">
             <li>
               <a routerLink="/" class="hover:text-aqua">{{
@@ -84,11 +87,6 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           aria-labelledby="heading-cosa-fa"
         >
           <div class="flex items-center gap-3">
-            <span
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-aqua/10 text-sm font-bold text-aqua"
-            >
-              01
-            </span>
             <h2
               id="heading-cosa-fa"
               class="text-2xl font-bold tracking-tight text-ink"
@@ -107,11 +105,6 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           aria-labelledby="heading-approccio-carla"
         >
           <div class="flex items-center gap-3">
-            <span
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-aqua text-sm font-bold text-white"
-            >
-              02
-            </span>
             <h2
               id="heading-approccio-carla"
               class="text-2xl font-bold tracking-tight text-ink"
@@ -154,7 +147,9 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span class="text-sm font-medium text-ink">{{ goal | transloco }}</span>
+                <span class="text-sm font-medium text-ink">{{
+                  goal | transloco
+                }}</span>
               </li>
             }
           </ul>
