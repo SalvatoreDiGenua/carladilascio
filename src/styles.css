@@ -15,17 +15,17 @@
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 @theme {
   --color-ink: #162438;
-  --color-deep-brown: #1C1306;
+  --color-deep-brown: #1c1306;
   --color-olive-charcoal: #403824;
-  --color-olive-taupe: #645D4C;
-  --color-muted-beige: #A49A83;
-  --color-warm-ivory: #C4B7A1;
-  --color-primary: #5B8FA3;
-  --color-primary-light: #6C9CAF;
-  --color-primary-dark: #3F6B7A;
-  --color-antique-gold: #A99473;
+  --color-olive-taupe: #645d4c;
+  --color-muted-beige: #a49a83;
+  --color-warm-ivory: #c4b7a1;
+  --color-primary: #5b8fa3;
+  --color-primary-light: #6c9caf;
+  --color-primary-dark: #3f6b7a;
+  --color-antique-gold: #a99473;
   --color-bronze: #795021;
-  --color-bronze-soft: #A88D6F;
+  --color-bronze-soft: #a88d6f;
   --color-cream: #faf7f2;
   --color-cream-subtle: #f4efe6;
   --color-ink-muted: #4a5d73;
@@ -95,10 +95,10 @@ h3 {
 :root {
   color-scheme: light;
 
-  --chart-1: #5B8FA3;
-  --chart-2: #A99473;
+  --chart-1: #5b8fa3;
+  --chart-2: #a99473;
   --chart-3: #795021;
-  --chart-4: #6C9CAF;
+  --chart-4: #6c9caf;
   --chart-5: #b94a37;
   --radius: 0.75rem;
   --background: var(--color-cream);
@@ -133,10 +133,10 @@ h3 {
 :root.dark {
   color-scheme: dark;
 
-  --chart-1: #6C9CAF;
-  --chart-2: #A99473;
-  --chart-3: #A88D6F;
-  --chart-4: #5B8FA3;
+  --chart-1: #6c9caf;
+  --chart-2: #a99473;
+  --chart-3: #a88d6f;
+  --chart-4: #5b8fa3;
   --chart-5: #b94a37;
   --background: #070201;
   --foreground: var(--color-warm-ivory);

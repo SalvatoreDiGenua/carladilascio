@@ -12,7 +12,7 @@ import { Seo } from '../../core/seo/seo';
       <!-- Intestazione Pagina -->
       <header class="mb-12 text-center">
         <span
-          class="inline-flex rounded-full bg-coral/10 px-3.5 py-1 text-xs font-semibold tracking-wider text-coral uppercase"
+          class="bg-coral/10 text-coral inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
         >
           {{ 'artistBio.eyebrow' | transloco }}
         </span>
@@ -111,7 +111,7 @@ import { Seo } from '../../core/seo/seo';
             <ul class="mt-3 flex flex-wrap gap-2">
               @for (city of content.artistBio.exhibitionCities; track city) {
                 <li
-                  class="rounded-full border border-coral/30 bg-coral-light px-3 py-1 text-xs font-semibold text-coral-dark"
+                  class="border-coral/30 bg-coral-light text-coral-dark rounded-full border px-3 py-1 text-xs font-semibold"
                 >
                   {{ city | transloco }}
                 </li>
@@ -140,9 +140,9 @@ import { Seo } from '../../core/seo/seo';
         [attr.aria-label]="'artistBio.philosophy.ariaLabel' | transloco"
       >
         <blockquote
-          class="rounded-3xl border border-coral/20 bg-coral-light/30 p-8 text-center sm:p-12"
+          class="border-coral/20 bg-coral-light/30 rounded-3xl border p-8 text-center sm:p-12"
         >
-          <h2 class="text-xs font-bold tracking-wider text-coral uppercase">
+          <h2 class="text-coral text-xs font-bold tracking-wider uppercase">
             {{ 'artistBio.philosophy.title' | transloco }}
           </h2>
           <p
@@ -170,7 +170,7 @@ import { Seo } from '../../core/seo/seo';
         <div class="mt-6 flex flex-wrap justify-center gap-4">
           <a
             routerLink="/chi-sono"
-            class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white hover:bg-aqua-dark"
+            class="bg-aqua hover:bg-aqua-dark rounded-xl px-6 py-3 text-sm font-semibold text-white"
           >
             {{ 'artistBio.cta.therapistLink' | transloco }}
           </a>

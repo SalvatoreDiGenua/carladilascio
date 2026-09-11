@@ -10,21 +10,21 @@
     aria-hidden="true"
   >
     <svg
-      class="absolute -top-16 -right-16 h-96 w-96 text-aqua-light/80 blur-2xl"
+      class="text-aqua-light/80 absolute -top-16 -right-16 h-96 w-96 blur-2xl"
       viewBox="0 0 100 100"
       fill="currentColor"
     >
       <circle cx="50" cy="50" r="45" />
     </svg>
     <svg
-      class="absolute -bottom-20 -left-20 h-96 w-96 text-blush-light/80 blur-2xl"
+      class="text-blush-light/80 absolute -bottom-20 -left-20 h-96 w-96 blur-2xl"
       viewBox="0 0 100 100"
       fill="currentColor"
     >
       <circle cx="50" cy="50" r="40" />
     </svg>
     <svg
-      class="absolute top-1/2 left-1/3 h-80 w-80 text-lavender-light/70 blur-3xl"
+      class="text-lavender-light/70 absolute top-1/2 left-1/3 h-80 w-80 blur-3xl"
       viewBox="0 0 100 100"
       fill="currentColor"
     >
@@ -37,7 +37,7 @@
       <!-- Testi Hero -->
       <div class="lg:col-span-7">
         <div
-          class="inline-flex items-center gap-2 rounded-full border border-aqua/30 bg-aqua-light/50 px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
+          class="border-aqua/30 bg-aqua-light/50 text-aqua inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
         >
           <span>{{ 'home.hero.badge' | transloco }}</span>
         </div>
@@ -52,13 +52,13 @@
         <div class="mt-8 flex flex-wrap items-center gap-4">
           <a
             routerLink="/chi-sono"
-            class="rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {{ 'home.hero.ctaAbout' | transloco }}
           </a>
           <a
             routerLink="/contatti"
-            class="rounded-xl border border-stone-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-ink shadow-sm transition-all hover:border-aqua hover:bg-white focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+            class="hover:border-aqua focus-visible:ring-aqua rounded-xl border border-stone-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-white focus-visible:ring-2 focus-visible:outline-none"
           >
             {{ 'home.hero.ctaContact' | transloco }}
           </a>
@@ -146,10 +146,10 @@
   class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-20"
   aria-labelledby="heading-intro"
 >
-  <div class="rounded-3xl border border-aqua/20 bg-aqua-light/30 p-8 sm:p-12">
+  <div class="border-aqua/20 bg-aqua-light/30 rounded-3xl border p-8 sm:p-12">
     <h2
       id="heading-intro"
-      class="text-xs font-bold tracking-wider text-aqua uppercase"
+      class="text-aqua text-xs font-bold tracking-wider uppercase"
     >
       {{ 'home.intro.eyebrow' | transloco }}
     </h2>
@@ -173,7 +173,7 @@
       <div
         class="rounded-3xl border border-stone-200/80 bg-white/80 p-8 shadow-sm"
       >
-        <h3 class="text-xs font-bold tracking-wider text-powder uppercase">
+        <h3 class="text-powder text-xs font-bold tracking-wider uppercase">
           {{ 'home.about.eyebrowProfile' | transloco }}
         </h3>
         <h2
@@ -186,7 +186,7 @@
           @for (role of content.personalInfo.roles; track role) {
             <li class="flex items-start gap-2">
               <span
-                class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-powder"
+                class="bg-powder mt-1 h-1.5 w-1.5 shrink-0 rounded-full"
               ></span>
               <span>{{ role | transloco }}</span>
             </li>
@@ -195,7 +195,7 @@
         <div class="mt-6 border-t border-stone-100 pt-4">
           <a
             routerLink="/chi-sono"
-            class="inline-flex items-center gap-1 text-sm font-semibold text-aqua hover:underline"
+            class="text-aqua inline-flex items-center gap-1 text-sm font-semibold hover:underline"
           >
             {{ 'home.about.readMore' | transloco }}
             <svg
@@ -217,7 +217,7 @@
       </div>
     </div>
     <div class="lg:col-span-7">
-      <h3 class="text-xs font-bold tracking-wider text-aqua uppercase">
+      <h3 class="text-aqua text-xs font-bold tracking-wider uppercase">
         {{ 'home.about.eyebrowExperience' | transloco }}
       </h3>
       <h2 class="mt-2 text-2xl font-bold text-ink sm:text-3xl">
@@ -257,7 +257,7 @@
   <div class="text-center">
     <h2
       id="heading-metodi"
-      class="text-xs font-bold tracking-wider text-aqua uppercase"
+      class="text-aqua text-xs font-bold tracking-wider uppercase"
     >
       {{ 'home.methods.eyebrow' | transloco }}
     </h2>
@@ -276,7 +276,7 @@
     @defer (on viewport(skillFather)) {
       @for (method of content.methods; track method.slug; let i = $index) {
         <article
-          class="group flex flex-col justify-between rounded-2xl border border-stone-200/90 bg-white/80 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-aqua/40 hover:shadow-md"
+          class="group hover:border-aqua/40 flex flex-col justify-between rounded-2xl border border-stone-200/90 bg-white/80 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
           animate.enter="method-card-enter"
           [style.animation-delay.ms]="i * 120"
         >
@@ -290,7 +290,7 @@
               @switch (method.icon) {
                 @case ('cromo') {
                   <svg
-                    class="h-6 w-6 text-aqua"
+                    class="text-aqua h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -306,7 +306,7 @@
                 }
                 @case ('kinesio') {
                   <svg
-                    class="h-6 w-6 text-coral"
+                    class="text-coral h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -322,7 +322,7 @@
                 }
                 @case ('suono') {
                   <svg
-                    class="h-6 w-6 text-lavender"
+                    class="text-lavender h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -338,7 +338,7 @@
                 }
                 @case ('arte') {
                   <svg
-                    class="h-6 w-6 text-powder"
+                    class="text-powder h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -366,7 +366,7 @@
           <div class="mt-6 border-t border-stone-100 pt-4">
             <a
               [routerLink]="['/' + method.slug]"
-              class="inline-flex items-center gap-1 rounded-md p-1 text-sm font-semibold text-aqua group-hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+              class="text-aqua focus-visible:ring-aqua inline-flex items-center gap-1 rounded-md p-1 text-sm font-semibold group-hover:underline focus-visible:ring-2 focus-visible:outline-none"
             >
               {{ 'home.methods.detailsLink' | transloco }}
               <svg
@@ -400,7 +400,7 @@
     <div class="text-center">
       <h2
         id="heading-approccio"
-        class="text-xs font-bold tracking-wider text-aqua uppercase"
+        class="text-aqua text-xs font-bold tracking-wider uppercase"
       >
         {{ 'home.principles.eyebrow' | transloco }}
       </h2>
@@ -437,7 +437,7 @@
   <div class="text-center">
     <h2
       id="heading-percorsi-home"
-      class="text-xs font-bold tracking-wider text-aqua uppercase"
+      class="text-aqua text-xs font-bold tracking-wider uppercase"
     >
       {{ 'home.journeys.eyebrow' | transloco }}
     </h2>
@@ -450,7 +450,7 @@
     @for (j of content.journeys; track j.id) {
       <div class="rounded-2xl border border-stone-200/80 bg-white/70 p-6">
         <h3 class="text-lg font-bold text-ink">{{ j.title | transloco }}</h3>
-        <p class="mt-1 text-xs font-semibold text-aqua">
+        <p class="text-aqua mt-1 text-xs font-semibold">
           {{ j.subtitle | transloco }}
         </p>
         <p class="mt-3 text-xs leading-relaxed text-ink-muted">
@@ -463,11 +463,11 @@
   <div class="mt-8 text-center">
     <a
       routerLink="/percorsi"
-      class="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:border-aqua hover:bg-stone-50"
+      class="hover:border-aqua inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:bg-stone-50"
     >
       {{ 'home.journeys.cta' | transloco }}
       <svg
-        class="h-4 w-4 text-aqua"
+        class="text-aqua h-4 w-4"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -525,7 +525,7 @@
     <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
       <a
         routerLink="/contatti"
-        class="rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+        class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
       >
         {{ 'home.cta.requestInfo' | transloco }}
       </a>

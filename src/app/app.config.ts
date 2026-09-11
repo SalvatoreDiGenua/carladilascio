@@ -20,6 +20,7 @@ import { routes } from './app.routes';
 import { authInterceptor } from './core/http/interceptors/auth/auth-interceptor';
 import { errorInterceptor } from './core/http/interceptors/error/error-interceptor';
 import { Language } from './core/i18n/language';
+import { provideSpartanHlm } from '@spartan-ng/helm/utils';
 import { TranslocoHttpLoader } from './core/i18n/transloco-loader';
 
 class NoopStorage implements Storage {
@@ -43,6 +44,7 @@ class NoopStorage implements Storage {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideSpartanHlm(),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(

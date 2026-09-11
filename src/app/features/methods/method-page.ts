@@ -52,7 +52,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               <div class="mt-6 flex flex-wrap gap-3">
                 <a
                   routerLink="/contatti"
-                  class="rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+                  class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
                   {{ 'method.requestInfo' | transloco }}
                 </a>
@@ -101,7 +101,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 
         <!-- Sezione 2: Come si approccia Carla -->
         <section
-          class="mb-10 rounded-2xl border border-aqua/30 bg-aqua-light/40 p-6 sm:p-8"
+          class="border-aqua/30 bg-aqua-light/40 mb-10 rounded-2xl border p-6 sm:p-8"
           aria-labelledby="heading-approccio-carla"
         >
           <div class="flex items-center gap-3">
@@ -134,7 +134,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                 class="flex items-start gap-3 rounded-xl border border-stone-200/70 bg-white/50 p-4"
               >
                 <svg
-                  class="mt-0.5 h-5 w-5 shrink-0 text-aqua"
+                  class="text-aqua mt-0.5 h-5 w-5 shrink-0"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -182,7 +182,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               @for (item of m.audience; track item) {
                 <li class="flex items-center gap-2">
                   <span
-                    class="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua"
+                    class="bg-aqua h-1.5 w-1.5 shrink-0 rounded-full"
                   ></span>
                   <span>{{ item | transloco }}</span>
                 </li>
@@ -234,7 +234,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
               routerLink="/contatti"
-              class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+              class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               {{ 'method.requestInfo' | transloco }}
             </a>
@@ -262,11 +262,11 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
             @for (other of otherMethods(); track other.slug) {
               <a
                 [routerLink]="['/' + other.slug]"
-                class="group flex flex-col justify-between rounded-xl border border-stone-200/80 bg-white/70 p-5 transition-all hover:border-aqua/50 hover:shadow-sm"
+                class="group hover:border-aqua/50 flex flex-col justify-between rounded-xl border border-stone-200/80 bg-white/70 p-5 transition-all hover:shadow-sm"
               >
                 <div>
                   <h3
-                    class="font-bold text-ink transition-colors group-hover:text-aqua"
+                    class="group-hover:text-aqua font-bold text-ink transition-colors"
                   >
                     {{ other.title | transloco }}
                   </h3>
@@ -275,7 +275,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
                   </p>
                 </div>
                 <span
-                  class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-aqua"
+                  class="text-aqua mt-3 inline-flex items-center gap-1 text-xs font-semibold"
                 >
                   {{ 'method.otherMethods.discoverMore' | transloco }}
                   <svg

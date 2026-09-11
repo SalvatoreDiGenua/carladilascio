@@ -58,6 +58,14 @@ export const routes: Routes = [
     title: 'Contatti | Carla Di Lascio',
   },
   {
+    path: 'theme-preview',
+    loadComponent: () =>
+      import('./features/theme-preview/theme-preview').then(
+        (m) => m.ThemePreview,
+      ),
+    title: 'Anteprima Tema & Spartan | Carla Di Lascio',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

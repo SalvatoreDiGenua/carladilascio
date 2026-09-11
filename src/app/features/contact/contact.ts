@@ -17,7 +17,7 @@ import { Seo } from '../../core/seo/seo';
       <!-- Intestazione -->
       <header class="mb-12 text-center">
         <span
-          class="inline-flex rounded-full bg-aqua-light px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
+          class="bg-aqua-light text-aqua inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
         >
           {{ 'contact.eyebrow' | transloco }}
         </span>
@@ -48,7 +48,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Telefono -->
               <li class="flex items-start gap-3">
                 <div
-                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-aqua-light text-aqua"
+                  class="bg-aqua-light text-aqua flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                 >
                   <svg
                     class="h-5 w-5"
@@ -71,7 +71,7 @@ import { Seo } from '../../core/seo/seo';
                   }}</span>
                   <a
                     [href]="'tel:' + content.personalInfo.phoneRaw"
-                    class="font-medium text-aqua hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+                    class="text-aqua focus-visible:ring-aqua font-medium hover:underline focus-visible:ring-2 focus-visible:outline-none"
                   >
                     {{ content.personalInfo.phone }}
                   </a>
@@ -81,7 +81,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Email -->
               <li class="flex items-start gap-3">
                 <div
-                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-coral-light text-coral"
+                  class="bg-coral-light text-coral flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                 >
                   <svg
                     class="h-5 w-5"
@@ -104,7 +104,7 @@ import { Seo } from '../../core/seo/seo';
                   }}</span>
                   <a
                     [href]="'mailto:' + content.personalInfo.email"
-                    class="font-medium text-coral hover:underline focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+                    class="text-coral focus-visible:ring-aqua font-medium hover:underline focus-visible:ring-2 focus-visible:outline-none"
                   >
                     {{ content.personalInfo.email }}
                   </a>
@@ -114,7 +114,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Studio -->
               <li class="flex items-start gap-3">
                 <div
-                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-lavender-light text-lavender"
+                  class="bg-lavender-light text-lavender flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                 >
                   <svg
                     class="h-5 w-5"
@@ -216,7 +216,7 @@ import { Seo } from '../../core/seo/seo';
                     contactForm.controls.name.touched
                   "
                   aria-describedby="name-error"
-                  class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
+                  class="focus:border-aqua focus:ring-aqua mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:ring-2 focus:outline-none"
                   [attr.placeholder]="
                     'contact.form.namePlaceholder' | transloco
                   "
@@ -246,7 +246,7 @@ import { Seo } from '../../core/seo/seo';
                     contactForm.controls.email.touched
                   "
                   aria-describedby="email-error"
-                  class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
+                  class="focus:border-aqua focus:ring-aqua mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:ring-2 focus:outline-none"
                   [attr.placeholder]="
                     'contact.form.emailPlaceholder' | transloco
                   "
@@ -279,7 +279,7 @@ import { Seo } from '../../core/seo/seo';
                     contactForm.controls.message.touched
                   "
                   aria-describedby="message-error"
-                  class="mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:border-aqua focus:ring-2 focus:ring-aqua focus:outline-none"
+                  class="focus:border-aqua focus:ring-aqua mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:ring-2 focus:outline-none"
                   [attr.placeholder]="
                     'contact.form.messagePlaceholder' | transloco
                   "
@@ -306,7 +306,7 @@ import { Seo } from '../../core/seo/seo';
                       contactForm.controls.privacy.touched
                     "
                     aria-describedby="privacy-error"
-                    class="mt-1 h-4 w-4 rounded border-stone-300 text-aqua focus:ring-aqua"
+                    class="text-aqua focus:ring-aqua mt-1 h-4 w-4 rounded border-stone-300"
                   />
                   <label
                     for="privacy"
@@ -334,7 +334,7 @@ import { Seo } from '../../core/seo/seo';
               <button
                 type="submit"
                 [disabled]="contactForm.invalid"
-                class="w-full rounded-xl bg-aqua px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-stone-300"
+                class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua w-full rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-stone-300"
               >
                 {{ 'contact.form.submit' | transloco }}
               </button>

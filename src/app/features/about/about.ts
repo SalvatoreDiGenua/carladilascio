@@ -12,7 +12,7 @@ import { Seo } from '../../core/seo/seo';
       <!-- Intestazione Pagina -->
       <header class="mb-12 text-center">
         <span
-          class="inline-flex rounded-full bg-powder/10 px-3.5 py-1 text-xs font-semibold tracking-wider text-powder uppercase"
+          class="bg-powder/10 text-powder inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
         >
           {{ 'about.eyebrow' | transloco }}
         </span>
@@ -110,7 +110,7 @@ import { Seo } from '../../core/seo/seo';
             <ul class="mt-3 space-y-2 text-sm text-ink-muted">
               @for (role of content.personalInfo.roles; track role) {
                 <li class="flex items-center gap-2">
-                  <span class="h-2 w-2 shrink-0 rounded-full bg-aqua"></span>
+                  <span class="bg-aqua h-2 w-2 shrink-0 rounded-full"></span>
                   <span>{{ role | transloco }}</span>
                 </li>
               }
@@ -137,7 +137,7 @@ import { Seo } from '../../core/seo/seo';
         <div class="text-center">
           <h2
             id="heading-valori"
-            class="text-xs font-bold tracking-wider text-aqua uppercase"
+            class="text-aqua text-xs font-bold tracking-wider uppercase"
           >
             {{ 'about.values.eyebrow' | transloco }}
           </h2>
@@ -174,7 +174,7 @@ import { Seo } from '../../core/seo/seo';
         <div class="mt-6 flex flex-wrap justify-center gap-4">
           <a
             routerLink="/contatti"
-            class="rounded-xl bg-aqua px-6 py-3 text-sm font-semibold text-white hover:bg-aqua-dark"
+            class="bg-aqua hover:bg-aqua-dark rounded-xl px-6 py-3 text-sm font-semibold text-white"
           >
             {{ 'about.cta.contactLink' | transloco }}
           </a>

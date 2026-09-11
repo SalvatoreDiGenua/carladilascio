@@ -32,7 +32,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'header.nav.home' | transloco }}
                 </a>
@@ -40,7 +40,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/chi-sono"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'header.nav.about' | transloco }}
                 </a>
@@ -48,7 +48,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/cromopuntura"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'footer.navigation.chromopuncture' | transloco }}
                 </a>
@@ -56,7 +56,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/kinesiologia-emozionale"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'footer.navigation.kinesiology' | transloco }}
                 </a>
@@ -64,7 +64,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/suonoterapia-vibrazionale"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'footer.navigation.soundTherapy' | transloco }}
                 </a>
@@ -72,7 +72,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/arte-terapia"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'footer.navigation.artTherapy' | transloco }}
                 </a>
@@ -80,7 +80,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/percorsi"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'footer.navigation.journeys' | transloco }}
                 </a>
@@ -88,7 +88,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <li>
                 <a
                   routerLink="/contatti"
-                  class="transition-colors hover:text-aqua focus-visible:underline"
+                  class="hover:text-aqua transition-colors focus-visible:underline"
                 >
                   {{ 'footer.navigation.contact' | transloco }}
                 </a>
@@ -108,7 +108,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 </span>
                 <a
                   [href]="'tel:' + content.personalInfo.phoneRaw"
-                  class="font-medium text-aqua hover:underline"
+                  class="text-aqua font-medium hover:underline"
                 >
                   {{ content.personalInfo.phone }}
                 </a>
@@ -119,7 +119,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 </span>
                 <a
                   [href]="'mailto:' + content.personalInfo.email"
-                  class="font-medium text-aqua hover:underline"
+                  class="text-aqua font-medium hover:underline"
                 >
                   {{ content.personalInfo.email }}
                 </a>

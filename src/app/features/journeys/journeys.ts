@@ -12,7 +12,7 @@ import { Seo } from '../../core/seo/seo';
       <!-- Intestazione -->
       <header class="mb-12 text-center">
         <span
-          class="inline-flex rounded-full bg-aqua-light px-3.5 py-1 text-xs font-semibold tracking-wider text-aqua uppercase"
+          class="bg-aqua-light text-aqua inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
         >
           {{ 'journeys.eyebrow' | transloco }}
         </span>
@@ -38,7 +38,7 @@ import { Seo } from '../../core/seo/seo';
             >
               <div>
                 <span
-                  class="text-xs font-bold tracking-wider text-aqua uppercase"
+                  class="text-aqua text-xs font-bold tracking-wider uppercase"
                 >
                   {{ 'journeys.optionLabel' | transloco: { n: idx + 1 } }}
                 </span>
@@ -55,7 +55,7 @@ import { Seo } from '../../core/seo/seo';
 
               <a
                 routerLink="/contatti"
-                class="inline-flex shrink-0 items-center justify-center rounded-xl bg-aqua px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+                class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua inline-flex shrink-0 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:outline-none"
               >
                 {{ 'journeys.requestInfo' | transloco }}
               </a>
@@ -99,7 +99,7 @@ import { Seo } from '../../core/seo/seo';
                 @for (d of journey.details; track d) {
                   <li class="flex items-center gap-2">
                     <span
-                      class="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua"
+                      class="bg-aqua h-1.5 w-1.5 shrink-0 rounded-full"
                     ></span>
                     <span>{{ d | transloco }}</span>
                   </li>
@@ -127,7 +127,7 @@ import { Seo } from '../../core/seo/seo';
       <section class="mt-12 text-center">
         <a
           routerLink="/contatti"
-          class="inline-flex items-center gap-2 rounded-xl bg-aqua px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-aqua-dark"
+          class="bg-aqua hover:bg-aqua-dark inline-flex items-center gap-2 rounded-xl px-8 py-3.5 text-base font-semibold text-white shadow-sm transition"
         >
           {{ 'journeys.finalCta' | transloco }}
         </a>

@@ -32,14 +32,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         <a
           routerLink="/"
           (click)="closeMobileMenu()"
-          class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua"
+          class="group focus-visible:ring-aqua flex flex-col focus:outline-none focus-visible:ring-2"
           [attr.aria-label]="
             'header.logoAriaLabel'
               | transloco: { name: content.personalInfo.name }
           "
         >
           <span
-            class="text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-aqua sm:text-2xl"
+            class="group-hover:text-aqua text-xl font-bold tracking-tight text-ink transition-colors sm:text-2xl"
           >
             {{ content.personalInfo.name }}
           </span>
@@ -57,7 +57,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             routerLink="/"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
             [routerLinkActiveOptions]="{ exact: true }"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+            class="focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
           >
             {{ 'header.nav.home' | transloco }}
           </a>
@@ -68,8 +68,8 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             [attr.aria-expanded]="isAboutModalOpen()"
             [class]="
               isAboutActive()
-                ? 'rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none'
-                : 'rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none'
+                ? 'focus-visible:ring-aqua rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 focus-visible:ring-2 focus-visible:outline-none'
+                : 'focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none'
             "
           >
             {{ 'header.nav.about' | transloco }}
@@ -78,21 +78,21 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             routerLink="/"
             fragment="metodologie"
             (click)="closeMobileMenu()"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+            class="focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
           >
             {{ 'header.nav.methods' | transloco }}
           </a>
           <a
             routerLink="/percorsi"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+            class="focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
           >
             {{ 'header.nav.journeys' | transloco }}
           </a>
           <a
             routerLink="/contatti"
             routerLinkActive="bg-aqua-dark text-white shadow-sm"
-            class="ml-2 rounded-lg bg-aqua px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-aqua-dark focus-visible:ring-2 focus-visible:ring-aqua focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua ml-2 rounded-lg px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {{ 'header.nav.contact' | transloco }}
           </a>
@@ -104,7 +104,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           (click)="toggleMobileMenu()"
           [attr.aria-expanded]="isMobileMenuOpen()"
           aria-controls="mobile-navigation"
-          class="inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-stone-200/50 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none md:hidden"
+          class="focus-visible:ring-aqua inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-stone-200/50 focus-visible:ring-2 focus-visible:outline-none md:hidden"
           [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
         >
           <svg
@@ -194,7 +194,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             <a
               routerLink="/contatti"
               (click)="closeMobileMenu()"
-              class="mt-2 rounded-lg bg-aqua px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-aqua-dark"
+              class="bg-aqua hover:bg-aqua-dark mt-2 rounded-lg px-4 py-2.5 text-center text-base font-medium text-white shadow-sm"
             >
               {{ 'header.nav.contact' | transloco }}
             </a>
@@ -227,7 +227,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             type="button"
             (click)="closeAboutModal()"
             [attr.aria-label]="'header.aboutModal.closeAriaLabel' | transloco"
-            class="absolute top-4 right-4 rounded-full p-1.5 text-ink-muted transition-colors hover:bg-stone-100 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+            class="focus-visible:ring-aqua absolute top-4 right-4 rounded-full p-1.5 text-ink-muted transition-colors hover:bg-stone-100 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
           >
             <svg
               class="h-5 w-5"
@@ -259,9 +259,9 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             <button
               type="button"
               (click)="selectAboutOption('terapeuta')"
-              class="group rounded-xl border border-aqua/30 bg-aqua-light/40 p-4 text-left transition-colors hover:bg-aqua-light focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none"
+              class="group border-aqua/30 bg-aqua-light/40 hover:bg-aqua-light focus-visible:ring-aqua rounded-xl border p-4 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
-              <span class="block text-base font-bold text-aqua-dark">
+              <span class="text-aqua-dark block text-base font-bold">
                 {{ 'header.aboutModal.therapistTitle' | transloco }}
               </span>
               <span class="mt-1 block text-xs text-ink-muted">
@@ -272,9 +272,9 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             <button
               type="button"
               (click)="selectAboutOption('artista')"
-              class="group rounded-xl border border-coral/30 bg-coral-light/40 p-4 text-left transition-colors hover:bg-coral-light focus-visible:ring-2 focus-visible:ring-coral focus-visible:outline-none"
+              class="group border-coral/30 bg-coral-light/40 hover:bg-coral-light focus-visible:ring-coral rounded-xl border p-4 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
-              <span class="block text-base font-bold text-coral-dark">
+              <span class="text-coral-dark block text-base font-bold">
                 {{ 'header.aboutModal.artistTitle' | transloco }}
               </span>
               <span class="mt-1 block text-xs text-ink-muted">
