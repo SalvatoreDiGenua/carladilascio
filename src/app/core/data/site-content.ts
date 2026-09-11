@@ -245,4 +245,14 @@ export const SITE_CONTENT: PortfolioContent = {
       description: 'pillars.ethicsTransparency.description',
     },
   ],
+  artistBio: {
+    exhibitionCities: [
+      'artistBio.exhibitionCities.0',
+      'artistBio.exhibitionCities.1',
+      'artistBio.exhibitionCities.2',
+      'artistBio.exhibitionCities.3',
+      'artistBio.exhibitionCities.4',
+      'artistBio.exhibitionCities.5',
+    ],
+  },
 };

@@ -59,4 +59,7 @@ export interface PortfolioContent {
     description: string;
   }[];
   pillars: AboutPillar[];
+  artistBio: {
+    exhibitionCities: string[];
+  };
 }

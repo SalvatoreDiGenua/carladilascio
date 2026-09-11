@@ -12,6 +12,12 @@ export const routes: Routes = [
     title: 'Chi sono | Carla Di Lascio',
   },
   {
+    path: 'chi-sono-artista',
+    loadComponent: () =>
+      import('./features/artist-bio/artist-bio').then((m) => m.ArtistBio),
+    title: 'Carla Di Lascio, Artista | Pittrice e Ceramista',
+  },
+  {
     path: 'cromopuntura',
     loadComponent: () =>
       import('./features/methods/method-page').then((m) => m.MethodPage),

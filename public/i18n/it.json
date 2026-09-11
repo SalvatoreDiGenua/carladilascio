@@ -14,7 +14,16 @@
       "contact": "Contatti"
     },
     "mobileMenuToggleAriaLabel": "Apri o chiudi il menu di navigazione",
-    "mobileNavAriaLabel": "Navigazione mobile"
+    "mobileNavAriaLabel": "Navigazione mobile",
+    "aboutModal": {
+      "title": "Due percorsi, una persona",
+      "subtitle": "Scegli quale storia vuoi scoprire per prima.",
+      "therapistTitle": "Terapeuta",
+      "therapistDescription": "Arte terapia, cromopuntura e percorsi di benessere integrato.",
+      "artistTitle": "Artista",
+      "artistDescription": "Pittura, ceramica e una vita dedicata alla ricerca del colore.",
+      "closeAriaLabel": "Chiudi la finestra di scelta"
+    }
   },
   "footer": {
     "profile": {
@@ -400,5 +409,46 @@
       "title": "Etica e trasparenza",
       "description": "Lavoro con confini professionali chiari, collaboro con i professionisti sanitari quando necessario e non faccio promesse irrealistiche."
     }
+  },
+  "artistBio": {
+    "eyebrow": "L'Artista",
+    "subheadline": "Pittrice, decoratrice ceramista e docente d’arte.",
+    "portraitSubtitle": "Nata a Montella (AV)",
+    "training": {
+      "title": "Formazione e apprendistato",
+      "paragraph1": "Sono nata a Montella, in provincia di Avellino, e ho studiato presso l’Istituto Statale d’Arte P. A. De Luca di Avellino, dove ho conseguito il diploma con ottimi risultati e la specializzazione in Arte del tessuto.",
+      "paragraph2": "Ho proseguito la formazione in bottega per approfondire la decorazione su ceramica: presso il laboratorio Porta Nuova di Novi Ligure ho studiato la tecnica del terzo fuoco, mentre a Napoli mi sono dedicata alla maiolica."
+    },
+    "exhibitions": {
+      "title": "Mostre ed esposizioni",
+      "description": "Le mie opere sono state presentate in diverse collettive, tra cui:"
+    },
+    "exhibitionCities": {
+      "0": "Milano",
+      "1": "Roma",
+      "2": "Parigi",
+      "3": "Madrid",
+      "4": "Manfredonia",
+      "5": "Palermo"
+    },
+    "criticism": {
+      "title": "Riconoscimenti e critica",
+      "paragraph1": "Della mia pittura hanno scritto il Prof. Bruno Rosada, il Prof. I. L. Montanè, il Dott. Roberto Chiavarini e il Prof. Gentilini. Le mie opere sono oggi custodite in collezioni private tra l’Italia e la Francia.",
+      "paragraph2": "Testi come L’Albo di Italia in Arte nel Mondo ed Europa in Arte, editi da Platinum ed Élite, raccolgono fotografie e testi critici dedicati ai miei dipinti."
+    },
+    "philosophy": {
+      "ariaLabel": "Ricerca pittorica",
+      "title": "La mia ricerca pittorica",
+      "quote": "La mia pittura è una continua ricerca attraverso il colore dell’emozionalità, un dialogo costante tra classicità e innovazione: sono certa che non tutto sia stato ancora rappresentato nell’arte. Al centro delle mie opere resta sempre fermo il concetto umano.",
+      "closing": "L’uomo ha bisogno di riscoprire l’emozionalità ed essere rieducato alla cultura dell’Arte."
+    },
+    "cta": {
+      "ariaLabel": "Scopri anche il percorso da terapeuta",
+      "title": "Vuoi scoprire anche il mio percorso come terapeuta?",
+      "description": "Arte terapia, cromopuntura e percorsi di benessere integrato: la stessa ricerca sul colore e sull’emozione, messa al servizio dell’ascolto.",
+      "therapistLink": "Scopri Carla Terapeuta",
+      "contactLink": "Contattami"
+    },
+    "portraitAlt": "Composizione astratta ispirata alla tavolozza dell'artista"
   }
 }
