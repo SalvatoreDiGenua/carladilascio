@@ -2,11 +2,13 @@ import { Component, computed, effect, inject, input } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { HlmBreadcrumbImports } from '@spartan-ng/helm/breadcrumb';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmCardImports } from '@spartan-ng/helm/card';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-method-page',
@@ -15,7 +17,9 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
     TranslocoPipe,
     HlmBreadcrumbImports,
     HlmButtonImports,
+    HlmCardImports,
     CtaBannerComponent,
+    RouterLink,
   ],
   template: `
     @if (method(); as m) {
@@ -89,38 +93,46 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 
         <!-- Sezione 1: Cosa fa il trattamento -->
         <section
-          class="mb-10 rounded-2xl border border-stone-200/80 bg-white/60 p-6 sm:p-8"
+          hlmCard
+          class="mb-10 border-stone-200/80 bg-white/60"
           aria-labelledby="heading-cosa-fa"
         >
-          <div class="flex items-center gap-3">
+          <div hlmCardHeader class="p-6 sm:p-8">
             <h2
+              hlmCardTitle
               id="heading-cosa-fa"
               class="text-2xl font-bold tracking-tight text-ink"
             >
               {{ 'method.section1.title' | transloco }}
             </h2>
           </div>
-          <p class="mt-4 text-base leading-relaxed text-ink-muted">
-            {{ m.treatmentExplanation | transloco }}
-          </p>
+          <div hlmCardContent class="px-6 pb-6 sm:px-8 sm:pb-8">
+            <p class="text-base leading-relaxed text-ink-muted">
+              {{ m.treatmentExplanation | transloco }}
+            </p>
+          </div>
         </section>
 
         <!-- Sezione 2: Come si approccia Carla -->
         <section
-          class="border-aqua/30 bg-aqua-light/40 mb-10 rounded-2xl border p-6 sm:p-8"
+          hlmCard
+          class="border-aqua/30 bg-aqua-light/40 mb-10"
           aria-labelledby="heading-approccio-carla"
         >
-          <div class="flex items-center gap-3">
+          <div hlmCardHeader class="p-6 sm:p-8">
             <h2
+              hlmCardTitle
               id="heading-approccio-carla"
               class="text-2xl font-bold tracking-tight text-ink"
             >
               {{ 'method.section2.title' | transloco }}
             </h2>
           </div>
-          <p class="mt-4 text-base leading-relaxed font-normal text-ink">
-            {{ m.carlaApproach | transloco }}
-          </p>
+          <div hlmCardContent class="px-6 pb-6 sm:px-8 sm:pb-8">
+            <p class="text-base leading-relaxed font-normal text-ink">
+              {{ m.carlaApproach | transloco }}
+            </p>
+          </div>
         </section>
 
         <!-- Sezione 3: Obiettivi del percorso -->
@@ -165,35 +177,53 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
         <div class="mb-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           <!-- Svolgimento -->
           <section
-            class="rounded-2xl border border-stone-200/80 bg-white/60 p-6"
+            hlmCard
+            class="border-stone-200/80 bg-white/60"
             aria-labelledby="heading-svolgimento"
           >
-            <h3 id="heading-svolgimento" class="text-lg font-bold text-ink">
-              {{ 'method.session.title' | transloco }}
-            </h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              {{ m.sessionFormat | transloco }}
-            </p>
+            <div hlmCardHeader class="p-6">
+              <h3
+                hlmCardTitle
+                id="heading-svolgimento"
+                class="text-lg font-bold text-ink"
+              >
+                {{ 'method.session.title' | transloco }}
+              </h3>
+            </div>
+            <div hlmCardContent class="px-6 pb-6">
+              <p class="text-sm leading-relaxed text-ink-muted">
+                {{ m.sessionFormat | transloco }}
+              </p>
+            </div>
           </section>
 
           <!-- Destinatari -->
           <section
-            class="rounded-2xl border border-stone-200/80 bg-white/60 p-6"
+            hlmCard
+            class="border-stone-200/80 bg-white/60"
             aria-labelledby="heading-destinatari"
           >
-            <h3 id="heading-destinatari" class="text-lg font-bold text-ink">
-              {{ 'method.audience.title' | transloco }}
-            </h3>
-            <ul class="mt-3 space-y-2 text-sm text-ink-muted">
-              @for (item of m.audience; track item) {
-                <li class="flex items-center gap-2">
-                  <span
-                    class="bg-aqua h-1.5 w-1.5 shrink-0 rounded-full"
-                  ></span>
-                  <span>{{ item | transloco }}</span>
-                </li>
-              }
-            </ul>
+            <div hlmCardHeader class="p-6">
+              <h3
+                hlmCardTitle
+                id="heading-destinatari"
+                class="text-lg font-bold text-ink"
+              >
+                {{ 'method.audience.title' | transloco }}
+              </h3>
+            </div>
+            <div hlmCardContent class="px-6 pb-6">
+              <ul class="space-y-2 text-sm text-ink-muted">
+                @for (item of m.audience; track item) {
+                  <li class="flex items-center gap-2">
+                    <span
+                      class="bg-aqua h-1.5 w-1.5 shrink-0 rounded-full"
+                    ></span>
+                    <span>{{ item | transloco }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
           </section>
         </div>
 
@@ -260,7 +290,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
             @for (other of otherMethods(); track other.slug) {
               <a
-                [link]="['/' + other.slug]"
+                [routerLink]="['/' + other.slug]"
                 class="group hover:border-aqua/50 flex flex-col justify-between rounded-xl border border-stone-200/80 bg-white/70 p-5 transition-all hover:shadow-sm"
               >
                 <div>

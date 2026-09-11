@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
@@ -8,7 +7,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
 @Component({
   selector: 'app-artist-bio',
-  imports: [RouterLink, TranslocoPipe, HlmButtonImports, CtaBannerComponent],
+  imports: [TranslocoPipe, HlmButtonImports, CtaBannerComponent],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
@@ -165,14 +164,15 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         [buttons]="[
           {
             label: ('artistBio.cta.therapistLink' | transloco),
-            route: '/chi-sono'
+            route: '/chi-sono',
           },
           {
             label: ('artistBio.cta.contactLink' | transloco),
             route: '/contatti',
             variant: 'outline',
-            className: 'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
-          }
+            className:
+              'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink',
+          },
         ]"
         sectionId="heading-cta-artist-bio"
       />
