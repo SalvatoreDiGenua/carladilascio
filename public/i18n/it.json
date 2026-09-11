@@ -1,10 +1,10 @@
 {
   "app": {
-    "skipLink": "Salta al contenuto principale"
+    "skipLink": "Vai al contenuto principale"
   },
   "header": {
-    "tagline": "Arte Terapia & Benessere Integrato",
-    "logoAriaLabel": "{{name}} - Torna alla Home",
+    "tagline": "Arte terapia e benessere integrato",
+    "logoAriaLabel": "{{name}} - Torna alla home",
     "nav": {
       "ariaLabel": "Navigazione principale",
       "home": "Home",
@@ -18,17 +18,17 @@
   },
   "footer": {
     "profile": {
-      "role": "Docente di Arte, Arte Terapeuta e operatrice in tecniche vibrazionali.",
-      "mission": "Percorsi di ascolto, benessere integrato e ricerca del proprio sé autentico ad Avellino e contesti dedicati."
+      "role": "Sono docente di arte, arte terapeuta e operatrice in tecniche vibrazionali.",
+      "mission": "Offro percorsi di ascolto, benessere integrato e ricerca del proprio sé autentico ad Avellino e in contesti dedicati."
     },
     "navigation": {
       "title": "Navigazione",
       "chromopuncture": "Cromopuntura",
-      "kinesiology": "Kinesiologia Emozionale",
-      "soundTherapy": "Suonoterapia Vibrazionale",
-      "artTherapy": "Arte Terapia",
+      "kinesiology": "Kinesiologia emozionale",
+      "soundTherapy": "Suonoterapia vibrazionale",
+      "artTherapy": "Arte terapia",
       "journeys": "Percorsi individuali e di gruppo",
-      "contact": "Contatti & Ricevimento"
+      "contact": "Contatti e ricevimento"
     },
     "contact": {
       "phoneLabel": "Telefono: ",
@@ -41,11 +41,11 @@
   "home": {
     "hero": {
       "ariaLabel": "Presentazione",
-      "badge": "Benessere Integrato & Tecniche Vibrazionali",
+      "badge": "Benessere integrato e tecniche vibrazionali",
       "ctaAbout": "Scopri chi sono",
       "ctaContact": "Contattami",
-      "illustrationAlt": "Composizione artistica astratta: forme organiche e armonia",
-      "cardSubtitle": "Studio ad Avellino & Percorsi dedicati"
+      "illustrationAlt": "Composizione artistica astratta con forme organiche e armoniose",
+      "cardSubtitle": "Ricevo ad Avellino e propongo percorsi dedicati"
     },
     "intro": {
       "eyebrow": "Uno spazio di ascolto"
@@ -53,158 +53,158 @@
     "about": {
       "eyebrowProfile": "Profilo professionale",
       "readMore": "Leggi la presentazione completa",
-      "eyebrowExperience": "Esperienza e Metodo",
+      "eyebrowExperience": "Esperienza e metodo",
       "title": "Un approccio integrato che accoglie la complessità della persona",
-      "description": "Dall’insegnamento delle arti visive all’esplorazione delle vibrazioni sonore e della cromopuntura, Carla Di Lascio unisce rigore di studio a una profonda delicatezza relazionale. Ogni incontro è pensato per disinnescare la fatica quotidiana e riscoprire risorse sopite.",
-      "individualTitle": "Percorsi Individuali",
-      "individualDescription": "Spazio intimo per elaborare ansia, stress e autostima.",
-      "groupsTitle": "Gruppi & Laboratori",
-      "groupsDescription": "Espressione condivisa, campane tibetane e laboratori tematici."
+      "description": "Dall’insegnamento delle arti visive all’esplorazione delle vibrazioni sonore e della cromopuntura, unisco il rigore dello studio a una profonda attenzione alla persona. Ogni incontro nasce per alleggerire la fatica quotidiana e aiutare a riscoprire risorse che spesso restano in secondo piano.",
+      "individualTitle": "Percorsi individuali",
+      "individualDescription": "Uno spazio riservato per lavorare su ansia, stress e autostima.",
+      "groupsTitle": "Gruppi e laboratori",
+      "groupsDescription": "Espressione condivisa, campane tibetane e laboratori dedicati a temi specifici."
     },
     "methods": {
-      "eyebrow": "Le Metodologie",
-      "title": "Quattro percorsi per il riequilibrio psicofisico",
-      "subtitle": "Strumenti non invasivi applicati in modo personalizzato o in piccoli gruppi.",
-      "detailsLink": "Dettagli e approccio"
+      "eyebrow": "Le metodologie",
+      "title": "Quattro percorsi per ritrovare il proprio equilibrio",
+      "subtitle": "Propongo strumenti non invasivi, adattati alla persona o al piccolo gruppo.",
+      "detailsLink": "Scopri l’approccio"
     },
     "principles": {
-      "eyebrow": "I Principi Guida",
+      "eyebrow": "I principi guida",
       "title": "Come lavoriamo insieme"
     },
     "journeys": {
-      "eyebrow": "Ambiti di Applicazione",
+      "eyebrow": "Ambiti di applicazione",
       "title": "Percorsi di lavoro e contesti operativi",
-      "cta": "Approfondisci tutti i formati dei percorsi"
+      "cta": "Scopri tutti i percorsi"
     },
     "quote": {
       "ariaLabel": "Riflessione evocativa"
     },
     "cta": {
       "title": "Parliamo del percorso più adatto alle tue esigenze",
-      "description": "Ogni persona affronta momenti di vita differenti. Contattami per chiarire dubbi o per concordare un primo colloquio su appuntamento.",
+      "description": "Ogni persona attraversa momenti diversi. Scrivimi per chiarire i tuoi dubbi o per fissare un primo colloquio su appuntamento.",
       "requestInfo": "Richiedi informazioni",
       "callLabel": "Chiama il {{phone}}"
     }
   },
   "about": {
-    "eyebrow": "Chi Sono",
-    "subheadline": "Docente di Arte, Arte Terapeuta e facilitatrice di benessere integrato.",
-    "portraitAlt": "Rappresentazione simbolica del profilo di Carla Di Lascio",
-    "portraitAddress": "Studio ad Avellino, Via Vasto 20",
+    "eyebrow": "Chi sono",
+    "subheadline": "Sono docente di arte, arte terapeuta e facilitatrice di benessere integrato.",
+    "portraitAlt": "Rappresentazione simbolica del mio profilo professionale",
+    "portraitAddress": "Ricevo ad Avellino, in Via Vasto 20",
     "journey": {
       "title": "Il mio percorso",
-      "paragraph1": "L’arte e l’insegnamento hanno sempre costituito il fulcro della mia ricerca. Nel tempo, osservando come le persone interagiscono con forme, colori e ritmi interiori, ho avvertito l’esigenza di ampliare lo sguardo verso discipline capaci di sostenere il benessere globale della persona.",
-      "paragraph2": "La specializzazione in Arte Terapia ha unito la mia formazione visiva con l’ascolto dei processi emotivi. Parallelamente, ho approfondito l’efficacia delle tecniche vibrazionali: la Suono Terapia con campane tibetane, la Cromopuntura con frequenze di luce, la meditazione guidata e la Kinesiologia emozionale."
+      "paragraph1": "L’arte e l’insegnamento hanno sempre costituito il fulcro della mia ricerca. Nel tempo, osservando come le persone interagiscono con forme, colori e ritmi interiori, ho sentito il bisogno di ampliare lo sguardo verso discipline capaci di sostenere il benessere globale della persona.",
+      "paragraph2": "La specializzazione in arte terapia ha unito la mia formazione visiva all’ascolto dei processi emotivi. Parallelamente, ho approfondito le tecniche vibrazionali: la suonoterapia con campane tibetane, la cromopuntura con frequenze di luce, la meditazione guidata e la kinesiologia emozionale."
     },
     "skills": {
       "title": "Competenze e ambiti di approfondimento"
     },
     "philosophy": {
       "title": "Filosofia di lavoro",
-      "paragraph": "Non esistono risposte preconfezionate o percorsi standard. Credo nell’accoglienza incondizionata, nel rispetto dei tempi personali e nella creazione di un’alleanza fondata sulla fiducia e sull’assenza di giudizio. Ogni tecnica è uno strumento per aiutare la persona a riconnettersi con la propria voce autentica."
+      "paragraph": "Non esistono risposte preconfezionate né percorsi standard. Credo nell’accoglienza, nel rispetto dei tempi personali e nella costruzione di un rapporto basato sulla fiducia e sull’assenza di giudizio. Ogni tecnica è uno strumento che può aiutare la persona a ritrovare la propria voce autentica."
     },
     "values": {
-      "eyebrow": "I Valori",
+      "eyebrow": "I valori",
       "title": "I pilastri del mio approccio"
     },
     "cta": {
       "ariaLabel": "Richiesta appuntamento",
-      "title": "Vuoi iniziare un percorso di ascolto o richiedere un chiarimento?",
-      "description": "Scrivimi o telefona per concordare un incontro presso lo studio di Avellino.",
-      "contactLink": "Vai ai Contatti",
+      "title": "Vuoi iniziare un percorso di ascolto o chiedermi qualcosa?",
+      "description": "Scrivimi o telefonami per concordare un incontro presso il mio studio di Avellino.",
+      "contactLink": "Vai ai contatti",
       "callLabel": "Chiama il {{phone}}"
     }
   },
   "contact": {
-    "eyebrow": "Contatti & Ricevimento",
-    "title": "Entra in Contatto",
+    "eyebrow": "Contatti e ricevimento",
+    "title": "Entra in contatto",
     "subheadline": "Per informazioni sui percorsi, appuntamenti nello studio di Avellino o progetti speciali.",
     "directContacts": {
-      "title": "Recapiti Diretti",
-      "description": "Puoi contattare Carla Di Lascio telefonicamente, via email o richiedere una disponibilità tramite il modulo.",
+      "title": "Recapiti diretti",
+      "description": "Puoi contattarmi telefonicamente, via email o chiedermi una disponibilità tramite il modulo.",
       "phoneLabel": "Telefono",
       "emailLabel": "Email",
       "studioLabel": "Studio"
     },
     "form": {
       "title": "Invia un messaggio",
-      "description": "Compila il modulo per richiedere informazioni preliminari. Riceverai un riscontro nel più breve tempo possibile.",
+      "description": "Compila il modulo per chiedermi informazioni preliminari. Ti risponderò appena possibile.",
       "successTitle": "Richiesta inviata con successo (simulazione demo)",
-      "successMessage": "Grazie per aver compilato il modulo. Questa è una simulazione front-end: per un contatto immediato ti invitiamo a telefonare al {{phone}}.",
-      "nameLabel": "Nome e Cognome",
+      "successMessage": "Grazie per aver compilato il modulo. Questa è una simulazione front-end: se vuoi contattarmi subito, puoi telefonare al {{phone}}.",
+      "nameLabel": "Nome e cognome",
       "namePlaceholder": "Il tuo nome e cognome",
       "nameError": "Il nome è obbligatorio.",
-      "emailLabel": "Indirizzo Email",
+      "emailLabel": "Indirizzo email",
       "emailPlaceholder": "nome@esempio.it",
       "emailError": "Inserisci un indirizzo email valido.",
       "messageLabel": "Messaggio o richiesta",
-      "messagePlaceholder": "Scrivi qui la tua richiesta o per quale percorso desideri informazioni...",
+      "messagePlaceholder": "Scrivi qui la tua richiesta o indicami il percorso che ti interessa...",
       "messageError": "Il messaggio è obbligatorio (almeno 10 caratteri).",
-      "privacyLabel": "Dichiaro di aver preso visione della nota informativa e acconsento al trattamento dei dati per la gestione di questo contatto.",
-      "privacyError": "È necessario esprimere il consenso per poter inviare la richiesta.",
-      "submit": "Invia Richiesta"
+      "privacyLabel": "Dichiaro di aver preso visione dell’informativa e acconsento al trattamento dei dati per la gestione di questo contatto.",
+      "privacyError": "Per inviare la richiesta, devi esprimere il consenso.",
+      "submit": "Invia richiesta"
     }
   },
   "journeys": {
     "eyebrow": "Modalità di lavoro",
-    "title": "I Percorsi",
-    "subheadline": "Soluzioni su misura per il singolo, percorsi in piccoli gruppi, laboratori esperienziali e collaborazioni dedicate.",
+    "title": "I percorsi",
+    "subheadline": "Propongo soluzioni su misura: percorsi individuali, piccoli gruppi, laboratori esperienziali e collaborazioni dedicate.",
     "optionLabel": "Opzione 0{{n}}",
-    "requestInfo": "Richiedi info",
+    "requestInfo": "Richiedi informazioni",
     "goalLabel": "Obiettivo generale",
     "formatLabel": "Formato e modalità",
     "detailsLabel": "Caratteristiche del percorso:",
     "healthcareIntegration": {
       "title": "Integrazione nei percorsi di cura",
-      "description": "Le metodologie non si sostituiscono mai all’intervento sanitario. Possono tuttavia affiancare i percorsi terapeutici concordati con medici specialisti, psicoterapeuti, neurologi e psichiatri, offrendo uno spazio protetto di ascolto, defaticamento sensoriale ed espressione artistica."
+      "description": "Le metodologie che propongo non sostituiscono l’intervento sanitario. Possono affiancare i percorsi concordati con medici specialisti, psicoterapeuti, neurologi e psichiatri, offrendo uno spazio protetto di ascolto, rilassamento ed espressione artistica."
     },
-    "finalCta": "Contatta Carla Di Lascio per maggiori informazioni",
+    "finalCta": "Contattami per maggiori informazioni",
     "individuali": {
-      "title": "Percorsi Individuali",
+      "title": "Percorsi individuali",
       "subtitle": "Un cammino su misura per le tue esigenze personali",
-      "description": "Uno spazio intimo e riservato in cui definire insieme gli obiettivi di benessere: dalla gestione dell’ansia al recupero delle proprie risorse creative, integrando le diverse metodologie secondo le necessità del momento.",
+      "description": "Ti offro uno spazio intimo e riservato in cui definire insieme gli obiettivi del percorso: dalla gestione dell’ansia al recupero delle risorse creative, integrando le diverse metodologie in base alle tue necessità.",
       "goal": "Ascolto profondo, consapevolezza dei propri bisogni e rilascio delle tensioni accumulate.",
-      "format": "Incontri personalizzati su appuntamento presso lo studio di Avellino.",
+      "format": "Incontri personalizzati su appuntamento presso il mio studio di Avellino.",
       "details": {
         "0": "Valutazione iniziale dello stato di benessere e degli obiettivi",
         "1": "Integrazione flessibile tra arte terapia, cromopuntura e suoni",
-        "2": "Rispetto rigoroso dei ritmi personali e totale assenza di giudizio"
+        "2": "Rispetto dei ritmi personali e assenza di giudizio"
       }
     },
     "gruppi": {
-      "title": "Piccoli Gruppi & Laboratori",
+      "title": "Piccoli gruppi e laboratori",
       "subtitle": "Condivisione, risonanza ed espressione comune",
-      "description": "Esperienze a numero chiuso dedicate a laboratori esperienziali di arte terapia, meditazione sonora e percorsi a tema per sperimentare la ricchezza del confronto e del sostegno reciproco.",
+      "description": "Propongo esperienze a numero chiuso: laboratori di arte terapia, meditazione sonora e percorsi a tema in cui sperimentare il confronto e il sostegno reciproco.",
       "goal": "Sviluppare empatia, riscoprire la creatività condivisa e rafforzare le capacità relazionali.",
-      "format": "Cicli di incontri o workshop tematici a piccoli gruppi.",
+      "format": "Cicli di incontri o workshop tematici per piccoli gruppi.",
       "details": {
-        "0": "Laboratori artistici su temi specifici (autostima, emozioni, cambiamento)",
+        "0": "Laboratori artistici su temi specifici, come autostima, emozioni e cambiamento",
         "1": "Sessioni di rilassamento armonico con campane tibetane",
-        "2": "Ambiente protetto, empatico e non giudicante"
+        "2": "Un ambiente protetto, empatico e non giudicante"
       }
     },
     "aziendeSociale": {
-      "title": "Contesti Speciali, Aziendali & Sociali",
+      "title": "Contesti speciali, aziendali e sociali",
       "subtitle": "Benessere integrato, empowerment e coesione",
-      "description": "Interventi progettati per team aziendali, organizzazioni, enti educativi e comunità per favorire il clima relazionale, prevenire il burn-out e stimolare il pensiero laterale attraverso l’arte.",
+      "description": "Progetto interventi per team aziendali, organizzazioni, enti educativi e comunità. L’obiettivo è favorire un buon clima relazionale, prevenire il burnout e stimolare il pensiero laterale attraverso l’arte.",
       "goal": "Sostenere il benessere organizzativo, la coesione di squadra e la creatività collettiva.",
-      "format": "Progetti modulari in sede o presso strutture dedicate, concordati su obiettivi specifici.",
+      "format": "Progetti modulari in sede o presso strutture dedicate, concordati sulla base di obiettivi specifici.",
       "details": {
-        "0": "Laboratori di espressione visiva per la coesione di gruppo",
-        "1": "Percorsi di gestione dello stress lavorativo e defaticamento mentale",
+        "0": "Laboratori di espressione visiva per la coesione del gruppo",
+        "1": "Percorsi di gestione dello stress lavorativo e recupero mentale",
         "2": "Metodologie adattate ai contesti sociali e di inclusione"
       }
     },
     "collaborazioniSanitarie": {
-      "title": "Collaborazione con Professionisti Sanitari",
+      "title": "Collaborazione con professionisti sanitari",
       "subtitle": "Integrazione e supporto interdisciplinare",
-      "description": "Disponibilità a collaborare con medici, psicologi, psichiatri e neurologi all’interno di percorsi multidisciplinari, dove le metodologie di benessere integrato affiancano i protocolli di cura prescritti.",
-      "goal": "Fornire un supporto complementare e non invasivo all’interno di percorsi di cura strutturati.",
+      "description": "Sono disponibile a collaborare con medici, psicologi, psichiatri e neurologi all’interno di percorsi multidisciplinari, nei quali le metodologie di benessere integrato affiancano i protocolli di cura prescritti.",
+      "goal": "Offrire un supporto complementare e non invasivo all’interno di percorsi di cura strutturati.",
       "format": "Raccordo continuativo con il team curante e rispetto del piano terapeutico principale.",
       "details": {
         "0": "Interventi di supporto per problematiche neurologiche e psichiatriche",
         "1": "Attività dolci di stimolazione sensoriale ed espressiva",
-        "2": "Comunicazione trasparente e confini professionali rigorosi"
+        "2": "Comunicazione trasparente e confini professionali chiari"
       }
     }
   },
@@ -214,14 +214,14 @@
     },
     "requestInfo": "Richiedi informazioni",
     "section1": {
-      "title": "Cosa fa il trattamento"
+      "title": "In cosa consiste"
     },
     "section2": {
-      "title": "Come Carla si approccia alla persona"
+      "title": "Come accompagno la persona"
     },
     "section3": {
       "title": "Possibili obiettivi del percorso",
-      "subtitle": "Il percorso è sempre personalizzato. Tra i benefici che può favorire:"
+      "subtitle": "Il percorso è sempre personalizzato. Tra i possibili benefici:"
     },
     "session": {
       "title": "Come si svolge un incontro"
@@ -234,8 +234,8 @@
     },
     "cta": {
       "ariaLabel": "Richiedi informazioni sul trattamento",
-      "title": "Vuoi approfondire come questo percorso può accompagnarti?",
-      "description": "Parliamo insieme delle tue esigenze per valutare la proposta più armonica e adatta al tuo momento presente.",
+      "title": "Vuoi capire se questo percorso fa per te?",
+      "description": "Parliamone insieme e valutiamo la proposta più adatta alle tue esigenze e al momento che stai vivendo.",
       "callLabel": "Chiama il {{phone}}"
     },
     "otherMethods": {
@@ -244,161 +244,161 @@
     }
   },
   "methodAvatar": {
-    "loadingAriaLabel": "Caricamento avatar 3D in corso…",
+    "loadingAriaLabel": "Caricamento dell’avatar 3D in corso…",
     "badgeLabel": "Avatar 3D",
-    "dragHint": "Avatar 3D Carla · Trascina per ruotare",
-    "ariaLabel": "Simulazione visiva tridimensionale di Carla durante il trattamento di {{treatment}}. Trascina per ruotare a 360 gradi."
+    "dragHint": "Il mio avatar 3D · Trascina per ruotare",
+    "ariaLabel": "Il mio avatar 3D durante il trattamento di {{treatment}}. Trascina per ruotarlo a 360 gradi."
   },
   "personalInfo": {
     "headline": "Ritrovare equilibrio attraverso arte, ascolto e consapevolezza",
-    "subheadline": "Percorsi di arte terapia, benessere integrato e tecniche vibrazionali per accompagnare la persona nella conoscenza di sé.",
+    "subheadline": "Propongo percorsi di arte terapia, benessere integrato e tecniche vibrazionali per accompagnarti nella conoscenza di te.",
     "roles": {
-      "0": "Docente di Arte specializzata in Arte Terapia",
-      "1": "Operatrice in Suono Terapia vibrazionale con campane tibetane",
-      "2": "Esperta in Cromopuntura e frequenze di luce",
-      "3": "Esperta in tecniche di meditazione guidata",
-      "4": "Esperta in Kinesiologia emozionale"
+      "0": "Sono docente di arte specializzata in arte terapia",
+      "1": "Sono operatrice in suonoterapia vibrazionale con campane tibetane",
+      "2": "Sono esperta in cromopuntura e frequenze di luce",
+      "3": "Sono esperta in tecniche di meditazione guidata",
+      "4": "Sono esperta in kinesiologia emozionale"
     },
     "specializations": {
-      "0": "Arte Terapia",
+      "0": "Arte terapia",
       "1": "Cromopuntura",
-      "2": "Suonoterapia Vibrazionale",
-      "3": "Kinesiologia Emozionale",
-      "4": "Meditazione Guidata"
+      "2": "Suonoterapia vibrazionale",
+      "3": "Kinesiologia emozionale",
+      "4": "Meditazione guidata"
     },
-    "availability": "Si riceve esclusivamente su appuntamento.",
-    "quote": "Ogni persona possiede un linguaggio interiore. A volte, per ascoltarlo, servono colori, suoni, movimento e spazio.",
+    "availability": "Ricevo esclusivamente su appuntamento.",
+    "quote": "Ogni persona ha un linguaggio interiore. A volte, per ascoltarlo, servono colori, suoni, movimento e spazio.",
     "introText": {
-      "0": "A volte dentro di noi si accumulano ferite silenziose. Se non vengono portate alla consapevolezza, finiscono per guidare le nostre scelte, alimentando uno stato di stress continuo.",
-      "1": "Le metodologie utilizzate nascono da anni di studio, insegnamento e ricerca sul campo: strumenti dolci e non invasivi pensati per migliorare la qualità della vita, favorire lo sviluppo personale e accompagnare ogni persona nel riconoscimento del proprio sé più autentico."
+      "0": "A volte dentro di noi si accumulano ferite silenziose. Se non le ascoltiamo, possono influenzare le nostre scelte e alimentare uno stato di stress continuo.",
+      "1": "Le metodologie che utilizzo nascono da anni di studio, insegnamento e ricerca sul campo. Sono strumenti delicati e non invasivi, pensati per sostenere la qualità della vita, la crescita personale e il riconoscimento del proprio sé autentico."
     },
-    "medicalDisclaimer": "Nota informativa: Le attività, i percorsi e le metodologie presentate in questo sito riguardano il benessere integrato, la crescita personale e l’educazione all’ascolto di sé. Non costituiscono atti medici, terapie sanitarie né diagnosi, e non sostituiscono in alcun modo il parere, le cure o le prescrizioni di medici, psicoterapeuti o altri professionisti sanitari abilitati.",
+    "medicalDisclaimer": "Nota informativa: le attività, i percorsi e le metodologie presentate in questo sito riguardano il benessere integrato, la crescita personale e l’educazione all’ascolto di sé. Non costituiscono atti medici, terapie sanitarie né diagnosi e non sostituiscono in alcun modo il parere, le cure o le prescrizioni di medici, psicoterapeuti o altri professionisti sanitari abilitati.",
     "formNotice": ""
   },
   "methods": {
     "cromopuntura": {
       "title": "Cromopuntura",
-      "shortDescription": "Applicazione non invasiva di fasci di luce colorata su punti e zone cutanee per stimolare il riequilibrio energetico e fisico.",
-      "treatmentExplanation": "La cromopuntura è una tecnica vibrazionale dolce che trasmette specifiche lunghezze d’onda cromatiche attraverso una penna ottica su punti precisi della pelle, simili a quelli usati nelle discipline orientali. La luce agisce come stimolo informativo per sostenere i processi di autoregolazione dell’organismo, senza aghi e senza dolore.",
-      "carlaApproach": "Carla inizia ogni seduta accogliendo lo stato di affaticamento e le tensioni corporee della persona. Non applica schemi rigidi: individua i punti da trattare attraverso un ascolto attento del momento presente, accompagnando la persona in una pausa protetta dove la luce favorisce il rilassamento del sistema nervoso e la distensione dei sovraccarichi emotivi.",
-      "description": "Un metodo delicato e mirato, utile per alleggerire gli stati di tensione psicofisica, migliorare la qualità del riposo e favorire una rinnovata sensazione di armonia corporea.",
+      "shortDescription": "Applicazione non invasiva di luce colorata su punti e zone della pelle, proposta per accompagnare il rilassamento e il riequilibrio percepito.",
+      "treatmentExplanation": "La cromopuntura è una tecnica vibrazionale delicata che utilizza una penna ottica per proiettare specifiche lunghezze d’onda su punti della pelle. Non prevede aghi e non dovrebbe provocare dolore.",
+      "carlaApproach": "Inizio ogni seduta ascoltando come stai e raccogliendo le sensazioni di affaticamento o tensione presenti nel corpo. Non applico schemi rigidi: individuo i punti da trattare partendo dal momento che stai vivendo e creo una pausa protetta in cui la luce può accompagnare il rilassamento.",
+      "description": "Un metodo delicato e mirato per alleggerire le tensioni psicofisiche, migliorare la qualità del riposo e ritrovare una maggiore armonia nel corpo.",
       "goals": {
-        "0": "Sostenere la riduzione dello stress e della stanchezza cronica",
+        "0": "Sostenere la riduzione dello stress e della stanchezza",
         "1": "Favorire un ritmo sonno-veglia più regolare",
-        "2": "Riequilibrarsi durante momenti di transizione o sovraccarico emotivo",
-        "3": "Riconnettersi con la percezione serena del proprio corpo"
+        "2": "Ritrovare equilibrio nei momenti di cambiamento o sovraccarico emotivo",
+        "3": "Riconnettersi con una percezione più serena del proprio corpo"
       },
-      "sessionFormat": "La seduta si svolge in un ambiente silenzioso e raccolto. La persona rimane comodamente distesa e vestita, mentre la penna cromatica viene appoggiata con delicatezza sui punti selezionati.",
+      "sessionFormat": "La seduta si svolge in un ambiente silenzioso e raccolto. Resti comodamente disteso e vestito, mentre appoggio con delicatezza la penna cromatica sui punti selezionati.",
       "audience": {
         "0": "Persone che attraversano periodi di forte stress o ansia",
-        "1": "Chi cerca un approccio di benessere dolce e privo di invasività",
-        "2": "Adulti, ragazzi e anziani sensibili ai trattamenti convenzionali"
+        "1": "Chi cerca un approccio di benessere delicato e non invasivo",
+        "2": "Adulti, ragazzi e anziani interessati a sperimentare un approccio complementare"
       },
-      "cautions": "La cromopuntura non sostituisce trattamenti medici o fisioterapici. In presenza di patologie conclamate, opera esclusivamente come supporto al benessere soggettivo."
+      "cautions": "La cromopuntura non sostituisce trattamenti medici o fisioterapici. In presenza di patologie, la propongo esclusivamente come supporto al benessere percepito."
     },
     "kinesiologiaEmozionale": {
-      "title": "Kinesiologia Emozionale",
-      "shortDescription": "Valutazione della risposta neuromuscolare per individuare e sciogliere blocchi emotivi e tensioni memorizzate nel corpo.",
-      "treatmentExplanation": "La kinesiologia emozionale utilizza il test muscolare di precisione come biofeedback naturale. Quando una persona vive uno stress prolungato o un’emozione non espressa, il sistema muscolare riflette questo sovraccarico con una temporanea perdita di tono. Il test permette di mappare i punti di attrito emotivo memorizzati nella fisiologia.",
-      "carlaApproach": "Carla adopera il test muscolare come un canale di dialogo rispettoso, senza giudizio e senza forzature. Aiuta la persona a dare un nome chiaro alle ferite silenziose o ai condizionamenti del passato che continuano a generare ansia o blocchi relazionali, guidando poi specifiche stimolazioni per disinnescare la carica emotiva associata.",
-      "description": "Uno strumento efficace per comprendere l’origine di comportamenti ripetitivi o difficoltà relazionali, trasformando la consapevolezza corporea in una risorsa di chiarificazione interiore.",
+      "title": "Kinesiologia emozionale",
+      "shortDescription": "Uso della risposta neuromuscolare come strumento di ascolto per esplorare tensioni e vissuti emotivi.",
+      "treatmentExplanation": "La kinesiologia emozionale utilizza il test muscolare di precisione come strumento di biofeedback. Il test può aiutare a esplorare le aree di stress che la persona riconosce nel proprio vissuto, senza sostituire una valutazione clinica.",
+      "carlaApproach": "Uso il test muscolare come uno strumento di dialogo rispettoso, senza giudizio e senza forzature. Aiuto la persona a dare un nome alle esperienze o ai condizionamenti che continuano a generare ansia o difficoltà relazionali, accompagnandola con tecniche non invasive.",
+      "description": "Uno strumento per osservare comportamenti ricorrenti e difficoltà relazionali, trasformando una maggiore consapevolezza del corpo in un’occasione di chiarezza interiore.",
       "goals": {
-        "0": "Riconoscere e disinnescare schemi reattivi legati a vecchie ferite",
-        "1": "Migliorare la gestione dell’ansia e della sicurezza personale",
-        "2": "Superare situazioni di stallo decisionale o relazionale",
-        "3": "Sviluppare maggiore chiarezza e coerenza tra corpo ed emozioni"
+        "0": "Riconoscere schemi reattivi legati a esperienze passate",
+        "1": "Migliorare la gestione dell’ansia e la sicurezza personale",
+        "2": "Esplorare situazioni di stallo decisionale o relazionale",
+        "3": "Sviluppare maggiore chiarezza nel rapporto tra corpo ed emozioni"
       },
-      "sessionFormat": "Seduta individuale di ascolto e test muscolare dolce (generalmente sul braccio). Si individuano i fattori di stress e si applicano tecniche di riequilibrio non invasive.",
+      "sessionFormat": "La seduta è individuale e comprende un momento di ascolto e un test muscolare delicato, generalmente sul braccio. Esploriamo i fattori di stress e utilizziamo tecniche di riequilibrio non invasive.",
       "audience": {
         "0": "Persone che sentono di ripetere schemi limitanti nelle relazioni o nel lavoro",
-        "1": "Chi avverte somatizzazioni fisiche legate a tensioni emotive",
-        "2": "Chiunque desideri approfondire la conoscenza autentica di sé"
+        "1": "Chi avverte tensioni fisiche associate a vissuti emotivi",
+        "2": "Chi desidera approfondire la conoscenza di sé"
       },
-      "cautions": "Non si tratta di una psicoterapia né di una diagnosi psichiatrica. Nei percorsi con problematiche cliniche, si lavora in raccordo con i sanitari di riferimento."
+      "cautions": "Non è una psicoterapia né una diagnosi psichiatrica. In presenza di problematiche cliniche, lavoro in raccordo con i sanitari di riferimento."
     },
     "suonoterapiaVibrazionale": {
-      "title": "Suonoterapia Vibrazionale",
-      "shortDescription": "Trattamento acustico e frequenziale con campane tibetane per distendere il sistema nervoso e favorire la meditazione profonda.",
-      "treatmentExplanation": "La suonoterapia vibrazionale impiega i toni armonici e le oscillazioni fisiche prodotte dalle campane tibetane e da strumenti accordati. Le onde sonore si propagano attraverso i liquidi e i tessuti corporei, inducendo un rapido rallentamento delle frequenze cerebrali verso ritmi alfa e theta, propri degli stati meditativi rigenerativi.",
-      "carlaApproach": "Grazie alla sua esperienza nelle tecniche vibrazionali e nella meditazione guidata, Carla orchestra i suoni calibrando l’intensità e la vicinanza degli strumenti in base alla sensibilità di chi riceve. Crea un ambiente protetto e accogliente nel quale la persona può abbandonare le difese quotidiane e lasciarsi cullare dalla risonanza acustica.",
-      "description": "Un bagno di vibrazioni che dissolve le rigidità muscolari e placa il chiacchiericcio mentale, risvegliando un senso spontaneo di centratura e pace interiore.",
+      "title": "Suonoterapia vibrazionale",
+      "shortDescription": "Esperienza sonora con campane tibetane e strumenti armonici per favorire il rilassamento e la meditazione.",
+      "treatmentExplanation": "La suonoterapia vibrazionale utilizza i toni armonici e le vibrazioni delle campane tibetane e di altri strumenti accordati. L’ascolto può aiutare a rallentare il ritmo e a creare le condizioni per un’esperienza di rilassamento e meditazione.",
+      "carlaApproach": "Grazie alla mia esperienza nelle tecniche vibrazionali e nella meditazione guidata, orquestro i suoni calibrando l’intensità e la vicinanza degli strumenti in base alla sensibilità di chi riceve. Creo un ambiente protetto in cui puoi lasciare per un po’ da parte le tensioni della giornata e ascoltare la risonanza dei suoni.",
+      "description": "Un’esperienza di vibrazioni e ascolto per lasciare andare le tensioni e ritrovare un senso di centratura e calma.",
       "goals": {
-        "0": "Placare l’iperattività mentale e l’ansia acuta",
-        "1": "Sciogliere contratture e tensioni fisiche diffuse",
-        "2": "Sperimentare stati di rilassamento e meditazione profonda",
-        "3": "Favorire un recupero energetico rigenerante"
+        "0": "Ridurre l’iperattività mentale e la tensione",
+        "1": "Favorire il rilassamento muscolare",
+        "2": "Sperimentare momenti di rilassamento e meditazione",
+        "3": "Ritagliarsi uno spazio rigenerante"
       },
-      "sessionFormat": "La persona si accomoda distesa su un lettino o materassino. Le campane vengono suonate nello spazio circostante e, dove opportuno, posizionate con delicatezza sul corpo vestito.",
+      "sessionFormat": "Ti accomodi disteso su un lettino o su un materassino. Suono le campane nello spazio circostante e, quando opportuno, le appoggio con delicatezza sul corpo vestito.",
       "audience": {
-        "0": "Chi fatica a staccare la mente e soffre di ritmi frenetici",
-        "1": "Persone desiderose di sperimentare la meditazione sonora",
+        "0": "Chi fatica a staccare la mente e vive ritmi frenetici",
+        "1": "Persone che desiderano sperimentare la meditazione sonora",
         "2": "Piccoli gruppi in cerca di un’esperienza collettiva distensiva"
       },
-      "cautions": "Non è raccomandata in caso di portatori di pacemaker, epilessia grave non controllata o nelle prime settimane di gravidanza senza previo parere medico."
+      "cautions": "Prima di partecipare, chiedi un parere medico se hai un pacemaker, soffri di epilessia grave non controllata o sei nelle prime settimane di gravidanza."
     },
     "arteTerapia": {
-      "title": "Arte Terapia",
-      "shortDescription": "Percorso espressivo con linguaggi visivi e materici per dare forma all’interiorità, elaborare emozioni e rafforzare l’autostima.",
-      "treatmentExplanation": "L’arte terapia sfrutta il potenziale comunicativo di colori, pittura, disegno, argilla e collage come canali di espressione pre-verbale. Permette di proiettare all’esterno sentimenti, conflitti o vissuti complessi che spesso non trovano parole adeguate per essere descritti o compresi.",
-      "carlaApproach": "Da docente di arte e specialista in arte terapia, Carla non si concentra sull’abilità tecnica o sul giudizio estetico del manufatto. Accompagna la persona o il gruppo con rispetto, offrendo stimoli visivi e materiali adatti a liberare l’immaginazione. L’opera creata diventa uno specchio da osservare insieme, senza interpretazioni precostituite ma valorizzando il significato che la persona stessa vi attribuisce.",
-      "description": "Uno spazio protetto di sperimentazione creativa in cui ritrovare fiducia nelle proprie risorse, favorire la resilienza e consolidare un’autostima autentica.",
+      "title": "Arte terapia",
+      "shortDescription": "Percorso espressivo con colori, materiali e immagini per dare forma a ciò che senti, elaborare emozioni e rafforzare l’autostima.",
+      "treatmentExplanation": "L’arte terapia utilizza colori, pittura, disegno, argilla e collage come canali di espressione. Può aiutare a portare all’esterno sentimenti, conflitti o vissuti complessi che non sempre è facile raccontare a parole.",
+      "carlaApproach": "Come docente di arte e specialista in arte terapia, non mi concentro sull’abilità tecnica né sul giudizio estetico del manufatto. Accompagno la persona o il gruppo con rispetto, offrendo stimoli e materiali che aiutino a liberare l’immaginazione. Osserviamo insieme l’opera senza interpretazioni precostituite, dando valore al significato che tu stesso o tu stessa le attribuisci.",
+      "description": "Uno spazio protetto in cui sperimentare la creatività, ritrovare fiducia nelle proprie risorse e rafforzare un’autostima autentica.",
       "goals": {
         "0": "Rafforzare l’autostima e la fiducia nelle proprie capacità creative",
-        "1": "Elaborare e dare forma a emozioni difficili (ansia, dolore, cambiamento)",
-        "2": "Esplorare nuove prospettive di fronte a difficoltà relazionali",
-        "3": "Favorire processi di inclusione, condivisione e crescita personale"
+        "1": "Dare forma a emozioni difficili, come ansia, dolore o cambiamento",
+        "2": "Esplorare nuove prospettive davanti alle difficoltà relazionali",
+        "3": "Favorire inclusione, condivisione e crescita personale"
       },
-      "sessionFormat": "Incontri individuali o laboratori di gruppo in cui si alternano momenti di accoglienza, produzione artistica libera o guidata, e riflessione condivisa.",
+      "sessionFormat": "Negli incontri individuali o nei laboratori di gruppo alterniamo accoglienza, produzione artistica libera o guidata e un momento di riflessione condivisa.",
       "audience": {
-        "0": "Persone di ogni età (non è richiesta alcuna competenza artistica)",
-        "1": "Piccoli gruppi, contesti scolastici ed educativi",
+        "0": "Persone di ogni età: non è richiesta alcuna competenza artistica",
+        "1": "Piccoli gruppi e contesti scolastici ed educativi",
         "2": "Ambienti aziendali e sociali per percorsi di team building ed empowerment"
       },
-      "cautions": "L’arte terapia non sostituisce la psicoterapia clinica; in ambiti terapeutici si inserisce come attività complementare in accordo con gli specialisti di cura."
+      "cautions": "L’arte terapia non sostituisce la psicoterapia clinica. In ambiti terapeutici può inserirsi come attività complementare, in accordo con gli specialisti di riferimento."
     }
   },
   "approachPrinciples": {
     "attentiveListening": {
-      "title": "Ascolto Attento",
-      "description": "Ogni persona porta con sé una storia unica. L’ascolto privo di fretta è il primo strumento per comprendere bisogni reali e sensibilità."
+      "title": "Ascolto attento",
+      "description": "Ogni persona porta con sé una storia unica. Mi prendo il tempo necessario per ascoltare i bisogni reali e la sensibilità di chi ho davanti."
     },
     "respectForIndividualTiming": {
-      "title": "Rispetto dei Tempi Individuali",
-      "description": "Nessuna forzatura. Il percorso procede alla velocità necessaria per metabolizzare ogni passaggio con serenità."
+      "title": "Rispetto dei tempi individuali",
+      "description": "Non forzo i passaggi. Il percorso procede con il ritmo necessario per affrontare ogni fase con serenità."
     },
     "bodyEmotionalAwareness": {
-      "title": "Consapevolezza Corporea ed Emotiva",
-      "description": "Imparare a riconoscere i segnali del corpo e le emozioni permette di disinnescare reazioni automatiche di stress."
+      "title": "Consapevolezza corporea ed emotiva",
+      "description": "Imparare a riconoscere i segnali del corpo e le emozioni può aiutare a comprendere meglio le proprie reazioni allo stress."
     },
     "creativityAsResource": {
-      "title": "Creatività come Risorsa",
-      "description": "L’atto creativo apre strade inaspettate dove il pensiero razionale trova ostacoli o ripetizioni."
+      "title": "Creatività come risorsa",
+      "description": "L’espressione creativa può aprire strade nuove quando il pensiero razionale si trova davanti a un ostacolo."
     },
     "multidisciplinaryIntegration": {
-      "title": "Integrazione Multidisciplinare",
-      "description": "Corpo, suono, colore e parola lavorano insieme per offrire un’esperienza equilibrata e completa."
+      "title": "Integrazione multidisciplinare",
+      "description": "Integro corpo, suono, colore e parola per costruire un’esperienza equilibrata e completa."
     },
     "nonJudgment": {
-      "title": "Assenza di Giudizio",
-      "description": "Uno spazio protetto in cui ogni espressione, dubbio o emozione viene accolto con dignità e delicatezza."
+      "title": "Assenza di giudizio",
+      "description": "Offro uno spazio protetto in cui ogni espressione, dubbio o emozione possa essere accolto con rispetto."
     }
   },
   "pillars": {
     "continuousTraining": {
-      "title": "Formazione Continua",
-      "description": "Anni di studio nell’insegnamento artistico e nella specializzazione in arte terapia e tecniche vibrazionali."
+      "title": "Formazione continua",
+      "description": "Continuo a formarmi nell’insegnamento artistico, nell’arte terapia e nelle tecniche vibrazionali."
     },
     "gentleNonInvasivePractices": {
-      "title": "Pratiche Dolci e Non Invasive",
-      "description": "Metodologie delicate che rispettano l’integrità fisica e psichica di chi vi si accosta."
+      "title": "Pratiche dolci e non invasive",
+      "description": "Propongo metodologie delicate che rispettano l’integrità fisica e psicologica di chi si rivolge a me."
     },
     "personCentered": {
-      "title": "Centralità della Persona",
-      "description": "Nessun protocollo standardizzato: ogni incontro risponde alla situazione contingente e agli obiettivi concordati."
+      "title": "Centralità della persona",
+      "description": "Non applico un protocollo uguale per tutti: ogni incontro parte dalla situazione e dagli obiettivi concordati."
     },
     "ethicsTransparency": {
-      "title": "Etica e Trasparenza",
-      "description": "Confini deontologici chiari, collaborazione con la medicina ufficiale e nessuna falsa promessa."
+      "title": "Etica e trasparenza",
+      "description": "Lavoro con confini professionali chiari, collaboro con i professionisti sanitari quando necessario e non faccio promesse irrealistiche."
     }
   }
 }
