@@ -71,7 +71,7 @@ import { RouterLink } from '@angular/router';
                 {{ m.shortDescription | transloco }}
               </p>
               <div class="mt-6 flex flex-wrap gap-3">
-                <a hlmBtn size="lg" link="/contatti" class="px-5 py-2.5">
+                <a hlmBtn size="lg" routerLink="/contatti" class="px-5 py-2.5">
                   {{ 'method.requestInfo' | transloco }}
                 </a>
               </div>
