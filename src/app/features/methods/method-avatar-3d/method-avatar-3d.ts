@@ -12,6 +12,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideUserRound } from '@ng-icons/lucide';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 import {
@@ -23,10 +25,11 @@ import {
 
 @Component({
   selector: 'app-method-avatar-3d',
+  providers: [provideIcons({ lucideUserRound })],
   host: {
     class: 'block h-full min-h-[380px] w-full',
   },
-  imports: [TranslocoPipe],
+  imports: [NgIcon, TranslocoPipe],
   template: `
     <div
       class="relative h-full min-h-[380px] w-full overflow-hidden rounded-2xl"
@@ -40,15 +43,11 @@ import {
         >
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="flex flex-col items-center gap-3 opacity-40">
-              <svg
-                class="h-16 w-16 text-current"
-                viewBox="0 0 64 64"
-                fill="currentColor"
+              <ng-icon
+                name="lucideUserRound"
+                class="size-16 text-current"
                 aria-hidden="true"
-              >
-                <circle cx="32" cy="18" r="10" />
-                <ellipse cx="32" cy="46" rx="16" ry="14" />
-              </svg>
+              />
 
               <span class="text-xs font-medium tracking-wider uppercase">
                 {{ 'methodAvatar.badgeLabel' | transloco }}

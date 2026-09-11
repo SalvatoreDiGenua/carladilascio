@@ -7,6 +7,8 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideChevronDown, lucideMenu, lucideX } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
@@ -15,10 +17,12 @@ import { SITE_CONTENT } from '../../core/data/site-content';
 
 @Component({
   selector: 'app-site-header',
+  providers: [provideIcons({ lucideChevronDown, lucideMenu, lucideX })],
   imports: [
     RouterLink,
     RouterLinkActive,
     TranslocoPipe,
+    NgIcon,
     HlmMenubarImports,
     HlmDropdownMenuImports,
     HlmButtonImports,
@@ -76,20 +80,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               "
             >
               <span>{{ 'header.nav.about' | transloco }}</span>
-              <svg
-                class="size-3.5 opacity-60"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+              <ng-icon name="lucideChevronDown" class="size-3.5 opacity-60" aria-hidden="true" />
             </button>
           </div>
 
@@ -161,28 +152,11 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           class="text-ink hover:bg-stone-200/50 md:hidden"
           [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
         >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            @if (isMobileMenuOpen()) {
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            } @else {
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            }
-          </svg>
+          @if (isMobileMenuOpen()) {
+            <ng-icon name="lucideX" class="size-6" aria-hidden="true" />
+          } @else {
+            <ng-icon name="lucideMenu" class="size-6" aria-hidden="true" />
+          }
         </button>
       </div>
 

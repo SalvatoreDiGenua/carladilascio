@@ -1,4 +1,10 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  lucideCheck,
+  lucideChevronRight,
+  lucideInfo,
+} from '@ng-icons/lucide';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { HlmBreadcrumbImports } from '@spartan-ng/helm/breadcrumb';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
@@ -12,9 +18,11 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-method-page',
+  providers: [provideIcons({ lucideCheck, lucideChevronRight, lucideInfo })],
   imports: [
     MethodAvatar3dComponent,
     TranslocoPipe,
+    NgIcon,
     HlmBreadcrumbImports,
     HlmButtonImports,
     HlmCardImports,
@@ -151,20 +159,11 @@ import { RouterLink } from '@angular/router';
               <li
                 class="flex items-start gap-3 rounded-xl border border-stone-200/70 bg-white/50 p-4"
               >
-                <svg
-                  class="text-aqua mt-0.5 h-5 w-5 shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2.5"
+                <ng-icon
+                  name="lucideCheck"
+                  class="text-aqua mt-0.5 size-5 shrink-0"
                   aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+                />
                 <span class="text-sm font-medium text-ink">{{
                   goal | transloco
                 }}</span>
@@ -233,20 +232,11 @@ import { RouterLink } from '@angular/router';
           aria-labelledby="heading-avvertenze"
         >
           <div class="flex items-center gap-2 font-semibold">
-            <svg
-              class="h-5 w-5 shrink-0 text-amber-700"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
+            <ng-icon
+              name="lucideInfo"
+              class="size-5 shrink-0 text-amber-700"
               aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+            />
             <h3 id="heading-avvertenze" class="text-sm font-semibold">
               {{ 'method.cautions.title' | transloco }}
             </h3>
@@ -307,20 +297,11 @@ import { RouterLink } from '@angular/router';
                   class="text-aqua mt-3 inline-flex items-center gap-1 text-xs font-semibold"
                 >
                   {{ 'method.otherMethods.discoverMore' | transloco }}
-                  <svg
-                    class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
+                  <ng-icon
+                    name="lucideChevronRight"
+                    class="size-3.5 transition-transform group-hover:translate-x-0.5"
                     aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                  />
                 </span>
               </a>
             }
