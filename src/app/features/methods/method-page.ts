@@ -1,10 +1,6 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import {
-  lucideCheck,
-  lucideChevronRight,
-  lucideInfo,
-} from '@ng-icons/lucide';
+import { lucideCheck, lucideChevronRight, lucideInfo } from '@ng-icons/lucide';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { HlmBreadcrumbImports } from '@spartan-ng/helm/breadcrumb';
 import { HlmButtonImports } from '@spartan-ng/helm/button';

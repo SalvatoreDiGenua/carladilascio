@@ -38,7 +38,7 @@ import { Seo } from '../../core/seo/seo';
           >
             <div
               hlmCardHeader
-              class="flex flex-col justify-between gap-4 p-6 md:flex-row md:items-start sm:p-10"
+              class="flex flex-col justify-between gap-4 p-6 sm:p-10 md:flex-row md:items-start"
             >
               <div>
                 <span
@@ -65,7 +65,7 @@ import { Seo } from '../../core/seo/seo';
 
             <div hlmCardContent class="px-6 pb-6 sm:px-10 sm:pb-10">
               <p class="text-base leading-relaxed text-ink-muted">
-              {{ journey.description | transloco }}
+                {{ journey.description | transloco }}
               </p>
 
               <div
@@ -74,7 +74,9 @@ import { Seo } from '../../core/seo/seo';
                 <div
                   class="rounded-xl border border-stone-200/60 bg-cream/40 p-4"
                 >
-                  <h3 class="text-xs font-bold tracking-wider text-ink uppercase">
+                  <h3
+                    class="text-xs font-bold tracking-wider text-ink uppercase"
+                  >
                     {{ 'journeys.goalLabel' | transloco }}
                   </h3>
                   <p class="mt-1 text-sm text-ink-muted">
@@ -85,7 +87,9 @@ import { Seo } from '../../core/seo/seo';
                 <div
                   class="rounded-xl border border-stone-200/60 bg-cream/40 p-4"
                 >
-                  <h3 class="text-xs font-bold tracking-wider text-ink uppercase">
+                  <h3
+                    class="text-xs font-bold tracking-wider text-ink uppercase"
+                  >
                     {{ 'journeys.formatLabel' | transloco }}
                   </h3>
                   <p class="mt-1 text-sm text-ink-muted">
@@ -121,7 +125,11 @@ import { Seo } from '../../core/seo/seo';
         aria-labelledby="heading-collaborazione"
       >
         <div hlmCardHeader class="p-6 sm:p-8">
-          <h2 hlmCardTitle id="heading-collaborazione" class="text-lg font-bold text-ink">
+          <h2
+            hlmCardTitle
+            id="heading-collaborazione"
+            class="text-lg font-bold text-ink"
+          >
             {{ 'journeys.healthcareIntegration.title' | transloco }}
           </h2>
           <p hlmCardDescription class="mt-2 leading-relaxed text-ink-muted">

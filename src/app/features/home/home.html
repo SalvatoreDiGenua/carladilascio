@@ -36,11 +36,6 @@
     <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
       <!-- Testi Hero -->
       <div class="lg:col-span-7">
-        <div
-          class="border-aqua/30 bg-aqua-light/50 text-aqua inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
-        >
-          <span>{{ 'home.hero.badge' | transloco }}</span>
-        </div>
         <h1
           class="mt-4 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl lg:leading-tight"
         >
@@ -55,7 +50,7 @@
             size="lg"
             type="button"
             (click)="openAboutMenu()"
-            class="px-6 py-3.5 cursor-pointer"
+            class="cursor-pointer px-6 py-3.5"
           >
             {{ 'home.hero.ctaAbout' | transloco }}
           </button>
@@ -467,12 +462,7 @@
   </div>
 
   <div class="mt-8 text-center">
-    <a
-      hlmBtn
-      variant="outline"
-      routerLink="/percorsi"
-      class="px-6 py-3"
-    >
+    <a hlmBtn variant="outline" routerLink="/percorsi" class="px-6 py-3">
       {{ 'home.journeys.cta' | transloco }}
       <svg
         class="text-aqua h-4 w-4"
@@ -520,14 +510,17 @@
   [buttons]="[
     {
       label: ('home.cta.requestInfo' | transloco),
-      route: '/contatti'
+      route: '/contatti',
     },
     {
-      label: ('home.cta.callLabel' | transloco: { phone: content.personalInfo.phone }),
+      label:
+        ('home.cta.callLabel'
+        | transloco: { phone: content.personalInfo.phone }),
       href: 'tel:' + content.personalInfo.phoneRaw,
       variant: 'outline',
-      className: 'border border-stone-200 bg-white/90 px-6 py-3.5 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
-    }
+      className:
+        'border border-stone-200 bg-white/90 px-6 py-3.5 text-ink shadow-sm hover:bg-stone-100 hover:text-ink',
+    },
   ]"
   sectionId="heading-cta-home"
 />

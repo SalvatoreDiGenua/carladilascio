@@ -125,7 +125,9 @@ import { AboutMenu } from '../../core/services/about-menu';
                   (click)="navigateTo('/chi-sono-artista')"
                   (mouseenter)="aboutHoverPath.set('/chi-sono-artista')"
                   (mouseleave)="aboutHoverPath.set(null)"
-                  [style.background-color]="aboutOptionBackground('/chi-sono-artista')"
+                  [style.background-color]="
+                    aboutOptionBackground('/chi-sono-artista')
+                  "
                   [style.color]="aboutOptionTextColor('/chi-sono-artista')"
                 >
                   <span class="flex flex-col items-start gap-0.5 text-left">
@@ -318,9 +320,7 @@ export class SiteHeader {
       return 'transparent';
     }
 
-    return isArtist
-      ? 'var(--color-antique-gold)'
-      : 'var(--color-primary-dark)';
+    return isArtist ? 'var(--color-antique-gold)' : 'var(--color-primary-dark)';
   }
 
   aboutOptionTextColor(path: string): string {
