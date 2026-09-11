@@ -5,6 +5,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
+import { AboutMenu } from '../../core/services/about-menu';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,12 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 })
 export class Home {
   readonly content = SITE_CONTENT;
+  private readonly aboutMenu = inject(AboutMenu);
   private readonly seo = inject(Seo);
+
+  openAboutMenu(): void {
+    this.aboutMenu.requestOpen();
+  }
 
   constructor() {
     this.seo.update({

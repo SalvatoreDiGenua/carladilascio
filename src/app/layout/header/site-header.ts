@@ -1,4 +1,12 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { CdkMenuTrigger } from '@angular/cdk/menu';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NavigationEnd,
@@ -14,6 +22,7 @@ import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
 import { filter, map } from 'rxjs';
 import { SITE_CONTENT } from '../../core/data/site-content';
+import { AboutMenu } from '../../core/services/about-menu';
 
 @Component({
   selector: 'app-site-header',
@@ -63,7 +72,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             routerLink="/"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
             [routerLinkActiveOptions]="{ exact: true }"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
           >
             {{ 'header.nav.home' | transloco }}
           </a>
@@ -73,14 +82,20 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             <button
               type="button"
               [hlmMenubarTrigger]="aboutMenu"
+              (hlmDropdownMenuOpened)="isAboutMenuOpen.set(true)"
+              (hlmDropdownMenuClosed)="isAboutMenuOpen.set(false)"
               [class]="
                 isAboutActive()
-                  ? 'flex items-center gap-1.5 rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light cursor-pointer'
-                  : 'flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light cursor-pointer'
+                  ? 'flex cursor-pointer items-center gap-1.5 rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
+                  : 'flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
               "
             >
               <span>{{ 'header.nav.about' | transloco }}</span>
-              <ng-icon name="lucideChevronDown" class="size-3.5 opacity-60" aria-hidden="true" />
+              <ng-icon
+                name="lucideChevronDown"
+                class="size-3.5 opacity-60"
+                aria-hidden="true"
+              />
             </button>
           </div>
 
@@ -90,26 +105,36 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 <button
                   hlmDropdownMenuItem
                   (click)="navigateTo('/chi-sono')"
-                  class="flex w-full cursor-pointer flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left"
+                  (mouseenter)="aboutHoverPath.set('/chi-sono')"
+                  (mouseleave)="aboutHoverPath.set(null)"
+                  [style.background-color]="aboutOptionBackground('/chi-sono')"
+                  [style.color]="aboutOptionTextColor('/chi-sono')"
                 >
-                  <span class="font-semibold text-foreground">
-                    {{ 'header.aboutModal.therapistTitle' | transloco }}
-                  </span>
-                  <span class="text-xs text-muted-foreground">
-                    {{ 'header.aboutModal.therapistDescription' | transloco }}
+                  <span class="flex flex-col items-start gap-0.5 text-left">
+                    <span [class]="aboutTitleClass('/chi-sono')">
+                      {{ 'header.aboutModal.therapistTitle' | transloco }}
+                    </span>
+                    <span [class]="aboutDescriptionClass('/chi-sono')">
+                      {{ 'header.aboutModal.therapistDescription' | transloco }}
+                    </span>
                   </span>
                 </button>
                 <hlm-dropdown-menu-separator class="my-1" />
                 <button
                   hlmDropdownMenuItem
                   (click)="navigateTo('/chi-sono-artista')"
-                  class="flex w-full cursor-pointer flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left"
+                  (mouseenter)="aboutHoverPath.set('/chi-sono-artista')"
+                  (mouseleave)="aboutHoverPath.set(null)"
+                  [style.background-color]="aboutOptionBackground('/chi-sono-artista')"
+                  [style.color]="aboutOptionTextColor('/chi-sono-artista')"
                 >
-                  <span class="font-semibold text-foreground">
-                    {{ 'header.aboutModal.artistTitle' | transloco }}
-                  </span>
-                  <span class="text-xs text-muted-foreground">
-                    {{ 'header.aboutModal.artistDescription' | transloco }}
+                  <span class="flex flex-col items-start gap-0.5 text-left">
+                    <span [class]="aboutTitleClass('/chi-sono-artista')">
+                      {{ 'header.aboutModal.artistTitle' | transloco }}
+                    </span>
+                    <span [class]="aboutDescriptionClass('/chi-sono-artista')">
+                      {{ 'header.aboutModal.artistDescription' | transloco }}
+                    </span>
                   </span>
                 </button>
               </hlm-dropdown-menu-group>
@@ -120,21 +145,21 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             routerLink="/"
             fragment="metodologie"
             (click)="closeMobileMenu()"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
           >
             {{ 'header.nav.methods' | transloco }}
           </a>
           <a
             routerLink="/percorsi"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
-            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
           >
             {{ 'header.nav.journeys' | transloco }}
           </a>
           <a
             routerLink="/contatti"
             routerLinkActive="bg-primary-dark text-white shadow-sm"
-            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2"
+            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-primary-dark focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:outline-none"
           >
             {{ 'header.nav.contact' | transloco }}
           </a>
@@ -252,8 +277,13 @@ import { SITE_CONTENT } from '../../core/data/site-content';
 export class SiteHeader {
   readonly content = SITE_CONTENT;
   readonly isMobileMenuOpen = signal(false);
+  readonly isAboutMenuOpen = signal(false);
+  readonly aboutHoverPath = signal<string | null>(null);
 
   private readonly router = inject(Router);
+  private readonly aboutMenu = inject(AboutMenu);
+  private readonly aboutMenuTrigger = viewChild(CdkMenuTrigger);
+  private lastOpenRequest = 0;
   private readonly currentUrl = toSignal(
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -265,6 +295,67 @@ export class SiteHeader {
   readonly isAboutActive = computed(() =>
     this.currentUrl().startsWith('/chi-sono'),
   );
+
+  constructor() {
+    effect(() => {
+      const request = this.aboutMenu.openRequested();
+      const trigger = this.aboutMenuTrigger();
+
+      if (trigger && request > this.lastOpenRequest) {
+        this.lastOpenRequest = request;
+        trigger.open();
+      }
+    });
+  }
+
+  aboutOptionBackground(path: string): string {
+    const isHighlighted =
+      this.isAboutMenuOpen() &&
+      (this.currentUrl() === path || this.aboutHoverPath() === path);
+    const isArtist = path === '/chi-sono-artista';
+
+    if (!isHighlighted) {
+      return 'transparent';
+    }
+
+    return isArtist
+      ? 'var(--color-antique-gold)'
+      : 'var(--color-primary-dark)';
+  }
+
+  aboutOptionTextColor(path: string): string {
+    const isHighlighted =
+      this.isAboutMenuOpen() &&
+      (this.currentUrl() === path || this.aboutHoverPath() === path);
+
+    if (!isHighlighted) {
+      return 'var(--color-ink)';
+    }
+
+    return path === '/chi-sono-artista' ? 'var(--color-ink)' : '#ffffff';
+  }
+
+  aboutTitleClass(path: string): string {
+    const isCurrent = this.isAboutMenuOpen() && this.currentUrl() === path;
+    const isArtist = path === '/chi-sono-artista';
+
+    return isCurrent || this.aboutHoverPath() === path
+      ? isArtist
+        ? 'font-semibold text-ink!'
+        : 'font-semibold text-white!'
+      : 'font-semibold text-foreground!';
+  }
+
+  aboutDescriptionClass(path: string): string {
+    const isCurrent = this.isAboutMenuOpen() && this.currentUrl() === path;
+    const isArtist = path === '/chi-sono-artista';
+
+    return isCurrent || this.aboutHoverPath() === path
+      ? isArtist
+        ? 'text-xs text-ink!'
+        : 'text-xs text-white!'
+      : 'text-xs text-muted-foreground!';
+  }
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen.update((v) => !v);

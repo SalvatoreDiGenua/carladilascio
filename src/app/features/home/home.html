@@ -50,14 +50,15 @@
           {{ content.personalInfo.subheadline | transloco }}
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
-          <a
+          <button
             hlmBtn
             size="lg"
-            routerLink="/chi-sono"
-            class="px-6 py-3.5"
+            type="button"
+            (click)="openAboutMenu()"
+            class="px-6 py-3.5 cursor-pointer"
           >
             {{ 'home.hero.ctaAbout' | transloco }}
-          </a>
+          </button>
           <a
             hlmBtn
             variant="outline"
