@@ -34,7 +34,8 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           (click)="closeMobileMenu()"
           class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua"
           [attr.aria-label]="
-            'header.logoAriaLabel' | transloco: { name: content.personalInfo.name }
+            'header.logoAriaLabel'
+              | transloco: { name: content.personalInfo.name }
           "
         >
           <span
@@ -67,7 +68,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             [attr.aria-expanded]="isAboutModalOpen()"
             [class]="
               isAboutActive()
-                ? 'rounded-lg px-3 py-2 text-sm font-semibold text-ink bg-stone-200/60 transition-colors hover:bg-stone-200/40 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none'
+                ? 'rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none'
                 : 'rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-aqua focus-visible:outline-none'
             "
           >
@@ -157,7 +158,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               [attr.aria-expanded]="isAboutModalOpen()"
               [class]="
                 isAboutActive()
-                  ? 'rounded-lg px-3 py-2.5 text-left text-base font-semibold text-ink bg-stone-200 hover:bg-stone-200/50'
+                  ? 'rounded-lg bg-stone-200 px-3 py-2.5 text-left text-base font-semibold text-ink hover:bg-stone-200/50'
                   : 'rounded-lg px-3 py-2.5 text-left text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink'
               "
             >
@@ -219,7 +220,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           aria-describedby="about-modal-subtitle"
           tabindex="-1"
           (keydown.escape)="closeAboutModal()"
-          (keydown.tab)="onModalTabKey($event)"
+          (keydown.tab)="onModalTabKey($any($event))"
           class="relative z-10 w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl focus:outline-none sm:p-8"
         >
           <button
