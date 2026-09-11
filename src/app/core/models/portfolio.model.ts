@@ -50,7 +50,6 @@ export interface PortfolioContent {
     quote: string;
     introText: string[];
     medicalDisclaimer: string;
-    formNotice: string;
   };
   methods: MethodItem[];
   journeys: JourneyItem[];

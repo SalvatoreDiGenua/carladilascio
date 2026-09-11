@@ -27,7 +27,6 @@ export const SITE_CONTENT: PortfolioContent = {
     quote: 'personalInfo.quote',
     introText: ['personalInfo.introText.0', 'personalInfo.introText.1'],
     medicalDisclaimer: 'personalInfo.medicalDisclaimer',
-    formNotice: 'personalInfo.formNotice',
   },
   methods: [
     {
