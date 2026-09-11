@@ -15,24 +15,21 @@
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 @theme {
   --color-ink: #162438;
-  --color-ink-muted: #4a5d73;
+  --color-deep-brown: #1C1306;
+  --color-olive-charcoal: #403824;
+  --color-olive-taupe: #645D4C;
+  --color-muted-beige: #A49A83;
+  --color-warm-ivory: #C4B7A1;
+  --color-primary: #5B8FA3;
+  --color-primary-light: #6C9CAF;
+  --color-primary-dark: #3F6B7A;
+  --color-antique-gold: #A99473;
+  --color-bronze: #795021;
+  --color-bronze-soft: #A88D6F;
   --color-cream: #faf7f2;
   --color-cream-subtle: #f4efe6;
-  --color-aqua: #2d8a85;
-  --color-aqua-dark: #226b67;
-  --color-aqua-light: #e6f4f2;
-  --color-powder: #548da7;
-  --color-powder-dark: #3f6d84;
-  --color-powder-light: #eef6fa;
-  --color-coral: #c95d4a;
-  --color-coral-dark: #a8492f;
-  --color-coral-light: #faece8;
-  --color-blush: #d9788a;
-  --color-blush-dark: #b95a6d;
-  --color-blush-light: #fbf0f2;
-  --color-lavender: #7c6ca6;
-  --color-lavender-dark: #61538a;
-  --color-lavender-light: #f3f0fa;
+  --color-ink-muted: #4a5d73;
+  --color-danger: #b94a37;
   --font-sans:
     'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
@@ -76,7 +73,7 @@ h3 {
 }
 
 :focus-visible {
-  outline: 3px solid #0284c7;
+  outline: 3px solid var(--color-primary-light);
   outline-offset: 2px;
 }
 
@@ -98,74 +95,76 @@ h3 {
 :root {
   color-scheme: light;
 
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --chart-1: #5B8FA3;
+  --chart-2: #A99473;
+  --chart-3: #795021;
+  --chart-4: #6C9CAF;
+  --chart-5: #b94a37;
+  --radius: 0.75rem;
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+  --card: #ffffff;
+  --card-foreground: var(--color-ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-cream-subtle);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-cream-subtle);
+  --muted-foreground: var(--color-muted-beige);
+  --accent: var(--color-antique-gold);
+  --accent-foreground: #ffffff;
+  --destructive: var(--color-danger);
+  --destructive-foreground: #ffffff;
+  --border: #e7e5e4;
+  --input: #e7e5e4;
+  --ring: var(--color-primary-light);
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--color-ink);
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--color-cream-subtle);
+  --sidebar-accent-foreground: var(--color-ink);
+  --sidebar-border: #e7e5e4;
+  --sidebar-ring: var(--color-primary-light);
 }
 
 :root.dark {
   color-scheme: dark;
 
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.985 0 0);
-  --sidebar-primary-foreground: oklch(0.205 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --chart-1: #6C9CAF;
+  --chart-2: #A99473;
+  --chart-3: #A88D6F;
+  --chart-4: #5B8FA3;
+  --chart-5: #b94a37;
+  --background: #070201;
+  --foreground: var(--color-warm-ivory);
+  --card: var(--color-deep-brown);
+  --card-foreground: var(--color-warm-ivory);
+  --popover: var(--color-deep-brown);
+  --popover-foreground: var(--color-warm-ivory);
+  --primary: var(--color-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-olive-charcoal);
+  --secondary-foreground: var(--color-warm-ivory);
+  --muted: var(--color-olive-charcoal);
+  --muted-foreground: var(--color-muted-beige);
+  --accent: var(--color-antique-gold);
+  --accent-foreground: #ffffff;
+  --destructive: var(--color-danger);
+  --destructive-foreground: #ffffff;
+  --border: var(--color-olive-charcoal);
+  --input: var(--color-olive-charcoal);
+  --ring: var(--color-primary-light);
+  --sidebar: var(--color-deep-brown);
+  --sidebar-foreground: var(--color-warm-ivory);
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--color-olive-charcoal);
+  --sidebar-accent-foreground: var(--color-warm-ivory);
+  --sidebar-border: var(--color-olive-charcoal);
+  --sidebar-ring: var(--color-primary-light);
 }
 
 @layer base {
