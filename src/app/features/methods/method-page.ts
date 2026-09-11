@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
 import { Seo } from '../../core/seo/seo';
@@ -8,7 +9,12 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 
 @Component({
   selector: 'app-method-page',
-  imports: [RouterLink, MethodAvatar3dComponent, TranslocoPipe],
+  imports: [
+    RouterLink,
+    MethodAvatar3dComponent,
+    TranslocoPipe,
+    HlmButtonImports,
+  ],
   template: `
     @if (method(); as m) {
       <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
@@ -51,8 +57,10 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               </p>
               <div class="mt-6 flex flex-wrap gap-3">
                 <a
+                  hlmBtn
+                  size="lg"
                   routerLink="/contatti"
-                  class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  class="px-5 py-2.5"
                 >
                   {{ 'method.requestInfo' | transloco }}
                 </a>
@@ -233,14 +241,19 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
           </p>
           <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
+              hlmBtn
+              size="lg"
               routerLink="/contatti"
-              class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+              class="px-6 py-3"
             >
               {{ 'method.requestInfo' | transloco }}
             </a>
             <a
+              hlmBtn
+              variant="outline"
+              size="lg"
               [href]="'tel:' + content.personalInfo.phoneRaw"
-              class="rounded-xl border border-stone-400/50 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
+              class="border-stone-400/50 px-6 py-3 text-white hover:bg-stone-800 hover:text-white"
             >
               {{
                 'method.cta.callLabel'

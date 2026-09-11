@@ -7,6 +7,7 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
 import { filter, map } from 'rxjs';
@@ -20,6 +21,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
     TranslocoPipe,
     HlmMenubarImports,
     HlmDropdownMenuImports,
+    HlmButtonImports,
   ],
   template: `
     <header
@@ -149,11 +151,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
 
         <!-- Mobile Menu Toggle Button -->
         <button
+          hlmBtn
+          variant="ghost"
+          size="icon"
           type="button"
           (click)="toggleMobileMenu()"
           [attr.aria-expanded]="isMobileMenuOpen()"
           aria-controls="mobile-navigation"
-          class="inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-stone-200/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light md:hidden"
+          class="text-ink hover:bg-stone-200/50 md:hidden"
           [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
         >
           <svg

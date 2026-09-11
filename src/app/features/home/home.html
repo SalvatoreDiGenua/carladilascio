@@ -51,14 +51,19 @@
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
           <a
+            hlmBtn
+            size="lg"
             routerLink="/chi-sono"
-            class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="px-6 py-3.5"
           >
             {{ 'home.hero.ctaAbout' | transloco }}
           </a>
           <a
+            hlmBtn
+            variant="outline"
+            size="lg"
             routerLink="/contatti"
-            class="hover:border-aqua focus-visible:ring-aqua rounded-xl border border-stone-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-white focus-visible:ring-2 focus-visible:outline-none"
+            class="px-6 py-3.5"
           >
             {{ 'home.hero.ctaContact' | transloco }}
           </a>
@@ -462,8 +467,10 @@
 
   <div class="mt-8 text-center">
     <a
+      hlmBtn
+      variant="outline"
       routerLink="/percorsi"
-      class="hover:border-aqua inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:bg-stone-50"
+      class="px-6 py-3"
     >
       {{ 'home.journeys.cta' | transloco }}
       <svg
@@ -524,14 +531,19 @@
     </p>
     <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
       <a
+        hlmBtn
+        size="lg"
         routerLink="/contatti"
-        class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+        class="px-6 py-3.5"
       >
         {{ 'home.cta.requestInfo' | transloco }}
       </a>
       <a
+        hlmBtn
+        variant="outline"
+        size="lg"
         [href]="'tel:' + content.personalInfo.phoneRaw"
-        class="rounded-xl border border-stone-400/50 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-stone-800"
+        class="border-stone-400/50 px-6 py-3.5 text-white hover:bg-stone-800 hover:text-white"
       >
         {{
           'home.cta.callLabel'

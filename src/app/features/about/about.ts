@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, TranslocoPipe],
+  imports: [RouterLink, TranslocoPipe, HlmButtonImports],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
@@ -173,14 +174,19 @@ import { Seo } from '../../core/seo/seo';
         </p>
         <div class="mt-6 flex flex-wrap justify-center gap-4">
           <a
+            hlmBtn
+            size="lg"
             routerLink="/contatti"
-            class="bg-aqua hover:bg-aqua-dark rounded-xl px-6 py-3 text-sm font-semibold text-white"
+            class="px-6 py-3"
           >
             {{ 'about.cta.contactLink' | transloco }}
           </a>
           <a
+            hlmBtn
+            variant="outline"
+            size="lg"
             [href]="'tel:' + content.personalInfo.phoneRaw"
-            class="rounded-xl border border-stone-400/50 px-6 py-3 text-sm font-semibold text-white hover:bg-stone-800"
+            class="border-stone-400/50 px-6 py-3 text-white hover:bg-stone-800 hover:text-white"
           >
             {{
               'about.cta.callLabel'
