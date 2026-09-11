@@ -6,18 +6,34 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { toast } from '@spartan-ng/brain/sonner';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmCheckboxImports } from '@spartan-ng/helm/checkbox';
+import { HlmFieldImports } from '@spartan-ng/helm/field';
+import { HlmInputImports } from '@spartan-ng/helm/input';
+import { HlmLabelImports } from '@spartan-ng/helm/label';
+import { HlmTextareaImports } from '@spartan-ng/helm/textarea';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, TranslocoPipe],
+  imports: [
+    ReactiveFormsModule,
+    TranslocoPipe,
+    HlmFieldImports,
+    HlmInputImports,
+    HlmTextareaImports,
+    HlmLabelImports,
+    HlmCheckboxImports,
+    HlmButtonImports,
+  ],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione -->
       <header class="mb-12 text-center">
         <span
-          class="bg-aqua-light text-aqua inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
+          class="bg-primary/10 text-primary inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
         >
           {{ 'contact.eyebrow' | transloco }}
         </span>
@@ -48,7 +64,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Telefono -->
               <li class="flex items-start gap-3">
                 <div
-                  class="bg-aqua-light text-aqua flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                  class="bg-primary/10 text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                 >
                   <svg
                     class="h-5 w-5"
@@ -71,7 +87,7 @@ import { Seo } from '../../core/seo/seo';
                   }}</span>
                   <a
                     [href]="'tel:' + content.personalInfo.phoneRaw"
-                    class="text-aqua focus-visible:ring-aqua font-medium hover:underline focus-visible:ring-2 focus-visible:outline-none"
+                    class="text-primary hover:text-primary-dark font-medium hover:underline focus-visible:outline-none"
                   >
                     {{ content.personalInfo.phone }}
                   </a>
@@ -81,7 +97,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Email -->
               <li class="flex items-start gap-3">
                 <div
-                  class="bg-coral-light text-coral flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                  class="bg-antique-gold/15 text-bronze flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                 >
                   <svg
                     class="h-5 w-5"
@@ -104,7 +120,7 @@ import { Seo } from '../../core/seo/seo';
                   }}</span>
                   <a
                     [href]="'mailto:' + content.personalInfo.email"
-                    class="text-coral focus-visible:ring-aqua font-medium hover:underline focus-visible:ring-2 focus-visible:outline-none"
+                    class="text-bronze hover:text-deep-brown font-medium hover:underline focus-visible:outline-none"
                   >
                     {{ content.personalInfo.email }}
                   </a>
@@ -114,7 +130,7 @@ import { Seo } from '../../core/seo/seo';
               <!-- Studio -->
               <li class="flex items-start gap-3">
                 <div
-                  class="bg-lavender-light text-lavender flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                  class="bg-warm-ivory/30 text-ink-muted flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                 >
                   <svg
                     class="h-5 w-5"
@@ -179,12 +195,12 @@ import { Seo } from '../../core/seo/seo';
             <div aria-live="polite" class="mt-4">
               @if (isSubmitted()) {
                 <div
-                  class="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-900"
+                  class="rounded-xl border border-primary/30 bg-primary/10 p-4 text-sm text-ink"
                 >
-                  <p class="font-bold">
+                  <p class="font-bold text-primary-dark">
                     {{ 'contact.form.successTitle' | transloco }}
                   </p>
-                  <p class="mt-1 text-xs">
+                  <p class="mt-1 text-xs text-ink-muted">
                     {{
                       'contact.form.successMessage'
                         | transloco: { phone: content.personalInfo.phone }
@@ -198,25 +214,21 @@ import { Seo } from '../../core/seo/seo';
             <form
               [formGroup]="contactForm"
               (ngSubmit)="onSubmit()"
-              class="mt-6 space-y-4"
+              class="mt-6 space-y-5"
               novalidate
             >
               <!-- Nome -->
-              <div>
-                <label for="name" class="block text-sm font-semibold text-ink">
+              <hlm-field>
+                <label hlmFieldLabel for="name">
                   {{ 'contact.form.nameLabel' | transloco }}
-                  <span class="text-coral" aria-hidden="true">*</span>
+                  <span class="text-destructive" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="name"
+                  hlmInput
                   type="text"
                   formControlName="name"
-                  [attr.aria-invalid]="
-                    contactForm.controls.name.invalid &&
-                    contactForm.controls.name.touched
-                  "
-                  aria-describedby="name-error"
-                  class="focus:border-aqua focus:ring-aqua mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:ring-2 focus:outline-none"
+                  class="w-full bg-white"
                   [attr.placeholder]="
                     'contact.form.namePlaceholder' | transloco
                   "
@@ -225,28 +237,24 @@ import { Seo } from '../../core/seo/seo';
                   contactForm.controls.name.invalid &&
                   contactForm.controls.name.touched
                 ) {
-                  <p id="name-error" class="mt-1 text-xs text-rose-600">
+                  <hlm-field-error>
                     {{ 'contact.form.nameError' | transloco }}
-                  </p>
+                  </hlm-field-error>
                 }
-              </div>
+              </hlm-field>
 
               <!-- Email -->
-              <div>
-                <label for="email" class="block text-sm font-semibold text-ink">
+              <hlm-field>
+                <label hlmFieldLabel for="email">
                   {{ 'contact.form.emailLabel' | transloco }}
-                  <span class="text-coral" aria-hidden="true">*</span>
+                  <span class="text-destructive" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="email"
+                  hlmInput
                   type="email"
                   formControlName="email"
-                  [attr.aria-invalid]="
-                    contactForm.controls.email.invalid &&
-                    contactForm.controls.email.touched
-                  "
-                  aria-describedby="email-error"
-                  class="focus:border-aqua focus:ring-aqua mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:ring-2 focus:outline-none"
+                  class="w-full bg-white"
                   [attr.placeholder]="
                     'contact.form.emailPlaceholder' | transloco
                   "
@@ -255,31 +263,24 @@ import { Seo } from '../../core/seo/seo';
                   contactForm.controls.email.invalid &&
                   contactForm.controls.email.touched
                 ) {
-                  <p id="email-error" class="mt-1 text-xs text-rose-600">
+                  <hlm-field-error>
                     {{ 'contact.form.emailError' | transloco }}
-                  </p>
+                  </hlm-field-error>
                 }
-              </div>
+              </hlm-field>
 
               <!-- Messaggio -->
-              <div>
-                <label
-                  for="message"
-                  class="block text-sm font-semibold text-ink"
-                >
+              <hlm-field>
+                <label hlmFieldLabel for="message">
                   {{ 'contact.form.messageLabel' | transloco }}
-                  <span class="text-coral" aria-hidden="true">*</span>
+                  <span class="text-destructive" aria-hidden="true">*</span>
                 </label>
                 <textarea
                   id="message"
+                  hlmTextarea
                   rows="4"
                   formControlName="message"
-                  [attr.aria-invalid]="
-                    contactForm.controls.message.invalid &&
-                    contactForm.controls.message.touched
-                  "
-                  aria-describedby="message-error"
-                  class="focus:border-aqua focus:ring-aqua mt-1 block w-full rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm text-ink placeholder-stone-400 focus:ring-2 focus:outline-none"
+                  class="w-full bg-white"
                   [attr.placeholder]="
                     'contact.form.messagePlaceholder' | transloco
                   "
@@ -288,42 +289,37 @@ import { Seo } from '../../core/seo/seo';
                   contactForm.controls.message.invalid &&
                   contactForm.controls.message.touched
                 ) {
-                  <p id="message-error" class="mt-1 text-xs text-rose-600">
+                  <hlm-field-error>
                     {{ 'contact.form.messageError' | transloco }}
-                  </p>
+                  </hlm-field-error>
                 }
-              </div>
+              </hlm-field>
 
               <!-- Checkbox Privacy -->
-              <div>
-                <div class="flex items-start gap-2.5">
-                  <input
-                    id="privacy"
-                    type="checkbox"
-                    formControlName="privacy"
-                    [attr.aria-invalid]="
-                      contactForm.controls.privacy.invalid &&
-                      contactForm.controls.privacy.touched
-                    "
-                    aria-describedby="privacy-error"
-                    class="text-aqua focus:ring-aqua mt-1 h-4 w-4 rounded border-stone-300"
-                  />
+              <hlm-field orientation="horizontal" class="items-start gap-2.5">
+                <hlm-checkbox
+                  id="privacy"
+                  formControlName="privacy"
+                  class="mt-0.5"
+                />
+                <hlm-field-content>
                   <label
+                    hlmFieldLabel
                     for="privacy"
-                    class="text-xs leading-relaxed text-ink-muted"
+                    class="cursor-pointer text-xs leading-relaxed text-ink-muted select-none"
                   >
                     {{ 'contact.form.privacyLabel' | transloco }}
                   </label>
-                </div>
-                @if (
-                  contactForm.controls.privacy.invalid &&
-                  contactForm.controls.privacy.touched
-                ) {
-                  <p id="privacy-error" class="mt-1 text-xs text-rose-600">
-                    {{ 'contact.form.privacyError' | transloco }}
-                  </p>
-                }
-              </div>
+                  @if (
+                    contactForm.controls.privacy.invalid &&
+                    contactForm.controls.privacy.touched
+                  ) {
+                    <hlm-field-error>
+                      {{ 'contact.form.privacyError' | transloco }}
+                    </hlm-field-error>
+                  }
+                </hlm-field-content>
+              </hlm-field>
 
               <!-- Avviso Tecnico Demo -->
               <p class="text-[11px] text-stone-500 italic">
@@ -332,9 +328,11 @@ import { Seo } from '../../core/seo/seo';
 
               <!-- Pulsante Invio -->
               <button
+                hlmBtn
                 type="submit"
+                size="lg"
                 [disabled]="contactForm.invalid"
-                class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua w-full rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-stone-300"
+                class="w-full shadow-sm"
               >
                 {{ 'contact.form.submit' | transloco }}
               </button>
@@ -384,11 +382,12 @@ export class Contact {
       return;
     }
 
-    // SIMULAZIONE INVIO:
-    // In una fase successiva con backend o servizio esterno (es. Netlify Forms, Formspree, endpoint Express / Nest),
-    // collegare qui l'invio HTTP tramite HttpClient:
-    // this.http.post('/api/contact', this.contactForm.getRawValue()).subscribe(...)
+    // SIMULAZIONE INVIO
     this.isSubmitted.set(true);
+    toast.success('Richiesta inviata con successo', {
+      description:
+        'Grazie per il messaggio. Ti risponderò al più presto.',
+    });
     this.contactForm.reset();
   }
 }

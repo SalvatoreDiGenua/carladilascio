@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { SiteHeader } from './layout/header/site-header';
+import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { SiteFooter } from './layout/footer/site-footer';
+import { SiteHeader } from './layout/header/site-header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SiteHeader, SiteFooter, TranslocoPipe],
+  imports: [
+    RouterOutlet,
+    SiteHeader,
+    SiteFooter,
+    TranslocoPipe,
+    HlmToasterImports,
+  ],
   template: `
     <a class="skip-link" href="#main-content">{{
       'app.skipLink' | transloco
@@ -16,6 +23,7 @@ import { SiteFooter } from './layout/footer/site-footer';
       <router-outlet />
     </main>
     <app-site-footer />
+    <hlm-toaster />
   `,
   styles: `
     :host {
@@ -44,7 +52,7 @@ import { SiteFooter } from './layout/footer/site-footer';
 
     .skip-link:focus-visible {
       transform: translateY(0);
-      outline: 3px solid var(--color-aqua);
+      outline: 3px solid var(--color-primary-light);
       outline-offset: 2px;
     }
   `,

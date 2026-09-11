@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  computed,
-  effect,
-  inject,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NavigationEnd,
@@ -15,12 +7,20 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
+import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
 import { filter, map } from 'rxjs';
 import { SITE_CONTENT } from '../../core/data/site-content';
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink, RouterLinkActive, TranslocoPipe],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    TranslocoPipe,
+    HlmMenubarImports,
+    HlmDropdownMenuImports,
+  ],
   template: `
     <header
       class="sticky top-0 z-40 border-b border-stone-200/80 bg-cream/90 backdrop-blur-md transition-shadow"
@@ -32,14 +32,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         <a
           routerLink="/"
           (click)="closeMobileMenu()"
-          class="group focus-visible:ring-aqua flex flex-col focus:outline-none focus-visible:ring-2"
+          class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
           [attr.aria-label]="
             'header.logoAriaLabel'
               | transloco: { name: content.personalInfo.name }
           "
         >
           <span
-            class="group-hover:text-aqua text-xl font-bold tracking-tight text-ink transition-colors sm:text-2xl"
+            class="text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-primary sm:text-2xl"
           >
             {{ content.personalInfo.name }}
           </span>
@@ -57,42 +57,91 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             routerLink="/"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
             [routerLinkActiveOptions]="{ exact: true }"
-            class="focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
           >
             {{ 'header.nav.home' | transloco }}
           </a>
-          <button
-            type="button"
-            (click)="openAboutModal()"
-            aria-haspopup="dialog"
-            [attr.aria-expanded]="isAboutModalOpen()"
-            [class]="
-              isAboutActive()
-                ? 'focus-visible:ring-aqua rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 focus-visible:ring-2 focus-visible:outline-none'
-                : 'focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none'
-            "
-          >
-            {{ 'header.nav.about' | transloco }}
-          </button>
+
+          <!-- Menubar con Dropdown per "Chi sono" -->
+          <div hlmMenubar class="h-auto border-none bg-transparent p-0">
+            <button
+              type="button"
+              [hlmMenubarTrigger]="aboutMenu"
+              [class]="
+                isAboutActive()
+                  ? 'flex items-center gap-1.5 rounded-lg bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light cursor-pointer'
+                  : 'flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light cursor-pointer'
+              "
+            >
+              <span>{{ 'header.nav.about' | transloco }}</span>
+              <svg
+                class="size-3.5 opacity-60"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <ng-template #aboutMenu>
+            <hlm-dropdown-menu class="w-64 p-1.5 shadow-lg">
+              <hlm-dropdown-menu-group>
+                <button
+                  hlmDropdownMenuItem
+                  (click)="navigateTo('/chi-sono')"
+                  class="flex w-full cursor-pointer flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left"
+                >
+                  <span class="font-semibold text-foreground">
+                    {{ 'header.aboutModal.therapistTitle' | transloco }}
+                  </span>
+                  <span class="text-xs text-muted-foreground">
+                    {{ 'header.aboutModal.therapistDescription' | transloco }}
+                  </span>
+                </button>
+                <hlm-dropdown-menu-separator class="my-1" />
+                <button
+                  hlmDropdownMenuItem
+                  (click)="navigateTo('/chi-sono-artista')"
+                  class="flex w-full cursor-pointer flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left"
+                >
+                  <span class="font-semibold text-foreground">
+                    {{ 'header.aboutModal.artistTitle' | transloco }}
+                  </span>
+                  <span class="text-xs text-muted-foreground">
+                    {{ 'header.aboutModal.artistDescription' | transloco }}
+                  </span>
+                </button>
+              </hlm-dropdown-menu-group>
+            </hlm-dropdown-menu>
+          </ng-template>
+
           <a
             routerLink="/"
             fragment="metodologie"
             (click)="closeMobileMenu()"
-            class="focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
           >
             {{ 'header.nav.methods' | transloco }}
           </a>
           <a
             routerLink="/percorsi"
             routerLinkActive="bg-stone-200/60 text-ink font-semibold"
-            class="focus-visible:ring-aqua rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
+            class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
           >
             {{ 'header.nav.journeys' | transloco }}
           </a>
           <a
             routerLink="/contatti"
-            routerLinkActive="bg-aqua-dark text-white shadow-sm"
-            class="bg-aqua hover:bg-aqua-dark focus-visible:ring-aqua ml-2 rounded-lg px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            routerLinkActive="bg-primary-dark text-white shadow-sm"
+            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2"
           >
             {{ 'header.nav.contact' | transloco }}
           </a>
@@ -104,7 +153,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           (click)="toggleMobileMenu()"
           [attr.aria-expanded]="isMobileMenuOpen()"
           aria-controls="mobile-navigation"
-          class="focus-visible:ring-aqua inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-stone-200/50 focus-visible:ring-2 focus-visible:outline-none md:hidden"
+          class="inline-flex items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-stone-200/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light md:hidden"
           [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
         >
           <svg
@@ -151,19 +200,35 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             >
               {{ 'header.nav.home' | transloco }}
             </a>
-            <button
-              type="button"
-              (click)="openAboutModalFromMobile()"
-              aria-haspopup="dialog"
-              [attr.aria-expanded]="isAboutModalOpen()"
-              [class]="
-                isAboutActive()
-                  ? 'rounded-lg bg-stone-200 px-3 py-2.5 text-left text-base font-semibold text-ink hover:bg-stone-200/50'
-                  : 'rounded-lg px-3 py-2.5 text-left text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink'
-              "
-            >
-              {{ 'header.nav.about' | transloco }}
-            </button>
+
+            <!-- Sezione Chi Sono in Mobile -->
+            <div class="py-1">
+              <span
+                class="px-3 text-xs font-semibold tracking-wider text-ink-muted uppercase"
+              >
+                {{ 'header.nav.about' | transloco }}
+              </span>
+              <div class="mt-1 flex flex-col pl-2">
+                <a
+                  routerLink="/chi-sono"
+                  routerLinkActive="text-primary font-semibold"
+                  (click)="closeMobileMenu()"
+                  class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
+                >
+                  {{ 'header.aboutModal.therapistTitle' | transloco }}
+                </a>
+                <a
+                  routerLink="/chi-sono-artista"
+                  routerLinkActive="text-primary font-semibold"
+                  (click)="closeMobileMenu()"
+                  class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
+                >
+                  {{ 'header.aboutModal.artistTitle' | transloco }}
+                </a>
+              </div>
+            </div>
+
+            <!-- Sezione Metodologie in Mobile -->
             <div class="py-1">
               <span
                 class="px-3 text-xs font-semibold tracking-wider text-ink-muted uppercase"
@@ -174,7 +239,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 @for (method of content.methods; track method.slug) {
                   <a
                     [routerLink]="['/' + method.slug]"
-                    routerLinkActive="text-aqua font-semibold"
+                    routerLinkActive="text-primary font-semibold"
                     (click)="closeMobileMenu()"
                     class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
                   >
@@ -183,6 +248,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 }
               </div>
             </div>
+
             <a
               routerLink="/percorsi"
               routerLinkActive="bg-stone-200 text-ink font-semibold"
@@ -194,7 +260,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             <a
               routerLink="/contatti"
               (click)="closeMobileMenu()"
-              class="bg-aqua hover:bg-aqua-dark mt-2 rounded-lg px-4 py-2.5 text-center text-base font-medium text-white shadow-sm"
+              class="mt-2 rounded-lg bg-primary px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-primary-dark"
             >
               {{ 'header.nav.contact' | transloco }}
             </a>
@@ -202,95 +268,11 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         </div>
       }
     </header>
-
-    <!-- Modal di scelta: Artista o Terapeuta -->
-    @if (isAboutModalOpen()) {
-      <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div
-          class="absolute inset-0 bg-ink/60 backdrop-blur-sm"
-          (click)="closeAboutModal()"
-          aria-hidden="true"
-        ></div>
-
-        <div
-          #aboutModalPanel
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="about-modal-title"
-          aria-describedby="about-modal-subtitle"
-          tabindex="-1"
-          (keydown.escape)="closeAboutModal()"
-          (keydown.tab)="onModalTabKey($any($event))"
-          class="relative z-10 w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl focus:outline-none sm:p-8"
-        >
-          <button
-            type="button"
-            (click)="closeAboutModal()"
-            [attr.aria-label]="'header.aboutModal.closeAriaLabel' | transloco"
-            class="focus-visible:ring-aqua absolute top-4 right-4 rounded-full p-1.5 text-ink-muted transition-colors hover:bg-stone-100 hover:text-ink focus-visible:ring-2 focus-visible:outline-none"
-          >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-
-          <h2
-            id="about-modal-title"
-            class="pr-8 text-xl font-bold text-ink sm:text-2xl"
-          >
-            {{ 'header.aboutModal.title' | transloco }}
-          </h2>
-          <p id="about-modal-subtitle" class="mt-2 text-sm text-ink-muted">
-            {{ 'header.aboutModal.subtitle' | transloco }}
-          </p>
-
-          <div class="mt-6 grid gap-4 sm:grid-cols-2">
-            <button
-              type="button"
-              (click)="selectAboutOption('terapeuta')"
-              class="group border-aqua/30 bg-aqua-light/40 hover:bg-aqua-light focus-visible:ring-aqua rounded-xl border p-4 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
-            >
-              <span class="text-aqua-dark block text-base font-bold">
-                {{ 'header.aboutModal.therapistTitle' | transloco }}
-              </span>
-              <span class="mt-1 block text-xs text-ink-muted">
-                {{ 'header.aboutModal.therapistDescription' | transloco }}
-              </span>
-            </button>
-
-            <button
-              type="button"
-              (click)="selectAboutOption('artista')"
-              class="group border-coral/30 bg-coral-light/40 hover:bg-coral-light focus-visible:ring-coral rounded-xl border p-4 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
-            >
-              <span class="text-coral-dark block text-base font-bold">
-                {{ 'header.aboutModal.artistTitle' | transloco }}
-              </span>
-              <span class="mt-1 block text-xs text-ink-muted">
-                {{ 'header.aboutModal.artistDescription' | transloco }}
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    }
   `,
 })
 export class SiteHeader {
   readonly content = SITE_CONTENT;
   readonly isMobileMenuOpen = signal(false);
-  readonly isAboutModalOpen = signal(false);
 
   private readonly router = inject(Router);
   private readonly currentUrl = toSignal(
@@ -300,21 +282,10 @@ export class SiteHeader {
     ),
     { initialValue: this.router.url },
   );
+
   readonly isAboutActive = computed(() =>
     this.currentUrl().startsWith('/chi-sono'),
   );
-
-  private readonly aboutModalPanel =
-    viewChild<ElementRef<HTMLElement>>('aboutModalPanel');
-  private lastFocusedElement: HTMLElement | null = null;
-
-  constructor() {
-    effect(() => {
-      if (this.isAboutModalOpen()) {
-        this.aboutModalPanel()?.nativeElement.focus();
-      }
-    });
-  }
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen.update((v) => !v);
@@ -324,50 +295,8 @@ export class SiteHeader {
     this.isMobileMenuOpen.set(false);
   }
 
-  openAboutModal(): void {
-    this.lastFocusedElement = document.activeElement as HTMLElement | null;
-    this.isAboutModalOpen.set(true);
-  }
-
-  openAboutModalFromMobile(): void {
+  navigateTo(path: string): void {
     this.closeMobileMenu();
-    this.openAboutModal();
-  }
-
-  closeAboutModal(): void {
-    this.isAboutModalOpen.set(false);
-    this.lastFocusedElement?.focus();
-    this.lastFocusedElement = null;
-  }
-
-  selectAboutOption(option: 'terapeuta' | 'artista'): void {
-    this.isAboutModalOpen.set(false);
-    this.lastFocusedElement = null;
-    const target = option === 'terapeuta' ? '/chi-sono' : '/chi-sono-artista';
-    void this.router.navigate([target]);
-  }
-
-  onModalTabKey(event: KeyboardEvent): void {
-    const panel = this.aboutModalPanel()?.nativeElement;
-    if (!panel) return;
-
-    const focusable = panel.querySelectorAll<HTMLElement>(
-      'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-    );
-    if (focusable.length === 0) return;
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    const active = document.activeElement;
-
-    if (event.shiftKey) {
-      if (active === first || active === panel) {
-        event.preventDefault();
-        last.focus();
-      }
-    } else if (active === last) {
-      event.preventDefault();
-      first.focus();
-    }
+    void this.router.navigate([path]);
   }
 }
