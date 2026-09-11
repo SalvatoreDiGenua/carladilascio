@@ -5,6 +5,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
 import { Seo } from '../../core/seo/seo';
+import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
 
 @Component({
@@ -14,6 +15,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
     MethodAvatar3dComponent,
     TranslocoPipe,
     HlmButtonImports,
+    CtaBannerComponent,
   ],
   template: `
     @if (method(); as m) {
@@ -229,39 +231,24 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
         </section>
 
         <!-- CTA Box -->
-        <section
-          class="mb-16 rounded-3xl bg-ink p-8 text-center text-white shadow-md sm:p-10"
-          [attr.aria-label]="'method.cta.ariaLabel' | transloco"
-        >
-          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
-            {{ 'method.cta.title' | transloco }}
-          </h2>
-          <p class="mx-auto mt-3 max-w-xl text-sm text-stone-300 sm:text-base">
-            {{ 'method.cta.description' | transloco }}
-          </p>
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
-            <a
-              hlmBtn
-              size="lg"
-              routerLink="/contatti"
-              class="px-6 py-3"
-            >
-              {{ 'method.requestInfo' | transloco }}
-            </a>
-            <a
-              hlmBtn
-              variant="outline"
-              size="lg"
-              [href]="'tel:' + content.personalInfo.phoneRaw"
-              class="border-stone-400/50 px-6 py-3 text-white hover:bg-stone-800 hover:text-white"
-            >
-              {{
-                'method.cta.callLabel'
-                  | transloco: { phone: content.personalInfo.phone }
-              }}
-            </a>
-          </div>
-        </section>
+        <app-cta-banner
+          [title]="'method.cta.title' | transloco"
+          [description]="'method.cta.description' | transloco"
+          [buttons]="[
+            {
+              label: ('method.requestInfo' | transloco),
+              route: '/contatti'
+            },
+            {
+              label: ('method.cta.callLabel' | transloco: { phone: content.personalInfo.phone }),
+              href: 'tel:' + content.personalInfo.phoneRaw,
+              variant: 'outline',
+              className: 'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
+            }
+          ]"
+          sectionId="heading-cta-method"
+          class="mb-16 block"
+        />
 
         <!-- Altre Metodologie -->
         <section

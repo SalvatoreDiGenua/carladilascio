@@ -513,43 +513,20 @@
 </section>
 
 <!-- 8. CTA Finale Verso Contatti -->
-<section
-  class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8"
-  aria-labelledby="heading-cta-home"
->
-  <div class="rounded-3xl bg-ink p-8 text-center text-white shadow-md sm:p-12">
-    <h2
-      id="heading-cta-home"
-      class="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl"
-    >
-      {{ 'home.cta.title' | transloco }}
-    </h2>
-    <p
-      class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-stone-300 sm:text-base"
-    >
-      {{ 'home.cta.description' | transloco }}
-    </p>
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-      <a
-        hlmBtn
-        size="lg"
-        routerLink="/contatti"
-        class="px-6 py-3.5"
-      >
-        {{ 'home.cta.requestInfo' | transloco }}
-      </a>
-      <a
-        hlmBtn
-        variant="outline"
-        size="lg"
-        [href]="'tel:' + content.personalInfo.phoneRaw"
-        class="border-stone-400/50 px-6 py-3.5 text-white hover:bg-stone-800 hover:text-white"
-      >
-        {{
-          'home.cta.callLabel'
-            | transloco: { phone: content.personalInfo.phone }
-        }}
-      </a>
-    </div>
-  </div>
-</section>
+<app-cta-banner
+  [title]="'home.cta.title' | transloco"
+  [description]="'home.cta.description' | transloco"
+  [buttons]="[
+    {
+      label: ('home.cta.requestInfo' | transloco),
+      route: '/contatti'
+    },
+    {
+      label: ('home.cta.callLabel' | transloco: { phone: content.personalInfo.phone }),
+      href: 'tel:' + content.personalInfo.phoneRaw,
+      variant: 'outline',
+      className: 'border border-stone-200 bg-white/90 px-6 py-3.5 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
+    }
+  ]"
+  sectionId="heading-cta-home"
+/>

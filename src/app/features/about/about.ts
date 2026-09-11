@@ -4,10 +4,11 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
+import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, TranslocoPipe, HlmButtonImports],
+  imports: [RouterLink, TranslocoPipe, HlmButtonImports, CtaBannerComponent],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
@@ -162,39 +163,23 @@ import { Seo } from '../../core/seo/seo';
       </section>
 
       <!-- CTA Contatti -->
-      <section
-        class="mt-16 rounded-3xl bg-ink p-8 text-center text-white sm:p-12"
-        [attr.aria-label]="'about.cta.ariaLabel' | transloco"
-      >
-        <h2 class="text-2xl font-bold sm:text-3xl">
-          {{ 'about.cta.title' | transloco }}
-        </h2>
-        <p class="mx-auto mt-3 max-w-xl text-sm text-stone-300">
-          {{ 'about.cta.description' | transloco }}
-        </p>
-        <div class="mt-6 flex flex-wrap justify-center gap-4">
-          <a
-            hlmBtn
-            size="lg"
-            routerLink="/contatti"
-            class="px-6 py-3"
-          >
-            {{ 'about.cta.contactLink' | transloco }}
-          </a>
-          <a
-            hlmBtn
-            variant="outline"
-            size="lg"
-            [href]="'tel:' + content.personalInfo.phoneRaw"
-            class="border-stone-400/50 px-6 py-3 text-white hover:bg-stone-800 hover:text-white"
-          >
-            {{
-              'about.cta.callLabel'
-                | transloco: { phone: content.personalInfo.phone }
-            }}
-          </a>
-        </div>
-      </section>
+      <app-cta-banner
+        [title]="'about.cta.title' | transloco"
+        [description]="'about.cta.description' | transloco"
+        [buttons]="[
+          {
+            label: ('about.cta.contactLink' | transloco),
+            route: '/contatti'
+          },
+          {
+            label: ('about.cta.callLabel' | transloco: { phone: content.personalInfo.phone }),
+            href: 'tel:' + content.personalInfo.phoneRaw,
+            variant: 'outline',
+            className: 'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
+          }
+        ]"
+        sectionId="heading-cta-about"
+      />
     </article>
   `,
 })

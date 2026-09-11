@@ -4,10 +4,11 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
+import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
 @Component({
   selector: 'app-artist-bio',
-  imports: [RouterLink, TranslocoPipe, HlmButtonImports],
+  imports: [RouterLink, TranslocoPipe, HlmButtonImports, CtaBannerComponent],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
@@ -158,36 +159,23 @@ import { Seo } from '../../core/seo/seo';
       </section>
 
       <!-- CTA: rimando al percorso da terapeuta -->
-      <section
-        class="mt-16 rounded-3xl bg-ink p-8 text-center text-white sm:p-12"
-        [attr.aria-label]="'artistBio.cta.ariaLabel' | transloco"
-      >
-        <h2 class="text-2xl font-bold sm:text-3xl">
-          {{ 'artistBio.cta.title' | transloco }}
-        </h2>
-        <p class="mx-auto mt-3 max-w-xl text-sm text-stone-300">
-          {{ 'artistBio.cta.description' | transloco }}
-        </p>
-        <div class="mt-6 flex flex-wrap justify-center gap-4">
-          <a
-            hlmBtn
-            size="lg"
-            routerLink="/chi-sono"
-            class="px-6 py-3"
-          >
-            {{ 'artistBio.cta.therapistLink' | transloco }}
-          </a>
-          <a
-            hlmBtn
-            variant="outline"
-            size="lg"
-            routerLink="/contatti"
-            class="border-stone-400/50 px-6 py-3 text-white hover:bg-stone-800 hover:text-white"
-          >
-            {{ 'artistBio.cta.contactLink' | transloco }}
-          </a>
-        </div>
-      </section>
+      <app-cta-banner
+        [title]="'artistBio.cta.title' | transloco"
+        [description]="'artistBio.cta.description' | transloco"
+        [buttons]="[
+          {
+            label: ('artistBio.cta.therapistLink' | transloco),
+            route: '/chi-sono'
+          },
+          {
+            label: ('artistBio.cta.contactLink' | transloco),
+            route: '/contatti',
+            variant: 'outline',
+            className: 'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink'
+          }
+        ]"
+        sectionId="heading-cta-artist-bio"
+      />
     </article>
   `,
 })

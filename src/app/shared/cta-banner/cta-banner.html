@@ -1,0 +1,51 @@
+<section
+  class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8"
+  [attr.aria-labelledby]="sectionId()"
+>
+  <div class="rounded-3xl bg-ink p-8 text-center text-white shadow-md sm:p-12">
+    <h2
+      [id]="sectionId()"
+      class="text-2xl font-extrabold tracking-tight sm:text-3xl lg:text-4xl"
+    >
+      {{ title() }}
+    </h2>
+
+    @if (description()) {
+      <p
+        class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-stone-300 sm:text-base"
+      >
+        {{ description() }}
+      </p>
+    }
+
+    @if (buttons().length) {
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        @for (button of buttons(); track button.label) {
+          @if (button.route) {
+            <a
+              hlmBtn
+              [size]="'lg'"
+              [variant]="button.variant === 'outline' ? 'outline' : 'default'"
+              [routerLink]="button.route"
+              [attr.target]="button.target || null"
+              [class]="resolveButtonClass(button)"
+            >
+              {{ button.label }}
+            </a>
+          } @else if (button.href) {
+            <a
+              hlmBtn
+              [size]="'lg'"
+              [variant]="button.variant === 'outline' ? 'outline' : 'default'"
+              [href]="button.href"
+              [attr.target]="button.target || null"
+              [class]="resolveButtonClass(button)"
+            >
+              {{ button.label }}
+            </a>
+          }
+        }
+      </div>
+    }
+  </div>
+</section>
