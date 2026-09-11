@@ -149,7 +149,9 @@ import { Seo } from '../../core/seo/seo';
         <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           @for (pillar of content.pillars; track pillar.title) {
             <div class="rounded-2xl border border-stone-200/80 bg-white/70 p-6">
-              <h3 class="text-base font-bold text-ink">{{ pillar.title | transloco }}</h3>
+              <h3 class="text-base font-bold text-ink">
+                {{ pillar.title | transloco }}
+              </h3>
               <p class="mt-2 text-sm leading-relaxed text-ink-muted">
                 {{ pillar.description | transloco }}
               </p>

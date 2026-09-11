@@ -19,7 +19,8 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           (click)="closeMobileMenu()"
           class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-aqua"
           [attr.aria-label]="
-            'header.logoAriaLabel' | transloco: { name: content.personalInfo.name }
+            'header.logoAriaLabel'
+              | transloco: { name: content.personalInfo.name }
           "
         >
           <span
