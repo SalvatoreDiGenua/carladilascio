@@ -141,7 +141,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           <a
             routerLink="/contatti"
             routerLinkActive="bg-primary-dark text-white shadow-sm"
-            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2"
+            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2"
           >
             {{ 'header.nav.contact' | transloco }}
           </a>
