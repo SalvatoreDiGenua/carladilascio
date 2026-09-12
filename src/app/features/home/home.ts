@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
@@ -16,6 +17,7 @@ import { AboutMenu } from '../../core/services/about-menu';
     HlmButtonImports,
     HlmCardImports,
     CtaBannerComponent,
+    NgOptimizedImage,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',

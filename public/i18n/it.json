@@ -53,8 +53,9 @@
       "badge": "Benessere integrato e tecniche vibrazionali",
       "ctaAbout": "Scopri chi sono",
       "ctaContact": "Contattami",
-      "illustrationAlt": "Composizione artistica astratta con forme organiche e armoniose",
-      "cardSubtitle": "Ricevo ad Avellino e propongo percorsi dedicati"
+      "artworkAlt": "Dipinto \"La Maddalena: cuore blu\" di Carla Di Lascio: due figure velate e corazzate abbracciate su uno scoglio, sotto un cielo di nuvole e un'aureola dorata, con il mare in tempesta sullo sfondo",
+      "artworkTitle": "La Maddalena: cuore blu",
+      "artworkCredit": "Opera di {{ name }}"
     },
     "intro": {
       "eyebrow": "Uno spazio di ascolto"
@@ -411,9 +412,8 @@
     }
   },
   "artistBio": {
-    "eyebrow": "L'Artista",
     "subheadline": "Pittrice, decoratrice ceramista e docente d’arte.",
-    "portraitSubtitle": "Nata a Montella (AV)",
+    "portraitSubtitle": "«La Maddalena: cuore blu», opera pittorica",
     "training": {
       "title": "Formazione e apprendistato",
       "paragraph1": "Sono nata a Montella, in provincia di Avellino, e ho studiato presso l’Istituto Statale d’Arte P. A. De Luca di Avellino, dove ho conseguito il diploma con ottimi risultati e la specializzazione in Arte del tessuto.",
@@ -438,9 +438,13 @@
     },
     "philosophy": {
       "ariaLabel": "Ricerca pittorica",
-      "title": "La mia ricerca pittorica",
       "quote": "La mia pittura è una continua ricerca attraverso il colore dell’emozionalità, un dialogo costante tra classicità e innovazione: sono certa che non tutto sia stato ancora rappresentato nell’arte. Al centro delle mie opere resta sempre fermo il concetto umano.",
       "closing": "L’uomo ha bisogno di riscoprire l’emozionalità ed essere rieducato alla cultura dell’Arte."
+    },
+    "featuredWork": {
+      "title": "Opera in evidenza",
+      "workTitle": "La Maddalena: cuore blu",
+      "description": "Due figure velate e corazzate si stringono su uno scoglio, sospese tra un cielo di nubi attraversato da un bagliore dorato e un mare in tempesta. È un dipinto in cui il colore si fa emozione: i grigi e gli ocra della tempesta custodiscono, al centro del petto, quel cuore blu che dà il titolo all’opera, cifra della mia ricerca costante tra classicità e sentimento."
     },
     "cta": {
       "ariaLabel": "Scopri anche il percorso da terapeuta",
@@ -449,6 +453,6 @@
       "therapistLink": "Scopri Carla Terapeuta",
       "contactLink": "Contattami"
     },
-    "portraitAlt": "Composizione astratta ispirata alla tavolozza dell'artista"
+    "portraitAlt": "Dipinto \"La Maddalena: cuore blu\" di Carla Di Lascio: due figure velate e corazzate abbracciate su uno scoglio, sotto un cielo di nuvole e un'aureola dorata, con il mare in tempesta sullo sfondo"
   }
 }

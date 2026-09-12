@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
@@ -7,18 +8,18 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
 @Component({
   selector: 'app-artist-bio',
-  imports: [TranslocoPipe, HlmButtonImports, CtaBannerComponent],
+  imports: [
+    TranslocoPipe,
+    HlmButtonImports,
+    CtaBannerComponent,
+    NgOptimizedImage,
+  ],
   template: `
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
       <header class="mb-12 text-center">
-        <span
-          class="bg-coral/10 text-coral inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
-        >
-          {{ 'artistBio.eyebrow' | transloco }}
-        </span>
         <h1
-          class="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl"
+          class="font-serif text-3xl font-bold tracking-tight text-ink sm:text-5xl"
         >
           {{ content.personalInfo.name }}
         </h1>
@@ -29,59 +30,29 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
       <!-- Griglia Profilo: Ritratto Simbolico + Biografia Narrativa -->
       <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
-        <!-- Colonna 1: Ritratto Astratto Simbolico -->
+        <!-- Colonna 1: Opera pittorica in evidenza -->
         <div class="flex flex-col items-center lg:col-span-5">
-          <div
-            class="relative flex h-80 w-80 items-center justify-center rounded-3xl border border-stone-200/90 bg-white p-6 shadow-sm sm:h-96 sm:w-96"
+          <figure
+            class="relative w-full max-w-sm overflow-hidden rounded-3xl border border-stone-200/90 bg-ink shadow-sm"
           >
-            <svg
-              class="h-full w-full"
-              viewBox="0 0 200 200"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              [attr.aria-label]="'artistBio.portraitAlt' | transloco"
-            >
-              <rect width="200" height="200" rx="24" fill="#faf7f2" />
-              <ellipse
-                cx="95"
-                cy="105"
-                rx="58"
-                ry="42"
-                stroke="#c95d4a"
-                stroke-width="1.5"
-                stroke-dasharray="4 4"
-                transform="rotate(-18 95 105)"
-              />
-              <circle cx="70" cy="80" r="9" fill="#c95d4a" />
-              <circle cx="100" cy="70" r="9" fill="#7c6ca6" />
-              <circle cx="128" cy="82" r="9" fill="#548da7" />
-              <circle cx="118" cy="112" r="9" fill="#2d8a85" />
-              <circle cx="82" cy="115" r="9" fill="#d9788a" />
-              <path
-                d="M132 118 L160 155"
-                stroke="#162438"
-                stroke-width="3"
-                stroke-linecap="round"
-              />
-              <path
-                d="M156 150 L168 168"
-                stroke="#4a5d73"
-                stroke-width="6"
-                stroke-linecap="round"
-              />
-            </svg>
+            <img
+              ngSrc="/la-maddalena-cuore-blu.jpg"
+              width="1458"
+              height="1909"
+              class="aspect-[1458/1909] w-full object-cover"
+              [attr.alt]="'artistBio.portraitAlt' | transloco"
+            />
             <div
-              class="absolute right-4 bottom-4 left-4 rounded-xl border border-stone-200 bg-white/90 p-3 text-center"
-            >
-              <p class="text-xs font-bold text-ink">
-                {{ content.personalInfo.name }}
-              </p>
-              <p class="text-[11px] text-ink-muted">
+              class="from-ink/85 pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent pt-16"
+            ></div>
+            <figcaption class="absolute inset-x-0 bottom-0 px-5 py-4">
+              <p
+                class="font-serif text-base font-semibold text-cream italic"
+              >
                 {{ 'artistBio.portraitSubtitle' | transloco }}
               </p>
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         </div>
 
         <!-- Colonna 2: Presentazione Narrativa -->
@@ -135,6 +106,48 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         </div>
       </div>
 
+      <!-- Opera in evidenza: "La Maddalena: cuore blu" -->
+      <section
+        class="mt-16 border-t border-stone-200/80 pt-12"
+        aria-labelledby="heading-opera-evidenza"
+      >
+        <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+          <figure class="lg:col-span-6">
+            <div
+              class="overflow-hidden rounded-3xl border border-stone-200/90 shadow-md"
+            >
+              <img
+                ngSrc="/la-maddalena-cuore-blu.jpg"
+                width="1458"
+                height="1909"
+                loading="lazy"
+                class="aspect-[1458/1909] w-full object-cover"
+                [attr.alt]="'home.hero.artworkAlt' | transloco"
+              />
+            </div>
+          </figure>
+          <div class="lg:col-span-6">
+            <span
+              class="bg-primary/60 block h-0.5 w-10 rounded-full"
+            ></span>
+            <h2
+              id="heading-opera-evidenza"
+              class="mt-4 font-serif text-2xl font-bold text-ink sm:text-3xl"
+            >
+              {{ 'artistBio.featuredWork.title' | transloco }}
+            </h2>
+            <p
+              class="mt-2 text-sm font-semibold tracking-wide text-primary uppercase"
+            >
+              {{ 'artistBio.featuredWork.workTitle' | transloco }}
+            </p>
+            <p class="mt-4 text-base leading-relaxed text-ink-muted">
+              {{ 'artistBio.featuredWork.description' | transloco }}
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- Ricerca pittorica: citazione evocativa -->
       <section
         class="mt-16 border-t border-stone-200/80 pt-12"
@@ -143,11 +156,8 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         <blockquote
           class="border-coral/20 bg-coral-light/30 rounded-3xl border p-8 text-center sm:p-12"
         >
-          <h2 class="text-coral text-xs font-bold tracking-wider uppercase">
-            {{ 'artistBio.philosophy.title' | transloco }}
-          </h2>
           <p
-            class="mx-auto mt-4 max-w-2xl text-xl leading-relaxed font-semibold text-ink italic sm:text-2xl"
+            class="mx-auto max-w-2xl text-xl leading-relaxed font-semibold text-ink italic sm:text-2xl"
           >
             «{{ 'artistBio.philosophy.quote' | transloco }}»
           </p>

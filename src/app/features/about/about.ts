@@ -12,13 +12,8 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione Pagina -->
       <header class="mb-12 text-center">
-        <span
-          class="bg-powder/10 text-powder inline-flex rounded-full px-3.5 py-1 text-xs font-semibold tracking-wider uppercase"
-        >
-          {{ 'about.eyebrow' | transloco }}
-        </span>
         <h1
-          class="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl"
+          class="font-serif text-3xl font-bold tracking-tight text-ink sm:text-5xl"
         >
           {{ content.personalInfo.name }}
         </h1>
@@ -42,12 +37,12 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               role="img"
               [attr.aria-label]="'about.portraitAlt' | transloco"
             >
-              <rect width="200" height="200" rx="24" fill="#faf7f2" />
+              <rect width="200" height="200" rx="24" fill="#f4efe4" />
               <circle
                 cx="100"
                 cy="100"
                 r="70"
-                stroke="#2d8a85"
+                stroke="#56697a"
                 stroke-width="1.5"
                 stroke-dasharray="4 4"
               />
@@ -55,18 +50,18 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
                 cx="100"
                 cy="80"
                 r="28"
-                fill="#e6f4f2"
-                stroke="#2d8a85"
+                fill="#eaf0f3"
+                stroke="#56697a"
                 stroke-width="2"
               />
               <path
                 d="M55 160 C 55 125, 145 125, 145 160"
-                fill="#f4efe6"
-                stroke="#548da7"
+                fill="#ebe2d1"
+                stroke="#5f6d70"
                 stroke-width="2"
               />
-              <circle cx="100" cy="80" r="6" fill="#c95d4a" />
-              <circle cx="100" cy="120" r="4" fill="#7c6ca6" />
+              <circle cx="100" cy="80" r="6" fill="#a1522b" />
+              <circle cx="100" cy="120" r="4" fill="#8a5c52" />
             </svg>
             <div
               class="absolute right-4 bottom-4 left-4 rounded-xl border border-stone-200 bg-white/90 p-3 text-center"
@@ -136,15 +131,13 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         aria-labelledby="heading-valori"
       >
         <div class="text-center">
+          <span class="bg-primary/60 mx-auto block h-0.5 w-10 rounded-full"></span>
           <h2
             id="heading-valori"
-            class="text-aqua text-xs font-bold tracking-wider uppercase"
+            class="mt-4 font-serif text-3xl font-bold text-ink"
           >
-            {{ 'about.values.eyebrow' | transloco }}
-          </h2>
-          <p class="mt-2 text-3xl font-extrabold text-ink">
             {{ 'about.values.title' | transloco }}
-          </p>
+          </h2>
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

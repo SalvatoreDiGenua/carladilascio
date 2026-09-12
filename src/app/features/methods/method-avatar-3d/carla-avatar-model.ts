@@ -22,31 +22,31 @@ export interface CarlaSceneContext {
 /**
  * Normalizes theme colors from CSS variable names or hex strings into valid hex codes.
  */
-function resolveColorHex(color: string, defaultHex = '#2d8a85'): string {
+function resolveColorHex(color: string, defaultHex = '#56697a'): string {
   if (!color) return defaultHex;
   const trimmed = color.trim();
   if (trimmed.startsWith('#')) return trimmed;
 
   const colorMap: Record<string, string> = {
-    'var(--color-aqua)': '#2d8a85',
-    'var(--color-aqua-dark)': '#226b67',
-    'var(--color-aqua-light)': '#e6f4f2',
-    'var(--color-powder)': '#548da7',
-    'var(--color-powder-dark)': '#3f6d84',
-    'var(--color-powder-light)': '#eef6fa',
-    'var(--color-coral)': '#c95d4a',
-    'var(--color-coral-dark)': '#a8492f',
-    'var(--color-coral-light)': '#faece8',
-    'var(--color-blush)': '#d9788a',
-    'var(--color-blush-dark)': '#b95a6d',
-    'var(--color-blush-light)': '#fbf0f2',
-    'var(--color-lavender)': '#7c6ca6',
-    'var(--color-lavender-dark)': '#61538a',
-    'var(--color-lavender-light)': '#f3f0fa',
-    'var(--color-cream)': '#faf7f2',
-    'var(--color-cream-subtle)': '#f4efe6',
-    'var(--color-ink)': '#162438',
-    'var(--color-ink-muted)': '#4a5d73',
+    'var(--color-aqua)': '#56697a',
+    'var(--color-aqua-dark)': '#3c4b58',
+    'var(--color-aqua-light)': '#eaf0f3',
+    'var(--color-powder)': '#5f6d70',
+    'var(--color-powder-dark)': '#465154',
+    'var(--color-powder-light)': '#eef2f2',
+    'var(--color-coral)': '#a1522b',
+    'var(--color-coral-dark)': '#7a3c1e',
+    'var(--color-coral-light)': '#f5e3d5',
+    'var(--color-blush)': '#ad7b70',
+    'var(--color-blush-dark)': '#8a5c52',
+    'var(--color-blush-light)': '#f7ebe7',
+    'var(--color-lavender)': '#8a5c52',
+    'var(--color-lavender-dark)': '#6b453d',
+    'var(--color-lavender-light)': '#f7ebe7',
+    'var(--color-cream)': '#f4efe4',
+    'var(--color-cream-subtle)': '#ebe2d1',
+    'var(--color-ink)': '#1e1a13',
+    'var(--color-ink-muted)': '#6b6152',
   };
 
   return colorMap[trimmed] ?? defaultHex;

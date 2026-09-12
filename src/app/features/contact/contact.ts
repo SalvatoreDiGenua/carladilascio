@@ -38,13 +38,8 @@ import { Seo } from '../../core/seo/seo';
     <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <!-- Intestazione -->
       <header class="mb-12 text-center">
-        <span
-          class="inline-flex rounded-full bg-primary/10 px-3.5 py-1 text-xs font-semibold tracking-wider text-primary uppercase"
-        >
-          {{ 'contact.eyebrow' | transloco }}
-        </span>
         <h1
-          class="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl"
+          class="font-serif text-3xl font-bold tracking-tight text-ink sm:text-5xl"
         >
           {{ 'contact.title' | transloco }}
         </h1>
