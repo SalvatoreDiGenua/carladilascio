@@ -292,7 +292,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
       />
     </main>
   `,
-  styleUrl: 'therapist-bio.css'
+  styleUrl: './therapist-bio.css',
 })
 export class TherapistBio {
   readonly content = SITE_CONTENT;
@@ -312,24 +312,23 @@ export class TherapistBio {
     },
     'arte-terapia': {
       src: '/metodi-arte-terapia.svg',
-      alt: 'Tavolozza, pennelli e foglio dipinto per rappresentare l’arte terapia',
+      alt: 'Tavolozza, pennelli e tela per rappresentare l’arte terapia',
     },
   };
 
   readonly methodLabels: Record<string, string> = {
-    cromopuntura: 'Metodo · colore e luce',
-    'kinesiologia-emozionale': 'Metodo · test muscolare',
-    'suonoterapia-vibrazionale': 'Metodo · suono e vibrazione',
-    'arte-terapia': 'Metodo · espressione artistica',
+    cromopuntura: 'CROMOPUNTURA',
+    'kinesiologia-emozionale': 'KINESIOLOGIA EMOZIONALE',
+    'suonoterapia-vibrazionale': 'SUONOTERAPIA VIBRAZIONALE',
+    'arte-terapia': 'ARTE TERAPIA',
   };
 
   private readonly seo = inject(Seo);
 
   constructor() {
-    this.seo.update({
-      title: 'Chi sono | Carla Di Lascio',
-      description:
-        'Profilo professionale di Carla Di Lascio: arte terapeuta, docente di arte e operatrice in tecniche vibrazionali, con metodologie, approccio e percorsi di lavoro.',
-    });
+    this.seo.setTitle('Chi sono | Carla Di Lascio');
+    this.seo.setDescription(
+      'Profilo professionale di Carla Di Lascio: arte terapeuta, docente di arte e operatrice in tecniche vibrazionali, con metodologie, approccio e percorsi di lavoro.',
+    );
   }
 }
