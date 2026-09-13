@@ -12,8 +12,6 @@ import {
   viewChild,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideUserRound } from '@ng-icons/lucide';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 import {
@@ -25,210 +23,148 @@ import {
 
 @Component({
   selector: 'app-method-avatar-3d',
-  providers: [provideIcons({ lucideUserRound })],
   host: {
-    class: 'block h-full min-h-[380px] w-full',
+    class: 'block h-full min-h-[280px] w-full',
   },
-  imports: [NgIcon, TranslocoPipe],
+  imports: [TranslocoPipe],
   template: `
-    <div
-      class="relative h-full min-h-[380px] w-full overflow-hidden rounded-2xl"
-    >
+    <div class="relative h-full min-h-[280px] w-full overflow-hidden rounded-2xl">
       @if (!isLoaded()) {
         <div
-          class="absolute inset-0 z-10 animate-pulse rounded-2xl"
-          [style.background]="skeletonGradient()"
+          class="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-stone-100/70"
           role="status"
-          [attr.aria-label]="'methodAvatar.loadingAriaLabel' | transloco"
+          [attr.aria-label]="loadingLabel()"
         >
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="flex flex-col items-center gap-3 opacity-40">
-              <ng-icon
-                name="lucideUserRound"
-                class="size-16 text-current"
-                aria-hidden="true"
-              />
-
-              <span class="text-xs font-medium tracking-wider uppercase">
-                {{ 'methodAvatar.badgeLabel' | transloco }}
-              </span>
-            </div>
-          </div>
+          <span class="text-xs font-medium tracking-[0.18em] text-ink-muted uppercase">
+            3D
+          </span>
         </div>
       }
 
       <canvas
-        #avatarCanvas
-        class="absolute inset-0 block h-full w-full"
+        #instrumentCanvas
+        class="absolute inset-0 block h-full w-full transition-opacity duration-500"
         [class.opacity-0]="!isLoaded()"
         [class.opacity-100]="isLoaded()"
-        style="
-          display: block;
-          width: 100%;
-          height: 100%;
-          transition: opacity 0.6s ease;
-          touch-action: pan-y;
-        "
         role="img"
         [attr.aria-label]="ariaLabel()"
       ></canvas>
-
-      @if (isLoaded() && showBadge()) {
-        <div
-          class="pointer-events-none absolute top-3 left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/40 px-3 py-1 text-xs text-white backdrop-blur-sm transition-opacity duration-700"
-          [class.opacity-100]="showBadge()"
-          [class.opacity-0]="!showBadge()"
-          aria-hidden="true"
-        >
-          {{ 'methodAvatar.dragHint' | transloco }}
-        </div>
-      }
     </div>
   `,
 })
 export class MethodAvatar3dComponent {
   readonly slug = input.required<string>();
   readonly title = input<string>('');
-  readonly themeColor = input<string>('#2dd4bf');
+  readonly themeColor = input<string>('#3c607a');
 
-  readonly isPlaying = signal(true);
   readonly isLoaded = signal(false);
-  readonly showBadge = signal(false);
 
   private readonly transloco = inject(TranslocoService);
-
-  readonly ariaLabel = computed(() =>
-    this.transloco.translate('methodAvatar.ariaLabel', {
-      treatment: this.title() || this.slug(),
-    }),
-  );
-
-  readonly skeletonGradient = computed(() => {
-    const color = this.themeColor();
-    return `linear-gradient(135deg, #f5f5f4 0%, ${color}22 100%)`;
-  });
-
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
 
+  readonly ariaLabel = computed(() =>
+    `${this.transloco.translate(this.title() || this.slug())} — strumento 3D della metodologia`,
+  );
+
+  readonly loadingLabel = computed(() =>
+    `Caricamento dello strumento 3D per ${this.transloco.translate(this.title() || this.slug())}`,
+  );
+
   private readonly canvasRef =
-    viewChild<ElementRef<HTMLCanvasElement>>('avatarCanvas');
+    viewChild<ElementRef<HTMLCanvasElement>>('instrumentCanvas');
 
   private sceneCtx: CarlaSceneContext | null = null;
   private animationFrameId = 0;
   private resizeObserver: ResizeObserver | null = null;
-  private badgeTimeoutId: ReturnType<typeof setTimeout> | null = null;
   private visibilityHandler: (() => void) | null = null;
+  private scrollHandler: (() => void) | null = null;
 
-  private clock = {
-    start: 0,
-    prev: 0,
-  };
-
-  private isDragging = false;
-  private activePointerId: number | null = null;
-  private lastPointerX = 0;
-  private lastPointerY = 0;
-
-  private orbitTheta = 0;
-  private orbitPhi = Math.PI / 8;
-  private orbitThetaVelocity = 0;
-
-  private orbitRadius = 3.5;
-  private readonly autoRotateSpeed = 0.004;
-
+  private scrollProgress = 0;
+  private targetScrollProgress = 0;
+  private clock = { start: 0, prev: 0 };
   private isDocumentVisible = true;
 
   constructor() {
-    afterNextRender(() => {
-      this.initScene();
-    });
+    afterNextRender(() => this.initScene());
 
     effect(() => {
       const slug = this.slug();
       const color = this.themeColor();
-
       void slug;
       void color;
 
-      if (!isPlatformBrowser(this.platformId)) {
-        return;
-      }
-
-      if (!this.sceneCtx) {
+      if (!isPlatformBrowser(this.platformId) || !this.sceneCtx) {
         return;
       }
 
       this.destroyScene();
-      this.resetOrbitState();
       this.initScene();
     });
 
-    this.destroyRef.onDestroy(() => {
-      this.destroyScene();
-    });
+    this.destroyRef.onDestroy(() => this.destroyScene());
   }
 
   private initScene(): void {
-    if (!isPlatformBrowser(this.platformId)) {
+    if (!isPlatformBrowser(this.platformId) || this.sceneCtx) {
       return;
     }
 
-    if (this.sceneCtx) {
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!canvas) {
       return;
     }
-
-    const canvasEl = this.canvasRef()?.nativeElement;
-
-    if (!canvasEl) {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-
-    this.isPlaying.set(!prefersReducedMotion);
-
-    this.cancelAnimationLoop();
 
     const now = performance.now();
-
-    this.clock = {
-      start: now,
-      prev: now,
-    };
+    this.clock = { start: now, prev: now };
+    this.targetScrollProgress = this.readScrollProgress();
+    this.scrollProgress = this.targetScrollProgress;
 
     this.sceneCtx = createCarlaAvatarScene(
-      canvasEl,
+      canvas,
       this.slug(),
       this.themeColor(),
     );
 
-    this.handleResize(canvasEl);
-    this.setupResizeObserver(canvasEl);
-    this.attachPointerEvents(canvasEl);
+    this.sceneCtx.avatarGroup.visible = false;
+    this.sceneCtx.treatmentGroup.visible = true;
+
+    this.handleResize(canvas);
+    this.setupResizeObserver(canvas);
+    this.setupScrollTracking();
     this.setupVisibilityHandler();
 
     this.isLoaded.set(true);
-    this.showBadge.set(true);
-
-    this.clearBadgeTimeout();
-
-    this.badgeTimeoutId = setTimeout(() => {
-      this.showBadge.set(false);
-      this.badgeTimeoutId = null;
-    }, 3500);
-
     this.startAnimationLoop();
   }
 
-  private startAnimationLoop(): void {
-    if (!isPlatformBrowser(this.platformId)) {
+  private setupScrollTracking(): void {
+    if (!isPlatformBrowser(this.platformId) || this.scrollHandler) {
       return;
     }
 
-    if (this.animationFrameId !== 0) {
+    this.scrollHandler = () => {
+      this.targetScrollProgress = this.readScrollProgress();
+    };
+
+    window.addEventListener('scroll', this.scrollHandler, { passive: true });
+  }
+
+  private readScrollProgress(): number {
+    if (!isPlatformBrowser(this.platformId)) {
+      return 0;
+    }
+
+    const maxScroll = Math.max(
+      1,
+      document.documentElement.scrollHeight - window.innerHeight,
+    );
+
+    return Math.min(1, Math.max(0, window.scrollY / maxScroll));
+  }
+
+  private startAnimationLoop(): void {
+    if (!isPlatformBrowser(this.platformId) || this.animationFrameId !== 0) {
       return;
     }
 
@@ -244,44 +180,20 @@ export class MethodAvatar3dComponent {
     }
 
     const ctx = this.sceneCtx;
-
     if (!ctx || !this.isDocumentVisible) {
       return;
     }
 
     const now = performance.now();
     const elapsedTime = (now - this.clock.start) / 1000;
-    const rawDelta = (now - this.clock.prev) / 1000;
-    const delta = Math.min(rawDelta, 0.1);
-
+    const delta = Math.min((now - this.clock.prev) / 1000, 0.1);
     this.clock.prev = now;
 
-    if (!this.isDragging) {
-      this.orbitThetaVelocity *= 0.92;
+    this.scrollProgress +=
+      (this.targetScrollProgress - this.scrollProgress) * 0.085;
 
-      if (Math.abs(this.orbitThetaVelocity) < 0.0002) {
-        this.orbitThetaVelocity = 0;
-
-        if (this.isPlaying()) {
-          this.orbitTheta += this.autoRotateSpeed;
-        }
-      } else {
-        this.orbitTheta += this.orbitThetaVelocity;
-      }
-    }
-
-    const x =
-      this.orbitRadius * Math.sin(this.orbitTheta) * Math.cos(this.orbitPhi);
-
-    const y = this.orbitRadius * Math.sin(this.orbitPhi);
-
-    const z =
-      this.orbitRadius * Math.cos(this.orbitTheta) * Math.cos(this.orbitPhi);
-
-    ctx.camera.position.set(x, y + 0.5, z);
-    ctx.camera.lookAt(0, 0.5, 0);
-
-    updateCarlaAvatarScene(ctx, elapsedTime, delta, this.isPlaying());
+    this.updateScrollComposition(ctx, this.scrollProgress, elapsedTime);
+    updateCarlaAvatarScene(ctx, elapsedTime, delta, true);
 
     ctx.renderer.render(ctx.scene, ctx.camera);
 
@@ -291,16 +203,35 @@ export class MethodAvatar3dComponent {
     });
   }
 
-  private cancelAnimationLoop(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      this.animationFrameId = 0;
-      return;
-    }
+  private updateScrollComposition(
+    ctx: CarlaSceneContext,
+    progress: number,
+    elapsedTime: number,
+  ): void {
+    const phase = progress * Math.PI * 2;
 
-    if (this.animationFrameId !== 0) {
-      cancelAnimationFrame(this.animationFrameId);
-      this.animationFrameId = 0;
-    }
+    ctx.treatmentGroup.rotation.y = phase * 1.55 + Math.sin(elapsedTime * 0.45) * 0.08;
+    ctx.treatmentGroup.rotation.x =
+      Math.sin(phase * 0.5) * 0.18 + Math.sin(elapsedTime * 0.3) * 0.025;
+    ctx.treatmentGroup.rotation.z = Math.cos(phase * 0.75) * 0.08;
+
+    ctx.treatmentGroup.position.x = Math.sin(phase) * 0.24;
+    ctx.treatmentGroup.position.y = Math.sin(phase * 0.5) * 0.2;
+    ctx.treatmentGroup.position.z = Math.cos(phase) * 0.18;
+
+    const scale = 0.86 + Math.sin(progress * Math.PI) * 0.16;
+    ctx.treatmentGroup.scale.setScalar(scale);
+
+    const cameraAngle = phase * 0.22;
+    const radius = 3.1 - Math.sin(progress * Math.PI) * 0.35;
+    const height = 0.65 + Math.sin(phase * 0.5) * 0.18;
+
+    ctx.camera.position.set(
+      Math.sin(cameraAngle) * radius,
+      height,
+      Math.cos(cameraAngle) * radius,
+    );
+    ctx.camera.lookAt(0, 0.45, 0);
   }
 
   private setupResizeObserver(canvas: HTMLCanvasElement): void {
@@ -308,158 +239,43 @@ export class MethodAvatar3dComponent {
       return;
     }
 
-    this.resizeObserver?.disconnect();
-
     const container = canvas.parentElement ?? canvas;
-
-    this.resizeObserver = new ResizeObserver(() => {
-      this.handleResize(canvas);
-    });
-
+    this.resizeObserver = new ResizeObserver(() => this.handleResize(canvas));
     this.resizeObserver.observe(container);
   }
 
   private handleResize(canvas: HTMLCanvasElement): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-
-    const ctx = this.sceneCtx;
-
-    if (!ctx) {
+    if (!isPlatformBrowser(this.platformId) || !this.sceneCtx) {
       return;
     }
 
     const container = canvas.parentElement;
-
     if (!container) {
       return;
     }
 
     const rect = container.getBoundingClientRect();
-
     const width = Math.max(1, Math.floor(rect.width));
     const height = Math.max(1, Math.floor(rect.height));
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.75);
 
-    if (width <= 1 || height <= 1) {
-      return;
-    }
-
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-
-    ctx.renderer.setPixelRatio(pixelRatio);
-    ctx.renderer.setSize(width, height, false);
-
-    ctx.camera.aspect = width / height;
-    ctx.camera.updateProjectionMatrix();
-  }
-
-  private attachPointerEvents(canvas: HTMLCanvasElement): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-
-    const onPointerDown = (event: PointerEvent): void => {
-      if (event.pointerType === 'mouse' && event.button !== 0) {
-        return;
-      }
-
-      this.isDragging = true;
-      this.activePointerId = event.pointerId;
-      this.lastPointerX = event.clientX;
-      this.lastPointerY = event.clientY;
-
-      try {
-        canvas.setPointerCapture(event.pointerId);
-      } catch {
-        // Pointer capture non disponibile.
-      }
-
-      this.showBadge.set(false);
-    };
-
-    const onPointerMove = (event: PointerEvent): void => {
-      if (!this.isDragging) {
-        return;
-      }
-
-      if (
-        this.activePointerId !== null &&
-        event.pointerId !== this.activePointerId
-      ) {
-        return;
-      }
-
-      const dx = event.clientX - this.lastPointerX;
-      const dy = event.clientY - this.lastPointerY;
-
-      this.orbitTheta -= dx * 0.01;
-
-      this.orbitPhi = Math.max(
-        -Math.PI / 3,
-        Math.min(Math.PI / 3, this.orbitPhi + dy * 0.008),
-      );
-
-      this.orbitThetaVelocity = -dx * 0.01;
-
-      this.lastPointerX = event.clientX;
-      this.lastPointerY = event.clientY;
-    };
-
-    const onPointerUp = (event: PointerEvent): void => {
-      if (
-        this.activePointerId !== null &&
-        event.pointerId !== this.activePointerId
-      ) {
-        return;
-      }
-
-      this.isDragging = false;
-
-      if (
-        this.activePointerId !== null &&
-        canvas.hasPointerCapture(this.activePointerId)
-      ) {
-        try {
-          canvas.releasePointerCapture(this.activePointerId);
-        } catch {
-          // Pointer capture già rilasciato.
-        }
-      }
-
-      this.activePointerId = null;
-    };
-
-    canvas.addEventListener('pointerdown', onPointerDown);
-    canvas.addEventListener('pointermove', onPointerMove);
-    canvas.addEventListener('pointerup', onPointerUp);
-    canvas.addEventListener('pointercancel', onPointerUp);
-
-    this.destroyRef.onDestroy(() => {
-      canvas.removeEventListener('pointerdown', onPointerDown);
-      canvas.removeEventListener('pointermove', onPointerMove);
-      canvas.removeEventListener('pointerup', onPointerUp);
-      canvas.removeEventListener('pointercancel', onPointerUp);
-    });
+    this.sceneCtx.renderer.setPixelRatio(pixelRatio);
+    this.sceneCtx.renderer.setSize(width, height, false);
+    this.sceneCtx.camera.aspect = width / height;
+    this.sceneCtx.camera.updateProjectionMatrix();
   }
 
   private setupVisibilityHandler(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-
-    if (this.visibilityHandler) {
+    if (!isPlatformBrowser(this.platformId) || this.visibilityHandler) {
       return;
     }
 
     this.isDocumentVisible = document.visibilityState === 'visible';
-
     this.visibilityHandler = () => {
       this.isDocumentVisible = document.visibilityState === 'visible';
 
       if (this.isDocumentVisible) {
-        const now = performance.now();
-        this.clock.prev = now;
+        this.clock.prev = performance.now();
         this.startAnimationLoop();
       } else {
         this.cancelAnimationLoop();
@@ -469,46 +285,34 @@ export class MethodAvatar3dComponent {
     document.addEventListener('visibilitychange', this.visibilityHandler);
   }
 
-  togglePlay(): void {
-    this.isPlaying.update((playing) => !playing);
-  }
-
-  resetCamera(): void {
-    this.resetOrbitState();
-  }
-
-  private resetOrbitState(): void {
-    this.isDragging = false;
-    this.activePointerId = null;
-    this.lastPointerX = 0;
-    this.lastPointerY = 0;
-    this.orbitTheta = 0;
-    this.orbitPhi = Math.PI / 8;
-    this.orbitThetaVelocity = 0;
-  }
-
-  private clearBadgeTimeout(): void {
-    if (this.badgeTimeoutId !== null) {
-      clearTimeout(this.badgeTimeoutId);
-      this.badgeTimeoutId = null;
+  private cancelAnimationLoop(): void {
+    if (
+      isPlatformBrowser(this.platformId) &&
+      this.animationFrameId !== 0
+    ) {
+      cancelAnimationFrame(this.animationFrameId);
     }
+
+    this.animationFrameId = 0;
   }
 
   private destroyScene(): void {
     this.cancelAnimationLoop();
-    this.clearBadgeTimeout();
 
-    this.resizeObserver?.disconnect();
-    this.resizeObserver = null;
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.visibilityHandler) {
+        document.removeEventListener('visibilitychange', this.visibilityHandler);
+      }
 
-    if (isPlatformBrowser(this.platformId) && this.visibilityHandler) {
-      document.removeEventListener('visibilitychange', this.visibilityHandler);
+      if (this.scrollHandler) {
+        window.removeEventListener('scroll', this.scrollHandler);
+      }
     }
 
     this.visibilityHandler = null;
-
-    this.isDragging = false;
-    this.activePointerId = null;
+    this.scrollHandler = null;
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = null;
 
     if (this.sceneCtx) {
       disposeCarlaAvatarScene(this.sceneCtx);
@@ -516,6 +320,5 @@ export class MethodAvatar3dComponent {
     }
 
     this.isLoaded.set(false);
-    this.showBadge.set(false);
   }
 }
