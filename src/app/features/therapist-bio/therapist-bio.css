@@ -1,20 +1,11 @@
-.therapist-methods__grid {
-  /* Dedicated wrapper for the methodology card composition. */
-}
-
 .therapist-method-card {
   position: relative;
   isolation: isolate;
 }
 
 @media (min-width: 768px) {
-  .therapist-method-card {
-    min-height: 36rem;
-  }
-
   .therapist-method-card__layout {
     display: block;
-    min-height: 36rem;
   }
 
   .therapist-method-card__media {
@@ -49,7 +40,6 @@
     position: relative;
     z-index: 1;
     display: flex;
-    min-height: 36rem;
     flex-direction: column;
     justify-content: flex-end;
     padding: 2rem;
