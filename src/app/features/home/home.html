@@ -25,7 +25,7 @@
 
         <div class="mt-8 flex flex-wrap gap-3">
           <a hlmBtn routerLink="/terapeuta" size="lg">{{ 'home.hero.ctaAbout' | transloco }}</a>
-          <a hlmBtn routerLink="#metodologie" variant="outline" size="lg">{{ 'home.methods.title' | transloco }}</a>
+          <a hlmBtn href="#metodologie" variant="outline" size="lg">{{ 'home.methods.title' | transloco }}</a>
         </div>
 
         <div class="mt-10 flex items-center gap-4 border-l-2 border-primary pl-5">
@@ -163,13 +163,13 @@
         </div>
       </div>
 
-      <div class="lg:col-span-7 grid gap-4 sm:grid-cols-2">
+      <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
         @for (journey of content.journeys; track journey.id) {
           <article class="rounded-2xl border border-stone-200/80 bg-white/75 p-5">
             <p class="text-xs font-semibold tracking-[0.14em] text-primary uppercase">{{ journey.id }}</p>
             <h3 class="mt-2 font-serif text-xl font-semibold text-ink">{{ journey.title | transloco }}</h3>
             <p class="mt-2 text-sm leading-relaxed text-ink-muted">{{ journey.description | transloco }}</p>
-            <a hlmBtn [routerLink]="['/percorsi']" variant="link" size="sm" class="mt-3 self-start px-0">{{ 'home.methods.detailsLink' | transloco }}</a>
+            <a hlmBtn routerLink="/percorsi" variant="link" size="sm" class="mt-3 self-start px-0">{{ 'home.methods.detailsLink' | transloco }}</a>
           </article>
         }
       </div>
