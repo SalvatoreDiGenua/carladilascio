@@ -14,6 +14,7 @@ import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
 import { filter, map } from 'rxjs';
 import { SITE_CONTENT } from '../../core/data/site-content';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-site-header',
@@ -23,6 +24,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
     RouterLinkActive,
     TranslocoPipe,
     NgIcon,
+    NgOptimizedImage,
     HlmMenubarImports,
     HlmDropdownMenuImports,
     HlmButtonImports,
@@ -44,14 +46,14 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               | transloco: { name: content.personalInfo.name }
           "
         >
-          <span
-            class="text-xl font-bold tracking-tight text-ink transition-colors group-hover:text-primary sm:text-2xl"
-          >
-            {{ content.personalInfo.name }}
-          </span>
-          <span class="text-xs font-medium text-ink-muted">
-            {{ 'header.tagline' | transloco }}
-          </span>
+          <img
+            ngSrc="/carla-logo.svg"
+            width="180"
+            height="48"
+            priority
+            alt="Carla"
+            class="block h-10 w-auto max-w-[180px] object-contain transition-opacity group-hover:opacity-90 sm:h-12 sm:max-w-[220px]"
+          />
         </a>
 
         <!-- Desktop Navigation -->
@@ -116,9 +118,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   (click)="navigateTo('/artista')"
                   (mouseenter)="aboutHoverPath.set('/artista')"
                   (mouseleave)="aboutHoverPath.set(null)"
-                  [style.background-color]="
-                    aboutOptionBackground('/artista')
-                  "
+                  [style.background-color]="aboutOptionBackground('/artista')"
                   [style.color]="aboutOptionTextColor('/artista')"
                 >
                   <span class="flex flex-col items-start gap-0.5 text-left">
