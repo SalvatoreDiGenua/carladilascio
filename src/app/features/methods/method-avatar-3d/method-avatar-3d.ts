@@ -84,6 +84,7 @@ export class MethodAvatar3dComponent {
   private targetScrollProgress = 0;
   private clock = { start: 0, prev: 0 };
   private isDocumentVisible = true;
+  private prefersReducedMotion = false;
 
   constructor() {
     afterNextRender(() => this.initScene());
@@ -114,6 +115,10 @@ export class MethodAvatar3dComponent {
     if (!canvas) {
       return;
     }
+
+    this.prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
 
     const now = performance.now();
     this.clock = { start: now, prev: now };
@@ -189,11 +194,15 @@ export class MethodAvatar3dComponent {
     const delta = Math.min((now - this.clock.prev) / 1000, 0.1);
     this.clock.prev = now;
 
-    this.scrollProgress +=
-      (this.targetScrollProgress - this.scrollProgress) * 0.085;
+    if (this.prefersReducedMotion) {
+      this.scrollProgress = this.targetScrollProgress;
+    } else {
+      this.scrollProgress +=
+        (this.targetScrollProgress - this.scrollProgress) * 0.085;
+    }
 
     this.updateScrollComposition(ctx, this.scrollProgress, elapsedTime);
-    updateCarlaAvatarScene(ctx, elapsedTime, delta, true);
+    updateCarlaAvatarScene(ctx, elapsedTime, delta, !this.prefersReducedMotion);
 
     ctx.renderer.render(ctx.scene, ctx.camera);
 
@@ -209,11 +218,17 @@ export class MethodAvatar3dComponent {
     elapsedTime: number,
   ): void {
     const phase = progress * Math.PI * 2;
+    const ambientRotation = this.prefersReducedMotion
+      ? 0
+      : Math.sin(elapsedTime * 0.45) * 0.08;
 
-    ctx.treatmentGroup.rotation.y = phase * 1.55 + Math.sin(elapsedTime * 0.45) * 0.08;
-    ctx.treatmentGroup.rotation.x =
-      Math.sin(phase * 0.5) * 0.18 + Math.sin(elapsedTime * 0.3) * 0.025;
-    ctx.treatmentGroup.rotation.z = Math.cos(phase * 0.75) * 0.08;
+    ctx.treatmentGroup.rotation.y = phase * 1.55 + ambientRotation;
+    ctx.treatmentGroup.rotation.x = this.prefersReducedMotion
+      ? 0
+      : Math.sin(phase * 0.5) * 0.18 + Math.sin(elapsedTime * 0.3) * 0.025;
+    ctx.treatmentGroup.rotation.z = this.prefersReducedMotion
+      ? 0
+      : Math.cos(phase * 0.75) * 0.08;
 
     ctx.treatmentGroup.position.x = Math.sin(phase) * 0.24;
     ctx.treatmentGroup.position.y = Math.sin(phase * 0.5) * 0.2;
