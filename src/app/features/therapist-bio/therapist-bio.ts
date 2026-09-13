@@ -111,19 +111,19 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             @for (method of content.methods; track method.slug) {
               <article class="group overflow-hidden rounded-[1.75rem] border border-stone-200 bg-cream-subtle shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
                 <div class="grid md:grid-cols-[0.9fr_1.1fr]">
-                  <div class="overflow-hidden bg-[#edf2f4]">
+                  <div class="flex min-h-[17rem] items-center justify-center bg-[#edf2f4] p-5 md:min-h-[24rem]">
                     <img
-                      ngSrc="{{ methodImages[method.slug].src }}"
+                      [ngSrc]="methodImages[method.slug].src"
                       width="1200"
-                      height="800"
+                      height="760"
                       loading="lazy"
-                      class="h-full min-h-64 w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                      class="block h-auto max-h-[23rem] w-full object-contain transition duration-500 group-hover:scale-[1.015]"
                       [alt]="methodImages[method.slug].alt"
                     />
                   </div>
                   <div class="p-6 sm:p-7">
                     <p class="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
-                      {{ method.slug }}
+                      {{ methodLabels[method.slug] }}
                     </p>
                     <h3 class="mt-2 font-serif text-2xl font-bold text-ink">
                       {{ method.title | transloco }}
@@ -181,7 +181,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
       <section class="border-y border-stone-200/70 bg-cream-subtle px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="heading-valori">
         <div class="mx-auto max-w-6xl">
           <div class="max-w-3xl">
-            <p class="text-sm font-semibold tracking-[0.18em] text-primary uppercase">
+            <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">
               {{ 'about.values.eyebrow' | transloco }}
             </p>
             <h2 id="heading-valori" class="mt-3 font-serif text-3xl font-bold text-ink sm:text-5xl">
@@ -296,26 +296,30 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 export class TherapistBio {
   readonly content = SITE_CONTENT;
 
-  readonly methodImages: Record<
-    string,
-    { src: string; alt: string }
-  > = {
+  readonly methodImages: Record<string, { src: string; alt: string }> = {
     cromopuntura: {
       src: '/metodi-cromopuntura.svg',
-      alt: 'Lampada e filtri colorati che rappresentano la cromopuntura',
+      alt: 'Lampada terapeutica con filtri cromatici per rappresentare la cromopuntura',
     },
     'kinesiologia-emozionale': {
       src: '/metodi-kinesiologia.svg',
-      alt: 'Mani durante un test muscolare di kinesiologia emozionale',
+      alt: 'Test muscolare manuale usato per rappresentare la kinesiologia emozionale',
     },
     'suonoterapia-vibrazionale': {
       src: '/metodi-suonoterapia.svg',
-      alt: 'Campana tibetana e onde sonore che rappresentano la suonoterapia vibrazionale',
+      alt: 'Campana tibetana in ottone con battente e cuscino per rappresentare la suonoterapia vibrazionale',
     },
     'arte-terapia': {
       src: '/metodi-arte-terapia.svg',
-      alt: 'Tavolozza, pennelli e tela che rappresentano l’arte terapia',
+      alt: 'Tavolozza, pennelli e foglio dipinto per rappresentare l’arte terapia',
     },
+  };
+
+  readonly methodLabels: Record<string, string> = {
+    cromopuntura: 'Metodo · colore e luce',
+    'kinesiologia-emozionale': 'Metodo · test muscolare',
+    'suonoterapia-vibrazionale': 'Metodo · suono e vibrazione',
+    'arte-terapia': 'Metodo · espressione artistica',
   };
 
   private readonly seo = inject(Seo);
