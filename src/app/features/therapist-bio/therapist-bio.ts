@@ -52,7 +52,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           <figure class="lg:col-span-5">
             <div class="overflow-hidden rounded-[2rem] border border-primary/15 bg-white shadow-lg shadow-ink/5">
               <img
-                ngSrc="/biogria carla.jpg"
+                ngSrc="/carla.jpg"
                 width="1200"
                 height="1200"
                 priority
@@ -110,7 +110,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           <div class="mt-12 grid gap-6 lg:grid-cols-2">
             @for (method of content.methods; track method.slug) {
               <article class="group overflow-hidden rounded-[1.75rem] border border-stone-200 bg-cream-subtle shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-                <div class="grid md:grid-cols-[0.9fr_1.1fr]">
+                <div class="grid md:grid-cols-[0.9fr_1.1fr] h-full">
                   <div class="flex min-h-[17rem] items-center justify-center bg-[#edf2f4] p-5 md:min-h-[24rem]">
                     <img
                       [ngSrc]="methodImages[method.slug].src"
