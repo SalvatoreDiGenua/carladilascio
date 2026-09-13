@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import * as THREE from 'three';
 
 import {
   CarlaSceneContext,
@@ -20,6 +21,40 @@ import {
   disposeCarlaAvatarScene,
   updateCarlaAvatarScene,
 } from './carla-avatar-model';
+
+interface CromopunturaState {
+  penGroup: THREE.Group;
+  beamMesh: THREE.Mesh;
+  beamMat: THREE.MeshBasicMaterial;
+  tipMat: THREE.MeshStandardMaterial;
+  meridianMeshes: THREE.Mesh[];
+  bioPhotons: THREE.Points;
+  photonPositions: Float32Array;
+}
+
+interface KinesiologiaState {
+  leftArmGroup: THREE.Group;
+  leftForearmGroup: THREE.Group;
+  testerGroup: THREE.Group;
+  touchTipMat: THREE.MeshBasicMaterial;
+  coralRings: THREE.Mesh[];
+  heartAura: THREE.Mesh;
+}
+
+interface SuonoterapiaState {
+  bowlGroup: THREE.Group;
+  malletGroup: THREE.Group;
+  soundWaves: { mesh: THREE.Mesh; phase: number }[];
+}
+
+interface ArteTerapiaState {
+  brushGroup: THREE.Group;
+  ribbons: { mesh: THREE.Mesh; offset: number }[];
+  paintSparks: THREE.Points;
+  sparkPositions: Float32Array;
+  rightArmGroup: THREE.Group;
+  rightForearmGroup: THREE.Group;
+}
 
 @Component({
   selector: 'app-method-avatar-3d',
@@ -122,6 +157,7 @@ export class MethodAvatar3dComponent {
     else this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.085;
     this.updateScrollComposition(ctx, this.scrollProgress, elapsedTime);
     updateCarlaAvatarScene(ctx, elapsedTime, delta, !this.prefersReducedMotion);
+    this.updateInstrumentDetails(ctx, this.scrollProgress, elapsedTime);
     ctx.renderer.render(ctx.scene, ctx.camera);
     this.animationFrameId = requestAnimationFrame(() => { this.animationFrameId = 0; this.loop(); });
   }
@@ -136,6 +172,113 @@ export class MethodAvatar3dComponent {
       case 'arte-terapia': this.composeArteTerapia(ctx, phase, ambientRotation); break;
       default: this.composeDefault(ctx, phase, progress, ambientRotation);
     }
+  }
+
+  private updateInstrumentDetails(ctx: CarlaSceneContext, progress: number, elapsedTime: number): void {
+    switch (ctx.methodSlug) {
+      case 'cromopuntura': this.animateCromopunturaDetails(ctx, progress, elapsedTime); break;
+      case 'kinesiologia-emozionale': this.animateKinesiologiaDetails(ctx, progress, elapsedTime); break;
+      case 'suonoterapia-vibrazionale': this.animateSuonoterapiaDetails(ctx, progress, elapsedTime); break;
+      case 'arte-terapia': this.animateArteTerapiaDetails(ctx, progress, elapsedTime); break;
+      default: break;
+    }
+  }
+
+  private animateCromopunturaDetails(ctx: CarlaSceneContext, progress: number, elapsedTime: number): void {
+    const state = ctx.animationState['cromopuntura'] as CromopunturaState | undefined;
+    if (!state) return;
+
+    const phase = progress * Math.PI * 2;
+    const scan = Math.sin(phase * 1.35);
+    const timeMotion = this.prefersReducedMotion ? 0 : elapsedTime;
+    state.penGroup.position.x = scan * 0.035;
+    state.penGroup.rotation.z = -0.15 + scan * 0.08 + Math.sin(timeMotion * 1.4) * 0.012;
+    state.penGroup.rotation.x = Math.PI / 2.3 + Math.cos(phase) * 0.045;
+    state.beamMesh.scale.x = 0.92 + (scan + 1) * 0.08;
+    state.beamMesh.scale.z = 0.92 + (scan + 1) * 0.08;
+    state.beamMat.opacity = 0.34 + (scan + 1) * 0.12;
+
+    state.meridianMeshes.forEach((mesh, index) => {
+      const activation = Math.max(0, Math.sin(progress * Math.PI * 2.2 - index * 0.72));
+      const scale = 0.8 + activation * 0.5;
+      mesh.scale.setScalar(scale);
+      (mesh.material as THREE.MeshBasicMaterial).opacity = 0.35 + activation * 0.55;
+    });
+
+    state.bioPhotons.rotation.y = phase * 0.45;
+  }
+
+  private animateKinesiologiaDetails(ctx: CarlaSceneContext, progress: number, elapsedTime: number): void {
+    const state = ctx.animationState['kinesiologia'] as KinesiologiaState | undefined;
+    if (!state) return;
+
+    const phase = progress * Math.PI * 2;
+    const testPressure = Math.max(0, Math.sin(phase * 1.5));
+    const timeMotion = this.prefersReducedMotion ? 0 : elapsedTime;
+    state.leftForearmGroup.rotation.x = -0.7 - testPressure * 0.1;
+    state.testerGroup.position.x = -0.25 + Math.sin(phase) * 0.035;
+    state.testerGroup.rotation.z = Math.sin(phase * 0.8) * 0.06;
+    state.touchTipMat.opacity = 0.45 + testPressure * 0.5;
+
+    state.coralRings.forEach((ring, index) => {
+      const ringPhase = (progress * 1.8 - index * 0.18 + 1) % 1;
+      const expansion = 0.75 + ringPhase * 1.35;
+      ring.scale.setScalar(expansion);
+      (ring.material as THREE.MeshBasicMaterial).opacity = Math.max(0, (1 - ringPhase) * 0.42);
+    });
+
+    const auraPulse = Math.sin(timeMotion * 1.6 + phase) * 0.5 + 0.5;
+    state.heartAura.scale.setScalar(1 + auraPulse * 0.12 + testPressure * 0.08);
+  }
+
+  private animateSuonoterapiaDetails(ctx: CarlaSceneContext, progress: number, elapsedTime: number): void {
+    const state = ctx.animationState['suonoterapia'] as SuonoterapiaState | undefined;
+    if (!state) return;
+
+    const phase = progress * Math.PI * 2;
+    const resonance = Math.sin(phase * 1.25);
+    const timeMotion = this.prefersReducedMotion ? 0 : elapsedTime;
+    state.bowlGroup.rotation.y = resonance * 0.07 + Math.sin(timeMotion * 0.35) * 0.015;
+    state.bowlGroup.rotation.z = Math.cos(phase) * 0.035;
+    state.bowlGroup.scale.setScalar(1 + Math.abs(resonance) * 0.035);
+
+    const malletAngle = phase * 1.35;
+    state.malletGroup.position.x = Math.cos(malletAngle) * 0.28;
+    state.malletGroup.position.z = Math.sin(malletAngle) * 0.28;
+    state.malletGroup.rotation.y = -malletAngle + Math.PI / 2;
+    state.malletGroup.rotation.x = Math.sin(phase) * 0.06;
+
+    state.soundWaves.forEach((wave, index) => {
+      const waveProgress = (progress * 2.2 + wave.phase - index * 0.08) % 1;
+      const scale = 0.75 + waveProgress * 3.1;
+      wave.mesh.scale.setScalar(scale);
+      (wave.mesh.material as THREE.MeshBasicMaterial).opacity = Math.max(0, (1 - waveProgress) * 0.48);
+      wave.mesh.position.y = 0.9 + Math.sin(phase + index) * 0.04;
+    });
+  }
+
+  private animateArteTerapiaDetails(ctx: CarlaSceneContext, progress: number, elapsedTime: number): void {
+    const state = ctx.animationState['arte-terapia'] as ArteTerapiaState | undefined;
+    if (!state) return;
+
+    const phase = progress * Math.PI * 2;
+    const stroke = Math.sin(phase);
+    const timeMotion = this.prefersReducedMotion ? 0 : elapsedTime;
+    state.brushGroup.rotation.z = -0.25 + stroke * 0.18;
+    state.brushGroup.rotation.x = Math.PI / 2.2 + Math.cos(phase) * 0.12;
+    state.rightArmGroup.rotation.x = -0.75 + stroke * 0.16;
+    state.rightForearmGroup.rotation.x = -0.55 + Math.cos(phase) * 0.12;
+
+    state.ribbons.forEach((ribbon, index) => {
+      const ribbonPhase = phase * 0.75 + ribbon.offset;
+      ribbon.mesh.rotation.y = Math.sin(ribbonPhase) * 0.24;
+      ribbon.mesh.rotation.z = Math.cos(ribbonPhase * 0.8) * 0.16;
+      ribbon.mesh.position.y = Math.sin(ribbonPhase) * 0.08;
+      ribbon.mesh.scale.setScalar(0.96 + Math.sin(ribbonPhase + index) * 0.06);
+    });
+
+    state.paintSparks.rotation.y = phase * 0.28;
+    state.paintSparks.rotation.z = Math.sin(timeMotion * 0.35 + phase) * 0.04;
   }
 
   private composeCromopuntura(ctx: CarlaSceneContext, phase: number, ambientRotation: number): void {
