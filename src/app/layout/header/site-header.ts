@@ -53,10 +53,6 @@ import { NgOptimizedImage } from '@angular/common';
             alt="Carla"
             class="block h-10 w-auto max-w-[180px] object-contain transition-opacity group-hover:opacity-90 sm:h-12 sm:max-w-[220px]"
           />
-          <span
-            class="mt-1 hidden text-[10px] font-medium tracking-[0.12em] text-primary uppercase sm:block"
-            >{{ 'header.aboutModal.title' | transloco }}</span
-          >
         </a>
 
         <nav
@@ -82,8 +78,8 @@ import { NgOptimizedImage } from '@angular/common';
                   : 'flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
               "
             >
-              <span>{{ 'header.nav.about' | transloco }}</span
-              ><ng-icon
+              <span>{{ 'header.nav.about' | transloco }}</span>
+              <ng-icon
                 name="lucideChevronDown"
                 class="size-3.5 opacity-60"
                 aria-hidden="true"
