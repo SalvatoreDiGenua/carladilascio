@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Campana tibetana</title><desc id="desc">Illustrazione editoriale di una campana tibetana con onde sonore.</desc>
+<rect width="1200" height="800" rx="36" fill="#f1f4f4"/>
+<circle cx="600" cy="365" r="280" fill="#e3eaeb" opacity=".8"/>
+<path d="M390 470c30-125 80-210 210-210s180 85 210 210l70 55H320Z" fill="#b88d62" stroke="#3c607a" stroke-width="10"/>
+<ellipse cx="600" cy="525" rx="280" ry="55" fill="#d4ae82" stroke="#3c607a" stroke-width="10"/>
+<ellipse cx="600" cy="520" rx="185" ry="31" fill="#f0d7b5" stroke="#3c607a" stroke-width="8"/>
+<path d="M510 260c25-45 155-45 180 0" fill="#d4ae82" stroke="#3c607a" stroke-width="10"/>
+<path d="M930 300c80 65 80 170 0 235M1000 250c130 100 130 250 0 350M270 300c-80 65-80 170 0 235M200 250c-130 100-130 250 0 350" fill="none" stroke="#3c607a" stroke-width="8" stroke-linecap="round" opacity=".45"/>
+<path d="M860 170c-35 60-25 110 5 155" fill="none" stroke="#29475c" stroke-width="14" stroke-linecap="round"/>
+<circle cx="865" cy="160" r="25" fill="#d58c62"/>
+<path d="M260 660h680" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
+</svg>
