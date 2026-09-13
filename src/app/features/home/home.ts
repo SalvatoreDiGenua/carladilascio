@@ -2,13 +2,14 @@ import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, TranslocoPipe, CtaBannerComponent, NgOptimizedImage],
+  imports: [RouterLink, TranslocoPipe, HlmButtonImports, CtaBannerComponent, NgOptimizedImage],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
