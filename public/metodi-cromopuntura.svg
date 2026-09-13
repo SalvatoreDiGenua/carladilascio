@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Lampada per cromopuntura</title><desc id="desc">Illustrazione editoriale di una sorgente luminosa con filtri colorati.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef4f7"/><stop offset="1" stop-color="#f7f0e5"/></linearGradient><linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#3c607a" stop-opacity=".08"/><stop offset="1" stop-color="#3c607a" stop-opacity=".34"/></linearGradient></defs>
+<rect width="1200" height="800" rx="36" fill="url(#bg)"/>
+<circle cx="930" cy="150" r="100" fill="#dce8ef"/><circle cx="930" cy="150" r="68" fill="#3c607a" opacity=".14"/>
+<path d="M300 350H930L1080 470H300Z" fill="url(#beam)"/>
+<path d="M270 300c0-40 32-72 72-72h280c40 0 72 32 72 72v250H270Z" fill="#fff" stroke="#3c607a" stroke-width="10"/>
+<rect x="315" y="270" width="220" height="185" rx="28" fill="#dbe7ed"/>
+<circle cx="425" cy="360" r="66" fill="#fff" stroke="#3c607a" stroke-width="9"/><circle cx="425" cy="360" r="42" fill="#3c607a" opacity=".22"/>
+<path d="M615 300h125c22 0 40 18 40 40v120c0 22-18 40-40 40H615Z" fill="#e9eef1" stroke="#3c607a" stroke-width="8"/>
+<circle cx="800" cy="335" r="27" fill="#d58c62"/><circle cx="800" cy="405" r="27" fill="#b9c97c"/><circle cx="800" cy="475" r="27" fill="#758fb0"/>
+<path d="M270 550h420" stroke="#29475c" stroke-width="14" stroke-linecap="round"/><path d="M350 550v95M610 550v95" stroke="#29475c" stroke-width="14" stroke-linecap="round"/>
+<path d="M205 670h600" stroke="#d7c8b5" stroke-width="18" stroke-linecap="round"/>
+</svg>
