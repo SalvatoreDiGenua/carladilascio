@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { SITE_CONTENT } from '../../core/data/site-content';
@@ -9,191 +10,157 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 @Component({
   selector: 'app-artist-bio',
   imports: [
+    RouterLink,
     TranslocoPipe,
     HlmButtonImports,
     CtaBannerComponent,
     NgOptimizedImage,
   ],
   template: `
-    <article class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
-      <!-- Intestazione Pagina -->
-      <header class="mb-12 text-center">
-        <h1
-          class="font-serif text-3xl font-bold tracking-tight text-ink sm:text-5xl"
-        >
-          {{ content.personalInfo.name }}
-        </h1>
-        <p class="mx-auto mt-4 max-w-2xl text-lg text-ink-muted sm:text-xl">
-          {{ 'artistBio.subheadline' | transloco }}
-        </p>
-      </header>
-
-      <!-- Griglia Profilo: Ritratto Simbolico + Biografia Narrativa -->
-      <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
-        <!-- Colonna 1: Opera pittorica in evidenza -->
-        <div class="flex flex-col items-center lg:col-span-5">
-          <figure
-            class="relative w-full max-w-sm overflow-hidden rounded-3xl border border-stone-200/90 bg-ink shadow-sm"
-          >
-            <img
-              ngSrc="/la-maddalena-cuore-blu.jpg"
-              width="1458"
-              height="1909"
-              class="aspect-[1458/1909] w-full object-cover"
-              [attr.alt]="'artistBio.portraitAlt' | transloco"
-            />
-            <div
-              class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent pt-16"
-            ></div>
-            <figcaption class="absolute inset-x-0 bottom-0 px-5 py-4">
-              <p class="font-serif text-base font-semibold text-cream italic">
-                {{ 'artistBio.portraitSubtitle' | transloco }}
-              </p>
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Colonna 2: Presentazione Narrativa -->
-        <div class="space-y-6 lg:col-span-7">
-          <section aria-labelledby="heading-formazione-artista">
-            <h2
-              id="heading-formazione-artista"
-              class="text-2xl font-bold text-ink"
-            >
-              {{ 'artistBio.training.title' | transloco }}
-            </h2>
-            <p class="mt-3 text-base leading-relaxed text-ink-muted">
-              {{ 'artistBio.training.paragraph1' | transloco }}
+    <main class="bg-cream">
+      <section class="border-b border-stone-200/70 bg-cream-subtle px-4 py-14 sm:px-6 sm:py-20">
+        <div class="mx-auto grid max-w-6xl items-end gap-10 lg:grid-cols-12">
+          <div class="lg:col-span-8">
+            <p class="text-sm font-semibold tracking-[0.18em] text-primary uppercase">
+              {{ 'header.aboutModal.artistTitle' | transloco }}
             </p>
-            <p class="mt-3 text-base leading-relaxed text-ink-muted">
-              {{ 'artistBio.training.paragraph2' | transloco }}
+            <h1 class="mt-4 max-w-4xl font-serif text-4xl leading-tight font-bold tracking-tight text-ink sm:text-6xl">
+              {{ content.personalInfo.name }}
+            </h1>
+            <p class="mt-5 max-w-2xl text-xl leading-relaxed text-ink-muted sm:text-2xl">
+              {{ 'artistBio.subheadline' | transloco }}
             </p>
-          </section>
-
-          <!-- Mostre ed esposizioni -->
-          <section aria-labelledby="heading-mostre">
-            <h2 id="heading-mostre" class="text-xl font-bold text-ink">
-              {{ 'artistBio.exhibitions.title' | transloco }}
-            </h2>
-            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              {{ 'artistBio.exhibitions.description' | transloco }}
-            </p>
-            <ul class="mt-3 flex flex-wrap gap-2">
-              @for (city of content.artistBio.exhibitionCities; track city) {
-                <li
-                  class="rounded-full border border-coral/30 bg-coral-light px-3 py-1 text-xs font-semibold text-coral-dark"
-                >
-                  {{ city | transloco }}
-                </li>
-              }
-            </ul>
-          </section>
-
-          <!-- Riconoscimenti e critica -->
-          <section aria-labelledby="heading-critica">
-            <h2 id="heading-critica" class="text-xl font-bold text-ink">
-              {{ 'artistBio.criticism.title' | transloco }}
-            </h2>
-            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              {{ 'artistBio.criticism.paragraph1' | transloco }}
-            </p>
-            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              {{ 'artistBio.criticism.paragraph2' | transloco }}
-            </p>
-          </section>
-        </div>
-      </div>
-
-      <!-- Opera in evidenza: "La Maddalena: cuore blu" -->
-      <section
-        class="mt-16 border-t border-stone-200/80 pt-12"
-        aria-labelledby="heading-opera-evidenza"
-      >
-        <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-          <figure class="lg:col-span-6">
-            <div
-              class="overflow-hidden rounded-3xl border border-stone-200/90 shadow-md"
-            >
-              <img
-                ngSrc="/la-maddalena-cuore-blu.jpg"
-                width="1458"
-                height="1909"
-                loading="lazy"
-                class="aspect-[1458/1909] w-full object-cover"
-                [attr.alt]="'home.hero.artworkAlt' | transloco"
-              />
-            </div>
-          </figure>
-          <div class="lg:col-span-6">
-            <span class="block h-0.5 w-10 rounded-full bg-primary/60"></span>
-            <h2
-              id="heading-opera-evidenza"
-              class="mt-4 font-serif text-2xl font-bold text-ink sm:text-3xl"
-            >
-              {{ 'artistBio.featuredWork.title' | transloco }}
-            </h2>
-            <p
-              class="mt-2 text-sm font-semibold tracking-wide text-primary uppercase"
-            >
-              {{ 'artistBio.featuredWork.workTitle' | transloco }}
-            </p>
-            <p class="mt-4 text-base leading-relaxed text-ink-muted">
+          </div>
+          <div class="lg:col-span-4 lg:border-l lg:border-primary/20 lg:pl-8">
+            <p class="text-sm leading-relaxed text-ink-muted">
               {{ 'artistBio.featuredWork.description' | transloco }}
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Ricerca pittorica: citazione evocativa -->
-      <section
-        class="mt-16 border-t border-stone-200/80 pt-12"
-        [attr.aria-label]="'artistBio.philosophy.ariaLabel' | transloco"
-      >
-        <blockquote
-          class="rounded-3xl border border-coral/20 bg-coral-light/30 p-8 text-center sm:p-12"
-        >
-          <p
-            class="mx-auto max-w-2xl text-xl leading-relaxed font-semibold text-ink italic sm:text-2xl"
-          >
-            «{{ 'artistBio.philosophy.quote' | transloco }}»
-          </p>
-          <footer class="mx-auto mt-4 max-w-xl text-sm text-ink-muted">
-            {{ 'artistBio.philosophy.closing' | transloco }}
-          </footer>
-        </blockquote>
+      <section class="px-4 py-16 sm:px-6 sm:py-20">
+        <div class="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <figure class="lg:col-span-5">
+            <div class="overflow-hidden rounded-[2rem] border border-primary/20 bg-ink shadow-xl shadow-ink/10">
+              <img
+                ngSrc="/la-maddalena-cuore-blu.jpg"
+                width="1458"
+                height="1909"
+                priority
+                class="aspect-[1458/1909] w-full object-cover"
+                [attr.alt]="'artistBio.portraitAlt' | transloco"
+              />
+            </div>
+            <figcaption class="mt-4 border-l-2 border-primary pl-4 text-sm text-ink-muted">
+              {{ 'artistBio.portraitSubtitle' | transloco }}
+            </figcaption>
+          </figure>
+
+          <div class="space-y-10 lg:col-span-7">
+            <section aria-labelledby="artist-training">
+              <p class="text-xs font-semibold tracking-[0.16em] text-primary uppercase">01</p>
+              <h2 id="artist-training" class="mt-2 font-serif text-3xl font-bold text-ink">
+                {{ 'artistBio.training.title' | transloco }}
+              </h2>
+              <p class="mt-4 text-base leading-relaxed text-ink-muted">{{ 'artistBio.training.paragraph1' | transloco }}</p>
+              <p class="mt-4 text-base leading-relaxed text-ink-muted">{{ 'artistBio.training.paragraph2' | transloco }}</p>
+            </section>
+
+            <section aria-labelledby="artist-exhibitions" class="border-t border-stone-200 pt-8">
+              <p class="text-xs font-semibold tracking-[0.16em] text-primary uppercase">02</p>
+              <h2 id="artist-exhibitions" class="mt-2 font-serif text-3xl font-bold text-ink">{{ 'artistBio.exhibitions.title' | transloco }}</h2>
+              <p class="mt-3 text-base leading-relaxed text-ink-muted">{{ 'artistBio.exhibitions.description' | transloco }}</p>
+              <ul class="mt-5 flex flex-wrap gap-2">
+                @for (city of content.artistBio.exhibitionCities; track city) {
+                  <li class="rounded-full border border-primary/20 bg-white px-3 py-1.5 text-xs font-semibold text-primary">{{ city | transloco }}</li>
+                }
+              </ul>
+            </section>
+
+            <section aria-labelledby="artist-criticism" class="border-t border-stone-200 pt-8">
+              <p class="text-xs font-semibold tracking-[0.16em] text-primary uppercase">03</p>
+              <h2 id="artist-criticism" class="mt-2 font-serif text-3xl font-bold text-ink">{{ 'artistBio.criticism.title' | transloco }}</h2>
+              <p class="mt-4 text-base leading-relaxed text-ink-muted">{{ 'artistBio.criticism.paragraph1' | transloco }}</p>
+              <p class="mt-4 text-base leading-relaxed text-ink-muted">{{ 'artistBio.criticism.paragraph2' | transloco }}</p>
+            </section>
+          </div>
+        </div>
       </section>
 
-      <!-- CTA: rimando al percorso da terapeuta -->
+      <section class="border-y border-stone-200/70 bg-ink px-4 py-16 text-cream sm:px-6 sm:py-20" [attr.aria-label]="'artistBio.philosophy.ariaLabel' | transloco">
+        <div class="mx-auto max-w-4xl text-center">
+          <p class="text-xs font-semibold tracking-[0.18em] text-primary-light uppercase">{{ 'artistBio.philosophy.ariaLabel' | transloco }}</p>
+          <blockquote class="mt-6 font-serif text-2xl leading-relaxed font-semibold italic sm:text-4xl">
+            «{{ 'artistBio.philosophy.quote' | transloco }}»
+          </blockquote>
+          <p class="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-cream/70">{{ 'artistBio.philosophy.closing' | transloco }}</p>
+        </div>
+      </section>
+
+      <section class="px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="artist-work">
+        <div class="mx-auto max-w-6xl">
+          <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div class="lg:col-span-7">
+              <p class="text-sm font-semibold tracking-[0.16em] text-primary uppercase">{{ 'artistBio.featuredWork.title' | transloco }}</p>
+              <h2 id="artist-work" class="mt-3 font-serif text-3xl font-bold text-ink sm:text-5xl">{{ 'artistBio.featuredWork.workTitle' | transloco }}</h2>
+            </div>
+            <p class="lg:col-span-5 text-base leading-relaxed text-ink-muted">{{ 'artistBio.featuredWork.description' | transloco }}</p>
+          </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
+            @for (frame of workFrames; track frame.id) {
+              <figure class="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm" [class.md:translate-y-8]="frame.offset">
+                <div class="overflow-hidden bg-ink">
+                  <img
+                    ngSrc="/la-maddalena-cuore-blu.jpg"
+                    width="1458"
+                    height="1909"
+                    loading="lazy"
+                    class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                    [class.object-center]="frame.position === 'center'"
+                    [class.object-top]="frame.position === 'top'"
+                    [class.object-bottom]="frame.position === 'bottom'"
+                    [attr.alt]="'artistBio.portraitAlt' | transloco"
+                  />
+                </div>
+                <figcaption class="p-5">
+                  <p class="text-xs font-semibold tracking-[0.14em] text-primary uppercase">{{ frame.label | transloco }}</p>
+                  <p class="mt-2 text-sm leading-relaxed text-ink-muted">{{ 'artistBio.featuredWork.description' | transloco }}</p>
+                </figcaption>
+              </figure>
+            }
+          </div>
+        </div>
+      </section>
+
       <app-cta-banner
         [title]="'artistBio.cta.title' | transloco"
         [description]="'artistBio.cta.description' | transloco"
         [buttons]="[
-          {
-            label: ('artistBio.cta.therapistLink' | transloco),
-            route: '/terapeuta',
-          },
-          {
-            label: ('artistBio.cta.contactLink' | transloco),
-            route: '/contatti',
-            variant: 'outline',
-            className:
-              'border border-stone-200 bg-white/90 px-6 py-3 text-ink shadow-sm hover:bg-stone-100 hover:text-ink',
-          },
+          { label: ('artistBio.cta.therapistLink' | transloco), route: '/terapeuta' },
+          { label: ('artistBio.cta.contactLink' | transloco), route: '/contatti', variant: 'outline' }
         ]"
         sectionId="heading-cta-artist-bio"
       />
-    </article>
+    </main>
   `,
 })
 export class ArtistBio {
   readonly content = SITE_CONTENT;
+  readonly workFrames = [
+    { id: 'hero', label: 'artistBio.featuredWork.title', position: 'center', offset: false },
+    { id: 'material', label: 'artistBio.training.title', position: 'top', offset: true },
+    { id: 'research', label: 'artistBio.philosophy.ariaLabel', position: 'bottom', offset: false },
+  ] as const;
+
   private readonly seo = inject(Seo);
 
   constructor() {
     this.seo.update({
-      title: 'Carla Di Lascio, Artista | Pittrice e Ceramista',
+      title: 'Carla Di Lascio | Artista e Arte Terapeuta',
       description:
-        'La formazione artistica, le mostre e la ricerca pittorica di Carla Di Lascio: diploma di Arte del tessuto, decorazione su ceramica, esposizioni in Italia e in Europa.',
+        'La ricerca artistica di Carla Di Lascio tra pittura, ceramica, colore e arte terapia, insieme al percorso professionale nel benessere integrato.',
     });
   }
 }
