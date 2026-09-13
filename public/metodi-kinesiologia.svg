@@ -1,9 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
-<title id="title">Test muscolare di kinesiologia</title><desc id="desc">Illustrazione editoriale di due mani durante un test muscolare.</desc>
-<rect width="1200" height="800" rx="36" fill="#f6eee7"/>
-<path d="M220 680c55-180 130-305 255-390 52-36 105-40 140-8 31 29 25 78-14 113l-102 93 210 48c54 13 82 63 58 105-17 30-50 45-86 37l-230-49c-74-16-148 11-205 51Z" fill="#fff" stroke="#3c607a" stroke-width="10" stroke-linejoin="round"/>
-<path d="M620 215c30-31 82-32 113 0l117 119c27 27 27 71 0 98-27 27-71 27-98 0l-117-117-80 80-66-66Z" fill="#efe2d4" stroke="#3c607a" stroke-width="10" stroke-linejoin="round"/>
-<path d="M785 332l-73 73M829 375l-73 73" stroke="#3c607a" stroke-width="8" stroke-linecap="round" opacity=".7"/>
-<circle cx="915" cy="555" r="108" fill="#e0e9ee"/><circle cx="915" cy="555" r="70" fill="none" stroke="#3c607a" stroke-width="8"/><path d="M915 485v140M845 555h140" stroke="#3c607a" stroke-width="5" opacity=".45"/>
-<path d="M150 680h900" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Test muscolare di kinesiologia</title>
+<desc id="desc">Illustrazione editoriale di un test muscolare con una mano che accompagna l'avambraccio e una seconda mano che applica una lieve pressione.</desc>
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5eee7"/><stop offset="1" stop-color="#eef3f4"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#29475c" flood-opacity=".11"/></filter>
+</defs>
+<rect width="1200" height="760" fill="url(#paper)"/>
+<ellipse cx="600" cy="655" rx="450" ry="35" fill="#29475c" opacity=".08"/>
+<g filter="url(#shadow)">
+  <path d="M155 570c88-110 193-173 308-188l181-23c58-7 105 36 105 92v31c0 48-39 87-87 87H396c-90 0-166 30-241 82Z" fill="#f7d9c7" stroke="#3c607a" stroke-width="8"/>
+  <path d="M205 548c74-92 161-143 260-157l181-24c37-5 68 23 68 60v24c0 31-25 56-56 56H408c-80 0-145 21-203 57Z" fill="#f3cdb8" opacity=".62"/>
+  <path d="M650 360c26-36 79-42 112-9l132 132c31 31 31 81 0 112-31 31-81 31-112 0L650 462l-74 74-65-65 83-111c13 2 34 2 56 0Z" fill="#f6d6c2" stroke="#3c607a" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M735 390l-74 74M778 433l-74 74M821 476l-74 74" stroke="#b67e69" stroke-width="8" stroke-linecap="round" opacity=".7"/>
+  <path d="M900 264c38-35 92-33 127 2l50 50c29 29 29 75 0 104-29 29-75 29-104 0l-73-73c-22-22-22-59 0-83Z" fill="#f7d9c7" stroke="#3c607a" stroke-width="8"/>
+  <path d="M950 318l93 93" stroke="#b67e69" stroke-width="8" stroke-linecap="round" opacity=".7"/>
+</g>
+<g transform="translate(150 95)">
+  <circle cx="75" cy="75" r="64" fill="#dfe9ed"/>
+  <circle cx="75" cy="75" r="40" fill="none" stroke="#3c607a" stroke-width="6"/>
+  <path d="M75 45v60M45 75h60" stroke="#3c607a" stroke-width="5" opacity=".55"/>
+</g>
+<path d="M180 680h860" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
 </svg>
