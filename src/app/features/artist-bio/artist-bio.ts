@@ -71,11 +71,6 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
           <div class="space-y-10 lg:col-span-7">
             <section aria-labelledby="artist-training">
-              <p
-                class="text-xs font-semibold tracking-[0.16em] text-primary uppercase"
-              >
-                01
-              </p>
               <h2
                 id="artist-training"
                 class="mt-2 font-serif text-3xl font-bold text-ink"
@@ -93,11 +88,6 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               aria-labelledby="artist-exhibitions"
               class="border-t border-stone-200 pt-8"
             >
-              <p
-                class="text-xs font-semibold tracking-[0.16em] text-primary uppercase"
-              >
-                02
-              </p>
               <h2
                 id="artist-exhibitions"
                 class="mt-2 font-serif text-3xl font-bold text-ink"
@@ -121,11 +111,6 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               aria-labelledby="artist-criticism"
               class="border-t border-stone-200 pt-8"
             >
-              <p
-                class="text-xs font-semibold tracking-[0.16em] text-primary uppercase"
-              >
-                03
-              </p>
               <h2
                 id="artist-criticism"
                 class="mt-2 font-serif text-3xl font-bold text-ink"
@@ -185,9 +170,6 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
                 {{ 'artistBio.featuredWork.workTitle' | transloco }}
               </h2>
             </div>
-            <p class="text-base leading-relaxed text-ink-muted lg:col-span-5">
-              {{ 'artistBio.featuredWork.description' | transloco }}
-            </p>
           </div>
           <div class="mt-10 grid gap-5 md:grid-cols-3">
             @for (frame of workFrames; track frame.id) {
