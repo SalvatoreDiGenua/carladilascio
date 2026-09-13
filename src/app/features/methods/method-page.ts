@@ -28,9 +28,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
   styleUrl: './method-page.css',
   template: `
     @if (method(); as m) {
-      <article
-        class="method-page mx-auto px-4 sm:px-6 sm:py-16"
-      >
+      <article class="method-page mx-auto px-4 sm:px-6 sm:py-16">
         <div class="method-page__instrument" aria-hidden="true">
           <div class="method-page__instrument-frame">
             <app-method-avatar-3d
