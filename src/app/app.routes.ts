@@ -7,12 +7,12 @@ export const routes: Routes = [
     title: 'Carla Di Lascio | Arte Terapia & Benessere Integrato',
   },
   {
-    path: 'chi-sono',
+    path: 'terapeuta',
     loadComponent: () => import('./features/about/about').then((m) => m.About),
     title: 'Chi sono | Carla Di Lascio',
   },
   {
-    path: 'chi-sono-artista',
+    path: 'artista',
     loadComponent: () =>
       import('./features/artist-bio/artist-bio').then((m) => m.ArtistBio),
     title: 'Carla Di Lascio, Artista | Pittrice e Ceramista',

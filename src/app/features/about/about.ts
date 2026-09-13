@@ -96,9 +96,9 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           </section>
 
           <!-- Ambiti di competenza -->
-          <section aria-labelledby="heading-competenze-chi-sono">
+          <section aria-labelledby="heading-competenze-terapeuta">
             <h2
-              id="heading-competenze-chi-sono"
+              id="heading-competenze-terapeuta"
               class="text-xl font-bold text-ink"
             >
               {{ 'about.skills.title' | transloco }}

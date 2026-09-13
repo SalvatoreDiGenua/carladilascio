@@ -95,17 +95,17 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               <hlm-dropdown-menu-group>
                 <button
                   hlmDropdownMenuItem
-                  (click)="navigateTo('/chi-sono')"
-                  (mouseenter)="aboutHoverPath.set('/chi-sono')"
+                  (click)="navigateTo('/terapeuta')"
+                  (mouseenter)="aboutHoverPath.set('/terapeuta')"
                   (mouseleave)="aboutHoverPath.set(null)"
-                  [style.background-color]="aboutOptionBackground('/chi-sono')"
-                  [style.color]="aboutOptionTextColor('/chi-sono')"
+                  [style.background-color]="aboutOptionBackground('/terapeuta')"
+                  [style.color]="aboutOptionTextColor('/terapeuta')"
                 >
                   <span class="flex flex-col items-start gap-0.5 text-left">
-                    <span [class]="aboutTitleClass('/chi-sono')">
+                    <span [class]="aboutTitleClass('/terapeuta')">
                       {{ 'header.aboutModal.therapistTitle' | transloco }}
                     </span>
-                    <span [class]="aboutDescriptionClass('/chi-sono')">
+                    <span [class]="aboutDescriptionClass('/terapeuta')">
                       {{ 'header.aboutModal.therapistDescription' | transloco }}
                     </span>
                   </span>
@@ -113,19 +113,19 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 <hlm-dropdown-menu-separator class="my-1" />
                 <button
                   hlmDropdownMenuItem
-                  (click)="navigateTo('/chi-sono-artista')"
-                  (mouseenter)="aboutHoverPath.set('/chi-sono-artista')"
+                  (click)="navigateTo('/artista')"
+                  (mouseenter)="aboutHoverPath.set('/artista')"
                   (mouseleave)="aboutHoverPath.set(null)"
                   [style.background-color]="
-                    aboutOptionBackground('/chi-sono-artista')
+                    aboutOptionBackground('/artista')
                   "
-                  [style.color]="aboutOptionTextColor('/chi-sono-artista')"
+                  [style.color]="aboutOptionTextColor('/artista')"
                 >
                   <span class="flex flex-col items-start gap-0.5 text-left">
-                    <span [class]="aboutTitleClass('/chi-sono-artista')">
+                    <span [class]="aboutTitleClass('/artista')">
                       {{ 'header.aboutModal.artistTitle' | transloco }}
                     </span>
-                    <span [class]="aboutDescriptionClass('/chi-sono-artista')">
+                    <span [class]="aboutDescriptionClass('/artista')">
                       {{ 'header.aboutModal.artistDescription' | transloco }}
                     </span>
                   </span>
@@ -207,7 +207,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               </span>
               <div class="mt-1 flex flex-col pl-2">
                 <a
-                  routerLink="/chi-sono"
+                  routerLink="/terapeuta"
                   routerLinkActive="text-primary font-semibold"
                   (click)="closeMobileMenu()"
                   class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
@@ -215,7 +215,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   {{ 'header.aboutModal.therapistTitle' | transloco }}
                 </a>
                 <a
-                  routerLink="/chi-sono-artista"
+                  routerLink="/artista"
                   routerLinkActive="text-primary font-semibold"
                   (click)="closeMobileMenu()"
                   class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
@@ -283,14 +283,14 @@ export class SiteHeader {
   );
 
   readonly isAboutActive = computed(() =>
-    this.currentUrl().startsWith('/chi-sono'),
+    this.currentUrl().startsWith('/terapeuta'),
   );
 
   aboutOptionBackground(path: string): string {
     const isHighlighted =
       this.isAboutMenuOpen() &&
       (this.currentUrl() === path || this.aboutHoverPath() === path);
-    const isArtist = path === '/chi-sono-artista';
+    const isArtist = path === '/artista';
 
     if (!isHighlighted) {
       return 'transparent';
@@ -308,12 +308,12 @@ export class SiteHeader {
       return 'var(--color-ink)';
     }
 
-    return path === '/chi-sono-artista' ? 'var(--color-ink)' : '#ffffff';
+    return path === '/artista' ? 'var(--color-ink)' : '#ffffff';
   }
 
   aboutTitleClass(path: string): string {
     const isCurrent = this.isAboutMenuOpen() && this.currentUrl() === path;
-    const isArtist = path === '/chi-sono-artista';
+    const isArtist = path === '/artista';
 
     return isCurrent || this.aboutHoverPath() === path
       ? isArtist
@@ -324,7 +324,7 @@ export class SiteHeader {
 
   aboutDescriptionClass(path: string): string {
     const isCurrent = this.isAboutMenuOpen() && this.currentUrl() === path;
-    const isArtist = path === '/chi-sono-artista';
+    const isArtist = path === '/artista';
 
     return isCurrent || this.aboutHoverPath() === path
       ? isArtist

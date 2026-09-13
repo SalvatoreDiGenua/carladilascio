@@ -39,7 +39,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               </li>
               <li>
                 <a
-                  routerLink="/chi-sono"
+                  routerLink="/terapeuta"
                   class="transition-colors hover:text-aqua focus-visible:underline"
                 >
                   {{ 'header.nav.about' | transloco }}

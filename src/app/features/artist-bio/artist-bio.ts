@@ -170,7 +170,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         [buttons]="[
           {
             label: ('artistBio.cta.therapistLink' | transloco),
-            route: '/chi-sono',
+            route: '/terapeuta',
           },
           {
             label: ('artistBio.cta.contactLink' | transloco),
