@@ -1,13 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
-<title id="title">Campana tibetana</title><desc id="desc">Illustrazione editoriale di una campana tibetana con onde sonore.</desc>
-<rect width="1200" height="800" rx="36" fill="#f1f4f4"/>
-<circle cx="600" cy="365" r="280" fill="#e3eaeb" opacity=".8"/>
-<path d="M390 470c30-125 80-210 210-210s180 85 210 210l70 55H320Z" fill="#b88d62" stroke="#3c607a" stroke-width="10"/>
-<ellipse cx="600" cy="525" rx="280" ry="55" fill="#d4ae82" stroke="#3c607a" stroke-width="10"/>
-<ellipse cx="600" cy="520" rx="185" ry="31" fill="#f0d7b5" stroke="#3c607a" stroke-width="8"/>
-<path d="M510 260c25-45 155-45 180 0" fill="#d4ae82" stroke="#3c607a" stroke-width="10"/>
-<path d="M930 300c80 65 80 170 0 235M1000 250c130 100 130 250 0 350M270 300c-80 65-80 170 0 235M200 250c-130 100-130 250 0 350" fill="none" stroke="#3c607a" stroke-width="8" stroke-linecap="round" opacity=".45"/>
-<path d="M860 170c-35 60-25 110 5 155" fill="none" stroke="#29475c" stroke-width="14" stroke-linecap="round"/>
-<circle cx="865" cy="160" r="25" fill="#d58c62"/>
-<path d="M260 660h680" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Campana tibetana per suonoterapia</title>
+<desc id="desc">Illustrazione editoriale di una campana tibetana in ottone con cuscino e battente.</desc>
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef3f4"/><stop offset="1" stop-color="#f4ede4"/></linearGradient>
+  <linearGradient id="bronze" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#c99b65"/><stop offset=".55" stop-color="#a9794e"/><stop offset="1" stop-color="#d2aa75"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#29475c" flood-opacity=".14"/></filter>
+</defs>
+<rect width="1200" height="760" fill="url(#paper)"/>
+<ellipse cx="575" cy="650" rx="360" ry="34" fill="#29475c" opacity=".10"/>
+<g filter="url(#shadow)">
+  <ellipse cx="570" cy="585" rx="292" ry="68" fill="#8d6a8b"/>
+  <ellipse cx="570" cy="560" rx="255" ry="57" fill="#a989a5"/>
+  <path d="M350 475c32-139 97-220 220-220s188 81 220 220l62 70H288Z" fill="url(#bronze)" stroke="#3c607a" stroke-width="9"/>
+  <ellipse cx="570" cy="545" rx="282" ry="63" fill="#c69a64" stroke="#3c607a" stroke-width="9"/>
+  <ellipse cx="570" cy="535" rx="210" ry="38" fill="#e4c08c" stroke="#8f6849" stroke-width="7"/>
+  <ellipse cx="570" cy="530" rx="150" ry="23" fill="#8c6848" opacity=".58"/>
+  <path d="M458 276c34-50 190-50 224 0" fill="#d2a873" stroke="#3c607a" stroke-width="9"/>
+  <path d="M392 460c92 25 264 25 356 0" fill="none" stroke="#efd0a0" stroke-width="9" opacity=".62"/>
+</g>
+<g transform="translate(865 175) rotate(28)">
+  <rect x="0" y="0" width="34" height="270" rx="17" fill="#29475c"/>
+  <circle cx="17" cy="-6" r="42" fill="#d58c62"/>
+  <path d="M17 28v160" stroke="#5c4638" stroke-width="6" opacity=".55"/>
+</g>
+<g fill="none" stroke="#3c607a" stroke-linecap="round">
+  <path d="M910 480c58-32 84-77 84-128" stroke-width="7" opacity=".34"/>
+  <path d="M960 530c88-48 126-119 126-204" stroke-width="6" opacity=".22"/>
+</g>
+<path d="M180 690h860" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
 </svg>
