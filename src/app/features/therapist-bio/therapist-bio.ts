@@ -70,18 +70,13 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             >
               <img
                 ngSrc="/carla.jpg"
-                width="1200"
-                height="1200"
+                width="800"
+                height="600"
                 priority
                 class="aspect-square w-full object-cover object-center"
                 alt=""
               />
             </div>
-            <figcaption
-              class="mt-4 border-l-2 border-primary pl-4 text-sm leading-relaxed text-ink-muted"
-            >
-              {{ content.personalInfo.availability | transloco }}
-            </figcaption>
           </figure>
           <div class="space-y-10 lg:col-span-7">
             <section aria-labelledby="heading-percorso">
@@ -312,12 +307,6 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
       >
         <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-12">
           <div class="lg:col-span-7">
-            <p
-              class="text-xs font-semibold tracking-[0.18em] text-primary-light uppercase"
-            >
-              {{ 'header.aboutModal.artistTitle' | transloco }} →
-              {{ 'header.aboutModal.therapistTitle' | transloco }}
-            </p>
             <h2
               id="heading-arte-terapia"
               class="mt-3 font-serif text-3xl font-bold sm:text-5xl"
