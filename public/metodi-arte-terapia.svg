@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Materiali per arte terapia</title><desc id="desc">Illustrazione editoriale di tavolozza, pennelli e tela.</desc>
+<rect width="1200" height="800" rx="36" fill="#f5efe5"/>
+<rect x="430" y="145" width="510" height="390" rx="24" fill="#fff" stroke="#3c607a" stroke-width="10" transform="rotate(5 685 340)"/>
+<path d="M500 405c80-125 145 35 225-45s130 20 195-80" fill="none" stroke="#3c607a" stroke-width="24" stroke-linecap="round"/>
+<path d="M495 455c70-30 110 55 170 5s115 20 205-35" fill="none" stroke="#c98262" stroke-width="20" stroke-linecap="round" opacity=".75"/>
+<path d="M215 555c-35-130 45-245 165-245 85 0 150 45 170 110 25 84-46 155-133 155H300c-44 0-74-6-85-20Z" fill="#e7d6bd" stroke="#3c607a" stroke-width="10"/>
+<circle cx="335" cy="410" r="34" fill="#3c607a"/><circle cx="410" cy="445" r="32" fill="#c98262"/><circle cx="285" cy="485" r="30" fill="#8fa9b8"/><circle cx="395" cy="520" r="28" fill="#b6c27c"/>
+<path d="M760 615l205-315" stroke="#29475c" stroke-width="34" stroke-linecap="round"/><path d="M760 615l-20 40 46-24" fill="#d4ae82" stroke="#3c607a" stroke-width="7"/>
+<path d="M170 680h850" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
+</svg>
