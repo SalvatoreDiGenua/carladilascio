@@ -8,7 +8,10 @@ export const routes: Routes = [
   },
   {
     path: 'terapeuta',
-    loadComponent: () => import('./features/about/about').then((m) => m.About),
+    loadComponent: () =>
+      import('./features/therapist-bio/therapist-bio').then(
+        (m) => m.TherapistBio,
+      ),
     title: 'Chi sono | Carla Di Lascio',
   },
   {

@@ -180,7 +180,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
     </article>
   `,
 })
-export class About {
+export class TherapistBio {
   readonly content = SITE_CONTENT;
   private readonly seo = inject(Seo);
 
