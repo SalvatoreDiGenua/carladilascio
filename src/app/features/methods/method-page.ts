@@ -84,7 +84,7 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
             <p class="mt-4 text-lg text-ink-muted sm:text-xl">
               {{ m.shortDescription | transloco }}
             </p>
-            <div class="mt-6 flex flex-wrap gap-3">
+            <div class="my-6 flex flex-wrap gap-3">
               <a hlmBtn size="lg" routerLink="/contatti" class="px-5 py-2.5">
                 {{ 'method.requestInfo' | transloco }}
               </a>
