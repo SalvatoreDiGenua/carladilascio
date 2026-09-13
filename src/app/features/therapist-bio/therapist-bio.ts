@@ -292,6 +292,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
       />
     </main>
   `,
+  styleUrl: 'therapist-bio.css'
 })
 export class TherapistBio {
   readonly content = SITE_CONTENT;

@@ -1,0 +1,85 @@
+/* Methodology cards: the illustration becomes a large, quiet visual field behind the copy. */
+@media (min-width: 768px) {
+  [aria-labelledby='heading-metodologie'] article {
+    position: relative;
+    min-height: 36rem;
+    isolation: isolate;
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div {
+    display: block;
+    min-height: inherit;
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div > div:first-child {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    display: block;
+    min-height: 100%;
+    padding: 0;
+    background: #edf2f4;
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div > div:first-child img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.48;
+    transform: scale(1.01);
+    transition:
+      opacity 500ms ease,
+      transform 700ms ease;
+  }
+
+  [aria-labelledby='heading-metodologie']
+    article:hover
+    > div
+    > div:first-child
+    img {
+    opacity: 0.58;
+    transform: scale(1.035);
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div > div:last-child {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 36rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    background: linear-gradient(
+      90deg,
+      rgba(245, 242, 235, 0.97) 0%,
+      rgba(245, 242, 235, 0.9) 38%,
+      rgba(245, 242, 235, 0.54) 70%,
+      rgba(245, 242, 235, 0.18) 100%
+    );
+  }
+}
+
+@media (max-width: 767px) {
+  [aria-labelledby='heading-metodologie'] article > div {
+    display: block;
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div > div:first-child {
+    min-height: 16rem;
+    padding: 1rem;
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div > div:first-child img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.92;
+  }
+
+  [aria-labelledby='heading-metodologie'] article > div > div:last-child {
+    padding: 1.5rem;
+  }
+}
