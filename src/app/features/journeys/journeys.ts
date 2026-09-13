@@ -37,7 +37,7 @@ import { Seo } from '../../core/seo/seo';
             >
               <div>
                 <span
-                  class="text-aqua text-xs font-bold tracking-wider uppercase"
+                  class="text-xs font-bold tracking-wider text-aqua uppercase"
                 >
                   {{ 'journeys.optionLabel' | transloco: { n: idx + 1 } }}
                 </span>
@@ -101,7 +101,7 @@ import { Seo } from '../../core/seo/seo';
                   @for (d of journey.details; track d) {
                     <li class="flex items-center gap-2">
                       <span
-                        class="bg-aqua h-1.5 w-1.5 shrink-0 rounded-full"
+                        class="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua"
                       ></span>
                       <span>{{ d | transloco }}</span>
                     </li>

@@ -7,7 +7,6 @@ import { HlmCardImports } from '@spartan-ng/helm/card';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
-import { AboutMenu } from '../../core/services/about-menu';
 
 @Component({
   selector: 'app-home',
@@ -24,12 +23,7 @@ import { AboutMenu } from '../../core/services/about-menu';
 })
 export class Home {
   readonly content = SITE_CONTENT;
-  private readonly aboutMenu = inject(AboutMenu);
   private readonly seo = inject(Seo);
-
-  openAboutMenu(): void {
-    this.aboutMenu.requestOpen();
-  }
 
   constructor() {
     this.seo.update({

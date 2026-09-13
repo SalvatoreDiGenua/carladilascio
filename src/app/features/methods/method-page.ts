@@ -120,7 +120,7 @@ import { RouterLink } from '@angular/router';
         <!-- Sezione 2: Come si approccia Carla -->
         <section
           hlmCard
-          class="border-aqua/30 bg-aqua-light/40 mb-10"
+          class="mb-10 border-aqua/30 bg-aqua-light/40"
           aria-labelledby="heading-approccio-carla"
         >
           <div hlmCardHeader class="p-6 sm:p-8">
@@ -157,7 +157,7 @@ import { RouterLink } from '@angular/router';
               >
                 <ng-icon
                   name="lucideCheck"
-                  class="text-aqua mt-0.5 size-5 shrink-0"
+                  class="mt-0.5 size-5 shrink-0 text-aqua"
                   aria-hidden="true"
                 />
                 <span class="text-sm font-medium text-ink">{{
@@ -212,7 +212,7 @@ import { RouterLink } from '@angular/router';
                 @for (item of m.audience; track item) {
                   <li class="flex items-center gap-2">
                     <span
-                      class="bg-aqua h-1.5 w-1.5 shrink-0 rounded-full"
+                      class="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua"
                     ></span>
                     <span>{{ item | transloco }}</span>
                   </li>
@@ -277,11 +277,11 @@ import { RouterLink } from '@angular/router';
             @for (other of otherMethods(); track other.slug) {
               <a
                 [routerLink]="['/' + other.slug]"
-                class="group hover:border-aqua/50 flex flex-col justify-between rounded-xl border border-stone-200/80 bg-white/70 p-5 transition-all hover:shadow-sm"
+                class="group flex flex-col justify-between rounded-xl border border-stone-200/80 bg-white/70 p-5 transition-all hover:border-aqua/50 hover:shadow-sm"
               >
                 <div>
                   <h3
-                    class="group-hover:text-aqua font-bold text-ink transition-colors"
+                    class="font-bold text-ink transition-colors group-hover:text-aqua"
                   >
                     {{ other.title | transloco }}
                   </h3>
@@ -290,7 +290,7 @@ import { RouterLink } from '@angular/router';
                   </p>
                 </div>
                 <span
-                  class="text-aqua mt-3 inline-flex items-center gap-1 text-xs font-semibold"
+                  class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-aqua"
                 >
                   {{ 'method.otherMethods.discoverMore' | transloco }}
                   <ng-icon

@@ -43,12 +43,10 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               [attr.alt]="'artistBio.portraitAlt' | transloco"
             />
             <div
-              class="from-ink/85 pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent pt-16"
+              class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent pt-16"
             ></div>
             <figcaption class="absolute inset-x-0 bottom-0 px-5 py-4">
-              <p
-                class="font-serif text-base font-semibold text-cream italic"
-              >
+              <p class="font-serif text-base font-semibold text-cream italic">
                 {{ 'artistBio.portraitSubtitle' | transloco }}
               </p>
             </figcaption>
@@ -83,7 +81,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             <ul class="mt-3 flex flex-wrap gap-2">
               @for (city of content.artistBio.exhibitionCities; track city) {
                 <li
-                  class="border-coral/30 bg-coral-light text-coral-dark rounded-full border px-3 py-1 text-xs font-semibold"
+                  class="rounded-full border border-coral/30 bg-coral-light px-3 py-1 text-xs font-semibold text-coral-dark"
                 >
                   {{ city | transloco }}
                 </li>
@@ -127,9 +125,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             </div>
           </figure>
           <div class="lg:col-span-6">
-            <span
-              class="bg-primary/60 block h-0.5 w-10 rounded-full"
-            ></span>
+            <span class="block h-0.5 w-10 rounded-full bg-primary/60"></span>
             <h2
               id="heading-opera-evidenza"
               class="mt-4 font-serif text-2xl font-bold text-ink sm:text-3xl"
@@ -154,7 +150,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         [attr.aria-label]="'artistBio.philosophy.ariaLabel' | transloco"
       >
         <blockquote
-          class="border-coral/20 bg-coral-light/30 rounded-3xl border p-8 text-center sm:p-12"
+          class="rounded-3xl border border-coral/20 bg-coral-light/30 p-8 text-center sm:p-12"
         >
           <p
             class="mx-auto max-w-2xl text-xl leading-relaxed font-semibold text-ink italic sm:text-2xl"

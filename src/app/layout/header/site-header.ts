@@ -1,12 +1,4 @@
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  signal,
-  viewChild,
-} from '@angular/core';
-import { CdkMenuTrigger } from '@angular/cdk/menu';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NavigationEnd,
@@ -22,7 +14,6 @@ import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
 import { filter, map } from 'rxjs';
 import { SITE_CONTENT } from '../../core/data/site-content';
-import { AboutMenu } from '../../core/services/about-menu';
 
 @Component({
   selector: 'app-site-header',
@@ -283,9 +274,6 @@ export class SiteHeader {
   readonly aboutHoverPath = signal<string | null>(null);
 
   private readonly router = inject(Router);
-  private readonly aboutMenu = inject(AboutMenu);
-  private readonly aboutMenuTrigger = viewChild(CdkMenuTrigger);
-  private lastOpenRequest = 0;
   private readonly currentUrl = toSignal(
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -297,18 +285,6 @@ export class SiteHeader {
   readonly isAboutActive = computed(() =>
     this.currentUrl().startsWith('/chi-sono'),
   );
-
-  constructor() {
-    effect(() => {
-      const request = this.aboutMenu.openRequested();
-      const trigger = this.aboutMenuTrigger();
-
-      if (trigger && request > this.lastOpenRequest) {
-        this.lastOpenRequest = request;
-        trigger.open();
-      }
-    });
-  }
 
   aboutOptionBackground(path: string): string {
     const isHighlighted =

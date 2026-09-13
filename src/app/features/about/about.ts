@@ -106,7 +106,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             <ul class="mt-3 space-y-2 text-sm text-ink-muted">
               @for (role of content.personalInfo.roles; track role) {
                 <li class="flex items-center gap-2">
-                  <span class="bg-aqua h-2 w-2 shrink-0 rounded-full"></span>
+                  <span class="h-2 w-2 shrink-0 rounded-full bg-aqua"></span>
                   <span>{{ role | transloco }}</span>
                 </li>
               }
@@ -131,7 +131,9 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
         aria-labelledby="heading-valori"
       >
         <div class="text-center">
-          <span class="bg-primary/60 mx-auto block h-0.5 w-10 rounded-full"></span>
+          <span
+            class="mx-auto block h-0.5 w-10 rounded-full bg-primary/60"
+          ></span>
           <h2
             id="heading-valori"
             class="mt-4 font-serif text-3xl font-bold text-ink"
