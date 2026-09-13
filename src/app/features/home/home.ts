@@ -9,7 +9,13 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, TranslocoPipe, HlmButtonImports, CtaBannerComponent, NgOptimizedImage],
+  imports: [
+    RouterLink,
+    TranslocoPipe,
+    HlmButtonImports,
+    CtaBannerComponent,
+    NgOptimizedImage,
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

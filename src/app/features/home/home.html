@@ -4,19 +4,34 @@
   class="relative overflow-hidden border-b border-stone-200/70 bg-cream py-16 sm:py-24"
   [attr.aria-label]="'home.hero.ariaLabel' | transloco"
 >
-  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-    <div class="absolute -top-40 right-0 h-[30rem] w-[30rem] rounded-full bg-primary/10 blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-antique-gold/10 blur-3xl"></div>
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    aria-hidden="true"
+  >
+    <div
+      class="absolute -top-40 right-0 h-[30rem] w-[30rem] rounded-full bg-primary/10 blur-3xl"
+    ></div>
+    <div
+      class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-antique-gold/10 blur-3xl"
+    ></div>
   </div>
 
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-7">
-        <p class="text-sm font-semibold tracking-[0.18em] text-primary uppercase">{{ 'header.tagline' | transloco }}</p>
-        <h1 class="mt-4 max-w-3xl font-serif text-4xl leading-tight font-bold tracking-tight text-ink sm:text-6xl">
+        <p
+          class="text-sm font-semibold tracking-[0.18em] text-primary uppercase"
+        >
+          {{ 'header.tagline' | transloco }}
+        </p>
+        <h1
+          class="mt-4 max-w-3xl font-serif text-4xl leading-tight font-bold tracking-tight text-ink sm:text-6xl"
+        >
           {{ content.personalInfo.headline | transloco }}
         </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl">
+        <p
+          class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl"
+        >
           {{ content.personalInfo.subheadline | transloco }}
         </p>
         <p class="mt-5 max-w-2xl text-base leading-relaxed text-ink-muted">
@@ -24,21 +39,35 @@
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a hlmBtn routerLink="/terapeuta" size="lg">{{ 'home.hero.ctaAbout' | transloco }}</a>
-          <a hlmBtn href="#metodologie" variant="outline" size="lg">{{ 'home.methods.title' | transloco }}</a>
+          <a hlmBtn routerLink="/terapeuta" size="lg">
+            {{ 'home.hero.ctaAbout' | transloco }}
+          </a>
+          <a hlmBtn href="#metodologie" variant="outline" size="lg">
+            {{ 'home.methods.title' | transloco }}
+          </a>
         </div>
 
-        <div class="mt-10 flex items-center gap-4 border-l-2 border-primary pl-5">
+        <div
+          class="mt-10 flex items-center gap-4 border-l-2 border-primary pl-5"
+        >
           <div>
-            <p class="text-xs font-semibold tracking-[0.14em] text-primary uppercase">{{ 'home.principles.eyebrow' | transloco }}</p>
-            <p class="mt-1 max-w-xl text-sm leading-relaxed text-ink-muted">{{ content.personalInfo.introText[1] | transloco }}</p>
+            <p
+              class="text-xs font-semibold tracking-[0.14em] text-primary uppercase"
+            >
+              {{ 'home.principles.eyebrow' | transloco }}
+            </p>
+            <p class="mt-1 max-w-xl text-sm leading-relaxed text-ink-muted">
+              {{ content.personalInfo.introText[1] | transloco }}
+            </p>
           </div>
         </div>
       </div>
 
       <div class="lg:col-span-5">
         <figure class="mx-auto max-w-md">
-          <div class="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-ink shadow-xl shadow-ink/10">
+          <div
+            class="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-ink shadow-xl shadow-ink/10"
+          >
             <img
               ngSrc="/la-maddalena-cuore-blu.jpg"
               width="1458"
@@ -47,9 +76,18 @@
               class="aspect-[1458/1909] w-full object-cover"
               [attr.alt]="'home.hero.artworkAlt' | transloco"
             />
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent px-6 pb-6 pt-24">
-              <p class="font-serif text-xl font-semibold text-cream italic">{{ 'home.hero.artworkTitle' | transloco }}</p>
-              <p class="mt-1 text-xs tracking-wide text-cream/75 uppercase">{{ 'home.hero.artworkCredit' | transloco: { name: content.personalInfo.name } }}</p>
+            <div
+              class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent px-6 pt-24 pb-6"
+            >
+              <p class="font-serif text-xl font-semibold text-cream italic">
+                {{ 'home.hero.artworkTitle' | transloco }}
+              </p>
+              <p class="mt-1 text-xs tracking-wide text-cream/75 uppercase">
+                {{
+                  'home.hero.artworkCredit'
+                    | transloco: { name: content.personalInfo.name }
+                }}
+              </p>
             </div>
           </div>
         </figure>
@@ -59,45 +97,93 @@
 </section>
 
 <!-- 2. Introduzione: la pratica terapeutica nasce anche dalla sensibilità artistica -->
-<section class="border-b border-stone-200/70 bg-aqua-light/35 py-14 sm:py-20" aria-labelledby="heading-intro">
+<section
+  class="border-b border-stone-200/70 bg-aqua-light/35 py-14 sm:py-20"
+  aria-labelledby="heading-intro"
+>
   <div class="mx-auto max-w-4xl px-4 sm:px-6">
     <div class="border-l-2 border-primary pl-6 sm:pl-8">
-      <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">{{ 'home.intro.eyebrow' | transloco }}</p>
-      <h2 id="heading-intro" class="mt-3 max-w-3xl font-serif text-3xl font-bold text-ink sm:text-4xl">{{ 'home.about.title' | transloco }}</h2>
-      <p class="mt-5 text-lg leading-relaxed text-ink-muted">{{ content.personalInfo.introText[1] | transloco }}</p>
+      <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">
+        {{ 'home.intro.eyebrow' | transloco }}
+      </p>
+      <h2
+        id="heading-intro"
+        class="mt-3 max-w-3xl font-serif text-3xl font-bold text-ink sm:text-4xl"
+      >
+        {{ 'home.about.title' | transloco }}
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-ink-muted">
+        {{ content.personalInfo.introText[1] | transloco }}
+      </p>
     </div>
   </div>
 </section>
 
 <!-- 3. Identità terapeutica -->
-<section id="terapeuta" class="border-b border-stone-200/70 bg-cream py-16 sm:py-20" aria-labelledby="heading-terapeuta">
+<section
+  id="terapeuta"
+  class="border-b border-stone-200/70 bg-cream py-16 sm:py-20"
+  aria-labelledby="heading-terapeuta"
+>
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="grid gap-10 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-7">
-        <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">{{ 'home.about.eyebrowProfile' | transloco }}</p>
-        <h2 id="heading-terapeuta" class="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl">{{ content.personalInfo.name }}</h2>
-        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">{{ 'home.about.description' | transloco }}</p>
+        <p
+          class="text-sm font-semibold tracking-[0.14em] text-primary uppercase"
+        >
+          {{ 'home.about.eyebrowProfile' | transloco }}
+        </p>
+        <h2
+          id="heading-terapeuta"
+          class="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl"
+        >
+          {{ content.personalInfo.name }}
+        </h2>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">
+          {{ 'home.about.description' | transloco }}
+        </p>
 
         <ul class="mt-8 grid gap-3 sm:grid-cols-2">
           @for (role of content.personalInfo.roles; track role) {
-            <li class="rounded-xl border border-stone-200/80 bg-white/75 px-4 py-3 text-sm text-ink-muted">{{ role | transloco }}</li>
+            <li
+              class="rounded-xl border border-stone-200/80 bg-white/75 px-4 py-3 text-sm text-ink-muted"
+            >
+              {{ role | transloco }}
+            </li>
           }
         </ul>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a hlmBtn routerLink="/terapeuta">{{ 'home.about.readMore' | transloco }}</a>
-          <a hlmBtn routerLink="/contatti" variant="outline">{{ 'home.cta.requestInfo' | transloco }}</a>
+          <a hlmBtn routerLink="/terapeuta">
+            {{ 'home.about.readMore' | transloco }}
+          </a>
+          <a hlmBtn routerLink="/contatti" variant="outline">
+            {{ 'home.cta.requestInfo' | transloco }}
+          </a>
         </div>
       </div>
 
       <aside class="lg:col-span-5 lg:border-l lg:border-stone-200 lg:pl-10">
-        <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">{{ 'home.principles.eyebrow' | transloco }}</p>
-        <h3 class="mt-3 font-serif text-2xl font-semibold text-ink">{{ 'home.principles.title' | transloco }}</h3>
+        <p
+          class="text-sm font-semibold tracking-[0.14em] text-primary uppercase"
+        >
+          {{ 'home.principles.eyebrow' | transloco }}
+        </p>
+        <h3 class="mt-3 font-serif text-2xl font-semibold text-ink">
+          {{ 'home.principles.title' | transloco }}
+        </h3>
         <div class="mt-6 space-y-5">
-          @for (principle of content.approachPrinciples.slice(0, 4); track principle.title) {
+          @for (
+            principle of content.approachPrinciples.slice(0, 4);
+            track principle.title
+          ) {
             <div>
-              <p class="font-semibold text-ink">{{ principle.title | transloco }}</p>
-              <p class="mt-1 text-sm leading-relaxed text-ink-muted">{{ principle.description | transloco }}</p>
+              <p class="font-semibold text-ink">
+                {{ principle.title | transloco }}
+              </p>
+              <p class="mt-1 text-sm leading-relaxed text-ink-muted">
+                {{ principle.description | transloco }}
+              </p>
             </div>
           }
         </div>
@@ -107,39 +193,126 @@
 </section>
 
 <!-- 4. Trattamenti e metodologie: sezione centrale della Home -->
-<section id="metodologie" class="border-b border-stone-200/70 bg-primary-light/10 py-16 sm:py-20" aria-labelledby="heading-metodi">
+<section
+  id="metodologie"
+  class="border-b border-stone-200/70 bg-primary-light/10 py-16 sm:py-20"
+  aria-labelledby="heading-metodi"
+>
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">{{ 'home.methods.eyebrow' | transloco }}</p>
-      <h2 id="heading-metodi" class="mt-3 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl">{{ 'home.methods.title' | transloco }}</h2>
-      <p class="mt-4 text-base leading-relaxed text-ink-muted">{{ 'home.methods.subtitle' | transloco }}</p>
+      <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">
+        {{ 'home.methods.eyebrow' | transloco }}
+      </p>
+      <h2
+        id="heading-metodi"
+        class="mt-3 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+      >
+        {{ 'home.methods.title' | transloco }}
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-muted">
+        {{ 'home.methods.subtitle' | transloco }}
+      </p>
     </div>
 
     <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       @for (method of content.methods; track method.slug) {
-        <article class="group flex h-full flex-col justify-between rounded-2xl border border-stone-200 bg-cream p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md">
+        <article
+          class="group flex h-full flex-col justify-between rounded-2xl border border-stone-200 bg-cream p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
+        >
           <div>
-            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border bg-white text-primary" [style.border-color]="method.theme.primary" aria-hidden="true">
+            <div
+              class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border bg-white text-primary"
+              [style.border-color]="method.theme.primary"
+              aria-hidden="true"
+            >
               @switch (method.icon) {
                 @case ('cromo') {
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36-6.36-.7.7M6.34 17.66l-.7.7m12.72 0-.7-.7M6.34 6.34l-.7-.7"/></svg>
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                      stroke-linecap="round"
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36-6.36-.7.7M6.34 17.66l-.7.7m12.72 0-.7-.7M6.34 6.34l-.7-.7"
+                    />
+                  </svg>
                 }
                 @case ('kinesio') {
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.32 6.32a4.5 4.5 0 0 0 0 6.36L12 20.36l7.68-7.68a4.5 4.5 0 0 0-6.36-6.36L12 7.64l-1.32-1.32a4.5 4.5 0 0 0-6.36 0Z"/></svg>
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.32 6.32a4.5 4.5 0 0 0 0 6.36L12 20.36l7.68-7.68a4.5 4.5 0 0 0-6.36-6.36L12 7.64l-1.32-1.32a4.5 4.5 0 0 0-6.36 0Z"
+                    />
+                  </svg>
                 }
                 @case ('suono') {
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5.59 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1.59l4.7-4.7c.63-.63 1.71-.19 1.71.7v14c0 .89-1.08 1.34-1.71.71L5.59 15Z"/><path stroke-linecap="round" d="M15.54 8.46a5 5 0 0 1 0 7.08m2.83-9.9a9 9 0 0 1 0 12.73"/></svg>
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5.59 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1.59l4.7-4.7c.63-.63 1.71-.19 1.71.7v14c0 .89-1.08 1.34-1.71.71L5.59 15Z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      d="M15.54 8.46a5 5 0 0 1 0 7.08m2.83-9.9a9 9 0 0 1 0 12.73"
+                    />
+                  </svg>
                 }
                 @case ('arte') {
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 0 1-4-4 5 5 0 0 1 4-4h4a4 4 0 0 1 4 4 4 4 0 0 1-4 4H7Zm8-14a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/></svg>
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M7 21a4 4 0 0 1-4-4 5 5 0 0 1 4-4h4a4 4 0 0 1 4 4 4 4 0 0 1-4 4H7Zm8-14a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
+                    />
+                  </svg>
                 }
               }
             </div>
-            <p class="text-xs font-semibold tracking-[0.14em] text-primary uppercase">{{ method.slug }}</p>
-            <h3 class="mt-2 font-serif text-xl font-semibold text-ink">{{ method.title | transloco }}</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-muted">{{ method.shortDescription | transloco }}</p>
+            <p
+              class="text-xs font-semibold tracking-[0.14em] text-primary uppercase"
+            >
+              {{ method.slug }}
+            </p>
+            <h3 class="mt-2 font-serif text-xl font-semibold text-ink">
+              {{ method.title | transloco }}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              {{ method.shortDescription | transloco }}
+            </p>
           </div>
-          <a hlmBtn [routerLink]="['/' + method.slug]" variant="link" size="sm" class="mt-6 self-start px-0">{{ 'home.methods.detailsLink' | transloco }}</a>
+          <a
+            hlmBtn
+            [routerLink]="['/' + method.slug]"
+            variant="link"
+            size="sm"
+            class="mt-6 self-start px-0"
+          >
+            {{ 'home.methods.detailsLink' | transloco }}
+          </a>
         </article>
       }
     </div>
@@ -147,17 +320,36 @@
 </section>
 
 <!-- 5. Percorsi e principi: ancora terapeutici -->
-<section class="border-b border-stone-200/70 bg-cream py-16 sm:py-20" aria-labelledby="heading-percorsi">
+<section
+  class="border-b border-stone-200/70 bg-cream py-16 sm:py-20"
+  aria-labelledby="heading-percorsi"
+>
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="grid gap-10 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
-        <p class="text-sm font-semibold tracking-[0.14em] text-primary uppercase">{{ 'home.principles.eyebrow' | transloco }}</p>
-        <h2 id="heading-percorsi" class="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl">{{ 'home.principles.title' | transloco }}</h2>
+        <p
+          class="text-sm font-semibold tracking-[0.14em] text-primary uppercase"
+        >
+          {{ 'home.principles.eyebrow' | transloco }}
+        </p>
+        <h2
+          id="heading-percorsi"
+          class="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl"
+        >
+          {{ 'home.principles.title' | transloco }}
+        </h2>
         <div class="mt-7 space-y-5">
-          @for (principle of content.approachPrinciples.slice(4); track principle.title) {
+          @for (
+            principle of content.approachPrinciples.slice(4);
+            track principle.title
+          ) {
             <div>
-              <p class="font-semibold text-ink">{{ principle.title | transloco }}</p>
-              <p class="mt-1 text-sm leading-relaxed text-ink-muted">{{ principle.description | transloco }}</p>
+              <p class="font-semibold text-ink">
+                {{ principle.title | transloco }}
+              </p>
+              <p class="mt-1 text-sm leading-relaxed text-ink-muted">
+                {{ principle.description | transloco }}
+              </p>
             </div>
           }
         </div>
@@ -165,11 +357,29 @@
 
       <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
         @for (journey of content.journeys; track journey.id) {
-          <article class="rounded-2xl border border-stone-200/80 bg-white/75 p-5">
-            <p class="text-xs font-semibold tracking-[0.14em] text-primary uppercase">{{ journey.id }}</p>
-            <h3 class="mt-2 font-serif text-xl font-semibold text-ink">{{ journey.title | transloco }}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink-muted">{{ journey.description | transloco }}</p>
-            <a hlmBtn routerLink="/percorsi" variant="link" size="sm" class="mt-3 self-start px-0">{{ 'home.methods.detailsLink' | transloco }}</a>
+          <article
+            class="rounded-2xl border border-stone-200/80 bg-white/75 p-5"
+          >
+            <p
+              class="text-xs font-semibold tracking-[0.14em] text-primary uppercase"
+            >
+              {{ journey.id }}
+            </p>
+            <h3 class="mt-2 font-serif text-xl font-semibold text-ink">
+              {{ journey.title | transloco }}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+              {{ journey.description | transloco }}
+            </p>
+            <a
+              hlmBtn
+              routerLink="/percorsi"
+              variant="link"
+              size="sm"
+              class="mt-3 self-start px-0"
+            >
+              {{ 'home.methods.detailsLink' | transloco }}
+            </a>
           </article>
         }
       </div>
@@ -178,20 +388,48 @@
 </section>
 
 <!-- 6. Arte: presenza più raccolta, origine e sensibilità che attraversano il lavoro terapeutico -->
-<section id="arte" class="border-b border-stone-200/70 bg-cream-subtle py-14 sm:py-16" aria-labelledby="heading-arte">
+<section
+  id="arte"
+  class="border-b border-stone-200/70 bg-cream-subtle py-14 sm:py-16"
+  aria-labelledby="heading-arte"
+>
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-center gap-8 md:grid-cols-12 md:gap-10">
       <div class="md:col-span-4">
-        <div class="overflow-hidden rounded-2xl border border-stone-200 bg-ink shadow-md">
-          <img ngSrc="/la-maddalena-cuore-blu.jpg" width="1458" height="1909" loading="lazy" class="aspect-[4/5] w-full object-cover" [attr.alt]="'artistBio.portraitAlt' | transloco" />
+        <div
+          class="overflow-hidden rounded-2xl border border-stone-200 bg-ink shadow-md"
+        >
+          <img
+            ngSrc="/la-maddalena-cuore-blu.jpg"
+            width="1458"
+            height="1909"
+            loading="lazy"
+            class="aspect-[4/5] w-full object-cover"
+            [attr.alt]="'artistBio.portraitAlt' | transloco"
+          />
         </div>
       </div>
       <div class="md:col-span-8">
-        <p class="text-sm font-semibold tracking-[0.14em] text-antique-gold uppercase">{{ 'header.aboutModal.artistTitle' | transloco }}</p>
-        <h2 id="heading-arte" class="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl">{{ 'artistBio.subheadline' | transloco }}</h2>
-        <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">{{ 'artistBio.featuredWork.description' | transloco }}</p>
-        <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">{{ 'artistBio.philosophy.quote' | transloco }}</p>
-        <a hlmBtn routerLink="/artista" variant="outline" class="mt-6">{{ 'artistBio.featuredWork.title' | transloco }}</a>
+        <p
+          class="text-sm font-semibold tracking-[0.14em] text-antique-gold uppercase"
+        >
+          {{ 'header.aboutModal.artistTitle' | transloco }}
+        </p>
+        <h2
+          id="heading-arte"
+          class="mt-3 font-serif text-3xl font-bold text-ink sm:text-4xl"
+        >
+          {{ 'artistBio.subheadline' | transloco }}
+        </h2>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
+          {{ 'artistBio.featuredWork.description' | transloco }}
+        </p>
+        <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
+          {{ 'artistBio.philosophy.quote' | transloco }}
+        </p>
+        <a hlmBtn routerLink="/artista" variant="outline" class="mt-6">
+          {{ 'artistBio.featuredWork.title' | transloco }}
+        </a>
       </div>
     </div>
   </div>
@@ -201,6 +439,8 @@
 <app-cta-banner
   [title]="'home.cta.title' | transloco"
   [description]="'home.cta.description' | transloco"
-  [buttons]="[{ label: ('home.cta.requestInfo' | transloco), route: '/contatti' }]"
+  [buttons]="[
+    { label: ('home.cta.requestInfo' | transloco), route: '/contatti' },
+  ]"
   sectionId="heading-home-cta"
 />
