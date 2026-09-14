@@ -154,10 +154,10 @@
         </ul>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <a hlmBtn routerLink="/terapeuta">
+          <a hlmBtn routerLink="/terapeuta" size="lg">
             {{ 'home.about.readMore' | transloco }}
           </a>
-          <a hlmBtn routerLink="/contatti" variant="outline">
+          <a hlmBtn routerLink="/contatti" variant="outline" size="lg">
             {{ 'home.cta.requestInfo' | transloco }}
           </a>
         </div>
@@ -301,7 +301,7 @@
             hlmBtn
             [routerLink]="['/' + method.slug]"
             variant="link"
-            size="sm"
+            size="lg"
             class="mt-6 self-start px-0"
           >
             {{ 'home.methods.detailsLink' | transloco }}
@@ -368,7 +368,7 @@
               hlmBtn
               routerLink="/percorsi"
               variant="link"
-              size="sm"
+              size="lg"
               class="mt-3 self-start px-0"
             >
               {{ 'home.methods.detailsLink' | transloco }}
@@ -420,7 +420,7 @@
         <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
           {{ 'artistBio.philosophy.quote' | transloco }}
         </p>
-        <a hlmBtn routerLink="/artista" variant="outline" class="mt-6">
+        <a hlmBtn routerLink="/artista" variant="outline" size="lg" class="mt-6">
           {{ 'artistBio.featuredWork.title' | transloco }}
         </a>
       </div>

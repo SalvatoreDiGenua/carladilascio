@@ -24,7 +24,7 @@
           @if (button.route) {
             <a
               hlmBtn
-              [size]="'lg'"
+              size="lg"
               [variant]="button.variant === 'outline' ? 'outline' : 'default'"
               [routerLink]="button.route"
               [attr.target]="button.target || null"
@@ -35,7 +35,7 @@
           } @else if (button.href) {
             <a
               hlmBtn
-              [size]="'lg'"
+              size="lg"
               [variant]="button.variant === 'outline' ? 'outline' : 'default'"
               [href]="button.href"
               [attr.target]="button.target || null"
