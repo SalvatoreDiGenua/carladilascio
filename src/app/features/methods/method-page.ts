@@ -31,7 +31,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           <nav
             hlmBreadcrumb
             [aria-label]="'method.breadcrumb.ariaLabel' | transloco"
-            class="mb-8"
+            class="my-8"
           >
             <ol hlmBreadcrumbList>
               <li hlmBreadcrumbItem>
