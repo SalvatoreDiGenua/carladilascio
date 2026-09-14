@@ -64,9 +64,15 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             >{{ 'header.nav.home' | transloco }}</a
           >
 
-          <hlm-item variant="outline" size="sm" class="flex-col items-stretch gap-2 rounded-2xl border-stone-200/90 bg-white/40 p-2">
+          <hlm-item
+            variant="outline"
+            size="sm"
+            class="flex-col items-stretch gap-2 rounded-2xl border-stone-200/90 bg-white/40 p-2"
+          >
             <hlm-item-header class="px-2 pt-1 pb-0">
-              <hlm-item-title class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase">
+              <hlm-item-title
+                class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
+              >
                 {{ 'header.nav.about' | transloco }}
               </hlm-item-title>
             </hlm-item-header>
@@ -92,9 +98,15 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             </hlm-item-content>
           </hlm-item>
 
-          <hlm-item variant="outline" size="sm" class="flex-col items-stretch gap-2 rounded-2xl border-stone-200/90 bg-white/40 p-2">
+          <hlm-item
+            variant="outline"
+            size="sm"
+            class="flex-col items-stretch gap-2 rounded-2xl border-stone-200/90 bg-white/40 p-2"
+          >
             <hlm-item-header class="px-2 pt-1 pb-0">
-              <hlm-item-title class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase">
+              <hlm-item-title
+                class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
+              >
                 {{ 'header.nav.methods' | transloco }}
               </hlm-item-title>
             </hlm-item-header>
@@ -113,7 +125,11 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             </hlm-item-content>
           </hlm-item>
 
-          <hlm-item variant="outline" size="sm" class="rounded-2xl border-stone-200/90 bg-white/40">
+          <hlm-item
+            variant="outline"
+            size="sm"
+            class="rounded-2xl border-stone-200/90 bg-white/40"
+          >
             <hlm-item-content>
               <a
                 hlmBtn
