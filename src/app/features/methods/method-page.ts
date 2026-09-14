@@ -10,13 +10,11 @@ import { SITE_CONTENT } from '../../core/data/site-content';
 import { MethodItem } from '../../core/models/portfolio.model';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
-import { MethodInstrumentExperienceComponent } from './method-instrument-experience';
 
 @Component({
   selector: 'app-method-page',
   providers: [provideIcons({ lucideCheck, lucideChevronRight, lucideInfo })],
   imports: [
-    MethodInstrumentExperienceComponent,
     TranslocoPipe,
     NgIcon,
     HlmBreadcrumbImports,
@@ -29,17 +27,6 @@ import { MethodInstrumentExperienceComponent } from './method-instrument-experie
   template: `
     @if (method(); as m) {
       <article class="method-page mx-auto px-4 sm:px-6 sm:py-16">
-        <div class="method-page__instrument" aria-hidden="true">
-          <div class="method-page__instrument-frame">
-            <app-method-instrument-experience
-              [slug]="m.slug"
-              [title]="m.title | transloco"
-              [themeColor]="m.theme.primary"
-              class="block h-full w-full"
-            />
-          </div>
-        </div>
-
         <div class="method-page__content">
           <nav
             hlmBreadcrumb
