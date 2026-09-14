@@ -3,6 +3,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmCardImports } from '@spartan-ng/helm/card';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
@@ -13,6 +14,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
     RouterLink,
     TranslocoPipe,
     HlmButtonImports,
+    HlmCardImports,
     CtaBannerComponent,
     NgOptimizedImage,
   ],

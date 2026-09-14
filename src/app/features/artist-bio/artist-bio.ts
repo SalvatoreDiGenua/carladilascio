@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmCardImports } from '@spartan-ng/helm/card';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
@@ -11,6 +12,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
   imports: [
     TranslocoPipe,
     HlmButtonImports,
+    HlmCardImports,
     CtaBannerComponent,
     NgOptimizedImage,
   ],
@@ -173,8 +175,8 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           </div>
           <div class="mt-10 grid gap-5 md:grid-cols-3">
             @for (frame of workFrames; track frame.id) {
-              <figure
-                class="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+              <hlm-card
+                class="group overflow-hidden border-stone-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
                 [style.margin-top.px]="frame.offset ? 32 : 0"
               >
                 <div class="overflow-hidden bg-ink">
@@ -190,17 +192,17 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
                     [attr.alt]="'artistBio.portraitAlt' | transloco"
                   />
                 </div>
-                <figcaption class="p-5">
+                <div hlmCardContent class="p-5">
                   <p
                     class="text-xs font-semibold tracking-[0.14em] text-primary uppercase"
                   >
                     {{ frame.label | transloco }}
                   </p>
-                  <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+                  <p hlmCardDescription class="mt-2 leading-relaxed">
                     {{ 'artistBio.featuredWork.description' | transloco }}
                   </p>
-                </figcaption>
-              </figure>
+                </div>
+              </hlm-card>
             }
           </div>
         </div>

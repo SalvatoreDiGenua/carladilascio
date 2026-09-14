@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmCardImports } from '@spartan-ng/helm/card';
 import { SITE_CONTENT } from '../../core/data/site-content';
 import { Seo } from '../../core/seo/seo';
 import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
@@ -12,6 +13,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
   imports: [
     TranslocoPipe,
     HlmButtonImports,
+    HlmCardImports,
     CtaBannerComponent,
     NgOptimizedImage,
     RouterLink,
@@ -51,8 +53,8 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
                   <span
                     aria-hidden="true"
                     class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"
-                  ></span
-                  ><span>{{ role | transloco }}</span>
+                  ></span>
+                  <span>{{ role | transloco }}</span>
                 </li>
               }
             </ul>
@@ -139,8 +141,8 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           </div>
           <div class="therapist-methods__grid mt-12 grid gap-6 lg:grid-cols-2">
             @for (method of content.methods; track method.slug) {
-              <article
-                class="therapist-method-card group overflow-hidden rounded-[1.75rem] border border-stone-200 bg-cream-subtle shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+              <hlm-card
+                class="therapist-method-card group overflow-hidden border-stone-200 bg-cream-subtle shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div
                   class="therapist-method-card__layout grid h-full md:grid-cols-[0.9fr_1.1fr]"
@@ -161,9 +163,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
                     <h3 class="mt-2 font-serif text-2xl font-bold text-ink">
                       {{ method.title | transloco }}
                     </h3>
-                    <p
-                      class="mt-3 text-sm leading-relaxed font-medium text-ink"
-                    >
+                    <p class="mt-3 text-sm leading-relaxed font-medium text-ink">
                       {{ method.shortDescription | transloco }}
                     </p>
                     <p class="mt-3 text-sm leading-relaxed text-ink-muted">
@@ -178,12 +178,13 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
                         variant="outline"
                         size="sm"
                         [routerLink]="'/' + method.slug"
-                        >{{ 'home.methods.detailsLink' | transloco }}</a
                       >
+                        {{ 'home.methods.detailsLink' | transloco }}
+                      </a>
                     </div>
                   </div>
                 </div>
-              </article>
+              </hlm-card>
             }
           </div>
         </div>
@@ -212,14 +213,16 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               principle of content.approachPrinciples;
               track principle.title
             ) {
-              <article class="border-t-2 border-primary/30 pt-5">
-                <h3 class="text-base font-bold text-ink">
-                  {{ principle.title | transloco }}
-                </h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-                  {{ principle.description | transloco }}
-                </p>
-              </article>
+              <hlm-card size="sm" class="border-primary/15 bg-cream-subtle">
+                <div hlmCardContent class="p-5">
+                  <h3 class="text-base font-bold text-ink">
+                    {{ principle.title | transloco }}
+                  </h3>
+                  <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+                    {{ principle.description | transloco }}
+                  </p>
+                </div>
+              </hlm-card>
             }
           </div>
         </div>
@@ -245,14 +248,16 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
           </div>
           <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             @for (pillar of content.pillars; track pillar.title) {
-              <article class="rounded-2xl border border-stone-200 bg-white p-6">
-                <h3 class="text-base font-bold text-ink">
-                  {{ pillar.title | transloco }}
-                </h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-                  {{ pillar.description | transloco }}
-                </p>
-              </article>
+              <hlm-card size="sm" class="border-stone-200 bg-white">
+                <div hlmCardContent class="p-6">
+                  <h3 class="text-base font-bold text-ink">
+                    {{ pillar.title | transloco }}
+                  </h3>
+                  <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+                    {{ pillar.description | transloco }}
+                  </p>
+                </div>
+              </hlm-card>
             }
           </div>
         </div>
@@ -277,16 +282,16 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             </h2>
             <div class="mt-8 grid gap-4 sm:grid-cols-2">
               @for (journey of content.journeys; track journey.id) {
-                <article
-                  class="rounded-2xl border border-stone-200 bg-white p-5"
-                >
-                  <h3 class="font-bold text-ink">
-                    {{ journey.title | transloco }}
-                  </h3>
-                  <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-                    {{ journey.description | transloco }}
-                  </p>
-                </article>
+                <hlm-card size="sm" class="border-stone-200 bg-white">
+                  <div hlmCardContent class="p-5">
+                    <h3 class="font-bold text-ink">
+                      {{ journey.title | transloco }}
+                    </h3>
+                    <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+                      {{ journey.description | transloco }}
+                    </p>
+                  </div>
+                </hlm-card>
               }
             </div>
           </div>
@@ -294,9 +299,9 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
             <p class="text-sm leading-relaxed text-ink-muted">
               {{ 'journeys.healthcareIntegration.description' | transloco }}
             </p>
-            <a hlmBtn class="mt-6" [routerLink]="'/percorsi'">{{
-              'home.journeys.cta' | transloco
-            }}</a>
+            <a hlmBtn class="mt-6" [routerLink]="'/percorsi'">
+              {{ 'home.journeys.cta' | transloco }}
+            </a>
           </div>
         </div>
       </section>
@@ -328,8 +333,9 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               variant="secondary"
               class="mt-7"
               [routerLink]="'/artista'"
-              >{{ 'header.aboutModal.artistTitle' | transloco }}</a
             >
+              {{ 'header.aboutModal.artistTitle' | transloco }}
+            </a>
           </div>
           <figure class="lg:col-span-5">
             <div

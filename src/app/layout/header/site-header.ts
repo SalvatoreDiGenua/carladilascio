@@ -34,7 +34,7 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
   ],
   template: `
     <header
-      class="sticky top-0 z-40 border-b border-stone-200/80 bg-cream/90 backdrop-blur-md transition-shadow"
+      class="sticky top-0 z-40 border-b border-stone-300/80 bg-cream-subtle/95 shadow-sm shadow-ink/5 backdrop-blur-md transition-shadow"
     >
       <div
         class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4"
@@ -71,8 +71,9 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               routerLinkActive="bg-stone-200/60 text-ink font-semibold"
               [routerLinkActiveOptions]="{ exact: true }"
               class="text-sm text-ink-muted hover:bg-stone-200/40 hover:text-ink"
-              >{{ 'header.nav.home' | transloco }}</a
             >
+              {{ 'header.nav.home' | transloco }}
+            </a>
 
             <div hlmMenubar class="h-auto border-none bg-transparent p-0">
               <button
@@ -109,12 +110,14 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
                     [style.color]="aboutOptionTextColor('/terapeuta')"
                   >
                     <span class="flex flex-col items-start gap-0.5 text-left">
-                      <span [class]="aboutTitleClass('/terapeuta')">{{
-                        'header.aboutModal.therapistTitle' | transloco
-                      }}</span>
-                      <span [class]="aboutDescriptionClass('/terapeuta')">{{
-                        'header.aboutModal.therapistDescription' | transloco
-                      }}</span>
+                      <span [class]="aboutTitleClass('/terapeuta')">
+                        {{ 'header.aboutModal.therapistTitle' | transloco }}
+                      </span>
+                      <span [class]="aboutDescriptionClass('/terapeuta')">
+                        {{
+                          'header.aboutModal.therapistDescription' | transloco
+                        }}
+                      </span>
                     </span>
                   </button>
                   <hlm-dropdown-menu-separator class="my-1" />
@@ -127,12 +130,14 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
                     [style.color]="aboutOptionTextColor('/artista')"
                   >
                     <span class="flex flex-col items-start gap-0.5 text-left">
-                      <span [class]="aboutTitleClass('/artista')">{{
-                        'header.aboutModal.artistTitle' | transloco
-                      }}</span>
-                      <span [class]="aboutDescriptionClass('/artista')">{{
-                        'header.aboutModal.artistDescription' | transloco
-                      }}</span>
+                      <span [class]="aboutTitleClass('/artista')">
+                        {{ 'header.aboutModal.artistTitle' | transloco }}
+                      </span>
+                      <span [class]="aboutDescriptionClass('/artista')">
+                        {{
+                          'header.aboutModal.artistDescription' | transloco
+                        }}
+                      </span>
                     </span>
                   </button>
                 </hlm-dropdown-menu-group>
@@ -145,24 +150,27 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               routerLink="/"
               fragment="metodologie"
               class="text-sm text-ink-muted hover:bg-stone-200/40 hover:text-ink"
-              >{{ 'header.nav.methods' | transloco }}</a
             >
+              {{ 'header.nav.methods' | transloco }}
+            </a>
             <a
               hlmBtn
               variant="ghost"
               routerLink="/percorsi"
               routerLinkActive="bg-stone-200/60 text-ink font-semibold"
               class="text-sm text-ink-muted hover:bg-stone-200/40 hover:text-ink"
-              >{{ 'header.nav.journeys' | transloco }}</a
             >
+              {{ 'header.nav.journeys' | transloco }}
+            </a>
             <a
               hlmBtn
               variant="default"
               routerLink="/contatti"
               routerLinkActive="bg-primary-dark text-white"
               class="ml-1 bg-primary px-4 text-sm text-white! shadow-sm hover:bg-primary-dark lg:ml-2"
-              >{{ 'header.nav.contact' | transloco }}</a
             >
+              {{ 'header.nav.contact' | transloco }}
+            </a>
           </nav>
         }
       </div>
