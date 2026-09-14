@@ -10,8 +10,8 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    SiteHeader,
     SiteFooter,
+    SiteHeader,
     TranslocoPipe,
     HlmToasterImports,
     IntroScreen,
@@ -20,17 +20,28 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
     <a class="skip-link" href="#main-content">{{
       'app.skipLink' | transloco
     }}</a>
+
     <app-intro-screen (completed)="onIntroCompleted()" />
-    <app-site-header />
-    <main
-      id="main-content"
-      tabindex="-1"
-      [class.home-entry-ready]="homeEntryReady()"
-      class="focus:outline-none"
-    >
-      <router-outlet />
-    </main>
-    <app-site-footer />
+
+    @defer (when introCompleted()) {
+      <div class="site-layer" animate.enter="site-layer-enter">
+        <app-site-header />
+
+        <main
+          id="main-content"
+          tabindex="-1"
+          animate.enter="home-entry"
+          class="focus:outline-none"
+        >
+          <router-outlet />
+        </main>
+
+        <app-site-footer />
+      </div>
+    } @placeholder {
+      <div class="site-layer-placeholder" aria-hidden="true"></div>
+    }
+
     <hlm-toaster />
   `,
   styles: `
@@ -39,16 +50,32 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
       flex-direction: column;
       min-height: 100dvh;
     }
+
+    .site-layer {
+      display: flex;
+      flex: 1 0 auto;
+      min-height: 100dvh;
+      flex-direction: column;
+      opacity: 1;
+    }
+
     main {
       flex: 1 0 auto;
-      opacity: 0;
-      transform: translate3d(0, 1.5rem, 0) scale(0.985);
-      filter: blur(4px);
-      will-change: transform, opacity, filter;
     }
-    main.home-entry-ready {
-      animation: home-entry 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    .site-layer-placeholder {
+      flex: 1 0 auto;
+      min-height: 100dvh;
     }
+
+    .site-layer-enter {
+      animation: site-layer-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .home-entry {
+      animation: home-entry 900ms cubic-bezier(0.16, 1, 0.3, 1) 70ms both;
+    }
+
     .skip-link {
       position: fixed;
       top: 0.75rem;
@@ -62,20 +89,33 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
       font-weight: 600;
       transition: transform 0.2s ease-in-out;
     }
+
     .skip-link:focus-visible {
       transform: translateY(0);
       outline: 3px solid var(--color-primary-light);
       outline-offset: 2px;
     }
+
+    @keyframes site-layer-enter {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 0.4rem, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
     @keyframes home-entry {
       from {
         opacity: 0;
-        transform: translate3d(0, 1.5rem, 0) scale(0.985);
+        transform: translate3d(0, 1.25rem, 0) scale(0.985);
         filter: blur(4px);
       }
-      55% {
+      60% {
         opacity: 1;
-        transform: translate3d(0, -0.2rem, 0) scale(1.002);
+        transform: translate3d(0, -0.12rem, 0) scale(1.002);
         filter: blur(0);
       }
       to {
@@ -84,22 +124,19 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
         filter: blur(0);
       }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      main {
-        opacity: 1;
-        transform: none;
-        filter: none;
-      }
-      main.home-entry-ready {
+      .site-layer-enter,
+      .home-entry {
         animation: none;
       }
     }
   `,
 })
 export class App {
-  readonly homeEntryReady = signal(false);
+  readonly introCompleted = signal(false);
 
   onIntroCompleted(): void {
-    this.homeEntryReady.set(true);
+    this.introCompleted.set(true);
   }
 }
