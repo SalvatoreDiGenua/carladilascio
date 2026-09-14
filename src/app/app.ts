@@ -37,7 +37,7 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
 
     main {
       flex: 1 0 auto;
-      animation: home-entry 1100ms cubic-bezier(0.22, 1, 0.36, 1) 2.05s both;
+      animation: home-entry 1100ms cubic-bezier(0.22, 1, 0.36, 1) 2.91s both;
     }
 
     .skip-link {
