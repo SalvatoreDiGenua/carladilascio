@@ -36,7 +36,10 @@ interface SceneState {
           role="status"
           [attr.aria-label]="loadingLabel()"
         >
-          <span class="text-xs font-medium tracking-[0.18em] text-ink-muted uppercase">3D</span>
+          <span
+            class="text-xs font-medium tracking-[0.18em] text-ink-muted uppercase"
+            >3D</span
+          >
         </div>
       }
       <canvas
@@ -56,16 +59,19 @@ export class MethodInstrumentExperienceComponent {
   readonly themeColor = input<string>('#3c607a');
   readonly isLoaded = signal(false);
 
-  private readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
+  private readonly canvasRef =
+    viewChild<ElementRef<HTMLCanvasElement>>('canvas');
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
   private readonly transloco = inject(TranslocoService);
 
   readonly ariaLabel = computed(
-    () => `${this.transloco.translate(this.title() || this.slug())} — esperienza 3D dello strumento`,
+    () =>
+      `${this.transloco.translate(this.title() || this.slug())} — esperienza 3D dello strumento`,
   );
   readonly loadingLabel = computed(
-    () => `Caricamento dell'esperienza 3D per ${this.transloco.translate(this.title() || this.slug())}`,
+    () =>
+      `Caricamento dell'esperienza 3D per ${this.transloco.translate(this.title() || this.slug())}`,
   );
 
   private renderer: THREE.WebGLRenderer | null = null;
@@ -101,7 +107,9 @@ export class MethodInstrumentExperienceComponent {
     const canvas = this.canvasRef()?.nativeElement;
     if (!canvas) return;
 
-    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     this.renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -141,7 +149,11 @@ export class MethodInstrumentExperienceComponent {
     key.position.set(3.5, 5, 4);
     this.scene.add(key);
 
-    const rim = new THREE.PointLight(this.resolveColor(this.themeColor()), 1.2, 7);
+    const rim = new THREE.PointLight(
+      this.resolveColor(this.themeColor()),
+      1.2,
+      7,
+    );
     rim.position.set(-2.5, 1.5, 2.5);
     this.scene.add(rim);
   }
@@ -241,7 +253,9 @@ export class MethodInstrumentExperienceComponent {
   private createReferencePlane(slug: string): THREE.Mesh {
     const geometry = new THREE.PlaneGeometry(2.45, 2.45);
     const material = new THREE.MeshBasicMaterial({
-      map: new THREE.TextureLoader().load(`/metodi-${this.referenceName(slug)}.svg`),
+      map: new THREE.TextureLoader().load(
+        `/metodi-${this.referenceName(slug)}.svg`,
+      ),
       transparent: true,
       opacity: 0.045,
       depthWrite: false,
@@ -264,14 +278,22 @@ export class MethodInstrumentExperienceComponent {
     const group = new THREE.Group();
     const body = new THREE.Mesh(
       new THREE.CylinderGeometry(0.16, 0.19, 2.25, 32),
-      new THREE.MeshStandardMaterial({ color: 0x6b5b52, roughness: 0.36, metalness: 0.18 }),
+      new THREE.MeshStandardMaterial({
+        color: 0x6b5b52,
+        roughness: 0.36,
+        metalness: 0.18,
+      }),
     );
     body.rotation.z = -Math.PI / 4;
     group.add(body);
 
     const grip = new THREE.Mesh(
       new THREE.CylinderGeometry(0.205, 0.205, 0.46, 32),
-      new THREE.MeshStandardMaterial({ color: 0xc8b29b, roughness: 0.28, metalness: 0.32 }),
+      new THREE.MeshStandardMaterial({
+        color: 0xc8b29b,
+        roughness: 0.28,
+        metalness: 0.32,
+      }),
     );
     grip.rotation.z = -Math.PI / 4;
     grip.position.set(-0.72, 0.72, 0);
@@ -310,22 +332,35 @@ export class MethodInstrumentExperienceComponent {
     return { group, beam };
   }
 
-  private buildKinesiologyHand(): { group: THREE.Group; rings: THREE.Mesh; pulse: THREE.Mesh } {
+  private buildKinesiologyHand(): {
+    group: THREE.Group;
+    rings: THREE.Mesh;
+    pulse: THREE.Mesh;
+  } {
     const group = new THREE.Group();
-    const skin = new THREE.MeshStandardMaterial({ color: 0xc8b29b, roughness: 0.7 });
+    const skin = new THREE.MeshStandardMaterial({
+      color: 0xc8b29b,
+      roughness: 0.7,
+    });
     const palm = new THREE.Mesh(new THREE.SphereGeometry(0.72, 32, 24), skin);
     palm.scale.set(0.72, 1.05, 0.34);
     group.add(palm);
 
     const fingerLengths = [0.92, 1.04, 1.0, 0.9];
     fingerLengths.forEach((length, index) => {
-      const finger = new THREE.Mesh(new THREE.CapsuleGeometry(0.12, length, 6, 12), skin);
+      const finger = new THREE.Mesh(
+        new THREE.CapsuleGeometry(0.12, length, 6, 12),
+        skin,
+      );
       finger.position.set(-0.4 + index * 0.26, 0.78 + (index % 2) * 0.04, 0);
       finger.rotation.z = (index - 1.5) * 0.08;
       group.add(finger);
     });
 
-    const thumb = new THREE.Mesh(new THREE.CapsuleGeometry(0.13, 0.65, 6, 12), skin);
+    const thumb = new THREE.Mesh(
+      new THREE.CapsuleGeometry(0.13, 0.65, 6, 12),
+      skin,
+    );
     thumb.position.set(-0.67, 0.2, 0);
     thumb.rotation.z = -0.9;
     group.add(thumb);
@@ -337,7 +372,11 @@ export class MethodInstrumentExperienceComponent {
 
     const pulse = new THREE.Mesh(
       new THREE.SphereGeometry(0.16, 20, 16),
-      new THREE.MeshBasicMaterial({ color: 0xc87a6b, transparent: true, opacity: 0.65 }),
+      new THREE.MeshBasicMaterial({
+        color: 0xc87a6b,
+        transparent: true,
+        opacity: 0.65,
+      }),
     );
     pulse.position.set(0, 0.05, 0.39);
     group.add(pulse);
@@ -346,21 +385,39 @@ export class MethodInstrumentExperienceComponent {
     return { group, rings, pulse };
   }
 
-  private buildSoundBowl(): { group: THREE.Group; waves: THREE.Mesh; mallet: THREE.Group } {
+  private buildSoundBowl(): {
+    group: THREE.Group;
+    waves: THREE.Mesh;
+    mallet: THREE.Group;
+  } {
     const group = new THREE.Group();
-    const gold = new THREE.MeshStandardMaterial({ color: 0xe3a857, roughness: 0.28, metalness: 0.62 });
-    const bowl = new THREE.Mesh(new THREE.CylinderGeometry(0.92, 0.68, 0.42, 64, 1, true), gold);
+    const gold = new THREE.MeshStandardMaterial({
+      color: 0xe3a857,
+      roughness: 0.28,
+      metalness: 0.62,
+    });
+    const bowl = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.92, 0.68, 0.42, 64, 1, true),
+      gold,
+    );
     bowl.position.y = 0.05;
     group.add(bowl);
 
-    const rim = new THREE.Mesh(new THREE.TorusGeometry(0.92, 0.045, 16, 64), gold);
+    const rim = new THREE.Mesh(
+      new THREE.TorusGeometry(0.92, 0.045, 16, 64),
+      gold,
+    );
     rim.rotation.x = Math.PI / 2;
     rim.position.y = 0.27;
     group.add(rim);
 
     const inner = new THREE.Mesh(
       new THREE.CircleGeometry(0.83, 64),
-      new THREE.MeshStandardMaterial({ color: 0xc58f3c, roughness: 0.34, metalness: 0.5 }),
+      new THREE.MeshStandardMaterial({
+        color: 0xc58f3c,
+        roughness: 0.34,
+        metalness: 0.5,
+      }),
     );
     inner.rotation.x = -Math.PI / 2;
     inner.position.y = 0.27;
@@ -368,7 +425,11 @@ export class MethodInstrumentExperienceComponent {
 
     const waves = new THREE.Mesh(
       new THREE.TorusGeometry(1.15, 0.014, 10, 96),
-      new THREE.MeshBasicMaterial({ color: 0x8a9a86, transparent: true, opacity: 0.42 }),
+      new THREE.MeshBasicMaterial({
+        color: 0x8a9a86,
+        transparent: true,
+        opacity: 0.42,
+      }),
     );
     waves.rotation.x = Math.PI / 2;
     waves.position.y = 0.36;
@@ -392,7 +453,11 @@ export class MethodInstrumentExperienceComponent {
     return { group, waves, mallet };
   }
 
-  private buildArtKit(): { group: THREE.Group; paint: THREE.Mesh; brush: THREE.Group } {
+  private buildArtKit(): {
+    group: THREE.Group;
+    paint: THREE.Mesh;
+    brush: THREE.Group;
+  } {
     const group = new THREE.Group();
     const palette = new THREE.Mesh(
       new THREE.SphereGeometry(0.95, 40, 24),
@@ -414,7 +479,11 @@ export class MethodInstrumentExperienceComponent {
 
     const paint = new THREE.Mesh(
       new THREE.SphereGeometry(0.18, 24, 16),
-      new THREE.MeshBasicMaterial({ color: 0xc87a6b, transparent: true, opacity: 0.35 }),
+      new THREE.MeshBasicMaterial({
+        color: 0xc87a6b,
+        transparent: true,
+        opacity: 0.35,
+      }),
     );
     paint.scale.set(1.6, 0.35, 1.6);
     paint.position.set(-0.05, 0.19, 0.05);
@@ -429,7 +498,11 @@ export class MethodInstrumentExperienceComponent {
     brush.add(handle);
     const ferrule = new THREE.Mesh(
       new THREE.CylinderGeometry(0.085, 0.07, 0.22, 20),
-      new THREE.MeshStandardMaterial({ color: 0xc8b29b, roughness: 0.28, metalness: 0.35 }),
+      new THREE.MeshStandardMaterial({
+        color: 0xc8b29b,
+        roughness: 0.28,
+        metalness: 0.35,
+      }),
     );
     ferrule.rotation.z = -0.65;
     ferrule.position.set(-0.52, 0.55, 0);
@@ -450,7 +523,11 @@ export class MethodInstrumentExperienceComponent {
     [0.32, 0.52, 0.76].forEach((radius, index) => {
       const ring = new THREE.Mesh(
         new THREE.TorusGeometry(radius, 0.012 + index * 0.004, 10, 64),
-        new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.38 - index * 0.08 }),
+        new THREE.MeshBasicMaterial({
+          color,
+          transparent: true,
+          opacity: 0.38 - index * 0.08,
+        }),
       );
       ring.position.z = index * 0.012;
       group.add(ring);
@@ -460,7 +537,11 @@ export class MethodInstrumentExperienceComponent {
     return wrapper as unknown as THREE.Mesh;
   }
 
-  private buildParticles(count: number, radius: number, color: number): THREE.Points {
+  private buildParticles(
+    count: number,
+    radius: number,
+    color: number,
+  ): THREE.Points {
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2;
@@ -473,7 +554,13 @@ export class MethodInstrumentExperienceComponent {
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     return new THREE.Points(
       geometry,
-      new THREE.PointsMaterial({ color, size: 0.035, transparent: true, opacity: 0.38, sizeAttenuation: true }),
+      new THREE.PointsMaterial({
+        color,
+        size: 0.035,
+        transparent: true,
+        opacity: 0.38,
+        sizeAttenuation: true,
+      }),
     );
   }
 
@@ -484,7 +571,10 @@ export class MethodInstrumentExperienceComponent {
   }
 
   private readProgress(): number {
-    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight - window.innerHeight,
+    );
     return THREE.MathUtils.clamp(window.scrollY / max, 0, 1);
   }
 
@@ -523,7 +613,14 @@ export class MethodInstrumentExperienceComponent {
   }
 
   private loop(): void {
-    if (!this.renderer || !this.scene || !this.camera || !this.state || !this.visible) return;
+    if (
+      !this.renderer ||
+      !this.scene ||
+      !this.camera ||
+      !this.state ||
+      !this.visible
+    )
+      return;
     const now = performance.now();
     const elapsed = (now - this.startTime) / 1000;
     const delta = Math.min((now - this.previousTime) / 1000, 0.1);
@@ -540,7 +637,11 @@ export class MethodInstrumentExperienceComponent {
     });
   }
 
-  private updateExperience(progress: number, elapsed: number, delta: number): void {
+  private updateExperience(
+    progress: number,
+    elapsed: number,
+    delta: number,
+  ): void {
     if (!this.state || !this.camera) return;
     const s = this.state;
     const smooth = THREE.MathUtils.smoothstep(progress, 0, 1);
@@ -551,10 +652,16 @@ export class MethodInstrumentExperienceComponent {
     const motion = this.reducedMotion ? 0 : 1;
 
     s.instrument.position.y = THREE.MathUtils.lerp(-0.65, 0.12, reveal);
-    s.instrument.position.x = Math.sin(progress * Math.PI * 1.2) * 0.14 * motion;
-    s.instrument.rotation.y = THREE.MathUtils.lerp(-0.34, 0.18, focus) + Math.sin(elapsed * 0.25) * 0.035 * motion;
-    s.instrument.rotation.x = Math.sin(progress * Math.PI * 1.5) * 0.08 * motion;
-    const scale = THREE.MathUtils.lerp(0.74, 1, reveal) * THREE.MathUtils.lerp(1.02, 0.95, settle);
+    s.instrument.position.x =
+      Math.sin(progress * Math.PI * 1.2) * 0.14 * motion;
+    s.instrument.rotation.y =
+      THREE.MathUtils.lerp(-0.34, 0.18, focus) +
+      Math.sin(elapsed * 0.25) * 0.035 * motion;
+    s.instrument.rotation.x =
+      Math.sin(progress * Math.PI * 1.5) * 0.08 * motion;
+    const scale =
+      THREE.MathUtils.lerp(0.74, 1, reveal) *
+      THREE.MathUtils.lerp(1.02, 0.95, settle);
     s.instrument.scale.setScalar(scale);
 
     this.camera.position.x = THREE.MathUtils.lerp(0.18, -0.18, smooth);
@@ -563,14 +670,18 @@ export class MethodInstrumentExperienceComponent {
     this.camera.lookAt(0, 0.45, 0);
 
     if (s.reference) {
-      s.reference.material.opacity = THREE.MathUtils.lerp(0.015, 0.065, focus) * (1 - settle * 0.35);
-      s.reference.rotation.z = -0.04 + Math.sin(elapsed * 0.16) * 0.015 * motion;
+      (s.reference.material as THREE.Material<THREE.MaterialEventMap>).opacity =
+        THREE.MathUtils.lerp(0.015, 0.065, focus) * (1 - settle * 0.35);
+      s.reference.rotation.z =
+        -0.04 + Math.sin(elapsed * 0.16) * 0.015 * motion;
       s.reference.position.x = 1.35 + Math.sin(progress * Math.PI) * 0.18;
     }
 
     if (s.accent) {
       const accent = s.accent as THREE.Object3D;
-      const pulse = 1 + Math.sin((progress * 7 + elapsed * 0.55) * Math.PI) * 0.035 * motion;
+      const pulse =
+        1 +
+        Math.sin((progress * 7 + elapsed * 0.55) * Math.PI) * 0.035 * motion;
       accent.scale.setScalar(pulse + interaction * 0.08);
       accent.rotation.z += delta * 0.025 * motion;
     }
@@ -585,7 +696,8 @@ export class MethodInstrumentExperienceComponent {
       s.particles.rotation.y += delta * 0.08 * motion;
       s.particles.rotation.x = Math.sin(elapsed * 0.2) * 0.04 * motion;
       const material = s.particles.material as THREE.PointsMaterial;
-      material.opacity = THREE.MathUtils.lerp(0.08, 0.34, focus) * (1 - settle * 0.25);
+      material.opacity =
+        THREE.MathUtils.lerp(0.08, 0.34, focus) * (1 - settle * 0.25);
     }
   }
 
@@ -602,8 +714,10 @@ export class MethodInstrumentExperienceComponent {
 
   private destroy(): void {
     if (this.animationFrame) cancelAnimationFrame(this.animationFrame);
-    if (this.scrollHandler) window.removeEventListener('scroll', this.scrollHandler);
-    if (this.visibilityHandler) document.removeEventListener('visibilitychange', this.visibilityHandler);
+    if (this.scrollHandler)
+      window.removeEventListener('scroll', this.scrollHandler);
+    if (this.visibilityHandler)
+      document.removeEventListener('visibilitychange', this.visibilityHandler);
     this.resizeObserver?.disconnect();
     this.state?.dispose();
     this.renderer?.dispose();
