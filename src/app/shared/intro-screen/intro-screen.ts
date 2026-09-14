@@ -1,4 +1,10 @@
-import { afterNextRender, Component, output, signal } from '@angular/core';
+import {
+  afterNextRender,
+  AnimationCallbackEvent,
+  Component,
+  output,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'app-intro-screen',
@@ -6,10 +12,12 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
     @if (visible()) {
       <div
         class="intro-screen"
-        [class.is-exiting]="isExiting()"
         [class.variant-fade]="variant() === 'fade'"
         [class.variant-lift]="variant() === 'lift'"
         [class.variant-curtain]="variant() === 'curtain'"
+        animate.enter="intro-enter"
+        animate.leave="intro-leave"
+        (animate.leave)="onLeave($event)"
         aria-hidden="true"
       >
         <div class="intro-screen__veil"></div>
@@ -32,6 +40,7 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
       position: relative;
       z-index: 9999;
     }
+
     .intro-screen {
       position: fixed;
       inset: 0;
@@ -41,15 +50,15 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
       overflow: hidden;
       background: var(--background, var(--color-cream));
       isolation: isolate;
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
     }
+
     .intro-screen__veil,
     .intro-screen__grain {
       position: absolute;
       inset: 0;
       pointer-events: none;
     }
+
     .intro-screen__veil {
       background:
         radial-gradient(
@@ -72,11 +81,13 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
         );
       opacity: 0.96;
     }
+
     .intro-screen__grain {
       opacity: 0.045;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
       mix-blend-mode: multiply;
     }
+
     .intro-screen__mark {
       position: relative;
       z-index: 1;
@@ -84,40 +95,67 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
       place-items: center;
       width: min(42vw, 22rem);
       aspect-ratio: 1;
-      opacity: 0;
-      transform: translate3d(0, 0.5rem, 0) scale(0.97);
-      animation: intro-mark-in 1200ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
       will-change: transform, opacity;
     }
+
     .intro-screen__mark img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
-    .intro-screen.is-exiting .intro-screen__mark {
-      animation: intro-mark-out 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    .intro-enter {
+      animation: intro-enter 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    .intro-screen.variant-fade.is-exiting {
-      animation: intro-fade-out 820ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    .intro-enter .intro-screen__mark {
+      animation: intro-mark-enter 900ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
     }
-    .intro-screen.variant-lift.is-exiting {
-      animation: intro-lift-out 900ms cubic-bezier(0.76, 0, 0.24, 1) both;
+
+    .intro-leave .intro-screen__mark {
+      animation: intro-mark-out 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    .intro-screen.variant-curtain.is-exiting {
+
+    .intro-leave.variant-fade {
+      animation: intro-fade-out 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .intro-leave.variant-lift {
+      animation: intro-lift-out 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .intro-leave.variant-curtain {
       transform-origin: center top;
-      animation: intro-curtain-out 900ms cubic-bezier(0.76, 0, 0.24, 1) both;
+      animation: intro-curtain-out 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    @keyframes intro-mark-in {
+
+    @keyframes intro-enter {
       from {
         opacity: 0;
-        transform: translate3d(0, 0.5rem, 0) scale(0.97);
+        transform: translate3d(0, 0.5rem, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes intro-mark-enter {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 0.75rem, 0) scale(0.965);
+        filter: blur(5px);
       }
       to {
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
       }
     }
+
     @keyframes intro-mark-out {
       from {
         opacity: 1;
@@ -128,6 +166,7 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
         transform: scale(0.965);
       }
     }
+
     @keyframes intro-fade-out {
       from {
         opacity: 1;
@@ -135,9 +174,10 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
       }
       to {
         opacity: 0;
-        filter: blur(3px);
+        filter: blur(2px);
       }
     }
+
     @keyframes intro-lift-out {
       from {
         opacity: 1;
@@ -148,6 +188,7 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
         transform: translate3d(0, -100%, 0);
       }
     }
+
     @keyframes intro-curtain-out {
       from {
         opacity: 1;
@@ -158,15 +199,18 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
         clip-path: inset(0 0 100% 0);
       }
     }
+
     @media (max-width: 640px) {
       .intro-screen__mark {
         width: min(62vw, 17rem);
       }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      .intro-screen__mark,
-      .intro-screen.is-exiting,
-      .intro-screen.is-exiting .intro-screen__mark {
+      .intro-enter,
+      .intro-leave,
+      .intro-enter .intro-screen__mark,
+      .intro-leave .intro-screen__mark {
         animation-duration: 1ms !important;
         animation-delay: 0ms !important;
       }
@@ -175,28 +219,29 @@ import { afterNextRender, Component, output, signal } from '@angular/core';
 })
 export class IntroScreen {
   readonly visible = signal(true);
-  readonly isExiting = signal(false);
   readonly variant = signal<'fade' | 'lift' | 'curtain'>('fade');
   readonly completed = output<void>();
 
   constructor() {
     afterNextRender(() => {
-      const variants: ('fade' | 'lift' | 'curtain')[] = [
+      const variants: Array<'fade' | 'lift' | 'curtain'> = [
         'fade',
         'lift',
         'curtain',
       ];
       this.variant.set(variants[Math.floor(Math.random() * variants.length)]);
+
       const prefersReducedMotion = window.matchMedia(
         '(prefers-reduced-motion: reduce)',
       ).matches;
       const holdDuration = prefersReducedMotion ? 250 : 2000;
-      const exitDuration = prefersReducedMotion ? 1 : 900;
-      window.setTimeout(() => this.isExiting.set(true), holdDuration);
-      window.setTimeout(() => {
-        this.visible.set(false);
-        this.completed.emit();
-      }, holdDuration + exitDuration);
+
+      window.setTimeout(() => this.visible.set(false), holdDuration);
     });
+  }
+
+  onLeave(event: AnimationCallbackEvent) {
+    event.animationComplete();
+    this.completed.emit();
   }
 }
