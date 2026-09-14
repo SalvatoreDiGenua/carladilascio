@@ -239,18 +239,37 @@ export class IntroScreen {
   }
 
   onLeave(event: AnimationCallbackEvent): void {
-    const element: any = event.target;
+    const element = event.target;
+    let finished = false;
 
-    const complete = (animationEvent: AnimationEvent) => {
-      if (animationEvent.target !== element) {
+    const finish = () => {
+      if (finished) {
         return;
       }
 
-      element.removeEventListener('animationend', complete);
-      event.animationComplete();
+      finished = true;
+      element.removeEventListener('animationend', onAnimationEnd);
+      element.removeEventListener('animationcancel', onAnimationCancel);
+
+      // Notify the parent first so Angular can schedule the site entrance,
+      // then release the leave animation on the next microtask.
       this.completed.emit();
+      queueMicrotask(() => event.animationComplete());
     };
 
-    element.addEventListener('animationend', complete);
+    const onAnimationEnd = (animationEvent: AnimationEvent) => {
+      if (animationEvent.target === element) {
+        finish();
+      }
+    };
+
+    const onAnimationCancel = (animationEvent: AnimationEvent) => {
+      if (animationEvent.target === element) {
+        finish();
+      }
+    };
+
+    element.addEventListener('animationend', onAnimationEnd);
+    element.addEventListener('animationcancel', onAnimationCancel);
   }
 }
