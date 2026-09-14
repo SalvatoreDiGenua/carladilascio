@@ -17,12 +17,12 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
     IntroScreen,
   ],
   template: `
-    <a class="skip-link" href="#main-content">{{
-      'app.skipLink' | transloco
-    }}</a>
+    <a class="skip-link" href="#main-content">
+      {{ 'app.skipLink' | transloco }}
+    </a>
     <app-intro-screen />
     <app-site-header />
-    <main id="main-content" tabindex="-1" class="focus:outline-none home-entry">
+    <main id="main-content" tabindex="-1" class="home-entry focus:outline-none">
       <router-outlet />
     </main>
     <app-site-footer />

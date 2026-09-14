@@ -50,8 +50,24 @@ import { afterNextRender, Component, signal } from '@angular/core';
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--primary, var(--color-primary)) 7%, transparent), transparent 42%),
-        linear-gradient(180deg, color-mix(in srgb, var(--background, var(--color-cream)) 96%, transparent), var(--background, var(--color-cream)));
+        radial-gradient(
+          circle at 50% 45%,
+          color-mix(
+            in srgb,
+            var(--primary, var(--color-primary)) 7%,
+            transparent
+          ),
+          transparent 42%
+        ),
+        linear-gradient(
+          180deg,
+          color-mix(
+            in srgb,
+            var(--background, var(--color-cream)) 96%,
+            transparent
+          ),
+          var(--background, var(--color-cream))
+        );
     }
 
     .intro-screen__mark {
@@ -154,7 +170,7 @@ export class IntroScreen {
 
   constructor() {
     afterNextRender(() => {
-      const variants: Array<'fade' | 'lift' | 'curtain'> = [
+      const variants: ('fade' | 'lift' | 'curtain')[] = [
         'fade',
         'lift',
         'curtain',
@@ -167,8 +183,8 @@ export class IntroScreen {
       const holdDuration = prefersReducedMotion ? 250 : 2000;
       const exitDuration = prefersReducedMotion ? 1 : 900;
 
-      window.setTimeout(() => this.isExiting.set(true), holdDuration);
-      window.setTimeout(() => this.visible.set(false), holdDuration + exitDuration);
+      setTimeout(() => this.isExiting.set(true), holdDuration);
+      setTimeout(() => this.visible.set(false), holdDuration + exitDuration);
     });
   }
 }
