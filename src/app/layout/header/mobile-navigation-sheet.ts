@@ -50,26 +50,34 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         </hlm-sheet-header>
 
         <nav
-          class="flex max-h-[calc(100dvh-9rem)] flex-col gap-3 overflow-y-auto px-4 py-5"
+          class="flex h-full max-h-[calc(100dvh-9rem)] flex-col gap-3 overflow-y-auto px-4 py-5"
           [attr.aria-label]="'header.mobileNavAriaLabel' | transloco"
         >
-          <a
-            hlmBtn
-            variant="ghost"
-            routerLink="/"
-            routerLinkActive="bg-stone-200 text-ink font-semibold"
-            [routerLinkActiveOptions]="{ exact: true }"
-            (click)="mobileSheet.close()"
-            class="min-h-12 w-full justify-start rounded-xl px-4 py-3 text-base font-medium text-ink-muted hover:bg-stone-200/60 hover:text-ink"
-            >{{ 'header.nav.home' | transloco }}</a
+          <hlm-item
+            variant="outline"
+            size="sm"
+            class="rounded-2xl border-stone-200/90 bg-white/40"
           >
+            <hlm-item-content>
+              <a
+                hlmBtn
+                variant="ghost"
+                routerLink="/"
+                routerLinkActive="bg-stone-200 text-ink font-semibold"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="mobileSheet.close()"
+                class="min-h-12 w-full justify-start rounded-xl px-4 py-3 text-base font-medium text-ink-muted hover:bg-stone-200/60 hover:text-ink"
+                >{{ 'header.nav.home' | transloco }}</a
+              >
+            </hlm-item-content>
+          </hlm-item>
 
           <hlm-item
             variant="outline"
             size="sm"
             class="flex-col items-stretch gap-2 rounded-2xl border-stone-200/90 bg-white/40 p-2"
           >
-            <hlm-item-header class="px-2 pt-1 pb-0">
+            <hlm-item-header class="basis-auto px-2 pt-1 pb-0">
               <hlm-item-title
                 class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
               >
@@ -103,7 +111,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             size="sm"
             class="flex-col items-stretch gap-2 rounded-2xl border-stone-200/90 bg-white/40 p-2"
           >
-            <hlm-item-header class="px-2 pt-1 pb-0">
+            <hlm-item-header class="basis-auto px-2 pt-1 pb-0">
               <hlm-item-title
                 class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
               >
@@ -142,16 +150,16 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               >
             </hlm-item-content>
           </hlm-item>
-
-          <a
-            hlmBtn
-            variant="default"
-            routerLink="/contatti"
-            (click)="mobileSheet.close()"
-            class="min-h-12 w-full rounded-xl bg-primary px-4 py-3 text-base font-medium text-white! shadow-sm hover:bg-primary-dark"
-            >{{ 'header.nav.contact' | transloco }}</a
-          >
         </nav>
+
+        <a
+          hlmBtn
+          variant="default"
+          routerLink="/contatti"
+          (click)="mobileSheet.close()"
+          class="mx-4 mb-5 min-h-12 w-auto rounded-xl bg-primary py-5 text-base font-medium text-white! shadow-sm hover:bg-primary-dark"
+          >{{ 'header.nav.contact' | transloco }}</a
+        >
       </hlm-sheet-content>
     </hlm-sheet>
   `,
