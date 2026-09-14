@@ -13,7 +13,7 @@
     "lint": "ng lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "clean": "npx rimraf .angular dist out-tsc",
+    "clean": "npx rimraf .angular node_modules dist out-tsc",
     "serve:ssg": "npx http-server dist/carladilascio/browser -p 8080",
     "serve:ssr": "node dist/carladilascio/server/server.mjs"
   },
@@ -34,14 +34,12 @@
     "@ng-icons/core": ">=32.0.0 <34.0.0",
     "@ng-icons/lucide": ">=32.0.0 <34.0.0",
     "@spartan-ng/brain": "^1.4.1",
-    "@types/three": "^0.185.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "express": "^5.1.0",
     "ngx-request-lock": "^1.1.1",
     "rxjs": "~7.8.0",
     "tailwind-merge": "^3.5.0",
-    "three": "^0.186.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
