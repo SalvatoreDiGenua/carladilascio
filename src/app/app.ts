@@ -17,13 +17,7 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
     IntroScreen,
   ],
   template: `
-    <a class="skip-link" href="#main-content">{{
-      'app.skipLink' | transloco
-    }}</a>
-
-    <app-intro-screen (completed)="onIntroCompleted()" />
-
-    @defer (hydrate never; when introCompleted()) {
+    @if (introCompleted()) {
       <div class="site-layer" animate.enter="site-layer-enter">
         <app-site-header />
 
@@ -37,9 +31,15 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
 
         <app-site-footer />
       </div>
-    } @placeholder {
+    } @else {
       <div class="site-layer-placeholder" aria-hidden="true"></div>
     }
+
+    <a class="skip-link" href="#main-content">{{
+      'app.skipLink' | transloco
+    }}</a>
+
+    <app-intro-screen (completed)="onIntroCompleted()" />
 
     <hlm-toaster />
   `,
@@ -81,7 +81,6 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
       color: white;
       padding: 0.75rem 1rem;
       font-weight: 600;
-      transition: transform 0.2s ease-in-out;
     }
 
     .skip-link:focus-visible {
