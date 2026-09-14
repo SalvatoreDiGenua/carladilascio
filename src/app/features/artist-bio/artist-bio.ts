@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
 import { SITE_CONTENT } from '../../core/data/site-content';
@@ -11,6 +12,7 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
   selector: 'app-artist-bio',
   imports: [
     TranslocoPipe,
+    HlmBadgeImports,
     HlmButtonImports,
     HlmCardImports,
     CtaBannerComponent,
@@ -99,12 +101,12 @@ import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner';
               <p class="mt-3 text-base leading-relaxed text-ink-muted">
                 {{ 'artistBio.exhibitions.description' | transloco }}
               </p>
-              <ul class="mt-5 flex flex-wrap gap-2">
+              <ul class="mt-5 flex flex-wrap gap-2" aria-label="Città delle esposizioni">
                 @for (city of content.artistBio.exhibitionCities; track city) {
-                  <li
-                    class="rounded-full border border-primary/20 bg-white px-3 py-1.5 text-xs font-semibold text-primary"
-                  >
-                    {{ city | transloco }}
+                  <li>
+                    <span hlmBadge variant="outline" class="border-primary/20 bg-white text-primary">
+                      {{ city | transloco }}
+                    </span>
                   </li>
                 }
               </ul>
