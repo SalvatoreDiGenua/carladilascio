@@ -232,7 +232,7 @@ export class IntroScreen {
       const prefersReducedMotion = window.matchMedia(
         '(prefers-reduced-motion: reduce)',
       ).matches;
-      const holdDuration = prefersReducedMotion ? 250 : 2000;
+      const holdDuration = prefersReducedMotion ? 250 : 2500;
 
       window.setTimeout(() => this.visible.set(false), holdDuration);
     });
