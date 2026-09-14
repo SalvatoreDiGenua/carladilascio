@@ -143,12 +143,12 @@
           {{ 'home.about.description' | transloco }}
         </p>
 
-        <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+        <ul class="mt-8 flex flex-wrap gap-2">
           @for (role of content.personalInfo.roles; track role) {
-            <li
-              class="rounded-xl border border-stone-200/80 bg-white/75 px-4 py-3 text-sm text-ink-muted"
-            >
-              {{ role | transloco }}
+            <li>
+              <span hlmBadge variant="outline" class="border-primary/30 text-primary">
+                {{ role | transloco }}
+              </span>
             </li>
           }
         </ul>
@@ -216,97 +216,99 @@
 
     <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       @for (method of content.methods; track method.slug) {
-        <article
-          class="group flex h-full flex-col justify-between rounded-2xl border border-stone-200 bg-cream p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
+        <hlm-card
+          class="group flex h-full flex-col justify-between border-stone-200 bg-cream shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-md"
           [style.border-color]="method.theme.primary"
         >
-          <div
-            class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border bg-white text-primary"
-            aria-hidden="true"
-          >
-            @switch (method.icon) {
-              @case ('cromo') {
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                  <path
-                    stroke-linecap="round"
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36-6.36-.7.7M6.34 17.66l-.7.7m12.72 0-.7-.7M6.34 6.34l-.7-.7"
-                  />
-                </svg>
+          <div hlmCardContent class="flex h-full flex-col p-6">
+            <div
+              class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border bg-white text-primary"
+              aria-hidden="true"
+            >
+              @switch (method.icon) {
+                @case ('cromo') {
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                      stroke-linecap="round"
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36-6.36-.7.7M6.34 17.66l-.7.7m12.72 0-.7-.7M6.34 6.34l-.7-.7"
+                    />
+                  </svg>
+                }
+                @case ('kinesio') {
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.32 6.32a4.5 4.5 0 0 0 0 6.36L12 20.36l7.68-7.68a4.5 4.5 0 0 0-6.36-6.36L12 7.64l-1.32-1.32a4.5 4.5 0 0 0-6.36 0Z"
+                    />
+                  </svg>
+                }
+                @case ('suono') {
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5.59 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1.59l4.7-4.7c.63-.63 1.71-.19 1.71.7v14c0 .89-1.08 1.34-1.71.71L5.59 15Z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      d="M15.54 8.46a5 5 0 0 1 0 7.08m2.83-9.9a9 9 0 0 1 0 12.73"
+                    />
+                  </svg>
+                }
+                @case ('arte') {
+                  <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M7 21a4 4 0 0 1-4-4 5 5 0 0 1 4-4h4a4 4 0 0 1 4 4 4 4 0 0 1-4 4H7Zm8-14a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
+                    />
+                  </svg>
+                }
               }
-              @case ('kinesio') {
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.32 6.32a4.5 4.5 0 0 0 0 6.36L12 20.36l7.68-7.68a4.5 4.5 0 0 0-6.36-6.36L12 7.64l-1.32-1.32a4.5 4.5 0 0 0-6.36 0Z"
-                  />
-                </svg>
-              }
-              @case ('suono') {
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5.59 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1.59l4.7-4.7c.63-.63 1.71-.19 1.71.7v14c0 .89-1.08 1.34-1.71.71L5.59 15Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    d="M15.54 8.46a5 5 0 0 1 0 7.08m2.83-9.9a9 9 0 0 1 0 12.73"
-                  />
-                </svg>
-              }
-              @case ('arte') {
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M7 21a4 4 0 0 1-4-4 5 5 0 0 1 4-4h4a4 4 0 0 1 4 4 4 4 0 0 1-4 4H7Zm8-14a4 4 0 1 1-8 0 4 4 0 0 1 8 0Zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"
-                  />
-                </svg>
-              }
-            }
+            </div>
+            <h3 class="mt-2 font-serif text-xl font-semibold text-ink">
+              {{ method.title | transloco }}
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              {{ method.shortDescription | transloco }}
+            </p>
+            <a
+              hlmBtn
+              [routerLink]="['/' + method.slug]"
+              variant="link"
+              size="lg"
+              class="mt-6 self-start px-0"
+            >
+              {{ 'home.methods.detailsLink' | transloco }}
+            </a>
           </div>
-          <h3 class="mt-2 font-serif text-xl font-semibold text-ink">
-            {{ method.title | transloco }}
-          </h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-            {{ method.shortDescription | transloco }}
-          </p>
-          <a
-            hlmBtn
-            [routerLink]="['/' + method.slug]"
-            variant="link"
-            size="lg"
-            class="mt-6 self-start px-0"
-          >
-            {{ 'home.methods.detailsLink' | transloco }}
-          </a>
-        </article>
+        </hlm-card>
       }
     </div>
   </div>
@@ -350,30 +352,30 @@
 
       <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
         @for (journey of content.journeys; track journey.id) {
-          <article
-            class="rounded-2xl border border-stone-200/80 bg-white/75 p-5"
-          >
-            <p
-              class="text-xs font-semibold tracking-[0.14em] text-primary uppercase"
-            >
-              {{ journey.id }}
-            </p>
-            <h3 class="mt-2 font-serif text-xl font-semibold text-ink">
-              {{ journey.title | transloco }}
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink-muted">
-              {{ journey.description | transloco }}
-            </p>
-            <a
-              hlmBtn
-              routerLink="/percorsi"
-              variant="link"
-              size="lg"
-              class="mt-3 self-start px-0"
-            >
-              {{ 'home.methods.detailsLink' | transloco }}
-            </a>
-          </article>
+          <hlm-card size="sm" class="border-stone-200/80 bg-white/75">
+            <div hlmCardContent class="p-5">
+              <p
+                class="text-xs font-semibold tracking-[0.14em] text-primary uppercase"
+              >
+                {{ journey.id }}
+              </p>
+              <h3 class="mt-2 font-serif text-xl font-semibold text-ink">
+                {{ journey.title | transloco }}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+                {{ journey.description | transloco }}
+              </p>
+              <a
+                hlmBtn
+                routerLink="/percorsi"
+                variant="link"
+                size="lg"
+                class="mt-3 self-start px-0"
+              >
+                {{ 'home.methods.detailsLink' | transloco }}
+              </a>
+            </div>
+          </hlm-card>
         }
       </div>
     </div>
