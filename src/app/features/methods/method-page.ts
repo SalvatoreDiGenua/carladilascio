@@ -37,9 +37,6 @@ import { MethodAvatar3dComponent } from './method-avatar-3d/method-avatar-3d';
               [themeColor]="m.theme.primary"
               class="block h-full w-full"
             />
-            <span class="method-page__instrument-label">
-              {{ m.title | transloco }} · strumento
-            </span>
           </div>
         </div>
 
