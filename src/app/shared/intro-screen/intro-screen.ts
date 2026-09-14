@@ -239,7 +239,7 @@ export class IntroScreen {
   }
 
   onLeave(event: AnimationCallbackEvent): void {
-    const element = event.target;
+    const element: any = event.target;
     let finished = false;
 
     const finish = () => {
@@ -251,8 +251,6 @@ export class IntroScreen {
       element.removeEventListener('animationend', onAnimationEnd);
       element.removeEventListener('animationcancel', onAnimationCancel);
 
-      // Notify the parent first so Angular can schedule the site entrance,
-      // then release the leave animation on the next microtask.
       this.completed.emit();
       queueMicrotask(() => event.animationComplete());
     };
