@@ -1,155 +1,19 @@
-.method-page {
-  position: relative;
-  isolation: isolate;
-}
-
-.method-page::before {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(
-      circle at 72% 30%,
-      rgba(60, 96, 122, 0.08),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 28% 72%,
-      rgba(60, 96, 122, 0.045),
-      transparent 38%
-    ),
-    #f7f5f0;
-  content: '';
-  pointer-events: none;
-}
-
-.method-page__content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  margin-inline: auto;
-}
-
-.method-page__instrument {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100dvh;
-  pointer-events: none;
-}
-
-.method-page__instrument-frame {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 68% 42%, rgba(60, 96, 122, 0.1), transparent 38%),
-    radial-gradient(
-      circle at 40% 62%,
-      rgba(60, 96, 122, 0.045),
-      transparent 42%
-    );
-}
-
-.method-page__instrument-frame::after {
-  position: absolute;
-  inset: 9%;
-  border: 1px solid rgba(60, 96, 122, 0.055);
-  border-radius: 50%;
-  content: '';
-  pointer-events: none;
-}
-
-.method-page__instrument-label {
-  position: absolute;
-  right: 5vw;
-  bottom: 5rem;
-  z-index: 2;
-  max-width: 24rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  text-align: right;
-  text-transform: uppercase;
-  color: rgba(60, 96, 122, 0.55);
-}
-
+.method-page { position: relative; isolation: isolate; }
+.method-page::before { position: fixed; inset: 0; z-index: -2; background: radial-gradient(circle at 72% 30%, rgba(60,96,122,.08), transparent 34%), radial-gradient(circle at 28% 72%, rgba(60,96,122,.045), transparent 38%), #f7f5f0; content: ''; pointer-events: none; }
+.method-page__content { position: relative; z-index: 2; width: 100%; margin-inline: auto; }
+.method-page__instrument { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100dvh; pointer-events: none; }
+.method-page__instrument-frame { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(circle at 68% 42%, rgba(60,96,122,.075), transparent 38%), radial-gradient(circle at 40% 62%, rgba(60,96,122,.035), transparent 42%); }
+.method-page__instrument-frame::after { position: absolute; inset: 12%; border: 1px solid rgba(60,96,122,.045); border-radius: 50%; content: ''; pointer-events: none; }
 @media (min-width: 1024px) {
-  .method-page__content {
-    max-width: 48rem;
-  }
-
-  .method-page__instrument-frame {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(247, 245, 240, 0.96) 0%,
-        rgba(247, 245, 240, 0.84) 30%,
-        rgba(247, 245, 240, 0.32) 58%,
-        rgba(247, 245, 240, 0.04) 100%
-      ),
-      radial-gradient(
-        circle at 72% 42%,
-        rgba(60, 96, 122, 0.13),
-        transparent 36%
-      );
-  }
-
-  .method-page__instrument-frame app-method-avatar-3d {
-    display: block;
-    width: 100%;
-    height: 100%;
-    transform: scale(1.12);
-  }
+  .method-page__content { max-width: 48rem; }
+  .method-page__instrument-frame { background: linear-gradient(90deg, rgba(247,245,240,.97) 0%, rgba(247,245,240,.88) 30%, rgba(247,245,240,.36) 58%, rgba(247,245,240,.04) 100%), radial-gradient(circle at 72% 42%, rgba(60,96,122,.105), transparent 36%); }
+  .method-page__instrument-frame app-method-instrument-experience { display: block; width: 100%; height: 100%; transform: scale(1.08); }
 }
-
 @media (max-width: 1023px) {
-  .method-page__instrument {
-    position: fixed;
-  }
-
-  .method-page__instrument-frame {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(247, 245, 240, 0.9) 0%,
-        rgba(247, 245, 240, 0.7) 42%,
-        rgba(247, 245, 240, 0.88) 100%
-      ),
-      radial-gradient(
-        circle at 50% 45%,
-        rgba(60, 96, 122, 0.1),
-        transparent 44%
-      );
-  }
-
-  .method-page__instrument-label {
-    right: 1.25rem;
-    bottom: 1.5rem;
-  }
+  .method-page__instrument-frame { background: linear-gradient(180deg, rgba(247,245,240,.92) 0%, rgba(247,245,240,.76) 42%, rgba(247,245,240,.9) 100%), radial-gradient(circle at 50% 45%, rgba(60,96,122,.075), transparent 44%); }
 }
-
 @media (max-width: 639px) {
-  .method-page__instrument-frame app-method-avatar-3d {
-    transform: scale(1.08);
-  }
-
-  .method-page__instrument-frame::after {
-    inset: 15%;
-  }
-
-  .method-page__instrument-label {
-    right: 0.75rem;
-    bottom: 1rem;
-    max-width: 14rem;
-    font-size: 0.58rem;
-  }
+  .method-page__instrument-frame app-method-instrument-experience { transform: scale(1.04); }
+  .method-page__instrument-frame::after { inset: 17%; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .method-page__instrument-frame::after {
-    display: none;
-  }
-}
+@media (prefers-reduced-motion: reduce) { .method-page__instrument-frame::after { display: none; } }
