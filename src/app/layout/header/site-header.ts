@@ -103,7 +103,9 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
                     (click)="navigateTo('/terapeuta')"
                     (mouseenter)="aboutHoverPath.set('/terapeuta')"
                     (mouseleave)="aboutHoverPath.set(null)"
-                    [style.background-color]="aboutOptionBackground('/terapeuta')"
+                    [style.background-color]="
+                      aboutOptionBackground('/terapeuta')
+                    "
                     [style.color]="aboutOptionTextColor('/terapeuta')"
                   >
                     <span class="flex flex-col items-start gap-0.5 text-left">
@@ -174,9 +176,9 @@ export class SiteHeader {
   private readonly router = inject(Router);
   private readonly breakpointObserver = inject(BreakpointObserver);
   readonly isMobile = toSignal(
-    this.breakpointObserver.observe('(max-width: 767px)').pipe(
-      map(({ matches }) => matches),
-    ),
+    this.breakpointObserver
+      .observe('(max-width: 767px)')
+      .pipe(map(({ matches }) => matches)),
     { initialValue: false },
   );
   private readonly currentUrl = toSignal(
