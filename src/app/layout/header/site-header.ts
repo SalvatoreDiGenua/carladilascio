@@ -1,5 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NavigationEnd,
@@ -9,17 +9,16 @@ import {
 } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideChevronDown, lucideMenu } from '@ng-icons/lucide';
-import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { lucideChevronDown } from '@ng-icons/lucide';
 import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
-import { HlmSheetImports } from '@spartan-ng/helm/sheet';
 import { filter, map } from 'rxjs';
 import { SITE_CONTENT } from '../../core/data/site-content';
+import { MobileNavigationSheet } from './mobile-navigation-sheet';
 
 @Component({
   selector: 'app-site-header',
-  providers: [provideIcons({ lucideChevronDown, lucideMenu })],
+  providers: [provideIcons({ lucideChevronDown })],
   imports: [
     RouterLink,
     RouterLinkActive,
@@ -28,19 +27,18 @@ import { SITE_CONTENT } from '../../core/data/site-content';
     NgOptimizedImage,
     HlmMenubarImports,
     HlmDropdownMenuImports,
-    HlmButtonImports,
-    HlmSheetImports,
+    MobileNavigationSheet,
   ],
   template: `
     <header
       class="sticky top-0 z-40 border-b border-stone-200/80 bg-cream/90 backdrop-blur-md transition-shadow"
     >
       <div
-        class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4"
+        class="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-4 py-3 sm:px-6 sm:py-4"
       >
         <a
           routerLink="/"
-          class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
+          class="group justify-self-start focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
           [attr.aria-label]="
             'header.logoAriaLabel'
               | transloco: { name: content.personalInfo.name }
@@ -57,7 +55,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         </a>
 
         <nav
-          class="hidden items-center gap-1 md:flex lg:gap-2"
+          class="hidden items-center gap-1 justify-self-center md:flex lg:gap-2"
           [attr.aria-label]="'header.nav.ariaLabel' | transloco"
         >
           <a
@@ -80,16 +78,12 @@ import { SITE_CONTENT } from '../../core/data/site-content';
               "
             >
               <span>{{ 'header.nav.about' | transloco }}</span>
-              <ng-icon
-                name="lucideChevronDown"
-                class="size-3.5 opacity-60"
-                aria-hidden="true"
-              />
+              <ng-icon name="lucideChevronDown" class="size-3.5 opacity-60" aria-hidden="true" />
             </button>
           </div>
           <ng-template #aboutMenu>
-            <hlm-dropdown-menu class="w-64 p-1.5 shadow-lg"
-              ><hlm-dropdown-menu-group>
+            <hlm-dropdown-menu class="w-64 p-1.5 shadow-lg">
+              <hlm-dropdown-menu-group>
                 <button
                   hlmDropdownMenuItem
                   (click)="navigateTo('/terapeuta')"
@@ -98,14 +92,10 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   [style.background-color]="aboutOptionBackground('/terapeuta')"
                   [style.color]="aboutOptionTextColor('/terapeuta')"
                 >
-                  <span class="flex flex-col items-start gap-0.5 text-left"
-                    ><span [class]="aboutTitleClass('/terapeuta')">{{
-                      'header.aboutModal.therapistTitle' | transloco
-                    }}</span
-                    ><span [class]="aboutDescriptionClass('/terapeuta')">{{
-                      'header.aboutModal.therapistDescription' | transloco
-                    }}</span></span
-                  >
+                  <span class="flex flex-col items-start gap-0.5 text-left">
+                    <span [class]="aboutTitleClass('/terapeuta')">{{ 'header.aboutModal.therapistTitle' | transloco }}</span>
+                    <span [class]="aboutDescriptionClass('/terapeuta')">{{ 'header.aboutModal.therapistDescription' | transloco }}</span>
+                  </span>
                 </button>
                 <hlm-dropdown-menu-separator class="my-1" />
                 <button
@@ -116,17 +106,13 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   [style.background-color]="aboutOptionBackground('/artista')"
                   [style.color]="aboutOptionTextColor('/artista')"
                 >
-                  <span class="flex flex-col items-start gap-0.5 text-left"
-                    ><span [class]="aboutTitleClass('/artista')">{{
-                      'header.aboutModal.artistTitle' | transloco
-                    }}</span
-                    ><span [class]="aboutDescriptionClass('/artista')">{{
-                      'header.aboutModal.artistDescription' | transloco
-                    }}</span></span
-                  >
+                  <span class="flex flex-col items-start gap-0.5 text-left">
+                    <span [class]="aboutTitleClass('/artista')">{{ 'header.aboutModal.artistTitle' | transloco }}</span>
+                    <span [class]="aboutDescriptionClass('/artista')">{{ 'header.aboutModal.artistDescription' | transloco }}</span>
+                  </span>
                 </button>
-              </hlm-dropdown-menu-group></hlm-dropdown-menu
-            >
+              </hlm-dropdown-menu-group>
+            </hlm-dropdown-menu>
           </ng-template>
           <a
             routerLink="/"
@@ -148,117 +134,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
           >
         </nav>
 
-        <hlm-sheet #mobileSheet side="right">
-          <button
-            hlmBtn
-            hlmSheetTrigger
-            variant="ghost"
-            size="icon"
-            type="button"
-            class="text-ink hover:bg-stone-200/50 md:hidden"
-            [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
-          >
-            <ng-icon name="lucideMenu" class="size-6" aria-hidden="true" />
-          </button>
-
-          <hlm-sheet-content
-            *hlmSheetPortal="let ctx"
-            class="w-[min(88vw,24rem)] border-stone-200 bg-cream p-0 text-ink shadow-2xl sm:w-[24rem]"
-          >
-            <hlm-sheet-header
-              class="border-b border-stone-200 px-5 pt-6 pr-14 pb-5"
-            >
-              <div class="flex items-center gap-3">
-                <img
-                  ngSrc="/carla-logo.svg"
-                  width="150"
-                  height="40"
-                  alt="Carla"
-                  class="h-8 w-auto max-w-[150px] object-contain"
-                />
-              </div>
-              <p
-                hlmSheetDescription
-                class="max-w-xs text-sm leading-relaxed text-ink-muted"
-              >
-                {{ 'header.mobileNavAriaLabel' | transloco }}
-              </p>
-            </hlm-sheet-header>
-
-            <nav
-              class="flex max-h-[calc(100dvh-9rem)] flex-col gap-1 overflow-y-auto px-4 py-5"
-              [attr.aria-label]="'header.mobileNavAriaLabel' | transloco"
-            >
-              <a
-                routerLink="/"
-                routerLinkActive="bg-stone-200 text-ink font-semibold"
-                [routerLinkActiveOptions]="{ exact: true }"
-                (click)="mobileSheet.close()"
-                class="flex min-h-12 items-center rounded-xl px-4 py-3 text-base font-medium text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
-                >{{ 'header.nav.home' | transloco }}</a
-              >
-
-              <div class="mt-4 px-4 pt-2 pb-1">
-                <span
-                  class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
-                >
-                  {{ 'header.nav.about' | transloco }}
-                </span>
-              </div>
-              <div class="grid gap-1">
-                <a
-                  routerLink="/terapeuta"
-                  routerLinkActive="bg-primary/10 text-primary font-semibold"
-                  (click)="mobileSheet.close()"
-                  class="flex min-h-11 items-center rounded-xl px-4 py-2.5 text-sm text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
-                  >{{ 'header.aboutModal.therapistTitle' | transloco }}</a
-                >
-                <a
-                  routerLink="/artista"
-                  routerLinkActive="bg-[var(--color-antique-gold)]/20 text-ink font-semibold"
-                  (click)="mobileSheet.close()"
-                  class="flex min-h-11 items-center rounded-xl px-4 py-2.5 text-sm text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
-                  >{{ 'header.aboutModal.artistTitle' | transloco }}</a
-                >
-              </div>
-
-              <div class="mt-4 px-4 pt-2 pb-1">
-                <span
-                  class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
-                >
-                  {{ 'header.nav.methods' | transloco }}
-                </span>
-              </div>
-              <div class="grid gap-1">
-                @for (method of content.methods; track method.slug) {
-                  <a
-                    [routerLink]="['/' + method.slug]"
-                    routerLinkActive="bg-primary/10 text-primary font-semibold"
-                    (click)="mobileSheet.close()"
-                    class="flex min-h-11 items-center rounded-xl px-4 py-2.5 text-sm text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
-                    >{{ method.title | transloco }}</a
-                  >
-                }
-              </div>
-
-              <div class="my-4 h-px bg-stone-200"></div>
-
-              <a
-                routerLink="/percorsi"
-                routerLinkActive="bg-stone-200 text-ink font-semibold"
-                (click)="mobileSheet.close()"
-                class="flex min-h-12 items-center rounded-xl px-4 py-3 text-base font-medium text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
-                >{{ 'header.nav.journeys' | transloco }}</a
-              >
-              <a
-                routerLink="/contatti"
-                (click)="mobileSheet.close()"
-                class="mt-2 flex min-h-12 items-center justify-center rounded-xl bg-primary px-4 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:outline-none"
-                >{{ 'header.nav.contact' | transloco }}</a
-              >
-            </nav>
-          </hlm-sheet-content>
-        </hlm-sheet>
+        <app-mobile-navigation-sheet class="justify-self-end" />
       </div>
     </header>
   `,
