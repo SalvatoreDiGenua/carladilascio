@@ -68,23 +68,25 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               hlmBtn
               variant="ghost"
               routerLink="/"
-              routerLinkActive="bg-stone-200/60 text-ink font-semibold"
+              routerLinkActive="border-stone-400 bg-stone-100 text-ink font-semibold"
               [routerLinkActiveOptions]="{ exact: true }"
-              class="text-sm text-ink-muted hover:bg-stone-200/40 hover:text-ink"
+              class="border border-stone-300/80 text-sm text-ink-muted hover:border-stone-400 hover:bg-stone-100 hover:text-ink"
             >
               {{ 'header.nav.home' | transloco }}
             </a>
 
             <div hlmMenubar class="h-auto border-none bg-transparent p-0">
               <button
+                hlmBtn
+                variant="ghost"
                 type="button"
                 [hlmMenubarTrigger]="aboutMenu"
                 (hlmDropdownMenuOpened)="isAboutMenuOpen.set(true)"
                 (hlmDropdownMenuClosed)="isAboutMenuOpen.set(false)"
                 [class]="
                   isAboutActive()
-                    ? 'flex cursor-pointer items-center gap-1.5 rounded-md bg-stone-200/60 px-3 py-2 text-sm font-semibold text-ink transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
-                    : 'flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
+                    ? 'flex cursor-pointer items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-sm font-semibold text-primary-dark transition-colors hover:border-primary/50 hover:bg-primary/15 hover:text-primary-dark focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
+                    : 'flex cursor-pointer items-center gap-1.5 rounded-md border border-stone-300/80 px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:border-stone-400 hover:bg-stone-100 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none'
                 "
               >
                 <span>{{ 'header.nav.about' | transloco }}</span>
@@ -149,7 +151,12 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               variant="ghost"
               routerLink="/"
               fragment="metodologie"
-              class="text-sm text-ink-muted hover:bg-stone-200/40 hover:text-ink"
+              [class]="
+                isMethodsActive()
+                  ? 'border-primary/40 bg-primary/10 text-primary-dark font-semibold'
+                  : 'border-stone-300/80 text-ink-muted'
+              "
+              class="border hover:border-stone-400 hover:bg-stone-100 hover:text-ink"
             >
               {{ 'header.nav.methods' | transloco }}
             </a>
@@ -157,8 +164,8 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               hlmBtn
               variant="ghost"
               routerLink="/percorsi"
-              routerLinkActive="bg-stone-200/60 text-ink font-semibold"
-              class="text-sm text-ink-muted hover:bg-stone-200/40 hover:text-ink"
+              routerLinkActive="border-stone-400 bg-stone-100 text-ink font-semibold"
+              class="border border-stone-300/80 text-sm text-ink-muted hover:border-stone-400 hover:bg-stone-100 hover:text-ink"
             >
               {{ 'header.nav.journeys' | transloco }}
             </a>
@@ -167,7 +174,7 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               variant="default"
               routerLink="/contatti"
               routerLinkActive="bg-primary-dark text-white"
-              class="ml-1 bg-primary px-4 text-sm text-white! shadow-sm hover:bg-primary-dark lg:ml-2"
+              class="ml-1 border border-primary bg-primary px-4 text-sm text-white! shadow-sm hover:border-primary-dark hover:bg-primary-dark lg:ml-2"
             >
               {{ 'header.nav.contact' | transloco }}
             </a>
@@ -196,8 +203,12 @@ export class SiteHeader {
     ),
     { initialValue: this.router.url },
   );
-  readonly isAboutActive = computed(() =>
-    this.currentUrl().startsWith('/terapeuta'),
+  readonly isAboutActive = computed(() => {
+    const url = this.currentUrl();
+    return url.startsWith('/terapeuta') || url.startsWith('/artista');
+  });
+  readonly isMethodsActive = computed(() =>
+    this.currentUrl().includes('#metodologie'),
   );
 
   aboutOptionBackground(path: string): string {
