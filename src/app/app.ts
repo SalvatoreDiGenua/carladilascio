@@ -4,6 +4,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { SiteFooter } from './layout/footer/site-footer';
 import { SiteHeader } from './layout/header/site-header';
+import { IntroScreen } from './shared/intro-screen/intro-screen';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,15 @@ import { SiteHeader } from './layout/header/site-header';
     SiteFooter,
     TranslocoPipe,
     HlmToasterImports,
+    IntroScreen,
   ],
   template: `
     <a class="skip-link" href="#main-content">{{
       'app.skipLink' | transloco
     }}</a>
+    <app-intro-screen />
     <app-site-header />
-    <main id="main-content" tabindex="-1" class="focus:outline-none">
+    <main id="main-content" tabindex="-1" class="focus:outline-none home-entry">
       <router-outlet />
     </main>
     <app-site-footer />
@@ -34,13 +37,14 @@ import { SiteHeader } from './layout/header/site-header';
 
     main {
       flex: 1 0 auto;
+      animation: home-entry 1100ms cubic-bezier(0.22, 1, 0.36, 1) 2.05s both;
     }
 
     .skip-link {
       position: fixed;
       top: 0.75rem;
       left: 0.75rem;
-      z-index: 1000;
+      z-index: 10000;
       transform: translateY(-200%);
       border-radius: 0.5rem;
       background: var(--color-ink);
@@ -54,6 +58,25 @@ import { SiteHeader } from './layout/header/site-header';
       transform: translateY(0);
       outline: 3px solid var(--color-primary-light);
       outline-offset: 2px;
+    }
+
+    @keyframes home-entry {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 1.5rem, 0) scale(0.985);
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main {
+        animation: none;
+      }
     }
   `,
 })
