@@ -240,8 +240,19 @@ export class IntroScreen {
     });
   }
 
-  onLeave(event: AnimationCallbackEvent) {
-    event.animationComplete();
-    this.completed.emit();
+  onLeave(event: AnimationCallbackEvent): void {
+    const element = event.target;
+
+    const complete = (animationEvent: AnimationEvent) => {
+      if (animationEvent.target !== element) {
+        return;
+      }
+
+      element.removeEventListener('animationend', complete);
+      event.animationComplete();
+      this.completed.emit();
+    };
+
+    element.addEventListener('animationend', complete);
   }
 }
