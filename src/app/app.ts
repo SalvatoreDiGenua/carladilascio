@@ -23,7 +23,7 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
 
     <app-intro-screen (completed)="onIntroCompleted()" />
 
-    @defer (when introCompleted()) {
+    @defer (hydrate never; when introCompleted()) {
       <div class="site-layer" animate.enter="site-layer-enter">
         <app-site-header />
 
