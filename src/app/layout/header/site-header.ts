@@ -1,4 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   NavigationEnd,
@@ -8,17 +9,17 @@ import {
 } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideChevronDown, lucideMenu, lucideX } from '@ng-icons/lucide';
+import { lucideChevronDown, lucideMenu } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmMenubarImports } from '@spartan-ng/helm/menubar';
+import { HlmSheetImports } from '@spartan-ng/helm/sheet';
 import { filter, map } from 'rxjs';
 import { SITE_CONTENT } from '../../core/data/site-content';
-import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-site-header',
-  providers: [provideIcons({ lucideChevronDown, lucideMenu, lucideX })],
+  providers: [provideIcons({ lucideChevronDown, lucideMenu })],
   imports: [
     RouterLink,
     RouterLinkActive,
@@ -28,6 +29,7 @@ import { NgOptimizedImage } from '@angular/common';
     HlmMenubarImports,
     HlmDropdownMenuImports,
     HlmButtonImports,
+    HlmSheetImports,
   ],
   template: `
     <header
@@ -38,7 +40,6 @@ import { NgOptimizedImage } from '@angular/common';
       >
         <a
           routerLink="/"
-          (click)="closeMobileMenu()"
           class="group flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-light"
           [attr.aria-label]="
             'header.logoAriaLabel'
@@ -130,7 +131,6 @@ import { NgOptimizedImage } from '@angular/common';
           <a
             routerLink="/"
             fragment="metodologie"
-            (click)="closeMobileMenu()"
             class="rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-200/40 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
             >{{ 'header.nav.methods' | transloco }}</a
           >
@@ -148,102 +148,114 @@ import { NgOptimizedImage } from '@angular/common';
           >
         </nav>
 
-        <button
-          hlmBtn
-          variant="ghost"
-          size="icon"
-          type="button"
-          (click)="toggleMobileMenu()"
-          [attr.aria-expanded]="isMobileMenuOpen()"
-          aria-controls="mobile-navigation"
-          class="text-ink hover:bg-stone-200/50 md:hidden"
-          [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
-        >
-          @if (isMobileMenuOpen()) {
-            <ng-icon name="lucideX" class="size-6" aria-hidden="true" />
-          } @else {
-            <ng-icon name="lucideMenu" class="size-6" aria-hidden="true" />
-          }
-        </button>
-      </div>
-
-      @if (isMobileMenuOpen()) {
-        <div
-          id="mobile-navigation"
-          class="border-b border-stone-200 bg-cream px-4 pt-2 pb-6 shadow-lg md:hidden"
-        >
-          <nav
-            class="flex flex-col gap-1.5"
-            [attr.aria-label]="'header.mobileNavAriaLabel' | transloco"
+        <hlm-sheet #mobileSheet side="right">
+          <button
+            hlmBtn
+            hlmSheetTrigger
+            variant="ghost"
+            size="icon"
+            type="button"
+            class="text-ink hover:bg-stone-200/50 md:hidden"
+            [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
           >
-            <a
-              routerLink="/"
-              routerLinkActive="bg-stone-200 text-ink font-semibold"
-              [routerLinkActiveOptions]="{ exact: true }"
-              (click)="closeMobileMenu()"
-              class="rounded-lg px-3 py-2.5 text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink"
-              >{{ 'header.nav.home' | transloco }}</a
+            <ng-icon name="lucideMenu" class="size-6" aria-hidden="true" />
+          </button>
+
+          <hlm-sheet-content
+            *hlmSheetPortal="let ctx"
+            class="w-[min(88vw,24rem)] border-stone-200 bg-cream p-0 text-ink shadow-2xl sm:w-[24rem]"
+          >
+            <hlm-sheet-header class="border-b border-stone-200 px-5 pb-5 pt-6 pr-14">
+              <div class="flex items-center gap-3">
+                <img
+                  ngSrc="/carla-logo.svg"
+                  width="150"
+                  height="40"
+                  alt="Carla"
+                  class="h-8 w-auto max-w-[150px] object-contain"
+                />
+              </div>
+              <p hlmSheetDescription class="max-w-xs text-sm leading-relaxed text-ink-muted">
+                {{ 'header.mobileNavAriaLabel' | transloco }}
+              </p>
+            </hlm-sheet-header>
+
+            <nav
+              class="flex max-h-[calc(100dvh-9rem)] flex-col gap-1 overflow-y-auto px-4 py-5"
+              [attr.aria-label]="'header.mobileNavAriaLabel' | transloco"
             >
-            <div class="py-1">
-              <span
-                class="px-3 text-xs font-semibold tracking-wider text-ink-muted uppercase"
-                >{{ 'header.nav.about' | transloco }}</span
+              <a
+                routerLink="/"
+                routerLinkActive="bg-stone-200 text-ink font-semibold"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="mobileSheet.close()"
+                class="flex min-h-12 items-center rounded-xl px-4 py-3 text-base font-medium text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
+                >{{ 'header.nav.home' | transloco }}</a
               >
-              <div class="mt-1 flex flex-col pl-2">
+
+              <div class="mt-4 px-4 pb-1 pt-2">
+                <span class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase">
+                  {{ 'header.nav.about' | transloco }}
+                </span>
+              </div>
+              <div class="grid gap-1">
                 <a
                   routerLink="/terapeuta"
-                  routerLinkActive="text-primary font-semibold"
-                  (click)="closeMobileMenu()"
-                  class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
+                  routerLinkActive="bg-primary/10 text-primary font-semibold"
+                  (click)="mobileSheet.close()"
+                  class="flex min-h-11 items-center rounded-xl px-4 py-2.5 text-sm text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
                   >{{ 'header.aboutModal.therapistTitle' | transloco }}</a
-                ><a
+                >
+                <a
                   routerLink="/artista"
-                  routerLinkActive="text-primary font-semibold"
-                  (click)="closeMobileMenu()"
-                  class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
+                  routerLinkActive="bg-[var(--color-antique-gold)]/20 text-ink font-semibold"
+                  (click)="mobileSheet.close()"
+                  class="flex min-h-11 items-center rounded-xl px-4 py-2.5 text-sm text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
                   >{{ 'header.aboutModal.artistTitle' | transloco }}</a
                 >
               </div>
-            </div>
-            <div class="py-1">
-              <span
-                class="px-3 text-xs font-semibold tracking-wider text-ink-muted uppercase"
-                >{{ 'header.nav.methods' | transloco }}</span
-              >
-              <div class="mt-1 flex flex-col pl-2">
+
+              <div class="mt-4 px-4 pb-1 pt-2">
+                <span class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase">
+                  {{ 'header.nav.methods' | transloco }}
+                </span>
+              </div>
+              <div class="grid gap-1">
                 @for (method of content.methods; track method.slug) {
                   <a
                     [routerLink]="['/' + method.slug]"
-                    routerLinkActive="text-primary font-semibold"
-                    (click)="closeMobileMenu()"
-                    class="rounded-lg px-3 py-1.5 text-sm text-ink-muted hover:text-ink"
+                    routerLinkActive="bg-primary/10 text-primary font-semibold"
+                    (click)="mobileSheet.close()"
+                    class="flex min-h-11 items-center rounded-xl px-4 py-2.5 text-sm text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
                     >{{ method.title | transloco }}</a
                   >
                 }
               </div>
-            </div>
-            <a
-              routerLink="/percorsi"
-              routerLinkActive="bg-stone-200 text-ink font-semibold"
-              (click)="closeMobileMenu()"
-              class="rounded-lg px-3 py-2.5 text-base font-medium text-ink-muted hover:bg-stone-200/50 hover:text-ink"
-              >{{ 'header.nav.journeys' | transloco }}</a
-            >
-            <a
-              routerLink="/contatti"
-              (click)="closeMobileMenu()"
-              class="mt-2 rounded-lg bg-primary px-4 py-2.5 text-center text-base font-medium text-white shadow-sm hover:bg-primary-dark"
-              >{{ 'header.nav.contact' | transloco }}</a
-            >
-          </nav>
-        </div>
-      }
+
+              <div class="my-4 h-px bg-stone-200"></div>
+
+              <a
+                routerLink="/percorsi"
+                routerLinkActive="bg-stone-200 text-ink font-semibold"
+                (click)="mobileSheet.close()"
+                class="flex min-h-12 items-center rounded-xl px-4 py-3 text-base font-medium text-ink-muted transition-colors hover:bg-stone-200/60 hover:text-ink focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:outline-none"
+                >{{ 'header.nav.journeys' | transloco }}</a
+              >
+              <a
+                routerLink="/contatti"
+                (click)="mobileSheet.close()"
+                class="mt-2 flex min-h-12 items-center justify-center rounded-xl bg-primary px-4 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:outline-none"
+                >{{ 'header.nav.contact' | transloco }}</a
+              >
+            </nav>
+          </hlm-sheet-content>
+        </hlm-sheet>
+      </div>
     </header>
   `,
 })
 export class SiteHeader {
   readonly content = SITE_CONTENT;
-  readonly isMobileMenuOpen = signal(false);
   readonly isAboutMenuOpen = signal(false);
   readonly aboutHoverPath = signal<string | null>(null);
   private readonly router = inject(Router);
@@ -302,14 +314,7 @@ export class SiteHeader {
       : 'text-xs text-muted-foreground!';
   }
 
-  toggleMobileMenu(): void {
-    this.isMobileMenuOpen.update((v) => !v);
-  }
-  closeMobileMenu(): void {
-    this.isMobileMenuOpen.set(false);
-  }
   navigateTo(path: string): void {
-    this.closeMobileMenu();
     void this.router.navigate([path]);
   }
 }
