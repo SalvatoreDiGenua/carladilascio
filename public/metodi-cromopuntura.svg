@@ -1,32 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-<title id="title">Lampada per cromopuntura</title>
-<desc id="desc">Illustrazione editoriale di una lampada terapeutica con filtri cromatici e un fascio di luce.</desc>
-<defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f7f7"/><stop offset="1" stop-color="#f5eee5"/></linearGradient>
-  <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f2d26b" stop-opacity=".08"/><stop offset="1" stop-color="#d9a85e" stop-opacity=".34"/></linearGradient>
-  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#29475c" flood-opacity=".12"/></filter>
-</defs>
-<rect width="1200" height="760" fill="url(#paper)"/>
-<path d="M680 220L1035 370L685 520Z" fill="url(#beam)"/>
-<ellipse cx="565" cy="648" rx="330" ry="28" fill="#29475c" opacity=".10"/>
-<g filter="url(#shadow)">
-  <path d="M320 540V265c0-36 29-65 65-65h245c36 0 65 29 65 65v275Z" fill="#fbfbf8" stroke="#3c607a" stroke-width="8"/>
-  <path d="M390 258h175v190H390z" fill="#e8eef0"/>
-  <circle cx="478" cy="350" r="69" fill="#fff" stroke="#3c607a" stroke-width="8"/>
-  <circle cx="478" cy="350" r="46" fill="#d9b95f" opacity=".72"/>
-  <circle cx="478" cy="350" r="23" fill="#fff" opacity=".8"/>
-  <path d="M630 285h112c22 0 40 18 40 40v120c0 22-18 40-40 40H630Z" fill="#eef2f3" stroke="#3c607a" stroke-width="7"/>
-  <circle cx="688" cy="325" r="22" fill="#c98262"/>
-  <circle cx="688" cy="365" r="22" fill="#d8b85f"/>
-  <circle cx="688" cy="405" r="22" fill="#7c9caf"/>
-  <circle cx="688" cy="445" r="22" fill="#9cad7d"/>
-  <path d="M320 540h375" stroke="#29475c" stroke-width="14" stroke-linecap="round"/>
-  <path d="M382 540v72M632 540v72" stroke="#29475c" stroke-width="14" stroke-linecap="round"/>
-  <path d="M300 614h410" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
-</g>
-<g opacity=".9">
-  <circle cx="870" cy="530" r="45" fill="#c98262"/><circle cx="965" cy="530" r="45" fill="#d8b85f"/><circle cx="1060" cy="530" r="45" fill="#7c9caf"/>
-  <circle cx="870" cy="530" r="18" fill="#fff" opacity=".45"/><circle cx="965" cy="530" r="18" fill="#fff" opacity=".45"/><circle cx="1060" cy="530" r="18" fill="#fff" opacity=".45"/>
-</g>
-<path d="M150 690h900" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Sfondo armonico -->
+  <rect width="200" height="200" rx="30" fill="#F7F5F0" />
+
+  <!-- Punto d'applicazione / Onda energetica di sfondo -->
+  <circle cx="65" cy="135" r="40" fill="none" stroke="#E8D8C8" stroke-width="2" opacity="0.6" />
+  <circle cx="65" cy="135" r="25" fill="none" stroke="#C8B29B" stroke-width="1.5" stroke-dasharray="3 3" />
+  <circle cx="65" cy="135" r="5" fill="#6B5B52" opacity="0.3" />
+
+  <!-- Fascio di Luce Cromatico (Spettro a cono stilizzato) -->
+  <polygon points="65,135 15,60 115,15" fill="url(#rainbow-grad)" opacity="0.75" />
+
+  <!-- Penna per Cromopuntura (Impugnatura e puntale) -->
+  <g transform="rotate(-45 115 85)">
+    <!-- Corpo della penna -->
+    <rect x="100" y="70" width="90" height="24" rx="12" fill="#6B5B52" />
+    <!-- Inserti metallici / Pulsanti -->
+    <rect x="115" y="66" width="60" height="4" rx="2" fill="#8A9A86" />
+    <rect x="150" y="76" width="16" height="12" rx="4" fill="#E3A857" />
+    <!-- Impugnatura dorata -->
+    <path d="M 85,73 L 100,70 L 100,94 L 85,91 Z" fill="#C8B29B" />
+    <!-- Cono frontale penna -->
+    <polygon points="85,73 65,77 65,87 85,91" fill="#8A9A86" />
+    <!-- Cristallo di Quarzo sulla punta -->
+    <polygon points="65,77 50,82 65,87" fill="#FFFFFF" stroke="#C8B29B" stroke-width="1.5" />
+  </g>
+
+  <!-- Bagliore ed emissione sulla punta del cristallo -->
+  <circle cx="65" cy="135" r="8" fill="#FFFFFF" />
+  <circle cx="65" cy="135" r="4" fill="#E3A857" />
+
+  <!-- Definizione Gradiente Spettro Cromatico -->
+  <defs>
+    <linearGradient id="rainbow-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C87A6B" /> <!-- Rosso/Terracotta -->
+      <stop offset="25%" stop-color="#E3A857" /> <!-- Arancio/Ocra -->
+      <stop offset="50%" stop-color="#8A9A86" /> <!-- Verde Salvia -->
+      <stop offset="75%" stop-color="#6B8A9A" /> <!-- Blu Oio -->
+      <stop offset="100%" stop-color="#B48A9C" /> <!-- Viola/Rosa -->
+    </linearGradient>
+  </defs>
 </svg>

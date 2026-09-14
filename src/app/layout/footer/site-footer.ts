@@ -7,7 +7,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
   selector: 'app-site-footer',
   imports: [RouterLink, TranslocoPipe],
   template: `
-    <footer class="mt-20 border-t border-stone-200 bg-stone-100 text-ink">
+    <footer class="mt-20 border-t border-stone-200 bg-stone-100 text-ink z-1">
       <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
           <!-- Colonna 1: Profilo e missione -->

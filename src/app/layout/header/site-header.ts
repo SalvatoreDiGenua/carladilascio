@@ -143,7 +143,7 @@ import { NgOptimizedImage } from '@angular/common';
           <a
             routerLink="/contatti"
             routerLinkActive="bg-primary-dark text-white"
-            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary-dark focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:outline-none"
+            class="ml-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white! shadow-sm transition-colors hover:bg-primary-dark focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:outline-none"
             >{{ 'header.nav.contact' | transloco }}</a
           >
         </nav>

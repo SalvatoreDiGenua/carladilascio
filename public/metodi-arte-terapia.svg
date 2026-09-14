@@ -1,21 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-<title id="title">Materiali per arte terapia</title>
-<desc id="desc">Illustrazione editoriale di un tavolo da lavoro con tavolozza, pennelli, colori e un foglio dipinto.</desc>
-<defs>
-  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6efe5"/><stop offset="1" stop-color="#eef3f3"/></linearGradient>
-  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#29475c" flood-opacity=".13"/></filter>
-</defs>
-<rect width="1200" height="760" fill="url(#paper)"/>
-<rect x="115" y="125" width="970" height="505" rx="34" fill="#d9c0a2" opacity=".32"/>
-<g filter="url(#shadow)">
-  <rect x="455" y="155" width="470" height="345" rx="18" fill="#fffdf9" stroke="#3c607a" stroke-width="8" transform="rotate(5 690 328)"/>
-  <path d="M520 410c70-95 120 28 190-44 58-60 105 33 168-62" fill="none" stroke="#3c607a" stroke-width="24" stroke-linecap="round"/>
-  <path d="M540 438c60-26 90 48 145 8 58-42 105 21 158-20" fill="none" stroke="#c98262" stroke-width="18" stroke-linecap="round" opacity=".82"/>
-  <path d="M170 535c-34-130 48-245 169-245 84 0 150 43 172 111 27 84-45 161-136 161H266c-50 0-85-9-96-27Z" fill="#e7d3b8" stroke="#3c607a" stroke-width="8"/>
-  <circle cx="292" cy="385" r="34" fill="#3c607a"/><circle cx="380" cy="415" r="32" fill="#c98262"/><circle cx="255" cy="474" r="29" fill="#8da5b4"/><circle cx="363" cy="500" r="28" fill="#b6c27c"/><circle cx="438" cy="470" r="25" fill="#d7b85d"/>
-  <path d="M800 590L1010 290" stroke="#29475c" stroke-width="34" stroke-linecap="round"/>
-  <path d="M1009 289l30-41-46 21" fill="#d7b58b" stroke="#3c607a" stroke-width="7"/>
-  <path d="M798 590l-19 39 43-23" fill="#d7b58b" stroke="#3c607a" stroke-width="7"/>
-</g>
-<path d="M150 690h900" stroke="#cdbca7" stroke-width="18" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <rect width="200" height="200" rx="30" fill="#F7F5F0" />
+  <!-- Palette -->
+  <path d="M 60,110 C 40,70 90,40 130,50 C 170,60 170,110 140,140 C 120,160 80,170 60,140 C 45,125 55,115 60,110 Z"
+    fill="#E8D8C8" />
+  <circle cx="135" cy="125" r="9" fill="#F7F5F0" />
+  <!-- Colori sulla tavolozza -->
+  <circle cx="85" cy="70" r="8" fill="#C87A6B" />
+  <circle cx="110" cy="65" r="8" fill="#8A9A86" />
+  <circle cx="135" cy="75" r="8" fill="#B48A9C" />
+  <circle cx="145" cy="95" r="8" fill="#E3A857" />
+  <!-- Pennello -->
+  <path d="M 50,150 L 105,95" stroke="#6B5B52" stroke-width="5" stroke-linecap="round" />
+  <path d="M 105,95 L 115,85" stroke="#C8B29B" stroke-width="6" stroke-linecap="round" />
+  <path d="M 115,85 Q 120,78 128,82 Q 122,90 115,85 Z" fill="#C87A6B" />
 </svg>
