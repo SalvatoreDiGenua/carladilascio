@@ -26,7 +26,7 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         hlmBtn
         hlmSheetTrigger
         variant="ghost"
-        size="icon"
+        size="lg"
         type="button"
         class="text-ink hover:bg-stone-200/50 md:hidden"
         [attr.aria-label]="'header.mobileMenuToggleAriaLabel' | transloco"
@@ -37,15 +37,13 @@ import { SITE_CONTENT } from '../../core/data/site-content';
         *hlmSheetPortal="let ctx"
         class="w-[min(88vw,24rem)] border-stone-200 bg-cream p-0 text-ink shadow-2xl sm:w-[24rem]"
       >
-        <hlm-sheet-header
-          class="border-b border-stone-200 px-5 pt-6 pr-14 pb-5"
-        >
+        <hlm-sheet-header class="border-b border-stone-200">
           <img
             ngSrc="/carla-logo.svg"
-            width="150"
+            width="100"
             height="40"
             alt="Carla"
-            class="h-8 w-auto max-w-[150px] object-contain"
+            class="h-8 max-w-[150px] object-contain"
           />
         </hlm-sheet-header>
         <nav
