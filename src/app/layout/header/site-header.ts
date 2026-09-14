@@ -78,7 +78,11 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
               "
             >
               <span>{{ 'header.nav.about' | transloco }}</span>
-              <ng-icon name="lucideChevronDown" class="size-3.5 opacity-60" aria-hidden="true" />
+              <ng-icon
+                name="lucideChevronDown"
+                class="size-3.5 opacity-60"
+                aria-hidden="true"
+              />
             </button>
           </div>
           <ng-template #aboutMenu>
@@ -93,8 +97,12 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
                   [style.color]="aboutOptionTextColor('/terapeuta')"
                 >
                   <span class="flex flex-col items-start gap-0.5 text-left">
-                    <span [class]="aboutTitleClass('/terapeuta')">{{ 'header.aboutModal.therapistTitle' | transloco }}</span>
-                    <span [class]="aboutDescriptionClass('/terapeuta')">{{ 'header.aboutModal.therapistDescription' | transloco }}</span>
+                    <span [class]="aboutTitleClass('/terapeuta')">{{
+                      'header.aboutModal.therapistTitle' | transloco
+                    }}</span>
+                    <span [class]="aboutDescriptionClass('/terapeuta')">{{
+                      'header.aboutModal.therapistDescription' | transloco
+                    }}</span>
                   </span>
                 </button>
                 <hlm-dropdown-menu-separator class="my-1" />
@@ -107,8 +115,12 @@ import { MobileNavigationSheet } from './mobile-navigation-sheet';
                   [style.color]="aboutOptionTextColor('/artista')"
                 >
                   <span class="flex flex-col items-start gap-0.5 text-left">
-                    <span [class]="aboutTitleClass('/artista')">{{ 'header.aboutModal.artistTitle' | transloco }}</span>
-                    <span [class]="aboutDescriptionClass('/artista')">{{ 'header.aboutModal.artistDescription' | transloco }}</span>
+                    <span [class]="aboutTitleClass('/artista')">{{
+                      'header.aboutModal.artistTitle' | transloco
+                    }}</span>
+                    <span [class]="aboutDescriptionClass('/artista')">{{
+                      'header.aboutModal.artistDescription' | transloco
+                    }}</span>
                   </span>
                 </button>
               </hlm-dropdown-menu-group>
