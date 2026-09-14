@@ -6,6 +6,8 @@ import {
   signal,
 } from '@angular/core';
 
+type TypeIntro = 'fade' | 'lift' | 'curtain';
+
 @Component({
   selector: 'app-intro-screen',
   template: `
@@ -219,16 +221,12 @@ import {
 })
 export class IntroScreen {
   readonly visible = signal(true);
-  readonly variant = signal<'fade' | 'lift' | 'curtain'>('fade');
+  readonly variant = signal<TypeIntro>('fade');
   readonly completed = output<void>();
 
   constructor() {
     afterNextRender(() => {
-      const variants: Array<'fade' | 'lift' | 'curtain'> = [
-        'fade',
-        'lift',
-        'curtain',
-      ];
+      const variants: TypeIntro[] = ['fade', 'lift', 'curtain'];
       this.variant.set(variants[Math.floor(Math.random() * variants.length)]);
 
       const prefersReducedMotion = window.matchMedia(
@@ -241,7 +239,7 @@ export class IntroScreen {
   }
 
   onLeave(event: AnimationCallbackEvent): void {
-    const element = event.target;
+    const element: any = event.target;
 
     const complete = (animationEvent: AnimationEvent) => {
       if (animationEvent.target !== element) {
