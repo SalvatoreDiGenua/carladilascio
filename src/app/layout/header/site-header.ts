@@ -165,7 +165,9 @@ import { SITE_CONTENT } from '../../core/data/site-content';
             *hlmSheetPortal="let ctx"
             class="w-[min(88vw,24rem)] border-stone-200 bg-cream p-0 text-ink shadow-2xl sm:w-[24rem]"
           >
-            <hlm-sheet-header class="border-b border-stone-200 px-5 pb-5 pt-6 pr-14">
+            <hlm-sheet-header
+              class="border-b border-stone-200 px-5 pt-6 pr-14 pb-5"
+            >
               <div class="flex items-center gap-3">
                 <img
                   ngSrc="/carla-logo.svg"
@@ -175,7 +177,10 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                   class="h-8 w-auto max-w-[150px] object-contain"
                 />
               </div>
-              <p hlmSheetDescription class="max-w-xs text-sm leading-relaxed text-ink-muted">
+              <p
+                hlmSheetDescription
+                class="max-w-xs text-sm leading-relaxed text-ink-muted"
+              >
                 {{ 'header.mobileNavAriaLabel' | transloco }}
               </p>
             </hlm-sheet-header>
@@ -193,8 +198,10 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 >{{ 'header.nav.home' | transloco }}</a
               >
 
-              <div class="mt-4 px-4 pb-1 pt-2">
-                <span class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase">
+              <div class="mt-4 px-4 pt-2 pb-1">
+                <span
+                  class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
+                >
                   {{ 'header.nav.about' | transloco }}
                 </span>
               </div>
@@ -215,8 +222,10 @@ import { SITE_CONTENT } from '../../core/data/site-content';
                 >
               </div>
 
-              <div class="mt-4 px-4 pb-1 pt-2">
-                <span class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase">
+              <div class="mt-4 px-4 pt-2 pb-1">
+                <span
+                  class="text-[0.68rem] font-semibold tracking-[0.16em] text-ink-muted uppercase"
+                >
                   {{ 'header.nav.methods' | transloco }}
                 </span>
               </div>
