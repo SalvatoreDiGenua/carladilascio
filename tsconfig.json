@@ -36,7 +36,8 @@
       "@spartan-ng/helm/textarea": ["./libs/ui/textarea/src/index.ts"],
       "@spartan-ng/helm/card": ["./libs/ui/card/src/index.ts"],
       "@spartan-ng/helm/sheet": ["./libs/ui/sheet/src/index.ts"],
-      "@spartan-ng/helm/item": ["./libs/ui/item/src/index.ts"]
+      "@spartan-ng/helm/item": ["./libs/ui/item/src/index.ts"],
+      "@spartan-ng/helm/badge": ["./libs/ui/badge/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
