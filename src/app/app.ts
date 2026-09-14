@@ -30,7 +30,6 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
         <main
           id="main-content"
           tabindex="-1"
-          animate.enter="home-entry"
           class="focus:outline-none"
         >
           <router-outlet />
@@ -56,7 +55,6 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
       flex: 1 0 auto;
       min-height: 100dvh;
       flex-direction: column;
-      opacity: 1;
     }
 
     main {
@@ -69,11 +67,7 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
     }
 
     .site-layer-enter {
-      animation: site-layer-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-
-    .home-entry {
-      animation: home-entry 900ms cubic-bezier(0.16, 1, 0.3, 1) 70ms both;
+      animation: site-layer-enter 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .skip-link {
@@ -99,23 +93,12 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
     @keyframes site-layer-enter {
       from {
         opacity: 0;
-        transform: translate3d(0, 0.4rem, 0);
+        transform: translate3d(0, 1.5rem, 0) scale(0.985);
+        filter: blur(5px);
       }
-      to {
+      55% {
         opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    @keyframes home-entry {
-      from {
-        opacity: 0;
-        transform: translate3d(0, 1.25rem, 0) scale(0.985);
-        filter: blur(4px);
-      }
-      60% {
-        opacity: 1;
-        transform: translate3d(0, -0.12rem, 0) scale(1.002);
+        transform: translate3d(0, -0.1rem, 0) scale(1.001);
         filter: blur(0);
       }
       to {
@@ -126,8 +109,7 @@ import { IntroScreen } from './shared/intro-screen/intro-screen';
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .site-layer-enter,
-      .home-entry {
+      .site-layer-enter {
         animation: none;
       }
     }
